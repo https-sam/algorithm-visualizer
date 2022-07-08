@@ -7,8 +7,6 @@ class Canvas extends Component {
   }
 
 
-  
-  
   render() {
     const { generatedArray } = this.props;
     const arrayLength = generatedArray.length;

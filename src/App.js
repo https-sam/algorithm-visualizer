@@ -1,4 +1,3 @@
-
 import './App.css';
 import React, {Component} from 'react';
 import { Strategy, changeRed } from '../src/components/Strategy/Strategy.js'

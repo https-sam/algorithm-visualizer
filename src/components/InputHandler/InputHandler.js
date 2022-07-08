@@ -39,11 +39,8 @@ class InputHandler {
   }
 
   static handleInputRequest(inputSize) {
-    if(InputHandler.getAllowedMaxInputSize() >= inputSize) {
-      InputHandler.generateRandomIntArray(inputSize);
-    } else {
-      alert('too large')
-    }
+    InputHandler.generateRandomIntArray(inputSize);
+    
     return InputHandler.getGeneratedArray;
   }
 }
