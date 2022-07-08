@@ -1,10 +1,8 @@
 import React, {Component}    from 'react';
-import {Strategy, changeRed} from '../Strategy/Strategy';
 import {BuildTrigger}        from '../../modals/buttons/buildbutton/BuildTrigger';
 import {BuildForm}           from '../../modals/form/BuildForm';
-import ModalTriggerButton    from '../../modals/buttons/modaltrigger/ModalTriggerButton';
 
-
+// TODO: To MainCanvas
 
 export class Container extends Component {
 	state = {isShown: false};
