@@ -16,7 +16,8 @@ class MainCanvas extends Component {
       generatedArray: InputHandler.getGeneratedArray,
       inputArrayLength: InputHandler.getGeneratedArray.length,
       options: {
-        showAdvancedOptions: false,
+        delay: 4,
+        skipJ: false,
         processingColor: CONSTANTS.PROCESSING[0],
         defaultBarColor: CONSTANTS.DEFAULT[0],
         sortedBarColor: CONSTANTS.SORTED[0],
@@ -31,7 +32,7 @@ class MainCanvas extends Component {
 
   render() {
     const {options} = this.state;
-
+    console.log(options);
     return (
       <>
         <InputField name = {['generic-input', 'instructions']} InputHandler = {this}/>

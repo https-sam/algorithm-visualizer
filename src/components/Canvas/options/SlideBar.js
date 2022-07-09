@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 function SlideBar(props) {
   const [value, setValue] = useState(0);
-  const MAX = 30;
+  const MAX = 51;
   const getBackgroundSize = () => {
     return {
       backgroundSize: `${(value * 100) / MAX}% 100%`,
@@ -17,7 +17,7 @@ function SlideBar(props) {
       max={MAX}
       onChange={(e) => {
         setValue(e.target.value)
-        props.mainCanvas.setState({options: {delay: value}})
+        props.mainCanvas.setState(prev => ({options: {...prev.options, delay: value, }}))
       }}
       style={getBackgroundSize()}
       value={value}

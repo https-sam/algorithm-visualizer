@@ -1,33 +1,41 @@
 import SlideBar from './SlideBar';
+import './style.css'
 import React, { Component } from 'react'
 import { ReactComponent as ArrowDown } from '../../../img/arrowDown.svg'
 import { ReactComponent as CPU } from '../../../img/cpu.svg'
 import { ReactComponent as UnsortedBars } from '../../../img/unsortedBars.svg'
 import { ReactComponent as SortedBars } from '../../../img/sortedBars.svg'
+import { ReactComponent as Runner } from '../../../img/running.svg'
+import { ReactComponent as Speed } from '../../../img/Speed.svg'
 import { ReactComponent as Key } from '../../../img/key.svg'
 import { CONSTANTS } from '../../../config'
+
+
+
 class Options extends Component {
   constructor(props) {
    super(props);
    this.state =  {
-    showAdvanvedOptions: false,
     showProcessingColor: false,
     showDefaultBarColor: false,
     showSortedBarColor: false,
     showMinBarColor: false,
+    showDelay: false,
    }
 
   }
   render() {
-    const {showAdvancedOptions, showProcessingColor, showDefaultBarColor, showSortedBarColor, showMinBarColor} = this.state;
-
+    const {showProcessingColor, showDefaultBarColor, showSortedBarColor, showMinBarColor, showDelay } = this.state;
+    const style = {
+      height: 400
+    };
     return (
       <div className="rounded-md">
 
         <div className="w-fit flex space-x-5">
 
           <div className="flex flex-col items-center relative space-y-2">
-            <div className="p-2 hover:bg-gray-200 rounded-md" onClick={() => this.setState({showDefaultBarColor: !showDefaultBarColor})}>
+            <div className="p-2 hover:bg-gray-200 rounded-md peer" onClick={() => this.setState({showDefaultBarColor: !showDefaultBarColor})}>
               <UnsortedBars className="scale-[1.2]"/>
             </div> 
             <div className={`h-3 w-3 rounded-full`} style={{backgroundColor: this.props.options.state.options.defaultBarColor}}/>
@@ -44,10 +52,11 @@ class Options extends Component {
                 }/>
               ))}
             </div>
+            <p className={`bg-white z-10 inline absolute top-[100%] border-2 p-1 rounded-md hidden peer-hover:block tool-tip-options`}><p className="font-bold">Unsorted</p> bars color</p>
           </div>
 
           <div className="flex flex-col items-center relative space-y-2">
-            <div className="p-2 hover:bg-gray-200 rounded-md" onClick={() => this.setState({showSortedBarColor: !showSortedBarColor})}>
+            <div className="p-2 hover:bg-gray-200 peer rounded-md" onClick={() => this.setState({showSortedBarColor: !showSortedBarColor})}>
               <SortedBars className="scale-[1.2]"/>
             </div> 
             <div className={`h-3 w-3 rounded-full`} style={{backgroundColor: this.props.options.state.options.sortedBarColor}}/>
@@ -64,11 +73,12 @@ class Options extends Component {
                 }/>
               ))}
             </div>
+            <p className={`bg-white inline z-10 absolute top-[100%] border-2 p-1 rounded-md hidden peer-hover:block tool-tip-options`}><p className="font-bold">Sorted</p> bars color</p>
           </div>
 
 
           <div className="flex flex-col items-center relative space-y-2">
-            <div className="p-2 hover:bg-gray-200 rounded-md" onClick={() => this.setState({showProcessingColor: !showProcessingColor})}>
+            <div className="p-2 hover:bg-gray-200 peer rounded-md" onClick={() => this.setState({showProcessingColor: !showProcessingColor})}>
               <CPU className="scale-[1.2]"/>
             </div> 
             <div className={`h-3 w-3 rounded-full`} style={{backgroundColor: this.props.options.state.options.processingColor}}/>
@@ -85,11 +95,12 @@ class Options extends Component {
                 }/>
               ))}
             </div>
+            <p className={`bg-white inline z-10 absolute top-[100%] border-2 p-1 rounded-md hidden peer-hover:block tool-tip-options`}><p className="font-bold">Processing</p> bars color</p>
           </div>
 
 
           <div className="flex flex-col items-center relative space-y-2">
-            <div className="p-2 hover:bg-gray-200 rounded-md" onClick={() => this.setState({showMinBarColor: !showMinBarColor})}>
+            <div className="p-2 hover:bg-gray-200 peer rounded-md" onClick={() => this.setState({showMinBarColor: !showMinBarColor})}>
               <Key className="scale-[1.2]"/>
             </div> 
             <div className={`h-3 w-3 rounded-full`} style={{backgroundColor: this.props.options.state.options.currentMinBarColor}}/>
@@ -106,15 +117,42 @@ class Options extends Component {
                 }/>
               ))}
             </div>
+            <p className={`bg-white inline z-10 absolute top-[100%] border-2 p-1 rounded-md hidden peer-hover:block tool-tip-options`}><p className="font-bold">Minimum</p> bar color</p>
           </div>
 
+
+          <div className="flex flex-col items-center relative space-y-2">
+            <div className="p-2 hover:bg-gray-200 peer rounded-md" onClick={() => this.setState({showDelay: !showDelay})}>
+              <Speed className="scale-[1.2]"/>
+            </div> 
+            <p className="font-semibold text-gray-500">{this.props.options.state.options?.delay}ms</p>
+            <div className={`absolute bg-white p-2 rounded-md border-2 top-[100%] space-y-1 ${showDelay ? "block" : "hidden"}`}>
+              <div className="flex flex-col items-center justify-center">
+                <SlideBar mainCanvas={this.props.options}/>
+                <p className="">{this.props.options.state.options?.delay}</p>
+              </div>
+            </div>
+            <p className={`bg-white inline z-10 absolute top-[100%] border-2 p-1 rounded-md hidden peer-hover:block tool-tip-options`}>Animation Speed</p>
+          </div>
+
+
+
+          <div className="flex flex-col items-center relative space-y-2">
+            <div className={`p-2 hover:bg-gray-200 peer rounded-md`} onClick={() => {
+              this.props.options.setState(prev => ({options: {...prev.options, skipJ: !this.props.options.state.options.skipJ}}))
+
+              }}>
+              <Runner className="scale-[1.2]"/>
+            </div> 
+            <p className="font-semibold text-gray-500">{this.props.options.state.options.skipJ ? "ON" : "OFF"}</p>
+            <p className={`bg-white inline z-10 absolute top-[100%] border-2 p-1 rounded-md hidden peer-hover:block tool-tip-options`}>Faster Animation</p>
+          </div>
+   
+          
+       
+          
           
 
-          
-
-          
-
-          
 
 
           {/* <p>Default bar color</p>

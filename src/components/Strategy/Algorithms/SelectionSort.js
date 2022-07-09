@@ -40,12 +40,14 @@ export default class SelectionSort  {
           }
 
           // SG 07/08/2022 15:01 animation for j iteration - can be removed for faster animation
-          await Animation.getAnimation(this._delay);
+          if(!options.skipJ) {
+            await Animation.getAnimation(this._delay);
+          }
 
           var currentMinBar = parseInt(unSortedBars[minBarIndex].id);
           var currentNum = parseInt(unSortedBars[j].id);
 
-          
+
           // SG 07/07/2022 21:19  fins min value in the rest of the array          
           if (currentNum < currentMinBar) {
             if (minBarIndex !== i) {
