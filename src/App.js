@@ -13,11 +13,12 @@ import Footer                from './partial/Footer';
 import {Strategy, changeRed} from './components/Strategy/Strategy';
 import {InputField}          from './components/Canvas/InputField.js';
 import MainCanvas            from './components/Canvas/MainCanvas';
-import SplashScreen          from './components/Container/Splash/SplashScreen';
+import SplashScreen          from './components/Page/Splash/SplashScreen';
 import {Routes}              from 'react-router';
 
 
 
+{/* Placeholder for the About page */}
 function About() {
   return null;
 }
@@ -36,8 +37,8 @@ class App extends Component {
                renders the first one that matches the current URL. */}
               <Route exact path = "/about" element = {<About/>}/>
               <Route exact path = "/home" element = {<MainCanvas/>}/>
-              {/*<Route exact path = "/" element = {<SplashScreen/>}/>*/}
-              <Route exact path = "/" element = {<MainCanvas/>}/>
+              <Route exact path = "/" element = {<SplashScreen/>}/>
+              {/*<Route exact path = "/" element = {<MainCanvas/>}/>*/}
             </Routes>
             {/*</Layout>*/}
           </Router>

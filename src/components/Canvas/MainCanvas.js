@@ -21,7 +21,8 @@ class MainCanvas extends Component {
     return (
         <>
           <div className = "w-full flex justify-center mt-[4em]">
-            <InputField name={["generic-input", "instructions"]} InputHandler = {this}/>
+            <InputField name = {['generic-input', 'instructions']}
+                        InputHandler = {this}/>
             <Canvas generatedArray = {this.state.generatedArray}/>
           </div>
         </>
