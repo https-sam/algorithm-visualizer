@@ -52,7 +52,7 @@ class Options extends Component {
                 }/>
               ))}
             </div>
-            <p className={`bg-white z-10 inline absolute top-[100%] border-2 p-1 rounded-md hidden peer-hover:block tool-tip-options`}><p className="font-bold">Unsorted</p> bars color</p>
+            <p className={`bg-white z-10 inline absolute top-[100%] border-2 p-1 rounded-md hidden peer-hover:block tool-tip-options text-gray-600`}><span className="font-bold">Unsorted</span> bars color</p>
           </div>
 
           <div className="flex flex-col items-center relative space-y-2">
@@ -73,7 +73,7 @@ class Options extends Component {
                 }/>
               ))}
             </div>
-            <p className={`bg-white inline z-10 absolute top-[100%] border-2 p-1 rounded-md hidden peer-hover:block tool-tip-options`}><p className="font-bold">Sorted</p> bars color</p>
+            <p className={`bg-white inline z-10 absolute top-[100%] border-2 p-1 rounded-md hidden peer-hover:block tool-tip-options text-gray-600`}><span className="font-bold">Sorted</span> bars color</p>
           </div>
 
 
@@ -95,7 +95,7 @@ class Options extends Component {
                 }/>
               ))}
             </div>
-            <p className={`bg-white inline z-10 absolute top-[100%] border-2 p-1 rounded-md hidden peer-hover:block tool-tip-options`}><p className="font-bold">Processing</p> bars color</p>
+            <p className={`bg-white inline z-10 absolute top-[100%] border-2 p-1 rounded-md hidden peer-hover:block tool-tip-options text-gray-600`}><span className="font-bold">Processing</span> bars color</p>
           </div>
 
 
@@ -117,7 +117,7 @@ class Options extends Component {
                 }/>
               ))}
             </div>
-            <p className={`bg-white inline z-10 absolute top-[100%] border-2 p-1 rounded-md hidden peer-hover:block tool-tip-options`}><p className="font-bold">Minimum</p> bar color</p>
+            <p className={`bg-white inline z-10 absolute top-[100%] border-2 p-1 rounded-md hidden peer-hover:block tool-tip-options text-gray-600`}><span className="font-bold">Minimum</span> bar color</p>
           </div>
 
 
@@ -132,7 +132,7 @@ class Options extends Component {
                 <p className="">{this.props.options.state.options?.delay}</p>
               </div>
             </div>
-            <p className={`bg-white inline z-10 absolute top-[100%] border-2 p-1 rounded-md hidden peer-hover:block tool-tip-options`}>Animation Speed</p>
+            <p className={`bg-white inline z-10 absolute top-[100%] border-2 p-1 rounded-md hidden peer-hover:block tool-tip-options text-gray-600`}>Animation <span className="font-bold">Speed</span></p>
           </div>
 
 
@@ -145,7 +145,7 @@ class Options extends Component {
               <Runner className="scale-[1.2]"/>
             </div> 
             <p className="font-semibold text-gray-500">{this.props.options.state.options.skipJ ? "ON" : "OFF"}</p>
-            <p className={`bg-white inline z-10 absolute top-[100%] border-2 p-1 rounded-md hidden peer-hover:block tool-tip-options`}>Faster Animation</p>
+            <p className={`bg-white inline z-10 absolute top-[100%] border-2 p-1 rounded-md hidden peer-hover:block tool-tip-options text-gray-600`}><span className="font-bold">Faster</span> Animation</p>
           </div>
    
           
