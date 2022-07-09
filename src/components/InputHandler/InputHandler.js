@@ -1,6 +1,6 @@
-
 class InputHandler {
   static inputArray = [];
+
 
   /**
    * @retuns {Integer[]}
@@ -9,41 +9,67 @@ class InputHandler {
     return InputHandler.inputArray;
   }
 
+
   /**
+   *
    * @param {Integer[]} newArray
    */
   static set setInputArray(newArray) {
     InputHandler.inputArray = newArray;
   }
 
+
+  /**
+   *
+   * @param min
+   * @param max
+   * @returns {number}
+   */
   static randomIntFromInterval = (min, max) => {
     // https://gist.github.com/spyesx/485e4584aae767201f41
-    return Math.floor( Math.random()*  ( max - min + 1 ) + min );
-  }
+    return Math.floor(Math.random() * (max - min + 1) + min);
+  };
 
+
+  /**
+   *
+   * @returns {number}
+   */
   static getAllowedMaxInputSize() {
-    const MARGIN = 2;
+    const MARGIN        = 2;
     const BAR_MIN_WIDTH = 1;
-    const SCREEN_WIDTH = window.innerWidth;
+    const SCREEN_WIDTH  = window.innerWidth;
     return Math.floor(SCREEN_WIDTH / (BAR_MIN_WIDTH + MARGIN));
   }
 
+
+  /**
+   *
+   * @param inputSize
+   */
   static generateRandomIntArray(inputSize) {
-    let arr = [];
+    let arr              = [];
     const MAX_BAR_HEIGHT = window.innerHeight - 280;
-    for(var i = 0; i < inputSize; i++) {
-      arr.push(InputHandler.randomIntFromInterval(5, MAX_BAR_HEIGHT))
-    } 
+    for (var i = 0; i < inputSize; i++) {
+      arr.push(InputHandler.randomIntFromInterval(5, MAX_BAR_HEIGHT));
+    }
     InputHandler.setInputArray = arr;
-    console.log(InputHandler.getGeneratedArray)
+    console.log(InputHandler.getGeneratedArray);
   }
 
+
+  /**
+   *
+   * @param inputSize
+   * @returns {[]}
+   */
   static handleInputRequest(inputSize) {
     InputHandler.generateRandomIntArray(inputSize);
-    
+
     return InputHandler.getGeneratedArray;
   }
 }
 
 
-export {InputHandler}
+
+export {InputHandler};

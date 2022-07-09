@@ -16,7 +16,7 @@ class Canvas extends Component {
 
 
     return (
-      <div className="w-full flex justify-center mt-[4em]">
+      <div className="flex justify-center mt-[4em]">
         <div className="flex items-end">
           {generatedArray.map((element) => {
             return <div key={Math.random()} style={{height: element+'px', width: BAR_WIDTH+'px'}} className={`bg-red-400 m-[1px]`}/>

@@ -5,7 +5,8 @@ class InputField extends Component {
 
   constructor(props) {
     super(props);
-   
+    this.InputHandler = new InputHandler();
+    this.name = props.name;
   }
 
 
@@ -14,8 +15,8 @@ class InputField extends Component {
 
 
     return (
-      <div className="flex flex-col items-center justify-center">
-        <p className="text-gray-700 mb-5">Array size should not exceed {InputHandler.getAllowedMaxInputSize()}.</p>
+      <div className={this.name[0] + " "}>
+        <p className={this.name[1] + " "}>Array size should not exceed {InputHandler.getAllowedMaxInputSize()}.</p>
         <div className="flex">
           <input placeholder="Enter array size" value={inputArrayLength} onChange={(e) => {
             (Number(e.target.value) || !e.target.value) 
