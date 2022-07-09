@@ -52,14 +52,14 @@ export default class SelectionSort  {
           if (currentNum < currentMinBar) {
             if (minBarIndex !== i) {
               
-              // Provide skyblue color to the (min-idx)th bar
+
               unSortedBars[minBarIndex].style.backgroundColor = PROCESSING;
             }
             minBarIndex = j;
             unSortedBars[j].style.backgroundColor = CURRENT_MIN;
           } else {
       
-            // Provide skyblue color to the jth bar
+
             unSortedBars[j].style.backgroundColor = PROCESSING;
           }
         }
@@ -70,17 +70,10 @@ export default class SelectionSort  {
     
           
         
-      
-        // // Provide skyblue color to the (min-idx)th bar
-        // array[minBarIndex].style.backgroundColor = DEFAULT;
-      
-        // Provide lightgreen color to the ith bar
+  
         unSortedBars[i].style.backgroundColor = SORTAED;
   
-        // if(min !== i) { // SG 07/08/2022 12:09  
-        //   [array[i], array[min]] = [array[min], array[i]];
-        //   this.Animation.swap(i, min, array);
-        // }
+    
     }
     console.log(unSortedBars);
 
