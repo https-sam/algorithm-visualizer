@@ -1,3 +1,6 @@
+import { CONSTANTS } from '../../config.js';
+import { Strategy } from '../Strategy/Strategy.js';
+
 class InputHandler {
   static inputArray = [];
 
@@ -36,7 +39,7 @@ class InputHandler {
    * @returns {number}
    */
   static getAllowedMaxInputSize() {
-    const MARGIN        = 2;
+    const MARGIN = CONSTANTS.margin;
     const BAR_MIN_WIDTH = 1;
     const SCREEN_WIDTH  = window.innerWidth;
     return Math.floor(SCREEN_WIDTH / (BAR_MIN_WIDTH + MARGIN));
@@ -54,7 +57,8 @@ class InputHandler {
       arr.push(InputHandler.randomIntFromInterval(5, MAX_BAR_HEIGHT));
     }
     InputHandler.setInputArray = arr;
-    console.log(InputHandler.getGeneratedArray);
+    console.log(InputHandler.getGeneratedArray)
+    Strategy.setTargetArray = arr;
   }
 
 

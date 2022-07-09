@@ -1,6 +1,5 @@
-import React, {Component} from 'react';
-
-
+import React, { Component } from 'react'
+import { CONSTANTS } from '../../config.js';
 
 class Canvas extends Component {
 
@@ -10,29 +9,26 @@ class Canvas extends Component {
 
 
   render() {
-    const {generatedArray} = this.props;
-    const arrayLength      = generatedArray.length;
-    const MARGIN           = 2;
-    const SCREEN_WIDTH     = window.innerWidth;
-    const BAR_WIDTH        = Math.floor(
-        (SCREEN_WIDTH - (MARGIN * arrayLength)) / arrayLength);
+    console.log(this.props)
+    const { generatedArray } = this.props;
+    const arrayLength = generatedArray.length;
+    const MARGIN = CONSTANTS.margin;
+    const SCREEN_WIDTH = window.innerWidth;
+    const BAR_WIDTH = Math.floor((SCREEN_WIDTH - (MARGIN*arrayLength)) / arrayLength);
+
 
     return (
-        <div className = "flex justify-center mt-[4em]">
-          <div className = "flex items-end">
-            {generatedArray.map((element) => {
-              return <div key = {Math.random()}
-                          style = {{
-                            height: element + 'px', width: BAR_WIDTH + 'px',
-                          }}
-                          className = {`bg-red-400 m-[1px]`}/>;
-            })}
-          </div>
+      <div className="w-full flex justify-center mt-[4em]">
+        <div className="flex items-end">
+          {generatedArray.map((element) => {
+            return <div id={`${element}`} key={Math.random()} style={{height: element+'px', width: BAR_WIDTH+'px', backgroundColor: this.props.barColor}} className={`array-bars m-[1px] rounded-t-md`}/>
+          })}
         </div>
+      </div>
     );
   }
 }
 
 
 
-export {Canvas};
+export {Canvas}

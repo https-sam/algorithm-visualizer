@@ -1,0 +1,88 @@
+import React, { Component } from 'react'
+import { Strategy } from '../Strategy';
+import { Animation } from '../../Animation/Animation';
+
+
+export default class SelectionSort  {
+  
+  constructor() {
+    this.Animation = new Animation();
+    this.options = {};
+    this._delay = 4;
+  }
+
+  /**
+   * @param {{}} options
+   */
+  set setOptions(options) {
+    this._delay = options?.delay || 4;
+  }
+  
+  async perform(options) {
+    console.log(options)
+    const DEFAULT = options.defaultBarColor;
+    const PROCESSING = options.processingColor;
+    const SORTAED = options.sortedBarColor;
+    const CURRENT_MIN = options.currentMinBarColor;
+    const DELAY = 4;
+    let unSortedBars = document.querySelectorAll('.array-bars');
+    let minBarIndex = 0;
+
+    for(var i = 0; i < unSortedBars.length; i++) {
+      // SG 07/08/2022 15:01 animation for i iterationå
+      await Animation.getAnimation(this._delay);
+      
+      minBarIndex = i;
+        for(var j = i + 1; j < unSortedBars.length; j++) {
+          // original color
+          for(let k = j; k < unSortedBars.length; k++) {
+            unSortedBars[k].style.backgroundColor = DEFAULT;
+          }
+
+          // SG 07/08/2022 15:01 animation for j iteration - can be removed for faster animation
+          await Animation.getAnimation(this._delay);
+
+          var currentMinBar = parseInt(unSortedBars[minBarIndex].id);
+          var currentNum = parseInt(unSortedBars[j].id);
+
+          // SG 07/07/2022 21:19  fins min value in the rest of the array
+          
+          // Compare val1 & val2
+
+          if (currentNum < currentMinBar) {
+            if (minBarIndex !== i) {
+              
+              // Provide skyblue color to the (min-idx)th bar
+              unSortedBars[minBarIndex].style.backgroundColor = PROCESSING;
+            }
+            minBarIndex = j;
+            unSortedBars[j].style.backgroundColor = CURRENT_MIN;
+          } else {
+      
+            // Provide skyblue color to the jth bar
+            unSortedBars[j].style.backgroundColor = PROCESSING;
+          }
+        }
+
+
+        // SG 07/08/2022 13:09  SWAP Animation - swaps element id and height
+        this.Animation.swap(i, minBarIndex);
+    
+          
+        
+      
+        // // Provide skyblue color to the (min-idx)th bar
+        // array[minBarIndex].style.backgroundColor = DEFAULT;
+      
+        // Provide lightgreen color to the ith bar
+        unSortedBars[i].style.backgroundColor = SORTAED;
+  
+        // if(min !== i) { // SG 07/08/2022 12:09  
+        //   [array[i], array[min]] = [array[min], array[i]];
+        //   this.Animation.swap(i, min, array);
+        // }
+    }
+    console.log(unSortedBars);
+
+  }
+}

@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 
 class Strategy {
+  static targetArray = [];
+
   constructor() {
     this._strategy = null;
   }
@@ -16,16 +18,23 @@ class Strategy {
     return this._strategy; 
   }
 
-  perform() {
-    this._strategy.perform();
+
+  /**
+   * @param {any} newArray
+   */
+  static set setTargetArray(newArray) {
+    Strategy.targetArray = newArray;
+  }
+
+  static get getTargetArray() { 
+    return Strategy.targetArray; 
+  }
+
+  perform(options) {
+    this._strategy.perform(options);
   }
 }
 
-// SG 07/06/2022 19:11  strategy pattern test
-class changeRed {
-  perform() {
-    document.getElementById("bar").style.backgroundColor = "red";
-  }
-}
 
-export { Strategy, changeRed }
+
+export { Strategy }
