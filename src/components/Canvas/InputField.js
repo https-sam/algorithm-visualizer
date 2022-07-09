@@ -16,9 +16,9 @@ class InputField extends Component {
 
     return (
       <div className={`flex items-center justify-around border-b p-3 w-sreen flex-wrap ${this.name[0] + ' '}`}>
-        <div className="flex flex-col justify-center items-center h-full">
+        <div className="flex flex-col justify-center items-center h-full mb-3 sm:mb-0">
           <div className="flex">
-            <input placeholder="Enter array size" value={inputArrayLength} onChange={(e) => {
+            <input placeholder={`Array size (MAX ${InputHandler.getAllowedMaxInputSize()})`} value={inputArrayLength} onChange={(e) => {
               // SG 07/07/2022 21:03  Input validation, only accepts a number that is less than the allowed array size
               (Number(e.target.value) || !e.target.value) 
                 && (e.target.value <= InputHandler.getAllowedMaxInputSize()) 
@@ -32,7 +32,7 @@ class InputField extends Component {
               this.props.InputHandler.setState({generatedArray: InputHandler.handleInputRequest(inputArrayLength)});
             }} className="bg-blue-300 p-2 ml-3 rounded-md text-white font-medium hover:scale-[1.02] hover:bg-blue-400 transition duration-200 ease-in-out">Generate Array</button>
           </div>
-          <p className={`text-gray-700 mt-1 ${this.name[1] + ' '}`}>Array size should not exceed {InputHandler.getAllowedMaxInputSize()}.</p>
+          {/* <p className={`text-gray-700 mt-1 ${this.name[1] + ' '}`}>Array size should not exceed {InputHandler.getAllowedMaxInputSize()}.</p> */}
         </div>
         <Options options={this.props.InputHandler}/>
       </div>
