@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 function SlideBar(props) {
   const [value, setValue] = useState(0);
-  const MAX = 51;
+  const MAX = 200;
   const getBackgroundSize = () => {
     return {
       backgroundSize: `${(value * 100) / MAX}% 100%`,

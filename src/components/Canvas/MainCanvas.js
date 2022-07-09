@@ -24,9 +24,6 @@ class MainCanvas extends Component {
         currentMinBarColor: CONSTANTS.CURRENT_MIN[0]
       }
     };
-    this.selectionSort = new SelectionSort(); 
-    this.Strategy = new Strategy().setStrategy = this.selectionSort;
-    Strategy.setTargetArray = this.state.generatedArray;
   }
 
 
@@ -35,18 +32,8 @@ class MainCanvas extends Component {
     console.log(options);
     return (
       <>
-        <InputField name = {['generic-input', 'instructions']} InputHandler = {this}/>
+        <InputField name = {['generic-input', 'instructions']} InputHandler={this}/>
         <Canvas generatedArray={this.state.generatedArray} barColor={options.defaultBarColor}/>
-        {this.state.generatedArray.length >= 1 && 
-          <div className="">
-            <div className="">
-              <button onClick={async () => { // SG 07/08/2022 15:03  start sorting using whatever algorithm assigned to Strategy
-                this.selectionSort.setOptions = this.state.options;
-                await this.Strategy.perform(options);  
-              }}>Selection Sort</button>
-            </div>
-          </div>
-        } 
       </>
     )
   }
