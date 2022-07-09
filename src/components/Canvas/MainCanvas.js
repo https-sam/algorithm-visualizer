@@ -44,7 +44,6 @@ class MainCanvas extends Component {
                 await this.Strategy.perform(options);  
               }}>Selection Sort</button>
             </div>
-            {/* <Options className="col-span-2" options={this}/> */}
           </div>
         } 
       </>

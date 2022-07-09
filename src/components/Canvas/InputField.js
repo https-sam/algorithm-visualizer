@@ -16,7 +16,7 @@ class InputField extends Component {
 
     return (
       <div className={`flex items-center justify-around border-b p-3 w-sreen flex-wrap ${this.name[0] + ' '}`}>
-        <div>
+        <div className="flex flex-col justify-center items-center h-full">
           <div className="flex">
             <input placeholder="Enter array size" value={inputArrayLength} onChange={(e) => {
               // SG 07/07/2022 21:03  Input validation, only accepts a number that is less than the allowed array size
