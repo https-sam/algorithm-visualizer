@@ -18,14 +18,14 @@ class InputField extends Component {
       <div className={`flex items-center justify-around border-b p-3 w-sreen flex-wrap ${this.name[0] + ' '}`}>
         <div className="flex flex-col justify-center items-center h-full mb-3 sm:mb-0">
           <div className="flex">
-            <input placeholder={`Array size (MAX ${InputHandler.getAllowedMaxInputSize()})`} value={inputArrayLength} onChange={(e) => {
+            <input placeholder={`Array size (MAX ${InputHandler.getAllowedMaxInputSize()})`} value={inputArrayLength === 0 ? '' : inputArrayLength} onChange={(e) => {
               // SG 07/07/2022 21:03  Input validation, only accepts a number that is less than the allowed array size
               (Number(e.target.value) || !e.target.value) 
                 && (e.target.value <= InputHandler.getAllowedMaxInputSize()) 
                   ? this.props.InputHandler.setState({inputArrayLength: e.target.value.replace(/\D/g, '')}) 
                   : this.props.InputHandler.setState({inputArrayLength: InputHandler.getAllowedMaxInputSize()})
               }} 
-              className=" bg-gray-200 rounded-md text-center p-[.5em] font-medium"
+              className=" bg-gray-200 rounded-md text-center p-[.5em] font-medium w-[57%] sm:w-100"
               maximum={InputHandler.getAllowedMaxInputSize()}
             />
             <button onClick={() => { 
