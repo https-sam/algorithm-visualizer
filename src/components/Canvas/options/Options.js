@@ -117,7 +117,7 @@ class Options extends Component {
                 }/>
               ))}
             </div>
-            <p className={`bg-white inline z-10 absolute top-[100%] border-2 p-1 rounded-md hidden peer-hover:block tool-tip-options text-gray-600`}><span className="font-bold">Minimum</span> bar color</p>
+            <p className={`bg-white inline z-10 absolute top-[100%] border-2 p-1 rounded-md hidden peer-hover:block tool-tip-options text-gray-600`}>Current<span className="font-bold ml-1">optimum</span> bar color</p>
           </div>
 
 
@@ -146,32 +146,8 @@ class Options extends Component {
             </div> 
             <p className="font-semibold text-gray-500">{this.props.options.state.options.skipJ ? "ON" : "OFF"}</p>
             <p className={`bg-white inline z-10 absolute top-[100%] border-2 p-1 rounded-md hidden peer-hover:block tool-tip-options text-gray-600`}><span className="font-bold">Faster</span> Animation</p>
-          </div>
-   
-          
-       
-          
-          
+          </div>       
 
-
-
-          {/* <p>Default bar color</p>
-          <p>Current Minimum bar</p>
-          <p>Processing color</p>
-          <p>Sorted color</p>
-          <p>Delay</p>
-          <div className="flex">
-            <SlideBar mainCanvas={this.props.options}/>
-            <p className="ml-10">{this.props.options.state.options?.delay}</p>
-          </div>
-          <div className="flex cursor-pointer" onClick={() => {this.setState({showAdvancedOptions: !showAdvancedOptions})}}>
-            <p>Show advanced options</p>
-            <ArrowDown className="scale-[.80]"/>
-          </div>
-        </div>
-        {showAdvancedOptions && 
-        <div>
-          <p>Omit j iteration</p>     */}
         </div>
         
       </div>
