@@ -29,7 +29,7 @@ class InputField extends Component {
       <div className="flex flex-col">
 
         <div className={`flex items-center justify-around p-3 w-sreen gap-4 flex-wrap ${this.name[0] + ' '}`}>  
-          <div className="flex flex-col justify-center items-center h-full sm:mb-0">
+          <div className="flex flex-col justify-center items-center h-full sm:mb-0 cursor-pointer">
             <div className="flex">
               <input placeholder={`Array size (MAX ${InputHandler.getAllowedMaxInputSize()})`} value={inputArrayLength === 0 ? '' : inputArrayLength} onChange={(e) => {
                 // SG 07/07/2022 21:03  Input validation, only accepts a number that is less than the allowed array size
@@ -51,40 +51,40 @@ class InputField extends Component {
           <div className="w-[41em] overflow-auto flex gap-3 p-1">
             <div onClick={() => { 
                 this.Strategy.setStrategy = this.selectionSort;
-                this.selectionSort.setOptions = options;
+
                 this.setState({algorithm: 'selection'});
               }} 
-              className={`hover:scale-[1.02] transition-all duration-200 ease-in-out border-2 ${algorithm === 'selection' ? "bg-blue-100 border-blue-300" : "border-gray-300"} min-w-[150px] rounded-xl text-gray-600 flex flex-col p-3 items-center`}>
+              className={`cursor-pointer hover:scale-[1.02] transition-all duration-200 ease-in-out border-2 ${algorithm === 'selection' ? "bg-blue-100 border-blue-300" : "border-gray-300"} min-w-[150px] rounded-xl text-gray-600 flex flex-col p-3 items-center`}>
 
               <p className="font-semibold">Selection Sort</p>
             </div>
 
             <div onClick={() => { 
                 this.Strategy.setStrategy = this.selectionSort;
-                this.selectionSort.setOptions = options;
+
                 this.setState({algorithm: 'merge'});
               }} 
-              className={`hover:scale-[1.02] transition-all duration-200 ease-in-out border-2 ${algorithm === 'merge' ? "bg-blue-100 border-blue-300" : "border-gray-300"} min-w-[150px] rounded-xl text-gray-600 flex flex-col p-3 items-center`}>
+              className={`cursor-pointer hover:scale-[1.02] transition-all duration-200 ease-in-out border-2 ${algorithm === 'merge' ? "bg-blue-100 border-blue-300" : "border-gray-300"} min-w-[150px] rounded-xl text-gray-600 flex flex-col p-3 items-center`}>
 
               <p className="font-semibold">Merge Sort</p>
             </div>
 
             <div onClick={() => { 
                 this.Strategy.setStrategy = this.selectionSort;
-                this.selectionSort.setOptions = options;
+                
                 this.setState({algorithm: 'quick'});
               }} 
-              className={`hover:scale-[1.02] transition-all duration-200 ease-in-out border-2 ${algorithm === 'quick' ? "bg-blue-100 border-blue-300" : "border-gray-300"} min-w-[150px] rounded-xl text-gray-600 flex flex-col p-3 items-center`}>
+              className={`cursor-pointer hover:scale-[1.02] transition-all duration-200 ease-in-out border-2 ${algorithm === 'quick' ? "bg-blue-100 border-blue-300" : "border-gray-300"} min-w-[150px] rounded-xl text-gray-600 flex flex-col p-3 items-center`}>
 
               <p className="font-semibold">Quick Sort</p>
             </div>
 
             <div onClick={() => { 
                 this.Strategy.setStrategy = this.selectionSort;
-                this.selectionSort.setOptions = options;
+
                 this.setState({algorithm: 'bubble'});
               }} 
-              className={`hover:scale-[1.02] transition-all duration-200 ease-in-out border-2 ${algorithm === 'bubble' ? "bg-blue-100 border-blue-300" : "border-gray-300"} min-w-[150px] rounded-xl text-gray-600 flex flex-col p-3 items-center`}>
+              className={`cursor-pointer hover:scale-[1.02] transition-all duration-200 ease-in-out border-2 ${algorithm === 'bubble' ? "bg-blue-100 border-blue-300" : "border-gray-300"} min-w-[150px] rounded-xl text-gray-600 flex flex-col p-3 items-center`}>
               <p className="font-semibold">Bubble Sort</p>
             </div>
 
@@ -94,7 +94,10 @@ class InputField extends Component {
         </div>
 
         <div className="flex self-center group gap-3">
-          <div onClick={() => this.Strategy.perform(options)} className={`p-3 rounded-lg flex ${this.state.algorithm ? "bg-green-600 cursor-pointer hover:bg-green-700" : "bg-gray-600"}`}>
+          <div onClick={async () => { 
+              this.Strategy.setOptions = options;
+              await this.Strategy.perform(options)}
+          } className={`p-3 rounded-lg flex ${this.state.algorithm ? "bg-green-600 cursor-pointer hover:bg-green-700" : "bg-gray-600"}`}>
             <p className="text-white font-semibold mr-2">Sort</p><Play className={`${this.state.algorithm && "group-hover:scale-[1.15] transition-all duration-200 ease-in-out"}`}/>
           </div>
 

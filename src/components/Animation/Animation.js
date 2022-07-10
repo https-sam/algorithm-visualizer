@@ -11,7 +11,7 @@ class Animation {
   }
 
 
-  // SG 07/07/2022 22:00  define differnet animaiton here and call it in sorting algorithms
+  // SG 07/07/2022 22:00  define differnet animaitons here and call it in sorting algorithms
 
 
   /**

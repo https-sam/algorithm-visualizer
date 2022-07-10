@@ -18,6 +18,12 @@ class Strategy {
     return this._strategy; 
   }
 
+  /**
+   * @param {{}} options
+   */
+  set setOption(options) {
+    this._strategy.setOptions = options;
+  }
 
   /**
    * @param {any} newArray

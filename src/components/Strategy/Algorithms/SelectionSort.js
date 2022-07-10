@@ -11,14 +11,9 @@ export default class SelectionSort  {
     this._delay = 4;
   }
 
-  /**
-   * @param {{}} options
-   */
-  set setOptions(options) {
-    this._delay = options?.delay || 4;
-  }
-  
+
   async perform(options) {
+    console.log(options);
     console.log(options)
     const DEFAULT = options.defaultBarColor;
     const PROCESSING = options.processingColor;
@@ -30,7 +25,7 @@ export default class SelectionSort  {
 
     for(var i = 0; i < unSortedBars.length; i++) {
       // SG 07/08/2022 15:01 animation for i iterationå
-      await Animation.getAnimation(this._delay);
+      await Animation.getAnimation(options.delay);
       
       minBarIndex = i;
         for(var j = i + 1; j < unSortedBars.length; j++) {
@@ -41,7 +36,7 @@ export default class SelectionSort  {
 
           // SG 07/08/2022 15:01 animation for j iteration - can be removed for faster animation
           if(!options.skipJ) {
-            await Animation.getAnimation(this._delay);
+            await Animation.getAnimation(options.delay);
           }
 
           var currentMinBar = parseInt(unSortedBars[minBarIndex].id);

@@ -34,7 +34,7 @@ class Options extends Component {
 
         <div className="w-fit flex space-x-5">
 
-          <div className="flex flex-col items-center relative space-y-2">
+          <div className="flex flex-col items-center relative space-y-2 cursor-pointer">
             <div className="p-2 hover:bg-gray-200 rounded-md peer" onClick={() => this.setState({showDefaultBarColor: !showDefaultBarColor})}>
               <UnsortedBars className="scale-[1.2]"/>
             </div> 
@@ -55,7 +55,7 @@ class Options extends Component {
             <p className={`bg-white z-10 inline absolute top-[100%] border-2 p-1 rounded-md hidden peer-hover:block tool-tip-options text-gray-600`}><span className="font-bold">Unsorted</span> bars color</p>
           </div>
 
-          <div className="flex flex-col items-center relative space-y-2">
+          <div className="flex flex-col items-center relative space-y-2 cursor-pointer">
             <div className="p-2 hover:bg-gray-200 peer rounded-md" onClick={() => this.setState({showSortedBarColor: !showSortedBarColor})}>
               <SortedBars className="scale-[1.2]"/>
             </div> 
@@ -77,7 +77,7 @@ class Options extends Component {
           </div>
 
 
-          <div className="flex flex-col items-center relative space-y-2">
+          <div className="flex flex-col items-center relative space-y-2 cursor-pointer">
             <div className="p-2 hover:bg-gray-200 peer rounded-md" onClick={() => this.setState({showProcessingColor: !showProcessingColor})}>
               <CPU className="scale-[1.2]"/>
             </div> 
@@ -99,7 +99,7 @@ class Options extends Component {
           </div>
 
 
-          <div className="flex flex-col items-center relative space-y-2">
+          <div className="flex flex-col items-center relative space-y-2 cursor-pointer">
             <div className="p-2 hover:bg-gray-200 peer rounded-md" onClick={() => this.setState({showMinBarColor: !showMinBarColor})}>
               <Key className="scale-[1.2]"/>
             </div> 
@@ -121,7 +121,7 @@ class Options extends Component {
           </div>
 
 
-          <div className="flex flex-col items-center relative space-y-2">
+          <div className="flex flex-col items-center relative space-y-2 cursor-pointer">
             <div className="p-2 hover:bg-gray-200 peer rounded-md" onClick={() => this.setState({showDelay: !showDelay})}>
               <Speed className="scale-[1.2]"/>
             </div> 
@@ -137,7 +137,7 @@ class Options extends Component {
 
 
 
-          <div className="flex flex-col items-center relative space-y-2">
+          <div className="flex flex-col items-center relative space-y-2 cursor-pointer">
             <div className={`p-2 hover:bg-gray-200 peer rounded-md`} onClick={() => {
               this.props.options.setState(prev => ({options: {...prev.options, skipJ: !this.props.options.state.options.skipJ}}))
 
