@@ -3,7 +3,7 @@ import { Document } from "postcss";
 class Animation {
 
   constructor() { 
-    // SG 07/09/2022 15:11  singleton pattern
+    // SG 07/09/2022 15:11  Singleton pattern
     if(Animation._instance) {
       return Animation._instance;
     }
@@ -17,7 +17,7 @@ class Animation {
   /**
    * takes indecies to be swapped
    * @param {Integer} i 
-   * @param {Integer} j 
+   * @param {Integer} minBarIndex
    */
   swap(i, minBarIndex) {
     let unSortedBars = document.querySelectorAll('.array-bars');
