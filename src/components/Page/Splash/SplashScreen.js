@@ -1,6 +1,6 @@
-import React from 'react';
+import React      from 'react';
 import './splash.css';
-
+import Navigation from '../partial/Navbar/Navigation';
 
 
 

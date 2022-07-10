@@ -7,6 +7,8 @@ import { Canvas } from './Canvas';
 import { InputField } from './InputField';
 import { Options }   from './options/Options';
 import { CONSTANTS } from '../../Utility/config'
+import Navigation from '../Page/partial/Navbar/Navigation';
+
 
 class MainCanvas extends Component {
   constructor(props) {
@@ -32,6 +34,7 @@ class MainCanvas extends Component {
     console.log(options);
     return (
       <>
+        <Navigation />
         <InputField name = {['generic-input', 'instructions']} InputHandler={this}/>
         <Canvas generatedArray={this.state.generatedArray} barColor={options.defaultBarColor}/>
       </>
