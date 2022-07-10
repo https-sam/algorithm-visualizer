@@ -5,8 +5,8 @@ import SelectionSort from '../Strategy/Algorithms/SelectionSort';
 import { Strategy } from '../Strategy/Strategy';
 import { Canvas } from './Canvas';
 import { InputField } from './InputField';
-import { Options } from './options/Options';
-import { CONSTANTS } from '../../config'
+import { Options }   from './options/Options';
+import { CONSTANTS } from '../../Utility/config'
 
 class MainCanvas extends Component {
   constructor(props) {

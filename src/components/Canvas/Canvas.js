@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { CONSTANTS } from '../../config.js';
+import { CONSTANTS }        from '../../Utility/config.js';
 
 class Canvas extends Component {
 

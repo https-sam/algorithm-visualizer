@@ -1,7 +1,6 @@
 import React from 'react';
 import './splash.css';
-import './cu-icon.png';
-import './background.jpg';
+
 
 
 
@@ -22,7 +21,7 @@ const SplashScreen = () => {
               <ul className = "splash_list">
                 <li><a href = "/about"
                        className = "splash_link"><span>{'About'}</span></a></li>
-                <li><a href = "/contactUs"
+                <li><a href = "/contact"
                        className = "splash_link"><span>{'Contact'}</span></a>
                 </li>
                 <li><a href = "/home"

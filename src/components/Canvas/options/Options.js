@@ -8,7 +8,7 @@ import { ReactComponent as SortedBars } from '../../../img/sortedBars.svg'
 import { ReactComponent as Runner } from '../../../img/running.svg'
 import { ReactComponent as Speed } from '../../../img/Speed.svg'
 import { ReactComponent as Key } from '../../../img/key.svg'
-import { CONSTANTS } from '../../../config'
+import { CONSTANTS }             from '../../../Utility/config'
 
 
 

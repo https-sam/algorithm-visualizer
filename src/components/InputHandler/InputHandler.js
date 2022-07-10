@@ -1,5 +1,5 @@
-import { CONSTANTS } from '../../config.js';
-import { Strategy } from '../Strategy/Strategy.js';
+import { CONSTANTS } from '../../Utility/config.js';
+import { Strategy }  from '../Strategy/Strategy.js';
 
 class InputHandler {
   static inputArray = [];
