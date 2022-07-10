@@ -31,7 +31,7 @@ class MainCanvas extends Component {
 
   render() {
     const {options} = this.state;
-    console.log(options);
+    
     return (
       <>
         <Navigation />
