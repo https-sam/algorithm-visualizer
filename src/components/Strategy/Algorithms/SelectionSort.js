@@ -24,6 +24,7 @@ export default class SelectionSort  {
     let minBarIndex = 0;
 
     for(var i = 0; i < unSortedBars.length; i++) {
+      if(Animation.stop) break;
       // SG 07/08/2022 15:01 animation for i iterationå
       await Animation.getAnimation(options.delay);
       

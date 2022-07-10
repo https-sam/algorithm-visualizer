@@ -5,6 +5,8 @@ import { Strategy } from '../Strategy/Strategy.js';
 import { Options } from './options/Options.js';
 import { ReactComponent as Play } from '../../img/play.svg'
 import { ReactComponent as Replay } from '../../img/replay.svg'
+import { Animation } from '../Animation/Animation.js';
+import { MergeSort } from '../Strategy/Algorithms/MergeSort.js';
 class InputField extends Component {
 
   constructor(props) {
@@ -12,6 +14,7 @@ class InputField extends Component {
     this.InputHandler = new InputHandler();
     this.name         = props.name;
     this.selectionSort = new SelectionSort(); 
+    this.mergeSort = new MergeSort();
     this.Strategy = new Strategy();
     this.state = {
       algorithm: ''
@@ -84,19 +87,26 @@ class InputField extends Component {
           <Options options={this.props.InputHandler}/>          
         </div>
 
-        <div className="flex self-center group gap-3">
-          <div onClick={async () => { 
+        <div className="flex self-center gap-3">
+          <div onClick={() => { 
               this.Strategy.setOptions = options;
-              await this.Strategy.perform(options)}
-          } className={`p-3 rounded-lg flex ${this.state.algorithm ? "bg-green-600 cursor-pointer hover:bg-green-700" : "bg-gray-600"}`}>
-            <p className="text-white font-semibold mr-2">Sort</p><Play className={`${this.state.algorithm && "group-hover:scale-[1.15] transition-all duration-200 ease-in-out"}`}/>
+              this.Strategy.perform(options)
+            }
+          } className={`p-3 group rounded-lg flex ${this.state.algorithm ? "bg-green-600 cursor-pointer hover:bg-green-700" : "bg-gray-600"}`}>
+            <p className="text-white font-semibold mr-2">Sort</p>
+            <Play className={`${this.state.algorithm && "group-hover:scale-[1.15] transition-all duration-200 ease-in-out"}`}/>
           </div>
 
           <div className="self-center group">
-          <div onClick={() => { //TODO need to make sure to kill setTimeout
-              this.props.InputHandler.setState({generatedArray: InputHandler.handleInputRequest(inputArrayLength)});
-            }} className={`p-3 rounded-lg flex ${this.state.algorithm ? "bg-green-600 cursor-pointer hover:bg-green-700" : "bg-gray-600"}`}><Replay/></div>
+            <div onClick={() => { //TODO need to make sure to kill setTimeout
+                this.props.InputHandler.setState({generatedArray: InputHandler.handleInputRequest(inputArrayLength)});
+              }} className={`p-3 rounded-lg flex ${this.state.algorithm ? "bg-green-600 cursor-pointer hover:bg-green-700" : "bg-gray-600"}`}>
+              <Replay/>
+            </div>
           </div>
+            <div onClick={async () => await console.log(MergeSort.perform())}>
+              merge
+            </div>
         </div>
       </div>
     )
