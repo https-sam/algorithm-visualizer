@@ -58,7 +58,7 @@ export default class SelectionSort  {
         }
 
         // SG 07/08/2022 13:09  SWAP Animation - swaps element id and height
-        this.Animation.swap(i, minBarIndex);
+        Animation.swap(i, minBarIndex);
     
         unSortedBars[i].style.backgroundColor = SORTAED;  
     }

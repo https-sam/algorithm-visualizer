@@ -28,16 +28,16 @@ class Animation {
   /**
    * takes indecies to be swapped
    * @param {Integer} i
-   * @param {Integer} minBarIndex
+   * @param {Integer} k
    */
-  swap(i, minBarIndex) {
+  static swap(i, k) {
     let unSortedBars                       = document.querySelectorAll('.array-bars');
-    var temp1                              = unSortedBars[minBarIndex].style.height;
-    unSortedBars[minBarIndex].style.height = unSortedBars[i].style.height;
+    var temp1                              = unSortedBars[k].style.height;
+    unSortedBars[k].style.height = unSortedBars[i].style.height;
     unSortedBars[i].style.height           = temp1;
 
-    var temp2                    = unSortedBars[minBarIndex].id;
-    unSortedBars[minBarIndex].id = unSortedBars[i].id;
+    var temp2                    = unSortedBars[k].id;
+    unSortedBars[k].id = unSortedBars[i].id;
     unSortedBars[i].id           = temp1;
   }
 

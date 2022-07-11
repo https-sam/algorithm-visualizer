@@ -53,8 +53,20 @@ class InputHandler {
   static generateRandomIntArray(inputSize) {
     let arr              = [];
     const MAX_BAR_HEIGHT = window.innerHeight - 280;
+
     for (var i = 0; i < inputSize; i++) {
-      arr.push(InputHandler.randomIntFromInterval(5, MAX_BAR_HEIGHT));
+      let duplicate = false;
+      while(!duplicate) { // SG 07/10/2022 22:04  not allowing duplicates
+        let potentialN = InputHandler.randomIntFromInterval(5, MAX_BAR_HEIGHT);
+        for(const num of arr) {
+          if(potentialN === num) duplicate = true;
+        }
+        if(duplicate) duplicate = false;
+        else {
+          arr.push(potentialN);
+          break;
+        }
+      }
     }
     InputHandler.setInputArray = arr;
     console.log(InputHandler.getGeneratedArray)
