@@ -44,10 +44,10 @@ class Animation {
 
   static async getAnimation(delay) {
     if (!Animation.stop) {
-      await new Promise((resolve) =>
-          Animation.threads.push(setTimeout(() => {
-            resolve();
-          }, delay)));
+    await new Promise((resolve) =>
+      Animation.threads.push(setTimeout(() => {
+        resolve();
+      }, delay)));
     }
   }
 
