@@ -140,7 +140,7 @@ class Options extends Component {
 
 
           <div className={`${algorithm === 'Merge' ? 'hidden' : 'block'} flex flex-col items-center relative space-y-2 cursor-pointer`}>
-            <div className={`p-2 hover:bg-gray-200 peer rounded-md`} onClick={() => {
+            <div className={`p-2 hover:bg-gray-200 peer rounded-md ${this.props.options.state.options.skipJ && "bg-gray-200"}`} onClick={() => {
               this.props.options.setState(prev => ({options: {...prev.options, skipJ: !this.props.options.state.options.skipJ}}))
 
               }}>
