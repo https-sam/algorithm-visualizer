@@ -8,7 +8,6 @@ class MergeSort {
   //   console.log(right);
   //   let arr = []
   //   let i = 0;
-  //   // Break out of loop if any one of the array gets empty
   //   while (left.length && right.length) {
   //     await Animation.getAnimation(4);
 
