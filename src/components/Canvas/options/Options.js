@@ -40,7 +40,7 @@ class Options extends Component {
               <UnsortedBars className="scale-[1.2]"/>
             </div> 
             <div className={`h-3 w-3 rounded-full`} style={{backgroundColor: this.props.options.state.options.defaultBarColor}}/>
-            <div className={`absolute bg-white p-2 rounded-md border-2 top-[100%] space-y-1 ${showDefaultBarColor ? "block" : "hidden"}`}>
+            <div className={`options-dropdown absolute bg-white p-2 rounded-md border-2 top-[100%] space-y-1 ${showDefaultBarColor ? "block" : "hidden"}`}>
               {CONSTANTS.DEFAULT.map((color) => (
                 <div 
                   key={color}
@@ -57,11 +57,11 @@ class Options extends Component {
           </div>
 
           <div className="flex flex-col items-center relative space-y-2 cursor-pointer">
-            <div className="p-2 hover:bg-gray-200 peer rounded-md" onClick={() => this.setState({showSortedBarColor: !showSortedBarColor})}>
+            <div className="p-2 hover:bg-gray-200 peer rounded-md z-100" onClick={() => this.setState({showSortedBarColor: !showSortedBarColor})}>
               <SortedBars className="scale-[1.2]"/>
             </div> 
             <div className={`h-3 w-3 rounded-full`} style={{backgroundColor: this.props.options.state.options.sortedBarColor}}/>
-            <div className={`absolute bg-white p-2 rounded-md border-2 top-[100%] space-y-1 ${showSortedBarColor ? "block" : "hidden"}`}>
+            <div className={`options-dropdown absolute bg-white p-2 rounded-md border-2 top-[100%] space-y-1 ${showSortedBarColor ? "block" : "hidden"}`}>
               {CONSTANTS.SORTED.map((color) => (
                 <div 
                   key={color}
@@ -83,7 +83,7 @@ class Options extends Component {
               <CPU className="scale-[1.2]"/>
             </div> 
             <div className={`h-3 w-3 rounded-full`} style={{backgroundColor: this.props.options.state.options.processingColor}}/>
-            <div className={`absolute bg-white p-2 rounded-md border-2 top-[100%] space-y-1 ${showProcessingColor ? "block" : "hidden"}`}>
+            <div className={`options-dropdown absolute bg-white p-2 rounded-md border-2 top-[100%] space-y-1 ${showProcessingColor ? "block" : "hidden"}`}>
               {CONSTANTS.PROCESSING.map((color) => (
                 <div 
                   key={color}
@@ -105,7 +105,7 @@ class Options extends Component {
               <Key className="scale-[1.2]"/>
             </div> 
             <div className={`h-3 w-3 rounded-full`} style={{backgroundColor: this.props.options.state.options.currentMinBarColor}}/>
-            <div className={`absolute bg-white p-2 rounded-md border-2 top-[100%] space-y-1 ${showMinBarColor ? "block" : "hidden"}`}>
+            <div className={`options-dropdown absolute bg-white p-2 rounded-md border-2 top-[100%] space-y-1 ${showMinBarColor ? "block" : "hidden"}`}>
               {CONSTANTS.CURRENT_MIN.map((color) => (
                 <div 
                   key={color}
