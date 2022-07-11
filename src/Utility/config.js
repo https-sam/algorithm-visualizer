@@ -1,6 +1,6 @@
 const RED = 'red';
 const YELLOW = '#ffca3a';
-const LIGHT_GREEN = '#8ac926';
+const LIGHT_GREEN = '#A2D476';
 const PURPLE = '#6a4c93'
 const DARK_BLUE = '#1982c4';
 const PINK = '#ff595e';
