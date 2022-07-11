@@ -52,14 +52,10 @@ class RadixSortLSD {
       const valueInOldArray = array[sortedIndex];
 
       Animation.swap(oldIndex, sortedIndex); // SG 07/10/2022 22:35  swap animation 
-      if(finalIteration) {
-        DOM[oldIndex].style.backgroundColor = SORTED_COLOR;
+      
+      if(finalIteration) { // SG 07/11/2022 00:29  Sorted array at the last iteration, coloring them sortedColor
         DOM[sortedIndex].style.backgroundColor = SORTED_COLOR;
       }
-      // BUG empty elements in bucket are ccurrently olored green due to 
-      // TODO make sure that empty elemets in bucket are the default color
-      // TODO grab those elements from DOM and change color back to defaut OR add a new condition in above if(finalIteration)
-
       sortedArray[sortedIndex] = oldValue;
       bucket[Math.floor(array[i] / exp) % 100]--;
     }
