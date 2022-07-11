@@ -8,6 +8,10 @@
 	z-index:    1000;
 }
 
+.dropdown-menu li:last-of-type {
+	border-radius: 0px 0px 10px 10px;
+}
+
 .dropdown-menu li {
 	background: #565960;
 	cursor:     pointer;
