@@ -29,6 +29,8 @@ class Options extends Component {
     const style = {
       height: 400
     };
+    const { algorithm } = this.props;
+    console.log(algorithm)
     return (
       <div className="rounded-md">
 
@@ -99,7 +101,7 @@ class Options extends Component {
           </div>
 
 
-          <div className="flex flex-col items-center relative space-y-2 cursor-pointer">
+          <div className={`${algorithm === 'Merge' ? 'hidden' : 'block'} flex flex-col items-center relative space-y-2 cursor-pointer`}>
             <div className="p-2 hover:bg-gray-200 peer rounded-md" onClick={() => this.setState({showMinBarColor: !showMinBarColor})}>
               <Key className="scale-[1.2]"/>
             </div> 
@@ -132,12 +134,12 @@ class Options extends Component {
                 <p className="">{this.props.options.state.options?.delay}</p>
               </div>
             </div>
-            <p className={`bg-white inline z-10 absolute top-[100%] border-2 p-1 rounded-md hidden peer-hover:block tool-tip-options text-gray-600`}>Animation <span className="font-bold">Speed</span></p>
+            <p className={`bg-white inline z-10 absolute top-[100%] border-2 p-1 rounded-md hidden peer-hover:block tool-tip-options text-gray-600`}>Animation <span className="font-bold">Delay</span></p>
           </div>
 
 
 
-          <div className="flex flex-col items-center relative space-y-2 cursor-pointer">
+          <div className={`${algorithm === 'Merge' ? 'hidden' : 'block'} flex flex-col items-center relative space-y-2 cursor-pointer`}>
             <div className={`p-2 hover:bg-gray-200 peer rounded-md`} onClick={() => {
               this.props.options.setState(prev => ({options: {...prev.options, skipJ: !this.props.options.state.options.skipJ}}))
 

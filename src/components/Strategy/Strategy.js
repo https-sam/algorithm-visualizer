@@ -36,8 +36,8 @@ class Strategy {
     return Strategy.targetArray; 
   }
 
-  perform(options) {
-    this._strategy.perform(options);
+  perform(options, inputArray) {
+    this._strategy.perform(options, inputArray);
   }
 }
 

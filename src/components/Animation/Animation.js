@@ -47,6 +47,32 @@ class Animation {
       }, delay)));
     }
   }
+
+  static animateMerge(options, animation) {
+    const delay = options.delay;
+    const processingColor = options.processingColor;
+    const defaultColor = options.sortedBarColor;
+
+
+    for (let i = 0; i < animation.length; i++) {
+      const arrayBars = document.querySelectorAll('.array-bars');
+      if (i % 3 !== 2) { // SG 07/10/2022 16:52  animate colors
+        const [firstBar, secondBar] = animation[i];
+        const color = i % 3 === 0 ? processingColor : defaultColor;
+        setTimeout(() => {
+          arrayBars[firstBar].style.backgroundColor = color;
+          arrayBars[secondBar].style.backgroundColor = color;
+        }, i * delay);
+      } else { // SG 07/10/2022 16:52  animate height
+        setTimeout(() => {
+          const [firstBarI, swapHeight] = animation[i];
+          arrayBars[firstBarI].style.height = swapHeight + "px";
+        }, i * delay);
+      }
+    }
+  }
+
+
 }
 
 

@@ -30,12 +30,12 @@ class MainCanvas extends Component {
 
 
   render() {
-    const {options} = this.state;
+    const { options, generatedArray } = this.state;
     
     return (
       <>
         <Navigation />
-        <InputField name = {['generic-input', 'instructions']} InputHandler={this}/>
+        <InputField name = {['generic-input', 'instructions']} InputHandler={this} inputArray={generatedArray}/>
         <Canvas generatedArray={this.state.generatedArray} barColor={options.defaultBarColor}/>
       </>
     )
