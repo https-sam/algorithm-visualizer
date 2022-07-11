@@ -23,6 +23,7 @@ class RadixSortLSD {
     const DEAULT_COLOR = options.defaultBarColor;
     const DELAY = options.delay;
     const SORTED_COLOR = options.sortedBarColor;
+    const PROCESSING_COLOR = options.processingColor;
     console.log("================================================================");
     let k = array.length;
     let sortedArray = new Array(k);
@@ -34,8 +35,14 @@ class RadixSortLSD {
       counts[i] = 0;
     }
 
-    for(let i = 0; i < k; i++) {
+    for(let i = 0; i < k; i++) { // SG 07/11/2022 09:37  animating iterator
       counts[Math.floor(array[i] / exp) % 100]++;
+      if(!options.skipJ) {
+        await Animation.getAnimation(DELAY);
+        DOM[i].style.backgroundColor = PROCESSING_COLOR;
+        await Animation.getAnimation(DELAY);
+        DOM[i].style.backgroundColor = DEAULT_COLOR;
+      }
     }
 
     for (i = 1; i < 100; i++) {
@@ -62,6 +69,7 @@ class RadixSortLSD {
 
 
     for (i = 0; i < k; i++) { // SG 07/10/2022 22:35  copying sorted values
+      
       array[i] = sortedArray[i];
     }
   }
@@ -71,7 +79,6 @@ class RadixSortLSD {
     let DOM = Array.from(document.querySelectorAll('.array-bars'));
 
     for(let i = 1; Math.floor(max / i) > 0; i*=100) {
-      // if((Math.floor(max / i*100) > 0) && i !== 1)
       await this.sort(array, i, DOM, options, ((Math.floor(max / i*100) > 0) && i !== 1));
     }
   }

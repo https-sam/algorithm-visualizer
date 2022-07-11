@@ -15,7 +15,7 @@ class Canvas extends Component {
     const MARGIN = CONSTANTS.margin;
     const SCREEN_WIDTH = window.innerWidth;
     const BAR_WIDTH = Math.floor((SCREEN_WIDTH - (MARGIN*arrayLength)) / arrayLength);
-    const CANVAS_HEIGHT = window.innerHeight - 280+"px";
+    const CANVAS_HEIGHT = window.innerHeight - CONSTANTS.OFFSET+"px";
 
 
     return (

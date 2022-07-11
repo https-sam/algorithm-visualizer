@@ -22,6 +22,7 @@ class Animation {
     for (const timeout of Animation.threads) {
       await this.clearTimeout(timeout);
     }
+    Animation.myAudioContext = new AudioContext();
   }
 
 
@@ -32,13 +33,13 @@ class Animation {
    */
   static swap(i, k) {
     let unSortedBars                       = document.querySelectorAll('.array-bars');
-    var temp1                              = unSortedBars[k].style.height;
+    var oldHeight                              = unSortedBars[k].style.height;
     unSortedBars[k].style.height = unSortedBars[i].style.height;
-    unSortedBars[i].style.height           = temp1;
+    unSortedBars[i].style.height           = oldHeight;
 
-    var temp2                    = unSortedBars[k].id;
+    var oldID                    = unSortedBars[k].id;
     unSortedBars[k].id = unSortedBars[i].id;
-    unSortedBars[i].id           = temp1;
+    unSortedBars[i].id           = oldID; // SG 07/11/2022 09:27  temp1
   }
 
 
@@ -50,6 +51,11 @@ class Animation {
       }, delay)));
     }
   }
+
+  static async makeBeep(vol, freq, duration){
+      
+  }
+   
 
   static animateMerge(options, animation) {
     const delay = options.delay;

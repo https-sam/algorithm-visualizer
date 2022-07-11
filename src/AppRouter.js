@@ -3,7 +3,6 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Link, BrowserRouter,
 }                    from 'react-router-dom';
 import SplashScreen  from './components/Page/Splash/SplashScreen';
 import MainSortingCanvas    from './components/Canvas/MainSortingCanvas';

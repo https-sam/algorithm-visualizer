@@ -24,25 +24,36 @@ class InputHandler {
 
   /**
    *
-   * @param min
-   * @param max
-   * @returns {number}
-   */
-  static randomIntFromInterval = (min, max) => {
-    // https://gist.github.com/spyesx/485e4584aae767201f41
-    return Math.floor(Math.random() * (max - min + 1) + min);
-  };
-
-
-  /**
-   *
    * @returns {number}
    */
   static getAllowedMaxInputSize() {
+    const MAX_BAR_HEIGHT = window.innerHeight - CONSTANTS.OFFSET;
     const MARGIN = CONSTANTS.margin;
     const BAR_MIN_WIDTH = 1;
     const SCREEN_WIDTH  = window.innerWidth;
-    return Math.floor(SCREEN_WIDTH / (BAR_MIN_WIDTH + MARGIN));
+    const potentialNum =  Math.floor(SCREEN_WIDTH / (BAR_MIN_WIDTH + MARGIN));
+
+    return potentialNum <= MAX_BAR_HEIGHT ? potentialNum : MAX_BAR_HEIGHT;
+  }
+
+
+  // https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
+  static shuffle(array) {
+    let currentIndex = array.length,  randomIndex;
+  
+    // While there remain elements to shuffle.
+    while (currentIndex != 0) {
+  
+      // Pick a remaining element.
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+  
+      // And swap it with the current element.
+      [array[currentIndex], array[randomIndex]] = [
+        array[randomIndex], array[currentIndex]];
+    }
+  
+    return array;
   }
 
 
@@ -51,23 +62,10 @@ class InputHandler {
    * @param inputSize
    */
   static generateRandomIntArray(inputSize) {
-    let arr              = [];
-    const MAX_BAR_HEIGHT = window.innerHeight - 280;
-
-    for (var i = 0; i < inputSize; i++) {
-      let duplicate = false;
-      while(!duplicate) { // SG 07/10/2022 22:04  not allowing duplicates
-        let potentialN = InputHandler.randomIntFromInterval(5, MAX_BAR_HEIGHT);
-        for(const num of arr) {
-          if(potentialN === num) duplicate = true;
-        }
-        if(duplicate) duplicate = false;
-        else {
-          arr.push(potentialN);
-          break;
-        }
-      }
-    }
+    const MAX_BAR_HEIGHT = window.innerHeight - CONSTANTS.OFFSET;
+    let arr              = Array.from(new Array(MAX_BAR_HEIGHT), (x, i) => i + 5);
+    arr = InputHandler.shuffle(arr);
+    arr = arr.slice(0, inputSize);
     InputHandler.setInputArray = arr;
     console.log(InputHandler.getGeneratedArray)
     Strategy.setTargetArray = arr;

@@ -13,6 +13,7 @@ const CONSTANTS = {
   PROCESSING: [DARK_BLUE, RED, LIGHT_GREEN, PURPLE, BLACK],
   CURRENT_MIN: [RED, YELLOW, DARK_BLUE, LIGHT_GREEN, BLACK],
   DELAY: 4, // SG 07/09/2022 13:54  4ms
+  OFFSET: 280 // SG 07/11/2022 11:18 unit: px, defining the offset of the canvas 
 }
 
 export { CONSTANTS }
