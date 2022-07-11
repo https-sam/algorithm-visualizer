@@ -65,7 +65,7 @@ class InputField extends Component {
                 this.Strategy.setStrategy = this.radixSortLSD;
                 this.setState({algorithm: 'Radix'});
               }} 
-              className={`cursor-pointer hover:scale-[1.05] transition-all duration-200 ease-in-out border-2 hover:bg-blue-200 hover:border-blue-300 ${algorithm === 'Bubble' ? "bg-blue-100 border-blue-300" : "border-gray-300 bg-white"} min-w-[150px] rounded-xl text-gray-600 flex flex-col p-3 items-center`}>
+              className={`cursor-pointer hover:scale-[1.05] transition-all duration-200 ease-in-out border-2 hover:bg-blue-200 hover:border-blue-300 ${algorithm === 'Radix' ? "bg-blue-100 border-blue-300" : "border-gray-300 bg-white"} min-w-[150px] rounded-xl text-gray-600 flex flex-col p-3 items-center`}>
               <p className="font-semibold">Radix Sort</p>
             </div>
 

@@ -43,6 +43,7 @@ class RadixSortLSD {
     }
 
 
+    // TODO need to add colors to bars being processed
     for (i = k - 1; i >= 0; i--) {
       await Animation.getAnimation(DELAY);
       const oldValue = array[i]; // value being sorted to a new index
@@ -55,10 +56,14 @@ class RadixSortLSD {
         DOM[oldIndex].style.backgroundColor = SORTED_COLOR;
         DOM[sortedIndex].style.backgroundColor = SORTED_COLOR;
       }
+      // BUG empty elements in bucket are ccurrently olored green due to 
+      // TODO make sure that empty elemets in bucket are the default color
+      // TODO grab those elements from DOM and change color back to defaut OR add a new condition in above if(finalIteration)
 
       sortedArray[sortedIndex] = oldValue;
       bucket[Math.floor(array[i] / exp) % 100]--;
     }
+
 
     for (i = 0; i < k; i++) { // SG 07/10/2022 22:35  copying sorted values
       array[i] = sortedArray[i];
