@@ -5,7 +5,7 @@
 	text-align: center;
 	top:        70px;
 	list-style: none;
-	z-index:    10;
+	z-index:    1000;
 }
 
 .dropdown-menu li {

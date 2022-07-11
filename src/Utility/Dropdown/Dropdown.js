@@ -20,13 +20,13 @@ function Dropdown() {
       <>
         <ul
             onClick = {handleClick}
-            className = {click ? 'dropdown-menu clicked' : 'dropdown-menu'}
+            className = {`${click ? 'dropdown-menu clicked ' : 'dropdown-menu'}`}
         >
           {DescriptorItems.map((item, index) => {
             return (
                 <li key = {index}>
                   <Link
-                      className = {item.class}
+                      className = {`${item.class} `}
                       to = {item.path}
                       onClick = {() => setClick(false)}
                   >

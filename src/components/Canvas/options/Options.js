@@ -32,7 +32,7 @@ class Options extends Component {
     const { algorithm } = this.props;
     console.log(algorithm)
     return (
-      <div className="rounded-md">
+      <div className="rounded-md z-10">
 
         <div className="w-fit flex space-x-5">
 

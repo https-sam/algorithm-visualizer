@@ -43,7 +43,7 @@ function Navigation() {
 
   return (
       <>
-        <nav className = {'navbar'}>
+        <nav className = {`navbar`}>
           <Link to = "/sorting-visualizer"
                 className = {'navbar-logo'}
                 onClick = {closeMobileMenu}>
