@@ -25,8 +25,12 @@ const SplashScreen = () => {
                 <li><a href = "/contact"
                        className = "splash_link"><span>{'Contact'}</span></a>
                 </li>
-                <li><a href = "/home"
-                       className = "splash_link"><span>{'Home'}</span></a></li>
+                <li>
+                  <a href = "/" className = "splash_link"><span>{'Home'}</span></a>
+                </li>
+                <li>
+                  <a href = "/sorting-visualizer" className = "splash_link"><span>{'Sorting Algorithms'}</span></a>
+                </li>
               </ul>
             </div>
           </div>

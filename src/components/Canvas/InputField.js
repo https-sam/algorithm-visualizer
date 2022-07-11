@@ -103,7 +103,7 @@ class InputField extends Component {
                 <div onClick={() => { //TODO need to make sure to kill setTimeout
                     this.props.InputHandler.setState({generatedArray: InputHandler.handleInputRequest(inputArrayLength)});
                   }} className={`p-3 group rounded-lg flex ${this.state.algorithm && inputArrayLength? "bg-green-600 cursor-pointer hover:shadow-custom-md-green" : "bg-gray-600 cursor-not-allowed"}`}>
-                  <Replay className="grouphover:rotate-[330deg] transition-all duration-200 ease-out"/>
+                  <Replay className="group-hover:rotate-[330deg] transition-all duration-200 ease-out"/>
                 </div>
               </div>
 

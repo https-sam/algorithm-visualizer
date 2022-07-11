@@ -44,7 +44,7 @@ function Navigation() {
   return (
       <>
         <nav className = {'navbar'}>
-          <Link to = "/"
+          <Link to = "/sorting-visualizer"
                 className = {'navbar-logo'}
                 onClick = {closeMobileMenu}>
             Algo Visualizer
@@ -55,7 +55,7 @@ function Navigation() {
           </div>
           <ul className = {click ? 'nav-menu active' : 'nav-menu'}>
             <li className = {'nav-item'}>
-              <Link to = "/home"
+              <Link to = "/"
                     className = {'nav-links'}
                     onClick = {closeMobileMenu}>
                 Home

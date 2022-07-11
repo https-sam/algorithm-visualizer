@@ -6,7 +6,7 @@ import {
   Link, BrowserRouter,
 }                    from 'react-router-dom';
 import SplashScreen  from './components/Page/Splash/SplashScreen';
-import MainCanvas    from './components/Canvas/MainCanvas';
+import MainSortingCanvas    from './components/Canvas/MainSortingCanvas';
 import AboutScreen   from './components/Page/About/AboutScreen';
 import ContactScreen from './components/Page/Contact/ContactScreen';
 
@@ -22,8 +22,8 @@ function AppRouter() {
                  element = {<AboutScreen/>}/>
           <Route path = "/contact"
                  element = {<ContactScreen/>}/>
-          <Route path = "/home"
-                 element = {<MainCanvas/>}/>
+          <Route path = "/sorting-visualizer"
+                 element = {<MainSortingCanvas/>}/>
         </Routes>
       </Router>
   );

@@ -4,7 +4,7 @@ import {Canvas, useFrame} from '@react-three/fiber';
 
 import {Strategy /*changeRed*/} from './components/Strategy/Strategy';
 import {InputField}             from './components/Canvas/InputField.js';
-import MainCanvas               from './components/Canvas/MainCanvas';
+import MainCanvas               from './components/Canvas/MainSortingCanvas';
 import SelectionSort            from './components/Strategy/Algorithms/SelectionSort';
 
 import Header       from './components/Page/partial/Header';
@@ -31,20 +31,20 @@ class App extends Component {
   render() {
 
     return (
-        /*<div className = "App">
+        <div className = "App">
 
          <AppRouter/>
 
-         </div>*/
+         </div>
 
         // TESTING PURPOSES: CELL COMPONENT
-        <Canvas>
-          <Cell id = {1}
-                value = {1}
-                size = {1}
-                position = {[0, 0, 0]}
-          />
-        </Canvas>
+        // <Canvas>
+        //   <Cell id = {1}
+        //         value = {1}
+        //         size = {1}
+        //         position = {[0, 0, 0]}
+        //   />
+        // </Canvas>
     );
   }
 }
