@@ -50,8 +50,8 @@ class MiniMax {
       return 0;
     }
 
-    var board  = new Board(grid);
-    var leaves = new Move[10];
+    var board          = new Board(grid);
+    let leaves: Move[] = new Move[10];
 
     //
     for (var iter = 0; iter < leaves.length; iter++) {
@@ -60,7 +60,7 @@ class MiniMax {
       }
     }
 
-    var bestMove = null;
+    let bestMove: Move = null;
     for (var i = 0; i < leaves.length; i++) {
       if (bestMove == null) {
         // bestMove = moves[i];
