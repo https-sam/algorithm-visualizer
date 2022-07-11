@@ -99,7 +99,8 @@ class InputField extends Component {
                       behavior: 'smooth'
                     });
                     this.Strategy.setOptions = options;
-                    await this.Strategy.perform(options, inputArray)
+                    await this.Strategy.perform(options, inputArray);
+                    localStorage.setItem('options', JSON.stringify(options));
                   }                  
                 }
               } className={`relative min-w-[3.5em] p-3 group rounded-lg flex ${this.state.algorithm && inputArrayLength ? "bg-green-600 cursor-pointer hover:shadow-custom-md-green  transition-all duration-200 ease-in-out" : "bg-gray-600 cursor-not-allowed"}`}>

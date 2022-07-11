@@ -9,7 +9,6 @@ class Canvas extends Component {
 
 
   render() {
-    console.log(this.props)
     const { generatedArray } = this.props;
     const arrayLength = generatedArray.length;
     const MARGIN = CONSTANTS.margin;

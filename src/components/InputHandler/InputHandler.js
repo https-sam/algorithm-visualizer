@@ -61,15 +61,34 @@ class InputHandler {
    *
    * @param inputSize
    */
+  // SG 07/11/2022 12:01  generates random numbers, not consecutive
   static generateRandomIntArray(inputSize) {
+
     const MAX_BAR_HEIGHT = window.innerHeight - CONSTANTS.OFFSET;
     let arr              = Array.from(new Array(MAX_BAR_HEIGHT), (x, i) => i + 5);
     arr = InputHandler.shuffle(arr);
     arr = arr.slice(0, inputSize);
     InputHandler.setInputArray = arr;
-    console.log(InputHandler.getGeneratedArray)
     Strategy.setTargetArray = arr;
   }
+
+  // // SG 07/11/2022 12:01  generates random numbers, all consecutive
+  // static generateOptimizedArray(inputSize) {
+  //   const MAX_BAR_HEIGHT = window.innerHeight - CONSTANTS.OFFSET;
+  //   let div = Math.floor(window.innerHeight / window.innerWidth)
+  //   let arr              = [];
+  //   for(let i = 1; i < MAX_BAR_HEIGHT; i++) {
+  //     if(i % div === 0) {
+  //       arr.push(i);
+  //     }
+  //   }
+    
+  //   arr = InputHandler.shuffle(arr);
+
+  //   InputHandler.setInputArray = arr;
+  //   console.log(InputHandler.getGeneratedArray)
+  //   Strategy.setTargetArray = arr;
+  // }
 
 
   /**

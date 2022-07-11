@@ -13,6 +13,11 @@ class RadixSortLSD {
     return max;
   }
 
+  /**
+   * @param {Integer} element 
+   * @param {[]} DOM 
+   * @returns the index of the element in the DOM (Array converted from NodeList of DOM tree) 
+   */
   getIndexDOM(element, DOM) {
     for(const e of DOM) {
       if(element === parseInt(e.id)) return DOM.indexOf(e);
@@ -20,11 +25,12 @@ class RadixSortLSD {
   }
 
   async sort(array, exp, DOM, options, finalIteration) {
+    // SG 07/11/2022 11:36  init config data
     const DEAULT_COLOR = options.defaultBarColor;
     const DELAY = options.delay;
     const SORTED_COLOR = options.sortedBarColor;
     const PROCESSING_COLOR = options.processingColor;
-    console.log("================================================================");
+
     let k = array.length;
     let sortedArray = new Array(k);
     let i = 0;
@@ -38,19 +44,30 @@ class RadixSortLSD {
     for(let i = 0; i < k; i++) { // SG 07/11/2022 09:37  animating iterator
       counts[Math.floor(array[i] / exp) % 100]++;
       if(!options.skipJ) {
-        await Animation.getAnimation(DELAY);
-        DOM[i].style.backgroundColor = PROCESSING_COLOR;
-        await Animation.getAnimation(DELAY);
-        DOM[i].style.backgroundColor = DEAULT_COLOR;
+        if(DOM.length > 1000) { // for more than 1000 bars, only animate in every 3 bars
+          if(i % 3 === 0) {
+            await Animation.getAnimation(DELAY + 2);
+            DOM[i].style.backgroundColor = PROCESSING_COLOR;
+            await Animation.getAnimation(DELAY + 2);
+            DOM[i].style.backgroundColor = DEAULT_COLOR;
+
+          }
+        } else {
+          await Animation.getAnimation(DELAY);
+          DOM[i].style.backgroundColor = PROCESSING_COLOR;
+          await Animation.getAnimation(DELAY);
+          DOM[i].style.backgroundColor = DEAULT_COLOR;
+        }
       }
     }
+
 
     for (i = 1; i < 100; i++) {
       counts[i] += counts[i - 1];
     }
 
 
-    // TODO need to add colors to bars being processed
+
     for (i = k - 1; i >= 0; i--) {
       await Animation.getAnimation(DELAY);
       const oldValue = array[i]; // value being sorted to a new index

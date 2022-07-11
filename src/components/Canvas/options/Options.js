@@ -30,7 +30,6 @@ class Options extends Component {
       height: 400
     };
     const { algorithm } = this.props;
-    console.log(algorithm)
     return (
       <div className="rounded-md z-10">
 
