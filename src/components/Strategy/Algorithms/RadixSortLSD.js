@@ -36,7 +36,6 @@ class RadixSortLSD {
     let i = 0;
     let counts = new Array(100);
 
-
     for(let i = 0; i < 100; i++) {
       counts[i] = 0;
     }
@@ -50,7 +49,6 @@ class RadixSortLSD {
             DOM[i].style.backgroundColor = PROCESSING_COLOR;
             await Animation.getAnimation(DELAY + 2);
             DOM[i].style.backgroundColor = DEAULT_COLOR;
-
           }
         } else {
           await Animation.getAnimation(DELAY);
