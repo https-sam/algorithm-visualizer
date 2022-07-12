@@ -5,7 +5,6 @@ import { Strategy } from '../Strategy/Strategy.js';
 import { Options } from './options/Options.js';
 import { ReactComponent as Play } from '../../img/play.svg'
 import { ReactComponent as Replay } from '../../img/replay.svg'
-import { ReactComponent as Arrow } from '../../img/arrowDown.svg'
 import { MergeSort } from '../Strategy/Algorithms/MergeSort.js';
 import { RadixSortLSD } from '../Strategy/Algorithms/RadixSortLSD.js';
 

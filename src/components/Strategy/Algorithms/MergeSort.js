@@ -1,4 +1,3 @@
-import React, { Component } from 'react'
 import { Animation } from '../../Animation/Animation';
 
 class MergeSort {

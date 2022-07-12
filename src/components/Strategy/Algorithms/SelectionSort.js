@@ -1,7 +1,4 @@
-import React, { Component } from 'react'
-import { Strategy } from '../Strategy';
 import { Animation } from '../../Animation/Animation';
-
 
 export default class SelectionSort  {
   
@@ -19,14 +16,14 @@ export default class SelectionSort  {
     const PROCESSING = options.processingColor;
     const SORTAED = options.sortedBarColor;
     const CURRENT_MIN = options.currentMinBarColor;
-    const DELAY = 4;
+    const DELAY = options.delay;
     let unSortedBars = document.querySelectorAll('.array-bars');
     let minBarIndex = 0;
 
     for(var i = 0; i < unSortedBars.length; i++) {
       if(Animation.stop) break;
       // SG 07/08/2022 15:01 animation for i iterationå
-      await Animation.getAnimation(options.delay);
+      await Animation.getAnimation(DELAY);
       
       minBarIndex = i;
         for(var j = i + 1; j < unSortedBars.length; j++) {
@@ -37,7 +34,7 @@ export default class SelectionSort  {
 
           // SG 07/08/2022 15:01 animation for j iteration - can be removed for faster animation
           if(!options.skipJ) {
-            await Animation.getAnimation(options.delay);
+            await Animation.getAnimation(DELAY);
           }
 
           var currentMinBar = parseInt(unSortedBars[minBarIndex].id);

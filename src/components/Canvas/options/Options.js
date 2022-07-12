@@ -1,7 +1,6 @@
 import SlideBar from './SlideBar';
 import './style.css'
 import React, { Component } from 'react'
-import { ReactComponent as ArrowDown } from '../../../img/arrowDown.svg'
 import { ReactComponent as CPU } from '../../../img/cpu.svg'
 import { ReactComponent as UnsortedBars } from '../../../img/unsortedBars.svg'
 import { ReactComponent as SortedBars } from '../../../img/sortedBars.svg'
@@ -26,10 +25,8 @@ class Options extends Component {
   }
   render() {
     const {showProcessingColor, showDefaultBarColor, showSortedBarColor, showMinBarColor, showDelay } = this.state;
-    const style = {
-      height: 400
-    };
     const { algorithm } = this.props;
+    
     return (
       <div className="rounded-md z-10">
 

@@ -71,7 +71,6 @@ class RadixSortLSD {
       const oldValue = array[i]; // value being sorted to a new index
       const oldIndex = this.getIndexDOM(oldValue, DOM); // index of old value
       const sortedIndex = counts[Math.floor(array[i] / exp) % 100] - 1;
-      const valueInOldArray = array[sortedIndex];
 
       Animation.swap(oldIndex, sortedIndex); // SG 07/10/2022 22:35  swap animation 
       
