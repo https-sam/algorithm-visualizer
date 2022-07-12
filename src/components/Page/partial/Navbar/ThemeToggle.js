@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { ReactComponent as Moon } from '../../../../img/moon.svg'
 import { ReactComponent as Sun } from '../../../../img/sun.svg'
+
 const ThemeToggle = () => {
-
   const [night, setNightMode] = useState(false);
-
 
   useEffect(() => {
     if (JSON.parse(localStorage.getItem('dark')) || night) {

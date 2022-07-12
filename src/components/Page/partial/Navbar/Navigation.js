@@ -95,7 +95,7 @@ function Navigation() {
               </Link>
             </li>
           </ul>
-            <ThemeToggle/>
+          <ThemeToggle/>
         </nav>
       </>
   );
