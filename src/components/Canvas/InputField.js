@@ -50,7 +50,7 @@ class InputField extends Component {
               />
               <button onClick={() => { 
                 this.props.InputHandler.setState({generatedArray: InputHandler.handleInputRequest(inputArrayLength)});
-              }} className="bg-blue-300 p-[.7em] md:p-2 ml-3 rounded-md text-white font-semibold hover:scale-[1.02] hover:bg-blue-400 transition duration-200 ease-in-out dark:bg-lightBlue dark:text-darkGray">Generate Array</button>
+              }} className="bg-blue-300 p-[.7em] ml-3 rounded-md text-white font-semibold hover:scale-[1.02] hover:bg-blue-400 transition duration-200 ease-in-out dark:bg-lightBlue dark:text-darkGray">Generate Array</button>
             </div>
           </div>
 
