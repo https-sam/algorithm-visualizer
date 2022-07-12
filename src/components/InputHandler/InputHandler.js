@@ -98,7 +98,6 @@ class InputHandler {
    */
   static handleInputRequest(inputSize) {
     InputHandler.generateRandomIntArray(inputSize);
-
     return InputHandler.getGeneratedArray;
   }
 }
