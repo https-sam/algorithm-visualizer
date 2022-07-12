@@ -33,7 +33,7 @@ class InputField extends Component {
 
 
     return (
-      <div className="flex flex-col border-[1px] bg-gray-100 shadow-lg shadow-gray-200" id="input-field-sort">
+      <div className="flex flex-col dark:bg-darkGray bg-gray-100 shadow-lg shadow-gray-200" id="input-field-sort">
 
         <div className={`flex items-center justify-center py-2 w-sreen gap-4 flex-wrap ${this.name[0] + ' '}`}>  
 
@@ -42,7 +42,7 @@ class InputField extends Component {
                 this.Strategy.setStrategy = this.selectionSort;
                 this.setState({algorithm: 'Selection'});
               }} 
-              className={`cursor-pointer hover:scale-[1.05] transition-all duration-200 ease-in-out border-2 hover:bg-blue-200 hover:border-blue-300 ${algorithm === 'Selection' ? "bg-blue-100 border-blue-300" : "border-gray-300 bg-white"} min-w-[150px] rounded-xl text-gray-600 flex flex-col p-3 items-center`}>
+              className={`cursor-pointer hover:scale-[1.05] transition-all duration-200 ease-in-out border-2 hover:bg-blue-200 hover:border-blue-300 ${algorithm === 'Selection' ? "bg-blue-100 border-blue-300" : "border-gray-300 bg-white dark:bg-gray-300" } min-w-[150px] rounded-xl text-gray-600 flex flex-col p-3 items-center`}>
               <p className="font-semibold">Selection Sort</p>
             </div>
 
@@ -50,7 +50,7 @@ class InputField extends Component {
                 this.Strategy.setStrategy = this.mergeSort;
                 this.setState({algorithm: 'Merge'});
               }} 
-              className={`cursor-pointer hover:scale-[1.05] transition-all duration-200 ease-in-out border-2 hover:bg-blue-200 hover:border-blue-300 ${algorithm === 'Merge' ? "bg-blue-100 border-blue-300" : "border-gray-300 bg-white"} min-w-[150px] rounded-xl text-gray-600 flex flex-col p-3 items-center`}>
+              className={`cursor-pointer hover:scale-[1.05] transition-all duration-200 ease-in-out border-2 hover:bg-blue-200 hover:border-blue-300 ${algorithm === 'Merge' ? "bg-blue-100 border-blue-300" : "border-gray-300 bg-white dark:bg-gray-300"} min-w-[150px] rounded-xl text-gray-600 flex flex-col p-3 items-center`}>
               <p className="font-semibold">Merge Sort</p>
             </div>
 
@@ -58,7 +58,7 @@ class InputField extends Component {
                 this.Strategy.setStrategy = this.selectionSort; 
                 this.setState({algorithm: 'Quick'});
               }} 
-              className={`cursor-pointer hover:scale-[1.05] transition-all duration-200 ease-in-out border-2 hover:bg-blue-200 hover:border-blue-300 ${algorithm === 'Quick' ? "bg-blue-100 border-blue-300" : "border-gray-300 bg-white"} min-w-[150px] rounded-xl text-gray-600 flex flex-col p-3 items-center`}>
+              className={`cursor-pointer hover:scale-[1.05] transition-all duration-200 ease-in-out border-2 hover:bg-blue-200 hover:border-blue-300 ${algorithm === 'Quick' ? "bg-blue-100 border-blue-300" : "border-gray-300 bg-white dark:bg-gray-300"} min-w-[150px] rounded-xl text-gray-600 flex flex-col p-3 items-center`}>
               <p className="font-semibold">Quick Sort</p>
             </div>
 
@@ -66,7 +66,7 @@ class InputField extends Component {
                 this.Strategy.setStrategy = this.radixSortLSD;
                 this.setState({algorithm: 'Radix'});
               }} 
-              className={`cursor-pointer hover:scale-[1.05] transition-all duration-200 ease-in-out border-2 hover:bg-blue-200 hover:border-blue-300 ${algorithm === 'Radix' ? "bg-blue-100 border-blue-300" : "border-gray-300 bg-white"} min-w-[150px] rounded-xl text-gray-600 flex flex-col p-3 items-center`}>
+              className={`cursor-pointer hover:scale-[1.05] transition-all duration-200 ease-in-out border-2 hover:bg-blue-200 hover:border-blue-300 ${algorithm === 'Radix' ? "bg-blue-100 border-blue-300" : "border-gray-300 bg-white dark:bg-gray-300"} min-w-[150px] rounded-xl text-gray-600 flex flex-col p-3 items-center`}>
               <p className="font-semibold">Radix Sort</p>
             </div>
 
@@ -81,12 +81,12 @@ class InputField extends Component {
                     ? this.props.InputHandler.setState({inputArrayLength: e.target.value.replace(/\D/g, '')}) 
                     : this.props.InputHandler.setState({inputArrayLength: InputHandler.getAllowedMaxInputSize()})
                 }} 
-                className=" bg-gray-200 rounded-lg text-center p-[.7em] font-medium w-[57%] sm:w-100"
+                className=" bg-gray-200 dark:bg-gray-300 rounded-lg text-center p-[.7em] font-medium w-[57%] sm:w-100"
                 maximum={InputHandler.getAllowedMaxInputSize()}
               />
               <button onClick={() => { 
                 this.props.InputHandler.setState({generatedArray: InputHandler.handleInputRequest(inputArrayLength)});
-              }} className="bg-blue-300 p-2 ml-3 rounded-lg text-white font-medium hover:scale-[1.02] hover:bg-blue-400 transition duration-200 ease-in-out">Generate Array</button>
+              }} className="bg-blue-300 p-2 ml-3 rounded-lg text-white font-medium hover:scale-[1.02] hover:bg-blue-400 transition duration-200 ease-in-out dark:bg-lightBlue dark:text-darkGray">Generate Array</button>
             </div>
           </div>
           

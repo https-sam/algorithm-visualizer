@@ -43,9 +43,9 @@ function Navigation() {
 
   return (
       <>
-        <nav className = {`navbar`}>
+        <nav className = {`navbar dark:bg-lightDark`}>
           <Link to = "/sorting-visualizer"
-                className = {'navbar-logo'}
+                className = {'navbar-logo dark:text-white'}
                 onClick = {closeMobileMenu}>
             Algo Visualizer
             <i className = {'fab fa-firstdraft'}/>
@@ -56,7 +56,7 @@ function Navigation() {
           <ul className = {click ? 'nav-menu active' : 'nav-menu'}>
             <li className = {'nav-item'}>
               <Link to = "/"
-                    className = {'nav-links'}
+                    className = {'nav-links dark:text-white'}
                     onClick = {closeMobileMenu}>
                 Home
               </Link>
@@ -68,7 +68,7 @@ function Navigation() {
             >
               <Link
                   to = "/documentation"
-                  className = {'nav-links'}
+                  className = {'nav-links dark:text-white'}
                   onClick = {closeMobileMenu}
               >
                 Documentation <i className = {'fas fa-caret-down'}/>
@@ -78,7 +78,7 @@ function Navigation() {
             <li className = {'nav-item'}>
               <Link
                   to = "/about"
-                  className = {'nav-links'}
+                  className = {'nav-links dark:text-white'}
                   onClick = {closeMobileMenu}
               >
                 About
@@ -87,7 +87,7 @@ function Navigation() {
             <li className = {'nav-item'}>
               <Link
                   to = "/contact"
-                  className = {'nav-links'}
+                  className = {'nav-links dark:text-white'}
                   onClick = {closeMobileMenu}
               >
                 Contact Us

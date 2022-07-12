@@ -9,9 +9,14 @@ module.exports = {
       },
       colors: {
         "lightGreen": "#A2D476",
+        "lightDark": "#20232A",
+        "darkGray": "#282C34",
+        "lightGray": "#33373E",
+        "lightBlue": "#63DAF9"
       }
 
     },
   },
   plugins: [],
+  darkMode: 'class',
 }
