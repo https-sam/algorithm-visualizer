@@ -7,6 +7,7 @@ import { ReactComponent as Play } from '../../img/play.svg'
 import { ReactComponent as Replay } from '../../img/replay.svg'
 import { MergeSort } from '../Strategy/Algorithms/MergeSort.js';
 import { RadixSortLSD } from '../Strategy/Algorithms/RadixSortLSD.js';
+import AlgorithmSelection from './AlgorithmSelection.js';
 
 
 class InputField extends Component {
@@ -15,12 +16,9 @@ class InputField extends Component {
     super(props);
     this.InputHandler = new InputHandler();
     this.name         = props.name;
-    this.selectionSort = new SelectionSort(); 
-    this.mergeSort = new MergeSort();
-    this.radixSortLSD = new RadixSortLSD();
     this.Strategy = new Strategy();
     this.state = {
-      algorithm: ''
+      algorithm: 'Radix'
     }
   }
 
@@ -30,48 +28,15 @@ class InputField extends Component {
     const { algorithm } = this.state;
     const { inputArray } = this.props;
 
+    console.log(algorithm)
+
 
     return (
       <div className="flex flex-col dark:bg-darkGray bg-gray-100 shadow-lg shadow-gray-200" id="input-field-sort">
 
         <div className={`flex items-center justify-center py-2 w-sreen gap-4 flex-wrap ${this.name[0] + ' '}`}>  
-
-          <div className="w-[41em] overflow-auto flex gap-3 p-2">
-            <div onClick={() => { 
-                this.Strategy.setStrategy = this.selectionSort;
-                this.setState({algorithm: 'Selection'});
-              }} 
-              className={`cursor-pointer hover:scale-[1.05] transition-all duration-200 ease-in-out border-2 hover:border-blue-300 ${algorithm === 'Selection' ? "bg-blue-200 dark:bg-transBlue border-blue-300" : "border-gray-300 bg-white dark:bg-gray-300" } min-w-[150px] rounded-xl text-gray-600 flex flex-col p-3 items-center`}>
-              <p className={`font-semibold ${algorithm === 'Selection' && "dark:text-white"}`}>Selection Sort</p>
-            </div>
-
-            <div onClick={() => { 
-                this.Strategy.setStrategy = this.mergeSort;
-                this.setState({algorithm: 'Merge'});
-              }} 
-              className={`cursor-pointer hover:scale-[1.05] transition-all duration-200 ease-in-out border-2 hover:border-blue-300 ${algorithm === 'Merge' ? "bg-blue-200 dark:bg-transBlue border-blue-300" : "border-gray-300 bg-white dark:bg-gray-300"} min-w-[150px] rounded-xl text-gray-600 flex flex-col p-3 items-center`}>
-              <p className={`font-semibold ${algorithm === 'Merge' && "dark:text-white"}`}>Merge Sort</p>
-            </div>
-
-            <div onClick={() => { 
-                this.Strategy.setStrategy = this.selectionSort; 
-                this.setState({algorithm: 'Quick'});
-              }} 
-              className={`cursor-pointer hover:scale-[1.05] transition-all duration-200 ease-in-out border-2 hover:border-blue-300 ${algorithm === 'Quick' ? "bg-blue-200 dark:bg-transBlue border-blue-300" : "border-gray-300 bg-white dark:bg-gray-300"} min-w-[150px] rounded-xl text-gray-600 flex flex-col p-3 items-center`}>
-            <p className={`font-semibold ${algorithm === 'Quick' && "dark:text-white"}`}>Quick Sort</p>
-            </div>
-
-            <div onClick={() => { 
-                this.Strategy.setStrategy = this.radixSortLSD;
-                this.setState({algorithm: 'Radix'});
-              }} 
-              className={`cursor-pointer hover:scale-[1.05] transition-all duration-200 ease-in-out border-2 hover:border-blue-300 ${algorithm === 'Radix' ? "bg-blue-200 dark:bg-transBlue border-blue-300" : "border-gray-300 bg-white dark:bg-gray-300"} min-w-[150px] rounded-xl text-gray-600 flex flex-col p-3 items-center`}>
-              <p className={`font-semibold ${algorithm === 'Radix' && "dark:text-white"}`}>Radix Sort</p>
-            </div>
-
-          </div>      
-              
-          <div className="flex flex-col justify-center items-center h-full sm:mb-0 cursor-pointer">
+                       
+          <div className="flex flex-col justify-center items-center h-full sm:mb-0 pl-6" >
             <div className="flex">
               <input placeholder={`Array size (MAX ${InputHandler.getAllowedMaxInputSize()})`} value={inputArrayLength === 0 ? '' : inputArrayLength} onChange={(e) => {
                 // SG 07/07/2022 21:03  Input validation, only accepts a number that is less than the allowed array size
@@ -80,17 +45,19 @@ class InputField extends Component {
                     ? this.props.InputHandler.setState({inputArrayLength: e.target.value.replace(/\D/g, '')}) 
                     : this.props.InputHandler.setState({inputArrayLength: InputHandler.getAllowedMaxInputSize()})
                 }} 
-                className=" bg-gray-200 dark:bg-gray-200 rounded-full text-center p-[.7em] font-semibold w-[50%] sm:w-100"
+                className=" bg-gray-200 dark:bg-gray-200 rounded-md text-center text-[1em] p-[.5em] font-semibold w-[50%] sm:w-100"
                 maximum={InputHandler.getAllowedMaxInputSize()}
               />
               <button onClick={() => { 
                 this.props.InputHandler.setState({generatedArray: InputHandler.handleInputRequest(inputArrayLength)});
-              }} className="bg-blue-300 p-2 ml-3 rounded-lg text-white font-semibold hover:scale-[1.02] hover:bg-blue-400 transition duration-200 ease-in-out dark:bg-lightBlue dark:text-darkGray">Generate Array</button>
+              }} className="bg-blue-300 p-[.7em] md:p-2 ml-3 rounded-md text-white font-semibold hover:scale-[1.02] hover:bg-blue-400 transition duration-200 ease-in-out dark:bg-lightBlue dark:text-darkGray">Generate Array</button>
             </div>
           </div>
+
           
-          <div className="flex gap-10 flex-wrap justify-center">
+          <div className="flex gap-5 flex-wrap justify-center items-center">
             <Options options={this.props.InputHandler} algorithm={algorithm}/>          
+            <AlgorithmSelection strategy={this.Strategy} options={this}/>
             <div className="flex self-center gap-3">
               <div onClick={async () => { 
                   if (this.state.algorithm && inputArrayLength) {
@@ -103,9 +70,8 @@ class InputField extends Component {
                     localStorage.setItem('options', JSON.stringify(options));
                   }                  
                 }
-              } className={`relative min-w-[3.5em] p-3 group rounded-lg flex ${this.state.algorithm && inputArrayLength ? "bg-green-600 cursor-pointer hover:shadow-custom-md-green  transition-all duration-200 ease-in-out" : "bg-gray-600 cursor-not-allowed"}`}>
-                <p className={`text-white font-semibold group-hover:opacity-0 mt-[.1em] ${this.state.algorithm && "mr-9"}`}>{this.state.algorithm && this.state.algorithm + " Sort"}</p>
-                <Play className={`absolute right-[.94em] mt-[.05em] transition-all duration-200 ease-in-out ${this.state.algorithm && "group-hover:scale-[1.15] group-hover:right-[40%]"}`}/>
+              } className={`relative w-[3.2em] p-3 group rounded-lg flex ${this.state.algorithm && inputArrayLength ? "bg-green-600 cursor-pointer hover:shadow-custom-md-green  transition-all duration-200 ease-in-out" : "bg-gray-600 cursor-not-allowed"}`}>
+                <Play className={`absolute left-0 right-0 mr-auto ml-auto scale-[1.15] transition-all duration-200 ease-in-out ${this.state.algorithm && "group-hover:scale-[1.25]"}`}/>
               </div>
 
               <div className="self-center group">
