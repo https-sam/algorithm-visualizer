@@ -71,7 +71,7 @@ class InputField extends Component {
 
           </div>      
               
-          <div className="flex flex-col justify-center items-center h-full sm:mb-0 cursor-pointer mr-[-1.2em]">
+          <div className="flex flex-col justify-center items-center h-full sm:mb-0 cursor-pointer">
             <div className="flex">
               <input placeholder={`Array size (MAX ${InputHandler.getAllowedMaxInputSize()})`} value={inputArrayLength === 0 ? '' : inputArrayLength} onChange={(e) => {
                 // SG 07/07/2022 21:03  Input validation, only accepts a number that is less than the allowed array size
@@ -104,8 +104,8 @@ class InputField extends Component {
                   }                  
                 }
               } className={`relative min-w-[3.5em] p-3 group rounded-lg flex ${this.state.algorithm && inputArrayLength ? "bg-green-600 cursor-pointer hover:shadow-custom-md-green  transition-all duration-200 ease-in-out" : "bg-gray-600 cursor-not-allowed"}`}>
-                <p className={`text-white font-semibold group-hover:opacity-0 ${this.state.algorithm && "mr-9"}`}>{this.state.algorithm && this.state.algorithm + " Sort"}</p>
-                <Play className={`absolute right-[.94em] transition-all duration-200 ease-in-out ${this.state.algorithm && "group-hover:scale-[1.15] group-hover:right-[40%]"}`}/>
+                <p className={`text-white font-semibold group-hover:opacity-0 mt-[.1em] ${this.state.algorithm && "mr-9"}`}>{this.state.algorithm && this.state.algorithm + " Sort"}</p>
+                <Play className={`absolute right-[.94em] mt-[.05em] transition-all duration-200 ease-in-out ${this.state.algorithm && "group-hover:scale-[1.15] group-hover:right-[40%]"}`}/>
               </div>
 
               <div className="self-center group">
