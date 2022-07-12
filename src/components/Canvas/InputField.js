@@ -5,6 +5,7 @@ import { Strategy } from '../Strategy/Strategy.js';
 import { Options } from './options/Options.js';
 import { ReactComponent as Play } from '../../img/play.svg'
 import { ReactComponent as Replay } from '../../img/replay.svg'
+import { ReactComponent as Arrow } from '../../img/arrowDown.svg'
 import { MergeSort } from '../Strategy/Algorithms/MergeSort.js';
 import { RadixSortLSD } from '../Strategy/Algorithms/RadixSortLSD.js';
 
@@ -32,7 +33,7 @@ class InputField extends Component {
 
 
     return (
-      <div className="flex flex-col border-[1px] bg-gray-100">
+      <div className="flex flex-col border-[1px] bg-gray-100 shadow-lg shadow-gray-200" id="input-field-sort">
 
         <div className={`flex items-center justify-center py-2 w-sreen gap-4 flex-wrap ${this.name[0] + ' '}`}>  
 
@@ -119,7 +120,6 @@ class InputField extends Component {
             </div>
           </div>
         </div>
-
       </div>
     )
   }
