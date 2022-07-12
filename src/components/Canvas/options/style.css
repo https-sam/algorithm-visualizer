@@ -1,7 +1,7 @@
 .tool-tip-options::after {
   content: "";
   position: absolute;
-  top: -20px;
+  top: -16px;
   left: 50%;
   transform: translate(-50%, 0);
   width: 10px;
