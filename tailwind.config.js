@@ -14,7 +14,11 @@ module.exports = {
         "lightGray": "#33373E",
         "lightBlue": "#63DAF9",
         "transBlue": "#63dbf968",
+      },
+      fontFamily: {
+        "themeFont": ["Open Sans", "Helvetica", "Arial", "sans-serif"]
       }
+
 
     },
   },

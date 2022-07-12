@@ -71,7 +71,7 @@ class InputField extends Component {
 
           </div>      
               
-          <div className="flex flex-col justify-center items-center h-full sm:mb-0 cursor-pointer">
+          <div className="flex flex-col justify-center items-center h-full sm:mb-0 cursor-pointer mr-[-1.2em]">
             <div className="flex">
               <input placeholder={`Array size (MAX ${InputHandler.getAllowedMaxInputSize()})`} value={inputArrayLength === 0 ? '' : inputArrayLength} onChange={(e) => {
                 // SG 07/07/2022 21:03  Input validation, only accepts a number that is less than the allowed array size
@@ -80,12 +80,12 @@ class InputField extends Component {
                     ? this.props.InputHandler.setState({inputArrayLength: e.target.value.replace(/\D/g, '')}) 
                     : this.props.InputHandler.setState({inputArrayLength: InputHandler.getAllowedMaxInputSize()})
                 }} 
-                className=" bg-gray-200 dark:bg-gray-300 rounded-full text-center p-[.7em] font-medium w-[57%] sm:w-100"
+                className=" bg-gray-200 dark:bg-gray-200 rounded-full text-center p-[.7em] font-semibold w-[50%] sm:w-100"
                 maximum={InputHandler.getAllowedMaxInputSize()}
               />
               <button onClick={() => { 
                 this.props.InputHandler.setState({generatedArray: InputHandler.handleInputRequest(inputArrayLength)});
-              }} className="bg-blue-300 p-2 ml-3 rounded-lg text-white font-medium hover:scale-[1.02] hover:bg-blue-400 transition duration-200 ease-in-out dark:bg-lightBlue dark:text-darkGray">Generate Array</button>
+              }} className="bg-blue-300 p-2 ml-3 rounded-lg text-white font-semibold hover:scale-[1.02] hover:bg-blue-400 transition duration-200 ease-in-out dark:bg-lightBlue dark:text-darkGray">Generate Array</button>
             </div>
           </div>
           
