@@ -45,7 +45,7 @@ class Options extends Component {
                 <div 
                   key={color}
                   style={{backgroundColor: color}} 
-                  className={`w-8 h-8 rounded-md hover:scale-[1.15] transition-all duration-200 ease-in-out`}
+                  className={`w-8 h-8 rounded-md hover:scale-[1.15] transition-all duration-200 ease-in-out ${color === 'white' && "border-2 border-gray-300"}`}
                   onClick={() => { 
                     this.props.options.setState(prev => ({options: {...prev.options, defaultBarColor: color, }}));
                     this.setState({showDefaultBarColor: !showDefaultBarColor})
@@ -66,7 +66,7 @@ class Options extends Component {
                 <div 
                   key={color}
                   style={{backgroundColor: color}} 
-                  className={`w-8 h-8 rounded-md hover:scale-[1.15] transition-all duration-200 ease-in-out`}
+                  className={`w-8 h-8 rounded-md hover:scale-[1.15] transition-all duration-200 ease-in-out ${color === 'white' && "border-2 border-gray-300"}`}
                   onClick={() => { 
                     this.props.options.setState(prev => ({options: {...prev.options, sortedBarColor: color, }}));
                     this.setState({showSortedBarColor: !showSortedBarColor})
@@ -88,7 +88,7 @@ class Options extends Component {
                 <div 
                   key={color}
                   style={{backgroundColor: color}} 
-                  className={`w-8 h-8 rounded-md hover:scale-[1.15] transition-all duration-200 ease-in-out`}
+                  className={`w-8 h-8 rounded-md hover:scale-[1.15] transition-all duration-200 ease-in-out ${color === 'white' && "border-2 border-gray-300"}`}
                   onClick={() => { 
                     this.props.options.setState(prev => ({options: {...prev.options, processingColor: color, }}));
                     this.setState({showProcessingColor: !showProcessingColor})
@@ -110,7 +110,7 @@ class Options extends Component {
                 <div 
                   key={color}
                   style={{backgroundColor: color}} 
-                  className={`w-8 h-8 rounded-md hover:scale-[1.15] transition-all duration-200 ease-in-out`}
+                  className={`w-8 h-8 rounded-md hover:scale-[1.15] transition-all duration-200 ease-in-out ${color === 'white' && "border-2 border-gray-300"}`}
                   onClick={() => { 
                     this.props.options.setState(prev => ({options: {...prev.options, currentMinBarColor: color, }}));
                     this.setState({showMinBarColor: !showMinBarColor})
