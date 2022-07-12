@@ -84,7 +84,6 @@ class RadixSortLSD {
 
 
     for (i = 0; i < k; i++) { // SG 07/10/2022 22:35  copying sorted values
-      
       array[i] = sortedArray[i];
     }
   }
