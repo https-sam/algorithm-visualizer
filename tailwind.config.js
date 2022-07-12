@@ -5,7 +5,7 @@ module.exports = {
   theme: {
     extend: {
       boxShadow: {
-        'custom-md-green': '0px 0px 13px #1DA351',
+        'custom-md-green': '0px 0px 13px #2563E6',
       },
       colors: {
         "lightGreen": "#A2D476",

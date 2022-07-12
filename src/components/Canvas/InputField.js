@@ -45,20 +45,20 @@ class InputField extends Component {
                     ? this.props.InputHandler.setState({inputArrayLength: e.target.value.replace(/\D/g, '')}) 
                     : this.props.InputHandler.setState({inputArrayLength: InputHandler.getAllowedMaxInputSize()})
                 }} 
-                className=" bg-gray-200 dark:bg-gray-200 rounded-md text-center text-[1em] p-[.5em] font-semibold w-[50%] sm:w-100"
+                className=" bg-gray-200 dark:bg-gray-200 text-gray-700 rounded-md text-center text-[1em] p-[.5em] font-semibold w-[50%] sm:w-100"
                 maximum={InputHandler.getAllowedMaxInputSize()}
               />
               <button onClick={() => { 
                 this.props.InputHandler.setState({generatedArray: InputHandler.handleInputRequest(inputArrayLength)});
-              }} className="bg-blue-300 p-[.7em] ml-3 rounded-md text-white font-semibold hover:scale-[1.02] hover:bg-blue-400 transition duration-200 ease-in-out dark:bg-lightBlue dark:text-darkGray">Generate Array</button>
+              }} className="bg-blue-500 p-[.7em] ml-3 rounded-md text-white font-semibold hover:scale-[1.02] hover:bg-blue-600 transition duration-200 ease-in-out dark:bg-blue-600 dark:text-white">Generate Array</button>
             </div>
           </div>
 
           
-          <div className="flex gap-5 flex-wrap justify-center items-center">
+          <div className="flex gap-5 md:gap-10 flex-wrap justify-center items-center">
             <Options options={this.props.InputHandler} algorithm={algorithm}/>          
-            <AlgorithmSelection strategy={this.Strategy} options={this}/>
             <div className="flex self-center gap-3">
+              <AlgorithmSelection strategy={this.Strategy} options={this}/>
               <div onClick={async () => { 
                   if (this.state.algorithm && inputArrayLength) {
                     window.scroll({ // SG 07/10/2022 18:55  for mobile devices 
@@ -70,15 +70,15 @@ class InputField extends Component {
                     localStorage.setItem('options', JSON.stringify(options));
                   }                  
                 }
-              } className={`relative w-[3.2em] p-3 group rounded-lg flex ${this.state.algorithm && inputArrayLength ? "bg-green-600 cursor-pointer hover:shadow-custom-md-green  transition-all duration-200 ease-in-out" : "bg-gray-600 cursor-not-allowed"}`}>
+              } className={`relative w-[3.2em] p-3 group rounded-lg flex ${this.state.algorithm && inputArrayLength ? "dark:bg-blue-600 bg-blue-500 cursor-pointer hover:shadow-custom-md-green  transition-all duration-200 ease-in-out" : "bg-gray-600 cursor-not-allowed"}`}>
                 <Play className={`absolute left-0 right-0 mr-auto ml-auto scale-[1.15] transition-all duration-200 ease-in-out ${this.state.algorithm && "group-hover:scale-[1.25]"}`}/>
               </div>
 
               <div className="self-center group">
                 <div onClick={() => { //TODO need to make sure to kill setTimeout
                     this.props.InputHandler.setState({generatedArray: InputHandler.handleInputRequest(inputArrayLength)});
-                  }} className={`p-3 group rounded-lg flex ${this.state.algorithm && inputArrayLength? "bg-green-600 cursor-pointer hover:shadow-custom-md-green" : "bg-gray-600 cursor-not-allowed"}`}>
-                  <Replay className="group-hover:rotate-[330deg] transition-all duration-200 ease-out"/>
+                  }} className={`p-3 group rounded-lg flex ${this.state.algorithm && inputArrayLength? "dark:bg-blue-600 bg-blue-500 cursor-pointer hover:shadow-custom-md-green" : "bg-gray-600 cursor-not-allowed"}`}>
+                  <Replay className={` ${this.state.algorithm && inputArrayLength && "group-hover:rotate-[330deg]"} transition-all duration-200 ease-out`}/>
                 </div>
               </div>
 

@@ -13,7 +13,7 @@ function AlgorithmSelection({strategy, options}) {
 
   useEffect(() => {
     var dropdown = document.getElementById('algo-selection-dropdown');
-    document.addEventListener('click', function(event) {
+    document.addEventListener('click', (event) => {
         var isClickInsideElement = dropdown.contains(event.target);
         if (!isClickInsideElement) {
             setShowDropdown(false);
@@ -23,7 +23,7 @@ function AlgorithmSelection({strategy, options}) {
 
   useEffect(() => { // SG 07/12/2022 11:12  setting initial strategy 
     strategy.setStrategy = Radix;
-  })
+  }, [])
 
 
   return (
