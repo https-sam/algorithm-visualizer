@@ -56,7 +56,7 @@ function Navigation() {
           <ul className = {click ? 'nav-menu active' : 'nav-menu'}>
             <li className = {'nav-item'}>
               <Link to = "/"
-                    className = {'nav-links dark:text-white'}
+                    className = {'nav-links dark:text-white dark:hover:text-lightDark'}
                     onClick = {closeMobileMenu}>
                 Home
               </Link>
@@ -68,7 +68,7 @@ function Navigation() {
             >
               <Link
                   to = "/documentation"
-                  className = {'nav-links dark:text-white'}
+                  className = {'nav-links dark:text-white dark:hover:text-lightDark'}
                   onClick = {closeMobileMenu}
               >
                 Documentation <i className = {'fas fa-caret-down'}/>
@@ -78,7 +78,7 @@ function Navigation() {
             <li className = {'nav-item'}>
               <Link
                   to = "/about"
-                  className = {'nav-links dark:text-white'}
+                  className = {'nav-links dark:text-white dark:hover:text-lightDark'}
                   onClick = {closeMobileMenu}
               >
                 About
@@ -87,7 +87,7 @@ function Navigation() {
             <li className = {'nav-item'}>
               <Link
                   to = "/contact"
-                  className = {'nav-links dark:text-white'}
+                  className = {'nav-links dark:text-white dark:hover:text-lightDark'}
                   onClick = {closeMobileMenu}
               >
                 Contact Us
