@@ -32,8 +32,8 @@ class App extends Component {
 
 
     return (
-        <div className = "App dark"> // SG 07/11/2022 21:21  remove "dark" to enable light theme, working on a toggle button
-
+        <div className = "App dark"> {/* SG 07/11/2022 21:21  remove "dark" to enable light theme, working on a toggle button */}
+         
          <AppRouter/>
 
          </div>
