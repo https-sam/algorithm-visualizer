@@ -18,7 +18,7 @@ class InputField extends Component {
     this.name         = props.name;
     this.Strategy = new Strategy();
     this.state = {
-      algorithm: 'Radix'
+      algorithm:  localStorage.getItem("algorithm") || 'Radix'
     }
   }
 
@@ -28,7 +28,6 @@ class InputField extends Component {
     const { algorithm } = this.state;
     const { inputArray } = this.props;
 
-    console.log(algorithm)
 
 
     return (

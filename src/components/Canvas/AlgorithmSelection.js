@@ -5,24 +5,28 @@ import { RadixSortLSD } from '../Strategy/Algorithms/RadixSortLSD';
 import SelectionSort from '../Strategy/Algorithms/SelectionSort';
 function AlgorithmSelection({strategy, options}) {
 
-  const [currentAlgo, setCurrentAlgo] = useState('Radix');
+  const [currentAlgo, setCurrentAlgo] = useState(options.state.algorithm);
   const [showDropdown, setShowDropdown] = useState(null);
   const Radix = new RadixSortLSD();
   const Merge = new MergeSort();
   const Selection = new SelectionSort();
+
 
   useEffect(() => {
     var dropdown = document.getElementById('algo-selection-dropdown');
     document.addEventListener('click', (event) => {
         var isClickInsideElement = dropdown.contains(event.target);
         if (!isClickInsideElement) {
-            setShowDropdown(false);
+          setShowDropdown(false);
         }
       });
   }, [setShowDropdown])
 
   useEffect(() => { // SG 07/12/2022 11:12  setting initial strategy 
-    strategy.setStrategy = Radix;
+    if(currentAlgo === "Radix") strategy.setStrategy = Radix;
+    else if(currentAlgo === "Merge") strategy.setStrategy = Merge;
+    else if(currentAlgo === "Selection") strategy.setStrategy = Selection;
+    // else if(currentAlgo === "quick") strategy.setStrategy = Quick;
   }, [])
 
 
@@ -36,12 +40,13 @@ function AlgorithmSelection({strategy, options}) {
       </div>
 
       {/* Dropdown menu */}
-      <div className={`transition-all duration-200 ease-in-out absolute h-[fit w-[10em] dark:bg-gray-600 bg-gray-500 top-[3.5em] rounded-md z-20 ${showDropdown ? "scale-100" : "scale-[0] top-[-2em]"} `}>
+      <div className={`transition-all duration-200 ease-in-out absolute h-[fit w-[10em] dark:bg-gray-600 bg-gray-500 top-[3.5em] rounded-md z-20 ${showDropdown ? "scale-100" : "scale-[0] -translate-y-[6em]"} `}>
         <div className={`${currentAlgo === 'Radix' && 'bg-gray-200'} group cursor-pointer w-full dark:hover:bg-gray-700 hover:bg-gray-600 rounded-t-md font-semibold text-white h-[3em] flex items-center justify-start pl-5`}
           onClick={() => {
             setCurrentAlgo('Radix');
             options.setState({algorithm: "Radix"});
             strategy.setStrategy = Radix;
+            localStorage.setItem("algorithm", "Radix");
             setShowDropdown(!showDropdown)
           }}
           >
@@ -53,6 +58,7 @@ function AlgorithmSelection({strategy, options}) {
             setCurrentAlgo('Merge');
             options.setState({algorithm: "Merge"});
             strategy.setStrategy = Merge;
+            localStorage.setItem("algorithm", "Merge");
             setShowDropdown(!showDropdown)
           }}
         >
@@ -63,6 +69,7 @@ function AlgorithmSelection({strategy, options}) {
           onClick={() => {
             setCurrentAlgo('Selection');
             options.setState({algorithm: "Selection"});
+            localStorage.setItem("algorithm", "Selection");
             strategy.setStrategy = Selection;
             setShowDropdown(!showDropdown)
           }}
@@ -75,6 +82,7 @@ function AlgorithmSelection({strategy, options}) {
             setCurrentAlgo('Quick');
             options.setState({algorithm: "Quick"});
             strategy.setStrategy = Selection;
+            localStorage.setItem("algorithm", "Quick");
             setShowDropdown(!showDropdown)
           }}
         >

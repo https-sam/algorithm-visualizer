@@ -10,8 +10,9 @@ function SlideBar(props) {
   };
 
   return (
-    <div className="flex">
+    <div className="flex dark:bg-darkGray dark:border-lightDark font-themeFont">
       <input
+      className="themeFont dark:text-white"
       type="range"
       min="4"
       max={MAX}
