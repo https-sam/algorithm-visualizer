@@ -30,6 +30,7 @@ function AlgorithmSelection({strategy, options}) {
   }, [])
 
 
+
   return (
     <div className="relative">
       <div id="algo-selection-dropdown" className="w-[10em] h-[3em] dark:bg-gray-600 bg-gray-500 dark:hover:bg-gray-700 hover:bg-gray-600 rounded-md flex items-center justify-around cursor-pointer"

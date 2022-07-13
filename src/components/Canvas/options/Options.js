@@ -8,8 +8,53 @@ import { ReactComponent as Runner } from '../../../img/running.svg'
 import { ReactComponent as Speed } from '../../../img/Speed.svg'
 import { ReactComponent as Key } from '../../../img/key.svg'
 import { CONSTANTS }             from '../../../Utility/config'
+import Option from './Option';
 
 
+const optionItems = [
+  {
+    name: "DEFAULT",
+    stateName: "defaultBarColor",
+    icon: UnsortedBars,
+    hasDropDown: true,
+    tooltipMessage: "Unsorted bars color",
+  },
+  {
+    name: "SORTED",
+    stateName: "sortedBarColor",
+    icon: SortedBars,
+    hasDropDown: true,
+    tooltipMessage: "Sorted bars color"
+  },
+  {
+    name: "PROCESSING",
+    stateName: "processingColor",
+    icon: CPU,
+    hasDropDown: true,
+    tooltipMessage: "Processing bars color",
+  },
+  {
+    name: "CURRENT_MIN",
+    stateName: "currentMinBarColor",
+    icon: Key,
+    hasDropDown: true,
+    tooltipMessage: "Current optimum bar color",
+  },
+  {
+    name: "DELAY",
+    stateName: "delay",
+    icon: Speed,
+    hasDropDown: true,
+    tooltipMessage: "Animation delay",
+  },
+  {
+    name: "SPEEDUP",
+    stateName: "skipJ",
+    icon: Runner,
+    hasDropDown: false,
+    tooltipMessage: "Faster animation",
+  },
+];
 
 class Options extends Component {
   constructor(props) {
@@ -26,44 +71,47 @@ class Options extends Component {
   
 
 
-  componentDidUpdate(prevProps, prevState) {
+  // componentDidUpdate(prevProps, prevState) {
   
 
 
-    //TODO resolve performance issues where it renders too many times
-    if(prevState !== this.state) {
-      let openOption = '';
-      let states = Object.keys(this.state)
+  //   //TODO resolve performance issues where it renders too many times
+  //   if(prevState !== this.state) {
+  //     let openOption = '';
+  //     let states = Object.keys(this.state)
       
-      for(let i = 0; i < states.length; i++) {
-        if(this.state[states[i]]) openOption = states[i];
-      }
+  //     for(let i = 0; i < states.length; i++) {
+  //       if(this.state[states[i]]) openOption = states[i];
+  //     }
 
 
-      console.log("first")
-      if(openOption) {
-        let openDropdown = document.querySelector("." + openOption);
+  //     console.log("first")
+  //     if(openOption) {
+  //       let openDropdown = document.querySelector("." + openOption);
 
-        document.addEventListener('click', (event) => {
-          var isClickInsideElement = openDropdown.contains(event.target);
-          if (!isClickInsideElement) {
+  //       document.addEventListener('click', (event) => {
+  //         var isClickInsideElement = openDropdown.contains(event.target);
+  //         if (!isClickInsideElement) {
 
-            let payload = {}
-            for(let i = 0; i < states.length; i++) {
-              payload[states[i]] = false;
-            }
-            this.setState({[openOption]: false})
-            // this.setState(payload);
-            // console.log(payload);
+  //           let payload = {}
+  //           for(let i = 0; i < states.length; i++) {
+  //             payload[states[i]] = false;
+  //           }
+  //           this.setState({[openOption]: false})
+  //           // this.setState(payload);
+  //           // console.log(payload);
             
-          }
-        });
-      }
-    }
-  }
+  //         }
+  //       });
+  //     }
+  //   }
+  // }
+
+  
 
   render() {
 
+    
     const {showProcessingColor, showDefaultBarColor, showSortedBarColor, showMinBarColor, showDelay } = this.state;
     const { algorithm } = this.props;
     
@@ -71,8 +119,11 @@ class Options extends Component {
       <div className="rounded-md z-10">
 
         <div className="w-fit flex space-x-5">
+          {optionItems.map((option) => (
+            <Option options={option} mainCanvasInputHandler={this.props.options} key={option.name}/>
+          ))}
 
-          <div className="flex flex-col items-center relative space-y-2 cursor-pointer">
+          {/* <div className="flex flex-col items-center relative space-y-2 cursor-pointer">
             <div className="p-2 hover:bg-gray-200 showDefaultBarColor rounded-md peer" onClick={() => this.setState({showDefaultBarColor: !showDefaultBarColor})}>
               <UnsortedBars className="scale-[1.2]"/>
             </div> 
@@ -184,7 +235,7 @@ class Options extends Component {
             </div> 
             <p className="font-semibold text-gray-500">{this.props.options.state.options.skipJ ? "ON" : "OFF"}</p>
             <p className={`shadow-lg bg-white inline z-10 absolute top-[100%] p-2 rounded-md hidden peer-hover:block tool-tip-options text-gray-600 whitespace-nowrap font-semibold`}>Faster Animation</p>
-          </div>       
+          </div>        */}
 
         </div>
         

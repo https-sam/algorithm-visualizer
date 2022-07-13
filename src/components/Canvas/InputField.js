@@ -29,7 +29,6 @@ class InputField extends Component {
     const { inputArray } = this.props;
 
 
-
     return (
       <div className="flex flex-col dark:bg-darkGray bg-gray-100 shadow-lg shadow-gray-200" id="input-field-sort">
 

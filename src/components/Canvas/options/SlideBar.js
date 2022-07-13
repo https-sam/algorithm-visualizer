@@ -19,6 +19,9 @@ function SlideBar(props) {
       onChange={(e) => {
         setValue(e.target.value)
         props.mainCanvas.setState(prev => ({options: {...prev.options, delay: value, }}))
+        let j = JSON.parse(localStorage.getItem('options'));
+        j.delay = value;
+        localStorage.setItem('options', JSON.stringify(j));
       }}
       style={getBackgroundSize()}
       value={value}
