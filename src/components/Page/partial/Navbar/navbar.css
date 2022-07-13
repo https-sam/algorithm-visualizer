@@ -27,14 +27,12 @@
 }
 
 .nav-menu {
-	display: grid;
-	grid-template-columns: repeat(5, auto);
-	grid-gap: 10px;
+	display: flex;
 	list-style: none;
 	text-align: center;
-	width: 70vw;
+	flex: 1;
 	justify-content: end;
-	margin-right: 2rem;
+	margin-right: 5em;
 }
 
 .nav-item {
@@ -70,10 +68,11 @@
 	display: none;
 }
 
-@media screen and (max-width: 960px) {
+@media screen and (max-width: 970px) {
 
 	.navbar {
 		height: 60px;
+		justify-content: space-between;
 	}
 
 	.NavbarItems {

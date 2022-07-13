@@ -32,7 +32,7 @@ class InputField extends Component {
     return (
       <div className="flex flex-col dark:bg-darkGray bg-gray-100 shadow-lg shadow-gray-200" id="input-field-sort">
 
-        <div className={`flex items-center justify-center py-2 w-sreen gap-4 flex-wrap ${this.name[0] + ' '}`}>  
+        <div className={`flex items-center justify-center py-4 md:py-2 w-sreen gap-4 flex-wrap ${this.name[0] + ' '}`}>  
                        
           <div className="flex flex-col justify-center items-center h-full sm:mb-0 pl-6" >
             <div className="flex">
@@ -47,7 +47,13 @@ class InputField extends Component {
                 maximum={InputHandler.getAllowedMaxInputSize()}
               />
               <button onClick={() => { 
-                this.props.InputHandler.setState({generatedArray: InputHandler.handleInputRequest(inputArrayLength)});
+                if(inputArrayLength > 1) {
+                  this.props.InputHandler.setState({generatedArray: InputHandler.handleInputRequest(inputArrayLength)});
+                  window.scroll({ // SG 07/10/2022 18:55  for mobile devices 
+                    top: 1000,
+                    behavior: 'smooth'
+                  });
+                }
               }} className="bg-blue-500 p-[.7em] ml-3 rounded-md text-white font-semibold hover:scale-[1.02] hover:bg-blue-600 transition duration-200 ease-in-out dark:bg-blue-600 dark:text-white">Generate Array</button>
             </div>
           </div>

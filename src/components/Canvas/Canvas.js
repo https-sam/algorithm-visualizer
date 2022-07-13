@@ -14,8 +14,8 @@ class Canvas extends Component {
     const MARGIN = CONSTANTS.margin;
     const SCREEN_WIDTH = window.innerWidth;
     const BAR_WIDTH = Math.floor((SCREEN_WIDTH - (MARGIN*arrayLength)) / arrayLength);
-    const HEIGHT_ADJUSTMENT = 122; // SG 07/11/2022 21:34  this is to make the canvas take up the whole screen height, avoiding height=vw for mobile responsive issues
-    const CANVAS_HEIGHT = window.innerHeight - CONSTANTS.OFFSET + HEIGHT_ADJUSTMENT +"px";
+    const MARGIN_BTW_CANVAS_OPTIONS = 122;
+    const CANVAS_HEIGHT = window.innerHeight - CONSTANTS.OFFSET + MARGIN_BTW_CANVAS_OPTIONS +"px";
 
 
     return (

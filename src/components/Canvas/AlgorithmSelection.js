@@ -37,7 +37,7 @@ function AlgorithmSelection({strategy, options}) {
         onClick={() => setShowDropdown(!showDropdown)}
       >
         <p className="text-white font-semibold ml-2">{currentAlgo} Sort</p>
-        <Triangle className={`transition-all duration-200 ease-in-out scale-[.5] ${showDropdown ? "rotate-0" : "rotate-180"}`}/>
+        <Triangle className={`h-5 transition-all duration-200 ease-in-out scale-[.5] ${showDropdown ? "rotate-0" : "rotate-180"}`}/>
       </div>
 
       {/* Dropdown menu */}
@@ -48,7 +48,7 @@ function AlgorithmSelection({strategy, options}) {
             options.setState({algorithm: "Radix"});
             strategy.setStrategy = Radix;
             localStorage.setItem("algorithm", "Radix");
-            setShowDropdown(!showDropdown)
+            setShowDropdown(!showDropdown);
           }}
           >
           <p className={`${currentAlgo === 'Radix' && 'text-black group-hover:text-white'}`}>Radix Sort</p>

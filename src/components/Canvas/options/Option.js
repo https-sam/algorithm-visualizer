@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { CONSTANTS } from '../../../Utility/config';
 import SlideBar from './SlideBar';
 
-function Option({options, mainCanvasInputHandler}) {
+function Option({options, mainCanvasInputHandler, algorithm}) {
   const [open, setOpen] = useState(false);
   const ref = useRef();
 
@@ -50,6 +50,8 @@ function Option({options, mainCanvasInputHandler}) {
    )
   }
 
+  // SG 07/13/2022 13:06  Making sure that only Selection sort will have the option to change the optimum key color
+  if((algorithm === "Radix" || algorithm === "Merge") && (options.name === "CURRENT_MIN")) return null;
 
   return (
     <div className="flex flex-col items-center relative space-y-2 cursor-pointer">
@@ -71,7 +73,7 @@ function Option({options, mainCanvasInputHandler}) {
               let j = JSON.parse(localStorage.getItem("options"));
               j[options.stateName] = color;
               localStorage.setItem("options", JSON.stringify(j));
-            }  
+            } 
           }/>
         ))}
       </div>
