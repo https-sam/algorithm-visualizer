@@ -3,12 +3,16 @@ import { ReactComponent as Moon } from '../../../../img/moon.svg'
 import { ReactComponent as Sun } from '../../../../img/sun.svg'
 
 const ThemeToggle = () => {
-  const [night, setNightMode] = useState(false);
+  const [night, setNightMode] = useState(true);
 
   useEffect(() => {
     if (JSON.parse(localStorage.getItem('dark')) || night) {
       document.documentElement.classList.add('dark');
       setNightMode(true);
+      if (localStorage.getItem('dark') === "false") {
+        document.documentElement.classList.remove('dark');
+        setNightMode(false);
+      }
     } else {
       document.documentElement.classList.remove('dark')
       setNightMode(false);
