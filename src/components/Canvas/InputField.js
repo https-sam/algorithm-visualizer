@@ -51,7 +51,7 @@ class InputField extends Component {
                     behavior: 'smooth'
                   });
                 }
-              }} className="bg-blue-500 p-[.7em] text-[.92em] ml-3 rounded-md text-white font-semibold hover:scale-[1.02] hover:bg-blue-600 transition duration-200 ease-in-out dark:bg-blue-600 dark:text-white">Generate Array</button>
+              }} className="bg-lightGreen p-[.7em] text-[.92em] ml-3 rounded-md text-white font-semibold hover:scale-[1.02] hover:bg-lightGreen transition duration-200 ease-in-out dark:bg-lightBlue2 dark:text-white hover:shadow-custom-md-blue dark:hover:shadow-custom-md-lightBlue">Generate Array</button>
             </div>
           </div>
 
@@ -73,14 +73,14 @@ class InputField extends Component {
                     localStorage.setItem('options', JSON.stringify(options));
                   }                  
                 }
-              } className={`relative w-[3.2em] h-[2.6em] p-3 group rounded-lg flex ${this.state.algorithm && inputArrayLength ? "dark:bg-blue-600 bg-blue-500 cursor-pointer hover:shadow-custom-md-green  transition-all duration-200 ease-in-out" : "bg-gray-600 cursor-not-allowed"}`}>
+              } className={`relative w-[3.2em] h-[2.6em] p-3 group rounded-lg flex ${this.state.algorithm && inputArrayLength ? "dark:bg-lightBlue2 bg-lightGreen cursor-pointer hover:shadow-custom-md-blue dark:hover:shadow-custom-md-lightBlue  transition-all duration-200 ease-in-out" : "bg-gray-600 cursor-not-allowed"}`}>
                 <Play className={`absolute left-[50%] top-[50%] -translate-x-[50%] -translate-y-[50%] scale-[1.1] mr-auto ml-auto transition-all duration-200 ease-in-out ${this.state.algorithm && "group-hover:scale-[1.2]"}`}/>
               </div>
 
               <div className="self-center group">
                 <div onClick={() => { //TODO need to make sure to kill setTimeout
                     this.props.InputHandler.setState({generatedArray: InputHandler.handleInputRequest(inputArrayLength)});
-                  }} className={`p-3 w-[3.2em] group h-[2.6em] rounded-lg flex ${this.state.algorithm && inputArrayLength? "dark:bg-blue-600 bg-blue-500 cursor-pointer hover:shadow-custom-md-green" : "bg-gray-600 cursor-not-allowed"} relative`}>
+                  }} className={`p-3 w-[3.2em] group h-[2.6em] rounded-lg flex ${this.state.algorithm && inputArrayLength? "dark:bg-lightBlue2 bg-lightGreen cursor-pointer hover:shadow-custom-md-blue dark:hover:shadow-custom-md-lightBlue" : "bg-gray-600 cursor-not-allowed"} relative`}>
                   <Replay className={` ${this.state.algorithm && inputArrayLength && "group-hover:rotate-[330deg]"} scale-[.9] absolute left-[50%] top-[50%] -translate-x-[50%] -translate-y-[50%] transition-all duration-200 ease-out`}/>
                 </div>
               </div>

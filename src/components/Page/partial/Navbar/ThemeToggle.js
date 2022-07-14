@@ -20,7 +20,7 @@ const ThemeToggle = () => {
   }, [night])
 
   return (
-    <div className={`${night ? 'bg-gradient-to-r from-gray-900 to-gray-800' : "bg-gradient-to-r from-gray-300 to-white"} w-[3.5em] h-[33px] bg-white rounded-full relative border-[2px] border-gray-400 mr-[1em]`} 
+    <div className={`${night ? 'bg-gradient-to-r from-gray-900 to-gray-800' : "bg-gradient-to-r from-gray-300 to-white"} cursor-pointer w-[3.5em] h-[33px] bg-white rounded-full relative border-[2px] border-gray-400 mr-[1em]`} 
     onClick={() => { 
       setNightMode(!night)
       localStorage.setItem("dark", JSON.stringify(!night));

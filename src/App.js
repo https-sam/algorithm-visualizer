@@ -32,7 +32,7 @@ class App extends Component {
 
 
     return (
-        <div className = "App h-screen dark:bg-lightGray">
+        <div className = "App h-screen dark:bg-richBlue">
          
          <AppRouter/>
 

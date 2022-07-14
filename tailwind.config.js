@@ -5,7 +5,8 @@ module.exports = {
   theme: {
     extend: {
       boxShadow: {
-        'custom-md-green': '0px 0px 13px #2563E6',
+        'custom-md-blue': '0px 0px 10px #A2D476',
+        'custom-md-lightBlue': '0px 0px 10px #15A5E5'
       },
       colors: {
         "lightGreen": "#A2D476",
@@ -13,8 +14,10 @@ module.exports = {
         "darkGray": "#282C34",
         "lightGray": "#33373E",
         "lightBlue": "#63DAF9",
+        "lightBlue2": "#15A5E5",
         "transBlue": "#63dbf968",
-        "dropdown": "#4f535a"
+        "dropdown": "#4f535a",
+        "richBlue": "#0F1729"
       },
       fontFamily: {
         "themeFont": ["Open Sans", "Helvetica", "Arial", "sans-serif"]
