@@ -5,8 +5,6 @@ import { Strategy } from '../Strategy/Strategy.js';
 import { Options } from './options/Options.js';
 import { ReactComponent as Play } from '../../img/play.svg'
 import { ReactComponent as Replay } from '../../img/replay.svg'
-import { MergeSort } from '../Strategy/Algorithms/MergeSort.js';
-import { RadixSortLSD } from '../Strategy/Algorithms/RadixSortLSD.js';
 import AlgorithmSelection from './AlgorithmSelection.js';
 import ShowValue from './ShowValue.js';
 
@@ -23,13 +21,10 @@ class InputField extends Component {
     }
   }
 
-
-
   render() {
     const {inputArrayLength, options} = this.props.InputHandler.state;
     const { algorithm } = this.state;
     const { inputArray } = this.props;
-
 
     return (
       <div className="flex flex-col dark:bg-darkGray bg-gray-100 shadow-lg shadow-gray-200 h-[5em]" id="input-field-sort">
@@ -45,7 +40,7 @@ class InputField extends Component {
                     ? this.props.InputHandler.setState({inputArrayLength: e.target.value.replace(/\D/g, '')}) 
                     : this.props.InputHandler.setState({inputArrayLength: InputHandler.getAllowedMaxInputSize()})
                 }}
-                className="outline-none placeholder:text-[.95em] bg-gray-200 px-2 dark:bg-gray-600 text-gray-700 dark:text-gray-100 rounded-md text-center text-[.9em] font-semibold w-[45%] sm:w-100"
+                className="outline-none placeholder:text-[.95em] bg-gray-200 px-2 dark:bg-gray-600 text-gray-700 dark:text-gray-100 rounded-md text-center text-[.9em] font-semibold w-[50%] sm:w-100"
                 maximum={InputHandler.getAllowedMaxInputSize()}
               />
               <button onClick={() => { 
@@ -65,7 +60,6 @@ class InputField extends Component {
 
           <Options options={this.props.InputHandler} algorithm={algorithm}/> 
 
-
             <div className="flex self-center gap-3 justify-center items-center">
               <AlgorithmSelection strategy={this.Strategy} options={this}/>
               <div onClick={async () => { 
@@ -75,7 +69,7 @@ class InputField extends Component {
                       behavior: 'smooth'
                     });
                     this.Strategy.setOptions = options;
-                    await this.Strategy.perform(options, inputArray);
+                    await this.Strategy.perform(options,inputArray);
                     localStorage.setItem('options', JSON.stringify(options));
                   }                  
                 }
@@ -91,7 +85,6 @@ class InputField extends Component {
                 </div>
               </div>
               <ShowValue mainCanvasInputHandler={this.props.InputHandler} inputArrayLength={inputArrayLength}/>    
-
             </div>
           </div>
         </div>
