@@ -24,6 +24,7 @@ class InputField extends Component {
   }
 
 
+
   render() {
     const {inputArrayLength, options} = this.props.InputHandler.state;
     const { algorithm } = this.state;
@@ -43,8 +44,8 @@ class InputField extends Component {
                   && (e.target.value <= InputHandler.getAllowedMaxInputSize()) 
                     ? this.props.InputHandler.setState({inputArrayLength: e.target.value.replace(/\D/g, '')}) 
                     : this.props.InputHandler.setState({inputArrayLength: InputHandler.getAllowedMaxInputSize()})
-                }} 
-                className="outline-none bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-100 rounded-md text-center text-[1em] font-semibold w-[50%] sm:w-100"
+                }}
+                className="outline-none bg-gray-200 px-2 dark:bg-gray-600 text-gray-700 dark:text-gray-100 rounded-md text-center text-[1em] font-semibold w-[50%] sm:w-100"
                 maximum={InputHandler.getAllowedMaxInputSize()}
               />
               <button onClick={() => { 

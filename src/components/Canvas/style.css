@@ -1,4 +1,5 @@
 .array-bars::after {
+  height: fit-content;
   content: attr(data);
   position: absolute;
   top: 0;
@@ -6,5 +7,4 @@
   transform: translate(-50%);
   font-size: var(--bar-font-size);
   font-weight: 700;
- 
 }
