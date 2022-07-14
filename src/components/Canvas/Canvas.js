@@ -16,8 +16,8 @@ class Canvas extends Component {
     const MARGIN = CONSTANTS.margin;
     const SCREEN_WIDTH = window.innerWidth;
     const BAR_WIDTH = Math.floor((SCREEN_WIDTH - (MARGIN*arrayLength)) / arrayLength);
-    const MARGIN_BTW_CANVAS_OPTIONS = 122;
-    const CANVAS_HEIGHT = window.innerHeight - CONSTANTS.OFFSET + MARGIN_BTW_CANVAS_OPTIONS +"px";
+    const MARGIN_BTW_CANVAS_AND_OPTIONS = 140;
+    const CANVAS_HEIGHT = window.innerHeight - CONSTANTS.OFFSET + MARGIN_BTW_CANVAS_AND_OPTIONS +"px";
     const FONT_SIZE = Math.floor(BAR_WIDTH * 0.4);
 
     const PINK = "#ff595e";
