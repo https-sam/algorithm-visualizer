@@ -32,8 +32,8 @@ function AlgorithmSelection({strategy, options}) {
 
 
   return (
-    <div className="relative">
-      <div id="algo-selection-dropdown" className="w-[10em] h-[3em] dark:bg-gray-600 bg-gray-500 dark:hover:bg-gray-700 hover:bg-gray-600 rounded-md flex items-center justify-around cursor-pointer"
+    <div className="relative self-center">
+      <div id="algo-selection-dropdown" className="w-[9.5em] text-[.95em] h-[2.8em] dark:bg-gray-600 bg-gray-500 dark:hover:bg-gray-700 hover:bg-gray-600 rounded-md flex items-center justify-around cursor-pointer"
         onClick={() => setShowDropdown(!showDropdown)}
       >
         <p className="text-white font-semibold ml-2">{currentAlgo} Sort</p>
@@ -41,8 +41,8 @@ function AlgorithmSelection({strategy, options}) {
       </div>
 
       {/* Dropdown menu */}
-      <div className={`transition-all duration-200 ease-in-out absolute h-[fit w-[10em] dark:bg-gray-600 bg-gray-500 top-[3.5em] rounded-md z-20 ${showDropdown ? "scale-100" : "scale-[0] -translate-y-[6em]"} `}>
-        <div className={`${currentAlgo === 'Radix' && 'bg-gray-200'} group cursor-pointer w-full dark:hover:bg-gray-700 hover:bg-gray-600 rounded-t-md font-semibold text-white h-[3em] flex items-center justify-start pl-5`}
+      <div className={`transition-all duration-200 ease-in-out absolute h-[fit] w-[9.5em] text-[.95em] dark:bg-gray-600 bg-gray-500 top-[3.5em] rounded-md z-20 ${showDropdown ? "scale-100" : "scale-[0] -translate-y-[6em]"} `}>
+        <div className={`${currentAlgo === 'Radix' && 'bg-gray-200'} group cursor-pointer w-full dark:hover:bg-gray-700 hover:bg-gray-600 rounded-t-md font-semibold text-white h-[2.8em] flex items-center justify-start pl-4`}
           onClick={() => {
             setCurrentAlgo('Radix');
             options.setState({algorithm: "Radix"});
@@ -54,7 +54,7 @@ function AlgorithmSelection({strategy, options}) {
           <p className={`${currentAlgo === 'Radix' && 'text-black group-hover:text-white'}`}>Radix Sort</p>
         </div>
         
-        <div className={`${currentAlgo === 'Merge' && 'bg-gray-200'} group cursor-pointer w-full hover:bg-gray-700 font-semibold text-white h-[3em] flex items-center justify-start pl-5`}
+        <div className={`${currentAlgo === 'Merge' && 'bg-gray-200'} group cursor-pointer w-full hover:bg-gray-700 font-semibold text-white h-[2.8em] flex items-center justify-start pl-4`}
           onClick={() => {
             setCurrentAlgo('Merge');
             options.setState({algorithm: "Merge"});
@@ -66,7 +66,7 @@ function AlgorithmSelection({strategy, options}) {
           <p className={`${currentAlgo === 'Merge' && 'text-black group-hover:text-white'}`}>Merge Sort</p>
         
         </div>
-        <div className={`${currentAlgo === 'Selection' && 'bg-gray-200'} group cursor-pointer w-full hover:bg-gray-700 font-semibold text-white h-[3em] flex items-center justify-start pl-5`}
+        <div className={`${currentAlgo === 'Selection' && 'bg-gray-200'} group cursor-pointer w-full hover:bg-gray-700 font-semibold text-white h-[2.8em] flex items-center justify-start pl-4`}
           onClick={() => {
             setCurrentAlgo('Selection');
             options.setState({algorithm: "Selection"});
@@ -78,7 +78,7 @@ function AlgorithmSelection({strategy, options}) {
           <p className={`${currentAlgo === 'Selection' && 'text-black group-hover:text-white'}`}>Selection Sort</p>
         
         </div>
-        <div className={`${currentAlgo === 'Quick' && 'bg-gray-200'} group cursor-pointer w-full hover:bg-gray-700 rounded-b-md font-semibold text-white h-[3em] flex items-center justify-start pl-5`}
+        <div className={`${currentAlgo === 'Quick' && 'bg-gray-200'} group cursor-pointer w-full hover:bg-gray-700 rounded-b-md font-semibold text-white h-[2.8em] flex items-center justify-start pl-4`}
           onClick={() => {
             setCurrentAlgo('Quick');
             options.setState({algorithm: "Quick"});

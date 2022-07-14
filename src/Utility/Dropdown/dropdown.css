@@ -1,9 +1,9 @@
 .dropdown-menu {
 	background: #dedada;
-	width:      180px;
+	width:      160px;
 	position:   absolute;
 	text-align: center;
-	top:        70px;
+	top:        60px;
 	list-style: none;
 	z-index:    1000;
 }

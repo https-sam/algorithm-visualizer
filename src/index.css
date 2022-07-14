@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 
+
 body {
 	margin:                  0; /* Keep body margin 0, otherwise it'll mess up some calculations for array genereation */
 	font-family:      Open Sans, Helvetica,Arial, sans-serif;

@@ -32,9 +32,9 @@ class InputField extends Component {
 
 
     return (
-      <div className="flex flex-col dark:bg-darkGray bg-gray-100 shadow-lg shadow-gray-200" id="input-field-sort">
+      <div className="flex flex-col dark:bg-darkGray bg-gray-100 shadow-lg shadow-gray-200 h-[5em]" id="input-field-sort">
 
-        <div className={`flex items-center justify-center py-4 md:py-2 w-sreen gap-4 flex-wrap ${this.name[0] + ' '}`}>  
+        <div className={`flex items-center justify-center py-4 md:py-1 w-sreen gap-4 flex-wrap ${this.name[0] + ' '}`}>  
                        
           <div className="flex flex-col justify-center items-center h-full sm:mb-0 pl-6" >
             <div className="flex">
@@ -45,7 +45,7 @@ class InputField extends Component {
                     ? this.props.InputHandler.setState({inputArrayLength: e.target.value.replace(/\D/g, '')}) 
                     : this.props.InputHandler.setState({inputArrayLength: InputHandler.getAllowedMaxInputSize()})
                 }}
-                className="outline-none bg-gray-200 px-2 dark:bg-gray-600 text-gray-700 dark:text-gray-100 rounded-md text-center text-[1em] font-semibold w-[50%] sm:w-100"
+                className="outline-none placeholder:text-[.95em] bg-gray-200 px-2 dark:bg-gray-600 text-gray-700 dark:text-gray-100 rounded-md text-center text-[.9em] font-semibold w-[45%] sm:w-100"
                 maximum={InputHandler.getAllowedMaxInputSize()}
               />
               <button onClick={() => { 
@@ -56,7 +56,7 @@ class InputField extends Component {
                     behavior: 'smooth'
                   });
                 }
-              }} className="bg-blue-500 p-[.7em] ml-3 rounded-md text-white font-semibold hover:scale-[1.02] hover:bg-blue-600 transition duration-200 ease-in-out dark:bg-blue-600 dark:text-white">Generate Array</button>
+              }} className="bg-blue-500 p-[.7em] text-[.92em] ml-3 rounded-md text-white font-semibold hover:scale-[1.02] hover:bg-blue-600 transition duration-200 ease-in-out dark:bg-blue-600 dark:text-white">Generate Array</button>
             </div>
           </div>
 
@@ -66,7 +66,7 @@ class InputField extends Component {
           <Options options={this.props.InputHandler} algorithm={algorithm}/> 
 
 
-            <div className="flex self-center gap-3">
+            <div className="flex self-center gap-3 justify-center items-center">
               <AlgorithmSelection strategy={this.Strategy} options={this}/>
               <div onClick={async () => { 
                   if (this.state.algorithm && inputArrayLength) {
@@ -79,15 +79,15 @@ class InputField extends Component {
                     localStorage.setItem('options', JSON.stringify(options));
                   }                  
                 }
-              } className={`relative w-[3.2em] p-3 group rounded-lg flex ${this.state.algorithm && inputArrayLength ? "dark:bg-blue-600 bg-blue-500 cursor-pointer hover:shadow-custom-md-green  transition-all duration-200 ease-in-out" : "bg-gray-600 cursor-not-allowed"}`}>
-                <Play className={`absolute left-0 right-0 mr-auto ml-auto scale-[1.15] transition-all duration-200 ease-in-out ${this.state.algorithm && "group-hover:scale-[1.25]"}`}/>
+              } className={`relative w-[3.2em] h-[2.6em] p-3 group rounded-lg flex ${this.state.algorithm && inputArrayLength ? "dark:bg-blue-600 bg-blue-500 cursor-pointer hover:shadow-custom-md-green  transition-all duration-200 ease-in-out" : "bg-gray-600 cursor-not-allowed"}`}>
+                <Play className={`absolute left-[50%] top-[50%] -translate-x-[50%] -translate-y-[50%] scale-[1.1] mr-auto ml-auto transition-all duration-200 ease-in-out ${this.state.algorithm && "group-hover:scale-[1.2]"}`}/>
               </div>
 
               <div className="self-center group">
                 <div onClick={() => { //TODO need to make sure to kill setTimeout
                     this.props.InputHandler.setState({generatedArray: InputHandler.handleInputRequest(inputArrayLength)});
-                  }} className={`p-3 group rounded-lg flex ${this.state.algorithm && inputArrayLength? "dark:bg-blue-600 bg-blue-500 cursor-pointer hover:shadow-custom-md-green" : "bg-gray-600 cursor-not-allowed"}`}>
-                  <Replay className={` ${this.state.algorithm && inputArrayLength && "group-hover:rotate-[330deg]"} transition-all duration-200 ease-out`}/>
+                  }} className={`p-3 w-[3.2em] group h-[2.6em] rounded-lg flex ${this.state.algorithm && inputArrayLength? "dark:bg-blue-600 bg-blue-500 cursor-pointer hover:shadow-custom-md-green" : "bg-gray-600 cursor-not-allowed"} relative`}>
+                  <Replay className={` ${this.state.algorithm && inputArrayLength && "group-hover:rotate-[330deg]"} scale-[.9] absolute left-[50%] top-[50%] -translate-x-[50%] -translate-y-[50%] transition-all duration-200 ease-out`}/>
                 </div>
               </div>
               <ShowValue mainCanvasInputHandler={this.props.InputHandler} inputArrayLength={inputArrayLength}/>    
