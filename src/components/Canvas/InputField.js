@@ -8,6 +8,7 @@ import { ReactComponent as Replay } from '../../img/replay.svg'
 import { MergeSort } from '../Strategy/Algorithms/MergeSort.js';
 import { RadixSortLSD } from '../Strategy/Algorithms/RadixSortLSD.js';
 import AlgorithmSelection from './AlgorithmSelection.js';
+import ShowValue from './ShowValue.js';
 
 
 class InputField extends Component {
@@ -60,7 +61,10 @@ class InputField extends Component {
 
           
           <div className="flex gap-5 md:gap-10 flex-wrap justify-center items-center">
-            <Options options={this.props.InputHandler} algorithm={algorithm}/>          
+
+          <Options options={this.props.InputHandler} algorithm={algorithm}/> 
+
+
             <div className="flex self-center gap-3">
               <AlgorithmSelection strategy={this.Strategy} options={this}/>
               <div onClick={async () => { 
@@ -85,6 +89,7 @@ class InputField extends Component {
                   <Replay className={` ${this.state.algorithm && inputArrayLength && "group-hover:rotate-[330deg]"} transition-all duration-200 ease-out`}/>
                 </div>
               </div>
+              <ShowValue mainCanvasInputHandler={this.props.InputHandler} inputArrayLength={inputArrayLength}/>    
 
             </div>
           </div>

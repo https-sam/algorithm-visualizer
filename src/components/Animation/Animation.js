@@ -40,6 +40,11 @@ class Animation {
     var oldID                    = unSortedBars[k].id;
     unSortedBars[k].id = unSortedBars[i].id;
     unSortedBars[i].id           = oldID; // SG 07/11/2022 09:27  temp1
+
+    var oldContent = unSortedBars[i].getAttribute("data");
+    unSortedBars[i].setAttribute("data", unSortedBars[k].getAttribute("data"));
+    unSortedBars[k].setAttribute("data", oldContent); // SG 07/11/2022 09:27  temp1
+
   }
 
 
@@ -76,6 +81,16 @@ class Animation {
         setTimeout(() => {
           const [firstBarI, swapHeight] = animation[i];
           arrayBars[firstBarI].style.height = swapHeight + "px";
+          let firstBarHeight = parseInt(arrayBars[firstBarI].style.height.replace('px', ''));
+          var fontSize = arrayBars[firstBarI].getAttribute('font-size');
+
+          // SG 07/13/2022 16:22  making sure that larger font does not overflow, so it height is not enough, set conetnt empty
+          if(firstBarHeight-10 > fontSize) {
+            arrayBars[firstBarI].setAttribute('data', swapHeight);
+          } else {
+            arrayBars[firstBarI].setAttribute('data', '');
+          }
+          arrayBars[firstBarI].id = swapHeight;
         }, i * delay);
       }
     }

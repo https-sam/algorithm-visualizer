@@ -23,7 +23,8 @@ class MainCanvas extends Component {
         processingColor: JSON.parse(localStorage.getItem('options'))?.processingColor || CONSTANTS.PROCESSING[0],
         defaultBarColor: JSON.parse(localStorage.getItem('options'))?.defaultBarColor || CONSTANTS.DEFAULT[0] ,
         sortedBarColor:  JSON.parse(localStorage.getItem('options'))?.sortedBarColor || CONSTANTS.SORTED[0],
-        currentMinBarColor: JSON.parse(localStorage.getItem('options'))?.currentMinBarColor || CONSTANTS.CURRENT_MIN[0] ,
+        currentMinBarColor: JSON.parse(localStorage.getItem('options'))?.currentMinBarColor || CONSTANTS.CURRENT_MIN[0],
+        showHeight: JSON.parse(localStorage.getItem('options'))?.showHeight || false
       }
     };
   }
@@ -36,7 +37,7 @@ class MainCanvas extends Component {
       <>
         <Navigation />
         <InputField name = {['generic-input', 'instructions']} InputHandler={this} inputArray={generatedArray}/>
-        <Canvas generatedArray={this.state.generatedArray} barColor={options.defaultBarColor}/>
+        <Canvas defaultBarColor={this.state.options.defaultBarColor} showHeight={this.state.options.showHeight} generatedArray={this.state.generatedArray} barColor={options.defaultBarColor} InputHandler={this}/>
       </>
     )
   }

@@ -71,6 +71,7 @@ class Options extends Component {
 
 
   render() {
+
     const { algorithm } = this.props;
     
     return (
