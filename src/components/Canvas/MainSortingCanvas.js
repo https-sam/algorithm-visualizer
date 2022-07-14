@@ -1,8 +1,11 @@
 import './main-canvas.css';
 import React, { Component } from 'react'
 import { InputHandler } from '../InputHandler/InputHandler';
+import SelectionSort from '../Strategy/Algorithms/SelectionSort';
+import { Strategy } from '../Strategy/Strategy';
 import { Canvas } from './Canvas';
 import { InputField } from './InputField';
+import { Options }   from './options/Options';
 import { CONSTANTS } from '../../Utility/config'
 import Navigation from '../Page/partial/Navbar/Navigation';
 

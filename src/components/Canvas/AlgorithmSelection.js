@@ -41,7 +41,7 @@ function AlgorithmSelection({strategy, options}) {
       </div>
 
       {/* Dropdown menu */}
-      <div className={`transition-all duration-200 ease-in-out absolute h-[fit] w-[9.5em] text-[.95em] dark:bg-gray-600 bg-gray-500 top-[3.5em] rounded-md z-20 ${showDropdown ? "scale-100" : "scale-[0] -translate-y-[6em]"} `}>
+      <div className={`transition-all duration-200 ease-in-out absolute h-[fit] w-[9.5em] text-[.95em] dark:bg-gray-600 bg-gray-500 top-[3.5em] rounded-md z-10 ${showDropdown ? "scale-100" : "scale-[0] -translate-y-[6em]"} `}>
         <div className={`${currentAlgo === 'Radix' && 'bg-gray-200'} group cursor-pointer w-full dark:hover:bg-gray-700 hover:bg-gray-600 rounded-t-md font-semibold text-white h-[2.8em] flex items-center justify-start pl-4`}
           onClick={() => {
             setCurrentAlgo('Radix');

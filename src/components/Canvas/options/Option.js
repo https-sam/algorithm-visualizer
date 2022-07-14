@@ -30,7 +30,7 @@ function Option({options, mainCanvasInputHandler, algorithm}) {
           {<options.icon className="scale-[1.2]"/>}
         </div> 
         <p className="font-semibold text-gray-500 text-[.9em]">{mainCanvasInputHandler.state.options.skipJ ? "ON" : "OFF"}</p>
-        <p className={`shadow-lg text-[.9em] bg-white inline z-10 absolute top-[107%] p-2 rounded-md hidden peer-hover:block tool-tip-options text-gray-600 whitespace-nowrap font-semibold`}>Faster Animation</p>
+        <p className={`shadow-lg text-[.9em] bg-white inline z-40 absolute top-[107%] p-2 rounded-md hidden peer-hover:block tool-tip-options text-gray-600 whitespace-nowrap font-semibold`}>Faster Animation</p>
       </div>    
     )
   }
@@ -63,7 +63,7 @@ function Option({options, mainCanvasInputHandler, algorithm}) {
         {<options.icon className="scale-[1.2]"/>}
       </div> 
       <div className={`h-3 w-3 rounded-full`} style={{backgroundColor: mainCanvasInputHandler.state.options[options.stateName]}}/>
-      <div className={`options-dropdown transition-all duration-200 ease-in-out absolute bg-white dark:bg-darkGray dark:border-lightDark p-2 rounded-md border-2 top-[105%] space-y-1 ${open ? "scale-100" : "scale-0 -translate-y-[7em]"}`}>
+      <div className={`options-dropdown transition-all duration-200 ease-in-out absolute bg-white dark:bg-darkGray dark:border-lightDark p-2 rounded-md border-2 top-[100%] space-y-1 ${open ? "scale-100" : "scale-0 -translate-y-[7em]"}`}>
         {CONSTANTS[options.name].map((color) => (
           <div 
             key={color}
@@ -79,7 +79,7 @@ function Option({options, mainCanvasInputHandler, algorithm}) {
           }/>
         ))}
       </div>
-      <p ref={ref} className={`shadow-lg text-[.9em] bg-white z-10 absolute top-[107%] p-2 rounded-md hidden whitespace-nowrap ${!open && "peer-hover:block"} tool-tip-options text-gray-600 font-semibold`}>{options.tooltipMessage}</p>
+      <p ref={ref} className={`shadow-lg text-[.9em] bg-white absolute top-[110%] p-2 rounded-md hidden whitespace-nowrap ${!open && "peer-hover:block"} tool-tip-options text-gray-600 font-semibold`}>{options.tooltipMessage}</p>
     </div>
   )
 }
