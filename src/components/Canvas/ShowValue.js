@@ -9,7 +9,7 @@ function ShowValue({mainCanvasInputHandler, inputArrayLength}) {
 
   const [enable, setEnable] = useState(JSON.parse(localStorage.getItem('options'))?.showHeight || false);
   return (
-    <div className={`${BAR_WIDTH > 25 ? 'block' : 'hidden'} h-[2.7em] dark:lg:hover:bg-gray-500 lg:hover:bg-lightGreen group relative rounded-md ${mainCanvasInputHandler.state.options.showHeight && "dark:bg-gray-200 bg-lightGreen"}`} onClick={() => {
+    <div className={`${BAR_WIDTH > 25 ? 'block' : 'hidden'} h-[2.6em] dark:lg:hover:bg-gray-500 lg:hover:bg-lightGreen group relative rounded-md ${mainCanvasInputHandler.state.options.showHeight && "dark:bg-gray-200 bg-lightGreen"}`} onClick={() => {
       mainCanvasInputHandler.setState(prev => ({options: {...prev.options, showHeight: !mainCanvasInputHandler.state.options.showHeight}}));
       setEnable(!enable);
       let j = JSON.parse(localStorage.getItem('options'));
@@ -27,4 +27,4 @@ function ShowValue({mainCanvasInputHandler, inputArrayLength}) {
   )
 }
 
-export default ShowValue
+export default ShowValue;

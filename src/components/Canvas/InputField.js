@@ -40,7 +40,7 @@ class InputField extends Component {
                     ? this.props.InputHandler.setState({inputArrayLength: e.target.value.replace(/\D/g, '')}) 
                     : this.props.InputHandler.setState({inputArrayLength: InputHandler.getAllowedMaxInputSize()})
                 }}
-                className="outline-none placeholder:text-[.95em] bg-gray-200 px-2 dark:bg-gray-600 text-gray-700 dark:text-gray-100 rounded-md text-center text-[.9em] font-semibold w-[50%] sm:w-100"
+                className="outline-none placeholder:text-[.95em] text-[1em] bg-gray-200 px-2 dark:bg-gray-600 text-gray-700 dark:text-gray-100 rounded-md text-center font-semibold w-[50%] sm:w-100"
                 maximum={InputHandler.getAllowedMaxInputSize()}
               />
               <button onClick={() => { 
@@ -51,7 +51,7 @@ class InputField extends Component {
                     behavior: 'smooth'
                   });
                 }
-              }} className="bg-lightGreen p-[.7em] text-[.92em] ml-3 rounded-md text-white font-semibold hover:scale-[1.02] hover:bg-lightGreen transition duration-200 ease-in-out dark:bg-lightBlue2 dark:text-white hover:shadow-custom-md-blue dark:hover:shadow-custom-md-lightBlue">Generate Array</button>
+              }} className=" p-[.7em] text-[.92em] ml-3 rounded-md text-white font-semibold hover:scale-[1.02] hover:bg-lightGreen transition duration-200 ease-in-out dark:bg-lightBlue2 bg-lightGreen dark:text-white hover:shadow-custom-md-blue dark:hover:shadow-custom-md-lightBlue">Generate Array</button>
             </div>
           </div>
 
