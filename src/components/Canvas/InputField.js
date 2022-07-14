@@ -27,7 +27,7 @@ class InputField extends Component {
     const { inputArray } = this.props;
 
     return (
-      <div className="flex flex-col dark:bg-darkGray bg-gray-100 shadow-lg shadow-gray-200 h-[5em]" id="input-field-sort">
+      <div className="flex flex-col dark:bg-darkGray bg-gray-100 shadow-lg shadow-gray-200" id="input-field-sort">
 
         <div className={`flex items-center justify-center py-4 md:py-1 w-sreen gap-4 flex-wrap ${this.name[0] + ' '}`}>  
                        
