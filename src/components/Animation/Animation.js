@@ -51,6 +51,15 @@ class Animation {
   }
 
 
+
+  static changeHeight(i, value, oldIndex) {
+    let unSortedBars                       = document.querySelectorAll('.array-bars');    
+    unSortedBars[i].style.height           = value+'px';
+    unSortedBars[i].id           = value; // SG 07/11/2022 09:27  temp1
+    unSortedBars[i].setAttribute("data", unSortedBars[oldIndex].getAttribute("data"));
+  }
+
+
   static async getAnimation(delay) {
     if (!Animation.stop) {
     await new Promise((resolve) =>

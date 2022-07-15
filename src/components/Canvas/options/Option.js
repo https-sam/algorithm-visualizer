@@ -54,7 +54,7 @@ function Option({options, mainCanvasInputHandler, algorithm}) {
   }
 
   // SG 07/13/2022 13:06  Making sure that only Selection sort will have the option to change the optimum key color
-  if((algorithm === "Radix" || algorithm === "Merge" || algorithm === "Heap") && (options.name === "CURRENT_MIN")) return null;
+  if((algorithm === "Radix" || algorithm === "Merge" || algorithm === "Heap" || algorithm === "Shell") && (options.name === "CURRENT_MIN")) return null;
   return (
     <div className="flex flex-col items-center relative space-y-1 cursor-pointer">
       <div id={`${options.name}-option`} className="p-2 mb-1 hover:bg-gray-200 showDefaultBarColor rounded-md peer" onClick={() => { 

@@ -5,6 +5,7 @@ import { RadixSortLSD } from '../Strategy/Algorithms/RadixSortLSD';
 import { QuickSort } from '../Strategy/Algorithms/QuickSort.js'
 import SelectionSort from '../Strategy/Algorithms/SelectionSort';
 import { HeapSort } from '../Strategy/Algorithms/Heapsort';
+import { ShellSort } from '../Strategy/Algorithms/ShellSort';
 function AlgorithmSelection({strategy, options}) {
 
   const [currentAlgo, setCurrentAlgo] = useState(options.state.algorithm);
@@ -14,7 +15,7 @@ function AlgorithmSelection({strategy, options}) {
   const Selection = new SelectionSort();
   const Quick = new QuickSort();
   const Heap = new HeapSort();
-
+  const Shell = new ShellSort();
 
   useEffect(() => {
     var dropdown = document.getElementById('algo-selection-dropdown');
@@ -32,6 +33,7 @@ function AlgorithmSelection({strategy, options}) {
     else if(currentAlgo === "Selection") strategy.setStrategy = Selection;
     else if(currentAlgo === "Quick") strategy.setStrategy = Quick;
     else if(currentAlgo === "Heap") strategy.setStrategy = Heap;
+    else if(currentAlgo === "Shell") strategy.setStrategy = Shell;
   }, [])
 
 
@@ -93,6 +95,18 @@ function AlgorithmSelection({strategy, options}) {
           }}
         >
           <p className={`${currentAlgo === 'Quick' && 'text-black group-hover:text-white'}`}>Quick Sort</p>
+        </div>
+
+        <div className={`${currentAlgo === 'Shell' && 'bg-gray-200'} group cursor-pointer w-full hover:bg-gray-700 font-semibold text-white h-[2.8em] flex items-center justify-start pl-4`}
+          onClick={() => {
+            setCurrentAlgo('Shell');
+            options.setState({algorithm: "Shell"});
+            strategy.setStrategy = Shell;
+            localStorage.setItem("algorithm", "Shell");
+            setShowDropdown(!showDropdown)
+          }}
+        >
+          <p className={`${currentAlgo === 'Shell' && 'text-black group-hover:text-white'}`}>Shell Sort</p>
         </div>
         
 
