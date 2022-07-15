@@ -43,7 +43,7 @@ function Navigation() {
   };
 
   return (
-      <>
+      <div>
         <nav className = {`navbar dark:bg-lightDark`}>
           <Link to = "/sorting-visualizer"
                 className = {'navbar-logo dark:text-white'}
@@ -97,7 +97,7 @@ function Navigation() {
           </ul>
           <ThemeToggle/>
         </nav>
-      </>
+      </div>
   );
 }
 

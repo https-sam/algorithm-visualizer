@@ -1,55 +1,21 @@
-import React, {Component} from 'react';
-// import {Canvas, useFrame} from '@react-three/fiber';
-
-// import {Strategy /*changeRed*/} from './components/Strategy/Strategy';
-// import {InputField}             from './components/Canvas/InputField.js';
-// import MainCanvas               from './components/Canvas/MainSortingCanvas';
-// import SelectionSort            from './components/Strategy/Algorithms/SelectionSort';
-
-// import Header       from './components/Page/partial/Header';
-// import Selection    from './components/Page/partial/Selection';
-// import Footer       from './components/Page/partial/Footer';
-// import SplashScreen from './components/Page/Splash/SplashScreen';
-// import Box          from './modals/cube/Box';
-// import Cell         from './components/Board/Cell';
-import AppRouter    from './AppRouter';
+import './App.css';
+import React      from 'react';
+import Display    from './components/Algorithms/Display';
+import AppRouter  from './AppRouter';
+import Navigation from './components/Page/partial/Navbar/Navigation';
 
 
 
-{/* Placeholder for the About page */}
+export default function App() {
 
-
-
-class App extends Component {
-
-  constructor(props) {
-    super(props);
-  }
-
-
-  render() {
-
-
-
-    return (
-        <div className = "App h-screen dark:bg-richBlue">
-         
-         <AppRouter/>
-
-         </div>
-
-        // TESTING PURPOSES: CELL COMPONENT
-        // <Canvas>
-        //   <Cell id = {1}
-        //         value = {1}
-        //         size = {1}
-        //         position = {[0, 0, 0]}
-        //   />
-        // </Canvas>
-    );
-  }
+  return (
+      <>
+        <div className = "App">
+          <AppRouter/>
+        </div>
+      </>
+  );
 }
 
 
 
-export default App;

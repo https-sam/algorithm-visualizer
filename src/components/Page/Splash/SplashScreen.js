@@ -1,7 +1,6 @@
 import React      from 'react';
 import './splash.css';
 import Navigation from '../partial/Navbar/Navigation';
-import Cell       from '../../Board/Cell';
 
 
 
@@ -19,17 +18,29 @@ const SplashScreen = () => {
               <h2 className = "splash_subheading">
                 <span>CU Boulder</span>
               </h2>
+
               <ul className = "splash_list">
+                <li><a href = "/dashboard"
+                       className = "splash_link">
+                  <span>{'Dashboard'}</span></a>
+                </li>
                 <li><a href = "/about"
-                       className = "splash_link"><span>{'About'}</span></a></li>
+                       className = "splash_link">
+                  <span>{'About'}</span></a>
+                </li>
                 <li><a href = "/contact"
-                       className = "splash_link"><span>{'Contact'}</span></a>
+                       className = "splash_link">
+                  <span>{'Contact'}</span></a>
                 </li>
+                {/*<li>
+                 <a href = "/"
+                 className = "splash_link">
+                 <span>{'Home'}</span></a>
+                 </li>*/}
                 <li>
-                  <a href = "/" className = "splash_link"><span>{'Home'}</span></a>
-                </li>
-                <li>
-                  <a href = "/sorting-visualizer" className = "splash_link"><span>{'Sorting Algorithms'}</span></a>
+                  <a href = "/sorting-visualizer"
+                     className = "splash_link">
+                    <span>{'Sorting Algorithms'}</span></a>
                 </li>
               </ul>
             </div>

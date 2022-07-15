@@ -54,11 +54,12 @@
 
 .splash_list {
 	display:         flex;
+	padding: 0;
 	flex-direction:  column;
 	align-items:     center;
 	justify-content: center;
 	text-decoration: none;
-	margin-top:      25px;
+	margin:          25px 0 0;
 }
 
 li .splash_link {
