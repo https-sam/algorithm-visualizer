@@ -16,12 +16,12 @@ function SortingCanvasDescription() {
     <div className="self-center font-sans max-w-[90vw] text-gray-700 dark:text-white mt-10 md:mt-0 md:pt-0 pb-[5em]">
       <p className="text-[1.5em] md:text-[2.8em] font-bold mb-5">Welcome to Sorting Visualizer</p>
       <div>
-        <p className="font-medium text-[1.1em] text-gray-700 dark:text-textGray">Let's start by entering a number. It will generate an array with <BoldParagraph text="random numbers"/> based on the input.</p>
-        <p className="font-medium text-[1.1em] text-gray-700 dark:text-textGray">Next, select an <BoldParagraph text="algorithm"/> and press the <BoldParagraph text="play"/> button.</p>
+        <span className="font-medium text-[1.1em] text-gray-700 dark:text-textGray">Let's start by entering a number. It will generate an array with <BoldParagraph text="random numbers"/> based on the input.</span><br/>
+        <span className="font-medium text-[1.1em] text-gray-700 dark:text-textGray">Next, select an <BoldParagraph text="algorithm"/> and press the <BoldParagraph text="play"/> button.</span>
       </div>
 
       <div className="mt-4">
-        <p className="font-medium text-[1.1em] text-gray-700 dark:text-textGray">The maximum input is currently limited to <BoldParagraph text={InputHandler.getAllowedMaxInputSize()}/>. To play with a larger number, increase the window size and refresh the page.</p>
+        <span className="font-medium text-[1.1em] text-gray-700 dark:text-textGray">The maximum input is currently limited to <BoldParagraph text={InputHandler.getAllowedMaxInputSize()}/>. To play with a larger number, increase the window size and refresh the page.</span>
       </div>
 
       <div className="mt-[4em]">

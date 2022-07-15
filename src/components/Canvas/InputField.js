@@ -6,6 +6,7 @@ import { ReactComponent as Play } from '../../img/play.svg'
 import { ReactComponent as Replay } from '../../img/replay.svg'
 import AlgorithmSelection from './AlgorithmSelection.js';
 import ShowValue from './ShowValue.js';
+import { Animation } from '../Animation/Animation.js';
 
 
 class InputField extends Component {
@@ -16,7 +17,7 @@ class InputField extends Component {
     this.name         = props.name;
     this.Strategy = new Strategy();
     this.state = {
-      algorithm:  localStorage.getItem("algorithm") || 'Radix'
+      algorithm:  localStorage.getItem("algorithm") || 'Radix',
     }
   }
 
@@ -60,7 +61,7 @@ class InputField extends Component {
               }} className=" p-[.7em] text-[.92em] ml-3 rounded-md text-white font-semibold hover:scale-[1.02] hover:bg-lightGreen transition duration-200 ease-in-out dark:bg-lightBlue2 bg-lightGreen dark:text-white hover:shadow-custom-md-blue dark:hover:shadow-custom-md-lightBlue">Generate Array</button>
             </div>
           </div>
-
+          
           
           <div className="flex gap-5 md:gap-10 flex-wrap justify-center items-center">
 
@@ -79,6 +80,7 @@ class InputField extends Component {
               } className={`relative w-[3.2em] h-[2.6em] p-3 group rounded-lg flex ${this.state.algorithm && inputArrayLength ? "dark:bg-lightBlue2 bg-lightGreen cursor-pointer hover:shadow-custom-md-blue dark:hover:shadow-custom-md-lightBlue  transition-all duration-200 ease-in-out" : "bg-gray-600 cursor-not-allowed"}`}>
                 <Play className={`absolute left-[50%] top-[50%] -translate-x-[50%] -translate-y-[50%] scale-[1.1] mr-auto ml-auto transition-all duration-200 ease-in-out ${this.state.algorithm && "group-hover:scale-[1.2]"}`}/>
               </div>
+              
 
               <div className="self-center group">
                 <div onClick={() => { //TODO need to make sure to kill setTimeout

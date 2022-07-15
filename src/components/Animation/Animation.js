@@ -5,7 +5,7 @@ import {Document} from 'postcss';
 class Animation {
 
   constructor() {
-    Animation.threads = [];
+    Animation.timeouts = [];
     // SG 07/09/2022 15:11  Singleton pattern
     if (Animation._instance) {
       return Animation._instance;
@@ -51,11 +51,18 @@ class Animation {
   static async getAnimation(delay) {
     if (!Animation.stop) {
     await new Promise((resolve) =>
-      Animation.threads.push(setTimeout(() => {
+      Animation.timeouts.push(setTimeout(() => {
         resolve();
       }, delay)));
     }
+
   }
+
+  static getTimeouts() {
+    return Animation.timeouts;
+  }
+
+
 
   static async makeBeep(vol, freq, duration){
       

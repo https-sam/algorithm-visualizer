@@ -104,9 +104,7 @@ class QuickSort {
 
   async perform(options, array) {
     this.options = options;
-    const DELAY = options.delay;
-    const SKIP = options.skipJ;
-    console.log(this.quickSort(array, 0, array.length-1));
+    this.quickSort(array, 0, array.length-1);
   }
 }
 
