@@ -10,7 +10,6 @@ import NormalParagraph from './NormalParagraph'
 import { InputHandler } from '../../InputHandler/InputHandler'
 
 
-
 function SortingCanvasDescription() {
   return (
     <div className="z-10 self-center font-sans max-w-[90vw] text-gray-700 dark:text-white mt-10 md:mt-0 md:pt-0">

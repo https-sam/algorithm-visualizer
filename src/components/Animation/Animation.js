@@ -28,9 +28,12 @@ class Animation {
 
   /**
    * takes indecies to be swapped
+   * and swaps them in the dom tree
+   * modifies: height, id, data (height value to be displayed in bar)
    * @param {Integer} i
    * @param {Integer} k
    */
+
   static swap(i, k) {
     let unSortedBars                       = document.querySelectorAll('.array-bars');
     var oldHeight                              = unSortedBars[k].style.height;

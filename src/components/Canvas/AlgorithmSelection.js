@@ -4,6 +4,7 @@ import { MergeSort } from '../Strategy/Algorithms/MergeSort';
 import { RadixSortLSD } from '../Strategy/Algorithms/RadixSortLSD';
 import { QuickSort } from '../Strategy/Algorithms/QuickSort.js'
 import SelectionSort from '../Strategy/Algorithms/SelectionSort';
+import { HeapSort } from '../Strategy/Algorithms/Heapsort';
 function AlgorithmSelection({strategy, options}) {
 
   const [currentAlgo, setCurrentAlgo] = useState(options.state.algorithm);
@@ -12,6 +13,7 @@ function AlgorithmSelection({strategy, options}) {
   const Merge = new MergeSort();
   const Selection = new SelectionSort();
   const Quick = new QuickSort();
+  const Heap = new HeapSort();
 
 
   useEffect(() => {
@@ -29,6 +31,7 @@ function AlgorithmSelection({strategy, options}) {
     else if(currentAlgo === "Merge") strategy.setStrategy = Merge;
     else if(currentAlgo === "Selection") strategy.setStrategy = Selection;
     else if(currentAlgo === "Quick") strategy.setStrategy = Quick;
+    else if(currentAlgo === "Heap") strategy.setStrategy = Heap;
   }, [])
 
 
@@ -55,6 +58,18 @@ function AlgorithmSelection({strategy, options}) {
           >
           <p className={`${currentAlgo === 'Radix' && 'text-black group-hover:text-white'}`}>Radix Sort</p>
         </div>
+
+        <div className={`${currentAlgo === 'Heap' && 'bg-gray-200'} group cursor-pointer w-full hover:bg-gray-700 font-semibold text-white h-[2.8em] flex items-center justify-start pl-4`}
+          onClick={() => {
+            setCurrentAlgo('Heap');
+            options.setState({algorithm: "Heap"});
+            strategy.setStrategy = Heap;
+            localStorage.setItem("algorithm", "Heap");
+            setShowDropdown(!showDropdown)
+          }}
+        >
+          <p className={`${currentAlgo === 'Heap' && 'text-black group-hover:text-white'}`}>Heap Sort</p>
+        </div>
         
         <div className={`${currentAlgo === 'Merge' && 'bg-gray-200'} group cursor-pointer w-full hover:bg-gray-700 font-semibold text-white h-[2.8em] flex items-center justify-start pl-4`}
           onClick={() => {
@@ -66,9 +81,22 @@ function AlgorithmSelection({strategy, options}) {
           }}
         >
           <p className={`${currentAlgo === 'Merge' && 'text-black group-hover:text-white'}`}>Merge Sort</p>
-        
         </div>
-        <div className={`${currentAlgo === 'Selection' && 'bg-gray-200'} group cursor-pointer w-full hover:bg-gray-700 font-semibold text-white h-[2.8em] flex items-center justify-start pl-4`}
+
+        <div className={`${currentAlgo === 'Quick' && 'bg-gray-200'} group cursor-pointer w-full hover:bg-gray-700 font-semibold text-white h-[2.8em] flex items-center justify-start pl-4`}
+          onClick={() => {
+            setCurrentAlgo('Quick');
+            options.setState({algorithm: "Quick"});
+            strategy.setStrategy = Quick;
+            localStorage.setItem("algorithm", "Quick");
+            setShowDropdown(!showDropdown)
+          }}
+        >
+          <p className={`${currentAlgo === 'Quick' && 'text-black group-hover:text-white'}`}>Quick Sort</p>
+        </div>
+        
+
+        <div className={`${currentAlgo === 'Selection' && 'bg-gray-200'} group cursor-pointer w-full rounded-b-md  hover:bg-gray-700 font-semibold text-white h-[2.8em] flex items-center justify-start pl-4`}
           onClick={() => {
             setCurrentAlgo('Selection');
             options.setState({algorithm: "Selection"});
@@ -79,17 +107,6 @@ function AlgorithmSelection({strategy, options}) {
         >
           <p className={`${currentAlgo === 'Selection' && 'text-black group-hover:text-white'}`}>Selection Sort</p>
         
-        </div>
-        <div className={`${currentAlgo === 'Quick' && 'bg-gray-200'} group cursor-pointer w-full hover:bg-gray-700 rounded-b-md font-semibold text-white h-[2.8em] flex items-center justify-start pl-4`}
-          onClick={() => {
-            setCurrentAlgo('Quick');
-            options.setState({algorithm: "Quick"});
-            strategy.setStrategy = Quick;
-            localStorage.setItem("algorithm", "Quick");
-            setShowDropdown(!showDropdown)
-          }}
-        >
-          <p className={`${currentAlgo === 'Quick' && 'text-black group-hover:text-white'}`}>Quick Sort</p>
         </div>
       </div>
     </div>
