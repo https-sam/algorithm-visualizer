@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { ReactComponent as Triangle } from '../../img/triangle.svg'
 import { MergeSort } from '../Strategy/Algorithms/MergeSort';
 import { RadixSortLSD } from '../Strategy/Algorithms/RadixSortLSD';
+import { QuickSort } from '../Strategy/Algorithms/QuickSort.js'
 import SelectionSort from '../Strategy/Algorithms/SelectionSort';
 function AlgorithmSelection({strategy, options}) {
 
@@ -10,6 +11,7 @@ function AlgorithmSelection({strategy, options}) {
   const Radix = new RadixSortLSD();
   const Merge = new MergeSort();
   const Selection = new SelectionSort();
+  const Quick = new QuickSort();
 
 
   useEffect(() => {
@@ -26,7 +28,7 @@ function AlgorithmSelection({strategy, options}) {
     if(currentAlgo === "Radix") strategy.setStrategy = Radix;
     else if(currentAlgo === "Merge") strategy.setStrategy = Merge;
     else if(currentAlgo === "Selection") strategy.setStrategy = Selection;
-    // else if(currentAlgo === "quick") strategy.setStrategy = Quick;
+    else if(currentAlgo === "Quick") strategy.setStrategy = Quick;
   }, [])
 
 
@@ -82,7 +84,7 @@ function AlgorithmSelection({strategy, options}) {
           onClick={() => {
             setCurrentAlgo('Quick');
             options.setState({algorithm: "Quick"});
-            strategy.setStrategy = Selection;
+            strategy.setStrategy = Quick;
             localStorage.setItem("algorithm", "Quick");
             setShowDropdown(!showDropdown)
           }}

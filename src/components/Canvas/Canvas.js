@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { CONSTANTS }        from '../../Utility/config.js';
 import ShowValue from './ShowValue.js';
-import SortingCanvasDescription from './SortingCanvasDescription.js';
+import SortingCanvasDescription from './Description//SortingCanvasDescription.js';
 import './style.css'
 class Canvas extends Component {
 
@@ -32,10 +32,8 @@ class Canvas extends Component {
           {arrayLength > 1 ? generatedArray.map((element) => {
             return (
               <div id={`${element}`} fontSize={FONT_SIZE} data={`${(BAR_WIDTH > 25 && element > FONT_SIZE+16 && showHeight) ? element : ''}`} length="40px" key={Math.random()} style={{"--bar-font-size" :FONT_SIZE+"px", height: element+'px', width: BAR_WIDTH+'px', backgroundColor: this.props.barColor}} 
-              className={`array-bars m-[1px] rounded-t-md relative ${(defaultBarColor !== PINK && defaultBarColor !== PURPLE && defaultBarColor !== 'black') ? "after:text-gray-700" : "after:text-white"}`}>
-              </div>
+                className={`array-bars m-[1px] rounded-t-md relative ${(defaultBarColor !== PINK && defaultBarColor !== PURPLE && defaultBarColor !== 'black') ? "after:text-gray-700" : "after:text-white"}`}/>
               )
-
           }) : <SortingCanvasDescription/>}
         </div>
       </div>

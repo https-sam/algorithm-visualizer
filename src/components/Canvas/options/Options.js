@@ -11,51 +11,6 @@ import { CONSTANTS }             from '../../../Utility/config'
 import Option from './Option';
 
 
-const optionItems = [
-  {
-    name: "DEFAULT",
-    stateName: "defaultBarColor",
-    icon: UnsortedBars,
-    hasDropDown: true,
-    tooltipMessage: "Unsorted bars color",
-  },
-  {
-    name: "SORTED",
-    stateName: "sortedBarColor",
-    icon: SortedBars,
-    hasDropDown: true,
-    tooltipMessage: "Sorted bars color"
-  },
-  {
-    name: "PROCESSING",
-    stateName: "processingColor",
-    icon: CPU,
-    hasDropDown: true,
-    tooltipMessage: "Processing bars color",
-  },
-  {
-    name: "CURRENT_MIN",
-    stateName: "currentMinBarColor",
-    icon: Key,
-    hasDropDown: true,
-    tooltipMessage: "Current optimum bar color",
-  },
-  {
-    name: "DELAY",
-    stateName: "delay",
-    icon: Speed,
-    hasDropDown: true,
-    tooltipMessage: "Animation delay",
-  },
-  {
-    name: "SPEEDUP",
-    stateName: "skipJ",
-    icon: Runner,
-    hasDropDown: false,
-    tooltipMessage: "Faster animation",
-  },
-];
-
 class Options extends Component {
   constructor(props) {
    super(props);
@@ -73,6 +28,52 @@ class Options extends Component {
   render() {
 
     const { algorithm } = this.props;
+
+    const optionItems = [
+      {
+        name: "DEFAULT",
+        stateName: "defaultBarColor",
+        icon: UnsortedBars,
+        hasDropDown: true,
+        tooltipMessage: "Unsorted bars color",
+      },
+      {
+        name: "SORTED",
+        stateName: "sortedBarColor",
+        icon: SortedBars,
+        hasDropDown: true,
+        tooltipMessage: "Sorted bars color"
+      },
+      {
+        name: "PROCESSING",
+        stateName: "processingColor",
+        icon: CPU,
+        hasDropDown: true,
+        tooltipMessage: `${algorithm === 'Quick' ? "Left and Right pointers color" : "Processing bars color"}`,
+      },
+      {
+        name: "CURRENT_MIN",
+        stateName: "currentMinBarColor",
+        icon: Key,
+        hasDropDown: true,
+        tooltipMessage: `${algorithm === 'Quick' ? "Pivot color" : "Current optimum bar color"}`,
+      },
+      {
+        name: "DELAY",
+        stateName: "delay",
+        icon: Speed,
+        hasDropDown: true,
+        tooltipMessage: "Animation delay",
+      },
+      {
+        name: "SPEEDUP",
+        stateName: "skipJ",
+        icon: Runner,
+        hasDropDown: false,
+        tooltipMessage: "Faster animation",
+      },
+    ];
+    
     
     return (
       <div className="rounded-md z-10">

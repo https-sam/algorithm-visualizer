@@ -91,9 +91,7 @@ class MergeSort {
    perform(options, array) {
     const animation = this.mergeSort(array);
     Animation.animateMerge(options, animation);
-  }
-
-
+   }
 }
 
 export { MergeSort }

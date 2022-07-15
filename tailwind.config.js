@@ -17,7 +17,8 @@ module.exports = {
         "lightBlue2": "#15A5E5",
         "transBlue": "#63dbf968",
         "dropdown": "#4f535a",
-        "richBlue": "#0F1729"
+        "richBlue": "#0F1729",
+        "textGray": "#94A3B7",
       },
       fontFamily: {
         "themeFont": ["Open Sans", "Helvetica", "Arial", "sans-serif"]

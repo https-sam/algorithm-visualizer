@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { InputHandler } from '../InputHandler/InputHandler.js'
-import SelectionSort from '../Strategy/Algorithms/SelectionSort.js';
 import { Strategy } from '../Strategy/Strategy.js';
 import { Options } from './options/Options.js';
 import { ReactComponent as Play } from '../../img/play.svg'
@@ -19,6 +18,13 @@ class InputField extends Component {
     this.state = {
       algorithm:  localStorage.getItem("algorithm") || 'Radix'
     }
+  }
+
+  scrollDown() {
+    window.scroll({ // SG 07/10/2022 18:55  for mobile devices 
+      top: 1000,
+      behavior: 'smooth'
+    });
   }
 
   render() {
@@ -64,12 +70,9 @@ class InputField extends Component {
               <AlgorithmSelection strategy={this.Strategy} options={this}/>
               <div onClick={async () => { 
                   if (this.state.algorithm && inputArrayLength) {
-                    window.scroll({ // SG 07/10/2022 18:55  for mobile devices 
-                      top: 1000,
-                      behavior: 'smooth'
-                    });
+                    this.scrollDown();
                     this.Strategy.setOptions = options;
-                    await this.Strategy.perform(options,inputArray);
+                    this.Strategy.perform(options, inputArray);
                     localStorage.setItem('options', JSON.stringify(options));
                   }                  
                 }
@@ -80,6 +83,7 @@ class InputField extends Component {
               <div className="self-center group">
                 <div onClick={() => { //TODO need to make sure to kill setTimeout
                     this.props.InputHandler.setState({generatedArray: InputHandler.handleInputRequest(inputArrayLength)});
+                    this.scrollDown();
                   }} className={`p-3 w-[3.2em] group h-[2.6em] rounded-lg flex ${this.state.algorithm && inputArrayLength? "dark:bg-lightBlue2 bg-lightGreen cursor-pointer hover:shadow-custom-md-blue dark:hover:shadow-custom-md-lightBlue" : "bg-gray-600 cursor-not-allowed"} relative`}>
                   <Replay className={` ${this.state.algorithm && inputArrayLength && "group-hover:rotate-[330deg]"} scale-[.9] absolute left-[50%] top-[50%] -translate-x-[50%] -translate-y-[50%] transition-all duration-200 ease-out`}/>
                 </div>
