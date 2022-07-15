@@ -13,7 +13,7 @@ import { InputHandler } from '../../InputHandler/InputHandler'
 
 function SortingCanvasDescription() {
   return (
-    <div className="self-center font-sans max-w-[90vw] text-gray-700 dark:text-white mt-10 md:mt-0 md:pt-0 pb-[5em]">
+    <div className="self-center font-sans max-w-[90vw] text-gray-700 dark:text-white mt-10 md:mt-0 md:pt-0">
       <p className="text-[1.5em] md:text-[2.8em] font-bold mb-5">Welcome to Sorting Visualizer</p>
       <div>
         <span className="font-medium text-[1.1em] text-gray-700 dark:text-textGray">Let's start by entering a number. It will generate an array with <BoldParagraph text="random numbers"/> based on the input.</span><br/>

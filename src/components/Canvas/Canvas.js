@@ -27,8 +27,7 @@ class Canvas extends Component {
 
     return (
       <div className={`w-full flex justify-center dark:bg-gradient-to-b from-lightGray to-richBlue relative`} style={{minHeight:CANVAS_HEIGHT}}>
-        
-        <div className="flex items-end">
+        <div className="flex items-end z-1">
           {arrayLength > 1 ? generatedArray.map((element) => {
             return (
               <div id={`${element}`} fontSize={FONT_SIZE} data={`${(BAR_WIDTH > 25 && element > FONT_SIZE+16 && showHeight) ? element : ''}`} length="40px" key={Math.random()} style={{"--bar-font-size" :FONT_SIZE+"px", height: element+'px', width: BAR_WIDTH+'px', backgroundColor: this.props.barColor}} 
@@ -36,6 +35,7 @@ class Canvas extends Component {
               )
           }) : <SortingCanvasDescription/>}
         </div>
+        <div className="main-canvas-grid z-0 dark:opacity-[.04]"/>
       </div>
     );
   }

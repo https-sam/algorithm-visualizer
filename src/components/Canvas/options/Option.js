@@ -68,7 +68,7 @@ function Option({options, mainCanvasInputHandler, algorithm}) {
           <div 
             key={color}
             style={{backgroundColor: color}} 
-            className={`w-7 h-7 rounded-md hover:scale-[1.15] transition-all duration-200 ease-in-out ${color === 'white' && "border-2 border-gray-300 dark:border-none"}`}
+            className={`w-7 h-7 z-200 rounded-md hover:scale-[1.15] transition-all duration-200 ease-in-out ${color === 'white' && "border-2 border-gray-300 dark:border-none"}`}
             onClick={() => { 
               mainCanvasInputHandler.setState(prev => ({options: {...prev.options, [options.stateName]: color, }}));
               setOpen(!open);
