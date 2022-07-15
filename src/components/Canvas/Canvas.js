@@ -36,7 +36,7 @@ class Canvas extends Component {
               )
           }) : <SortingCanvasDescription/>}
         </div>
-        <div className="main-canvas-grid z-0 dark:opacity-[0.05]"/>
+        <div className="main-canvas-grid z-0 dark:opacity-[0.03]"/>
       </div>
     );
   }

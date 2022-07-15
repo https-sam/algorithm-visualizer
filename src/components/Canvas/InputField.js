@@ -82,7 +82,7 @@ class InputField extends Component {
               <AlgorithmSelection strategy={this.Strategy} options={this}/>
               <div onClick={async () => { 
                   if(generatedArray.length === 0){
-                    document.getElementById('sort-canvas-error-msg').innerHTML ="Please enter an array size first." 
+                    document.getElementById('sort-canvas-error-msg').innerHTML ="Please generate an array first." 
                   } else {
                     this.scrollDown();
                     this.Strategy.setOptions = options;
