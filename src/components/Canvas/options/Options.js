@@ -76,7 +76,7 @@ class Options extends Component {
     
     
     return (
-      <div className="rounded-md z-10">
+      <div className="rounded-md z-20">
         <div className="w-fit flex space-x-5">
           {optionItems.map((option) => (
             <Option options={option} mainCanvasInputHandler={this.props.options} key={option.name} algorithm={algorithm}/>

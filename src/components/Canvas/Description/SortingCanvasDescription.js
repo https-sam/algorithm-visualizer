@@ -13,7 +13,7 @@ import { InputHandler } from '../../InputHandler/InputHandler'
 
 function SortingCanvasDescription() {
   return (
-    <div className="self-center font-sans max-w-[90vw] text-gray-700 dark:text-white mt-10 md:mt-0 md:pt-0">
+    <div className="z-10 self-center font-sans max-w-[90vw] text-gray-700 dark:text-white mt-10 md:mt-0 md:pt-0">
       <p className="text-[1.5em] md:text-[2.8em] font-bold mb-5">Welcome to Sorting Visualizer</p>
       <div>
         <span className="font-medium text-[1.1em] text-gray-700 dark:text-textGray">Let's start by entering a number. It will generate an array with <BoldParagraph text="random numbers"/> based on the input.</span><br/>
@@ -24,15 +24,15 @@ function SortingCanvasDescription() {
         <span className="font-medium text-[1.1em] text-gray-700 dark:text-textGray">The maximum input is currently limited to <BoldParagraph text={InputHandler.getAllowedMaxInputSize()}/>. To play with a larger number, increase the window size and refresh the page.</span>
       </div>
 
-      <div className="mt-[4em]">
+      <div className="mt-[4em] mb-10">
         <p className="text-[1.3em] font-semibold">Options</p>
         <p className="m-3 font-medium text-[1em] text-gray-700 dark:text-textGray">*Some options are not available in some algorithms</p>
         <li className="list-none mt-5 space-y-3">
-          <ul className="space-x-2"><UnsortedBars className="mr-2 dark:stroke-textGray stroke-[#7B7B7c] scale-[1.2] inline "/><BoldParagraph text="Unsorted"/><NormalParagraph text="Bars color"/></ul>
-          <ul className="space-x-2"><SortedBars className="mr-2 dark:stroke-textGray stroke-[#7B7B7c] scale-[1.2] inline "/><BoldParagraph text="Sorted"/><NormalParagraph text="Bars color"/></ul>
+          <ul className="space-x-2"><UnsortedBars className="mr-2 dark:stroke-textGray stroke-[#7B7B7c] scale-[1.2] inline "/><BoldParagraph text="Unsorted"/><NormalParagraph text="bars color"/></ul>
+          <ul className="space-x-2"><SortedBars className="mr-2 dark:stroke-textGray stroke-[#7B7B7c] scale-[1.2] inline "/><BoldParagraph text="Sorted"/><NormalParagraph text="bars color"/></ul>
           <ul className="space-x-2"><CPU className="mr-2 dark:stroke-textGray stroke-[#7B7B7c] scale-[1.2] inline "/><BoldParagraph text="Processing"/><NormalParagraph text="bars color"/></ul>
-          <ul className="space-x-2"><Key className="mr-2 dark:stroke-textGray stroke-[#7B7B7c] scale-[1.2] inline "/><BoldParagraph text="Key"/><NormalParagraph text="Bars color"/></ul>
-          <ul className="space-x-2"><Speed className="mr-2 dark:stroke-textGray stroke-[#7B7B7c] scale-[1.2] inline "/><NormalParagraph text="Animation"/><BoldParagraph text="Delay"/></ul>
+          <ul className="space-x-2"><Key className="mr-2 dark:stroke-textGray stroke-[#7B7B7c] scale-[1.2] inline "/><BoldParagraph text="Key"/><NormalParagraph text="bars color"/></ul>
+          <ul className="space-x-2"><Speed className="mr-2 dark:stroke-textGray stroke-[#7B7B7c] scale-[1.2] inline "/><NormalParagraph text="Animation"/><BoldParagraph text="delay"/></ul>
           <ul className="space-x-2"><Runner className="mr-2 dark:stroke-textGray stroke-[#7B7B7c] scale-[1.2] inline "/><BoldParagraph text="Faster"/><NormalParagraph text="animation (skips some animations)"/> </ul>
         </li>
       </div>

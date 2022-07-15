@@ -81,7 +81,7 @@ function Option({options, mainCanvasInputHandler, algorithm}) {
           }/>
         ))}
       </div>
-      <p ref={ref} className={`shadow-lg text-[.9em] bg-white absolute top-[110%] p-2 rounded-md hidden whitespace-nowrap ${!open && "peer-hover:block"} tool-tip-options text-gray-600 font-semibold`}>{options.tooltipMessage}</p>
+      <p ref={ref} className={`shadow-lg z-10 text-[.9em] bg-white absolute top-[110%] p-2 rounded-md hidden whitespace-nowrap ${!open && "peer-hover:block"} tool-tip-options text-gray-600 font-semibold`}>{options.tooltipMessage}</p>
     </div>
   )
 }

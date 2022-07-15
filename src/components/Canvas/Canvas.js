@@ -31,11 +31,11 @@ class Canvas extends Component {
           {arrayLength > 1 ? generatedArray.map((element) => {
             return (
               <div id={`${element}`} fontSize={FONT_SIZE} data={`${(BAR_WIDTH > 25 && element > FONT_SIZE+16 && showHeight) ? element : ''}`} length="40px" key={Math.random()} style={{"--bar-font-size" :FONT_SIZE+"px", height: element+'px', width: BAR_WIDTH+'px', backgroundColor: this.props.barColor}} 
-                className={`array-bars m-[1px] rounded-t-md relative ${(defaultBarColor !== PINK && defaultBarColor !== PURPLE && defaultBarColor !== 'black') ? "after:text-gray-700" : "after:text-white"}`}/>
+                className={`array-bars z-10 m-[1px] rounded-t-md relative ${(defaultBarColor !== PINK && defaultBarColor !== PURPLE && defaultBarColor !== 'black') ? "after:text-gray-700" : "after:text-white"}`}/>
               )
           }) : <SortingCanvasDescription/>}
         </div>
-        <div className="main-canvas-grid z-0 dark:opacity-[.04]"/>
+        <div className="main-canvas-grid z-0 dark:opacity-[0.05]"/>
       </div>
     );
   }
