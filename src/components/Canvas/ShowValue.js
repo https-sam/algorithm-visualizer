@@ -13,8 +13,10 @@ function ShowValue({mainCanvasInputHandler, inputArrayLength}) {
       mainCanvasInputHandler.setState(prev => ({options: {...prev.options, showHeight: !mainCanvasInputHandler.state.options.showHeight}}));
       setEnable(!enable);
       let j = JSON.parse(localStorage.getItem('options'));
-      j["showHeight"] = !enable;
-      localStorage.setItem('options', JSON.stringify(j))
+      if(j) {
+        j["showHeight"] = !enable;
+        localStorage.setItem('options', JSON.stringify(j))
+      }
     }}>
 
       <div className={`flex items-center justify-center relative cursor-pointer h-full dark:border-[1px] border-2 dark:border-gray-200 border-gray-300 rounded-md ${mainCanvasInputHandler.state.options.showHeight && "dark:border-gray-400"}`}>

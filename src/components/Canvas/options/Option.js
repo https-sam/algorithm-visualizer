@@ -73,8 +73,10 @@ function Option({options, mainCanvasInputHandler, algorithm}) {
               mainCanvasInputHandler.setState(prev => ({options: {...prev.options, [options.stateName]: color, }}));
               setOpen(!open);
               let j = JSON.parse(localStorage.getItem("options"));
-              j[options.stateName] = color;
-              localStorage.setItem("options", JSON.stringify(j));
+              if(j) {
+                j[options.stateName] = color;
+                localStorage.setItem("options", JSON.stringify(j));
+              }
             } 
           }/>
         ))}

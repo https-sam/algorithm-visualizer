@@ -18,12 +18,21 @@ class MainCanvas extends Component {
         delay: JSON.parse(localStorage.getItem('options'))?.delay || CONSTANTS.DELAY,
         skipJ: JSON.parse(localStorage.getItem('options'))?.skipJ || false,
         processingColor: JSON.parse(localStorage.getItem('options'))?.processingColor || CONSTANTS.PROCESSING[0],
-        defaultBarColor: JSON.parse(localStorage.getItem('options'))?.defaultBarColor || localStorage.getItem('theme') === "dark" && 'white' || CONSTANTS.DEFAULT[0] ,
+        defaultBarColor: JSON.parse(localStorage.getItem('options'))?.defaultBarColor || CONSTANTS.DEFAULT[0] ,
         sortedBarColor:  JSON.parse(localStorage.getItem('options'))?.sortedBarColor || CONSTANTS.SORTED[0],
         currentMinBarColor: JSON.parse(localStorage.getItem('options'))?.currentMinBarColor || CONSTANTS.CURRENT_MIN[0],
         showHeight: JSON.parse(localStorage.getItem('options'))?.showHeight || false
       }
     };
+  }
+
+  componentDidMount() {
+    const darkTheme = localStorage.getItem('theme') === "dark";
+    const options = JSON.parse(localStorage.getItem('options'));
+
+    if(darkTheme && !options?.defaultBarColor) { 
+      this.setState({options: {...this.state.options, defaultBarColor: 'white'}})
+    }
   }
 
 
