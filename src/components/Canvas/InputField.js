@@ -6,7 +6,7 @@ import { ReactComponent as Play } from '../../img/play.svg'
 import { ReactComponent as Replay } from '../../img/replay.svg'
 import AlgorithmSelection from './AlgorithmSelection.js';
 import ShowValue from './ShowValue.js';
-import { Animation } from '../Animation/Animation.js';
+
 
 
 class InputField extends Component {
@@ -21,17 +21,32 @@ class InputField extends Component {
     }
   }
 
+  displayErrorMessage() {
+    if(this.props.InputHandler.state.inputArrayLength < 2) {
+      document.getElementById('sort-canvas-error-msg').innerHTML ="Array size shuold at least be 2" 
+      return false;   
+    }
+
+    document.getElementById('sort-canvas-error-msg').innerHTML = '';
+    return true;
+  }
+
   scrollDown() {
-    window.scroll({ // SG 07/10/2022 18:55  for mobile devices 
-      top: 1000,
-      behavior: 'smooth'
-    });
+    if(this.displayErrorMessage()) {
+      window.scroll({ // SG 07/10/2022 18:55  for mobile devices 
+        top: 1000,
+        behavior: 'smooth'
+      });
+      return true;
+    } else {
+      return false;
+    }
   }
 
   render() {
     const {inputArrayLength, options} = this.props.InputHandler.state;
     const { algorithm } = this.state;
-    const { inputArray } = this.props;
+    const { inputArray, generatedArray } = this.props;
 
     return (
       <div className="flex flex-col dark:bg-darkGray bg-gray-100 shadow-lg shadow-gray-200" id="input-field-sort">
@@ -51,13 +66,9 @@ class InputField extends Component {
                 maximum={InputHandler.getAllowedMaxInputSize()}
               />
               <button onClick={() => { 
-                if(inputArrayLength > 1) {
-                  this.props.InputHandler.setState({generatedArray: InputHandler.handleInputRequest(inputArrayLength)});
-                  window.scroll({ // SG 07/10/2022 18:55  for mobile devices 
-                    top: 1000,
-                    behavior: 'smooth'
-                  });
-                }
+                  if(this.scrollDown()) {
+                    this.props.InputHandler.setState({generatedArray: InputHandler.handleInputRequest(inputArrayLength)});
+                  }
               }} className=" p-[.7em] text-[.92em] ml-3 rounded-md text-white font-semibold hover:scale-[1.02] hover:bg-lightGreen transition duration-200 ease-in-out dark:bg-lightBlue2 bg-lightGreen dark:text-white hover:shadow-custom-md-blue dark:hover:shadow-custom-md-lightBlue">Generate Array</button>
             </div>
           </div>
@@ -70,12 +81,15 @@ class InputField extends Component {
             <div className="flex self-center gap-3 justify-center items-center">
               <AlgorithmSelection strategy={this.Strategy} options={this}/>
               <div onClick={async () => { 
-                  if (this.state.algorithm && inputArrayLength) {
+                console.log(generatedArray);
+                  if(generatedArray.length === 0){
+                    document.getElementById('sort-canvas-error-msg').innerHTML ="Please enter an array size first." 
+                  } else {
                     this.scrollDown();
                     this.Strategy.setOptions = options;
                     this.Strategy.perform(options, inputArray);
                     localStorage.setItem('options', JSON.stringify(options));
-                  }                  
+                  } 
                 }
               } className={`relative w-[3.2em] h-[2.6em] p-3 group rounded-lg flex ${this.state.algorithm && inputArrayLength ? "dark:bg-lightBlue2 bg-lightGreen cursor-pointer hover:shadow-custom-md-blue dark:hover:shadow-custom-md-lightBlue  transition-all duration-200 ease-in-out" : "bg-gray-600 cursor-not-allowed"}`}>
                 <Play className={`absolute left-[50%] top-[50%] -translate-x-[50%] -translate-y-[50%] scale-[1.1] mr-auto ml-auto transition-all duration-200 ease-in-out ${this.state.algorithm && "group-hover:scale-[1.2]"}`}/>
@@ -84,8 +98,9 @@ class InputField extends Component {
 
               <div className="self-center group">
                 <div onClick={() => { //TODO need to make sure to kill setTimeout
-                    this.props.InputHandler.setState({generatedArray: InputHandler.handleInputRequest(inputArrayLength)});
-                    this.scrollDown();
+                    if(this.scrollDown()) {
+                      this.props.InputHandler.setState({generatedArray: InputHandler.handleInputRequest(inputArrayLength)});
+                    }
                   }} className={`p-3 w-[3.2em] group h-[2.6em] rounded-lg flex ${this.state.algorithm && inputArrayLength? "dark:bg-lightBlue2 bg-lightGreen cursor-pointer hover:shadow-custom-md-blue dark:hover:shadow-custom-md-lightBlue" : "bg-gray-600 cursor-not-allowed"} relative`}>
                   <Replay className={` ${this.state.algorithm && inputArrayLength && "group-hover:rotate-[330deg]"} scale-[.9] absolute left-[50%] top-[50%] -translate-x-[50%] -translate-y-[50%] transition-all duration-200 ease-out`}/>
                 </div>
