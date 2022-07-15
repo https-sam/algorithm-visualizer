@@ -24,7 +24,7 @@ function ShowValue({mainCanvasInputHandler, inputArrayLength}) {
           {<div className={`scale-[1.3] lg:group-hover:text-white ${mainCanvasInputHandler.state.options.showHeight ? "text-white dark:text-[#7B7B7c]" : "text-[#7B7B7c]"} w-5 text-center font-bold`}>H</div>}
         </div> 
       </div>    
-      <p className={`shadow-lg bg-white z-10 absolute top-[4.4em] left-[50%] -translate-x-[50%] p-2 rounded-md hidden group-hover:block tool-tip-options text-gray-600 whitespace-nowrap font-semibold`}>Show height</p>
+      <p className={`shadow-lg bg-white z-10 text-[.9em] absolute top-[4.4em] left-[50%] -translate-x-[50%] p-2 rounded-md hidden group-hover:block tool-tip-options text-gray-600 whitespace-nowrap font-semibold`}>Show height</p>
     </div>
   )
 }
