@@ -85,7 +85,7 @@ class Animation {
           var fontSize = arrayBars[firstBarI].getAttribute('font-size');
 
           // SG 07/13/2022 16:22  making sure that larger font does not overflow, so it height is not enough, set conetnt empty
-          if(firstBarHeight-10 > fontSize) {
+          if(firstBarHeight-10 > fontSize && parseInt((arrayBars[firstBarI].style.width).replace("px", '')) > 25 ) {
             arrayBars[firstBarI].setAttribute('data', swapHeight);
           } else {
             arrayBars[firstBarI].setAttribute('data', '');
