@@ -15,7 +15,6 @@ class ShellSort {
   async shellSort(array, n = array.length) {
     for (let gap = Math.floor(n / 2); gap > 0; gap = Math.floor(gap / 2)) {
       let firstLoopEnds = !Math.floor(gap / 2) > 0;
-      console.log(firstLoopEnds)
       for (let i = gap; i < n; i += 1) {
         if(!this.options.skipJ) {
           await Animation.getAnimation(this.options.delay);
@@ -64,6 +63,7 @@ class ShellSort {
 
   perform(options, array) {
     this.options = options;
+    this.shellSort(array);
   }
 }
 
