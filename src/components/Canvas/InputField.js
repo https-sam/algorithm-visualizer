@@ -81,7 +81,6 @@ class InputField extends Component {
             <div className="flex self-center gap-3 justify-center items-center">
               <AlgorithmSelection strategy={this.Strategy} options={this}/>
               <div onClick={async () => { 
-                console.log(generatedArray);
                   if(generatedArray.length === 0){
                     document.getElementById('sort-canvas-error-msg').innerHTML ="Please enter an array size first." 
                   } else {
