@@ -115,7 +115,7 @@ export default forwardRef(OrbitControls);
 
 
 /*
-* const usePointColorsHook = ({board, selectedPoint}) => {
+ const usePointColorsHook = ({board, selectedPoint}) => {
  const numPoints   = board.length;
  const colorAttrib = useRef();
  const colorArray  = useMemo(() => new Float32Array(numPoints * 3), [

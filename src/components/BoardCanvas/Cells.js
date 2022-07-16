@@ -3,8 +3,8 @@
 import * as React                   from 'react';
 import {useEffect, useRef, useMemo} from 'react';
 import * as THREE                   from 'three';
-import {a}                          from 'react-spring/three';
-import {useAnimationHook}           from './layouts';
+import {a}                                 from 'react-spring/three';
+import {useAnimationHook, useGenerateMaze} from './layouts';
 
 
 
@@ -196,12 +196,6 @@ const Cells = ({board, layoutType, selectedPoint, onSelectPoint, groupingWallPoi
     return path;
   };
 
-  const directions = {
-    south: [0, -1],
-    north: [0, 1],
-    west : [-1, 0],
-    east : [1, 0],
-  };
 
   /*
    * Quick selection test
@@ -271,10 +265,11 @@ const Cells = ({board, layoutType, selectedPoint, onSelectPoint, groupingWallPoi
     /* useDrag */
   });
 
-  generateMaze(board);
-  findCell(1, 1);
+  // generateMaze(board);
+  // findCell(1, 1);
   // initializeCellColors();
   const {colorAttrib, colorArray} = usePointColorsHook({board, selectedPoint});
+
 
   // const { colorAttrib: groupingColorAttrib, colorArray: groupingColorArray } = useGroupColors({
   //   board,
@@ -298,7 +293,7 @@ const Cells = ({board, layoutType, selectedPoint, onSelectPoint, groupingWallPoi
           {/*      args = {[colorArray, 3]}*/}
           {/*  />*/}
           {/*</sphereBufferGeometry>*/}
-          <boxBufferGeometry attach = "geometry" args = {[0.6, 0.3, 0.6, 18]}>
+          <boxBufferGeometry attach = "geometry" args = {[1, 0.5, 1, 18]}>
             <instancedBufferAttribute
                 ref = {colorAttrib}
                 attachObject = {['attributes', 'color']}

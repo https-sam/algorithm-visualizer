@@ -1,6 +1,8 @@
 import * as React          from 'react';
 import {useEffect, useRef} from 'react';
 import {useSpring}         from 'react-spring/three';
+import BinaryTreeCreation  from '../Algorithms/Maze/Generation/BinaryTreeCreation';
+
 
 /*
  * Board type selector hook.
@@ -59,6 +61,14 @@ function interpolateSourceTarget(board, progress) {
 }
 
 
+export const useGenerateMaze = ({board, layoutType}) => {
+  useEffect(() => {
+
+    BinaryTreeCreation(board);
+
+  }, [board]);
+}
+
 export function useAnimationHook({board, layoutType, onFrame}) {
 
   useTargetLayoutHook({board, layoutType});
@@ -70,10 +80,9 @@ export function useAnimationHook({board, layoutType, onFrame}) {
     from               : {animationInProgress: 0},
     reset              : layoutType !== prevLayout.current,
     onFrame            : ({animationInProgress}) => {
-      // interpolate based on progress
+      // insert based on progress of animation
       interpolateSourceTarget(board, animationInProgress);
-      // callback to indicate board has updated
-      onFrame({animationInProgress});
+      onFrame({animationInProgress}); // callback
     },
   });
   prevLayout.current = layoutType;

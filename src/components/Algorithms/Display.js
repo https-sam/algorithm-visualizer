@@ -10,7 +10,7 @@ import './display.css';
  the game control interface, and the navigation bar.
 
  "The Mediator"
-   or a psudo
+ or a psudo
  "Layers Pattern"
 
  */
@@ -21,16 +21,16 @@ export default function Display() {
   const [selectedStartPoint, setSelectedStartPoint] = useState(null);
   // const board                                       = new Array(10000).fill(0).map(
   const board                                       = new Array(3844).fill(0).map(
-      (i, id, type: string) => ({id}));
+      (i, id, type: string = '_wall_', visited: boolean = false) => ({id, type, visited}));
 
-  const boardRef          = useRef(); // Mutable(Persistant) board reference object.
+  const boardRef = useRef(); // Mutable(Persistant) board reference object.
 
   const handleResetCamera = () => {
     boardRef.current.resetCamera();
   };
-  const handleResetBoard = () => {
+  const handleResetBoard  = () => {
     boardRef.current.resetBoard();
-  }
+  };
 
 
   return (
