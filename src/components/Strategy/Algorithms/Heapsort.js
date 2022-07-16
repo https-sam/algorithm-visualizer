@@ -71,7 +71,6 @@ class HeapSort {
       let second = this.getIndexDOM(array[i], DOM);
       await Animation.getAnimation(this.options.delay);
       Animation.swap(first, second);
-      console.log(this.options.sortedBarColor)
 
       // SG 07/15/2022 13:52  coloring sorted bars
       DOM[second].style.backgroundColor = this.options.sortedBarColor;
