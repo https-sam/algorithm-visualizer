@@ -15,11 +15,12 @@ import './display.css';
 
  */
 export default function Display() {
-  const [layoutType, setLayout]                     = useState('grid');
+  const [layoutType, setLayout]                     = useState('standard');
   const [selectedPoint, setSelectedPoint]           = useState(null);
   const [selectedGoalPoint, setSelectedGoalPoint]   = useState(null);
   const [selectedStartPoint, setSelectedStartPoint] = useState(null);
-  const board                                       = new Array(10000).fill(0).map(
+  // const board                                       = new Array(10000).fill(0).map(
+  const board                                       = new Array(3844).fill(0).map(
       (i, id, type: string) => ({id}));
 
   const boardRef          = useRef(); // Mutable(Persistant) board reference object.
@@ -55,8 +56,8 @@ export default function Display() {
           <div className = "control-group-one">
             <h2 className = "control-header">Display <br/> Strategy</h2>
             <button
-                onClick = {() => setLayout('grid')}
-                className = {layoutType === 'grid' ? 'active' : undefined}
+                onClick = {() => setLayout('standard')}
+                className = {layoutType === 'standard' ? 'active' : undefined}
             >
               Grid
             </button>
