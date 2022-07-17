@@ -69,12 +69,12 @@ class HeapSort {
       let first = this.getIndexDOM(array[0], DOM);
       let second = this.getIndexDOM(array[i], DOM);
       await Animation.getAnimation(this.options.delay);
+
       Animation.swap(first, second);
 
       // SG 07/15/2022 13:52  coloring sorted bars
       DOM[second].style.backgroundColor = this.options.sortedBarColor;
       
-
       let temp = array[0];
       array[0] = array[i];
       array[i] = temp;
@@ -85,9 +85,9 @@ class HeapSort {
     return array;;
   }
 
-  perform(options, array) {
+  async perform(options, array) {
     this.options = options;
-    console.log(this.heapSort(array, array.length));
+    await this.heapSort(array, array.length);
   }
 }
 

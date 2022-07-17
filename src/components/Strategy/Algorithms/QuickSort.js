@@ -104,7 +104,7 @@ class QuickSort {
 
   async perform(options, array) {
     this.options = options;
-    this.quickSort(array, 0, array.length-1);
+    await this.quickSort(array, 0, array.length-1);
   }
 }
 

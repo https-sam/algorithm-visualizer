@@ -34,8 +34,8 @@ class Strategy {
     return Strategy.targetArray; 
   }
 
-  perform(options, inputArray) {
-    this._strategy.perform(options, inputArray);
+  async perform(options, inputArray) {
+    await this._strategy.perform(options, inputArray);
   }
 }
 
