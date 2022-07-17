@@ -1,8 +1,8 @@
 'use strict';
 
-import * as React                   from 'react';
-import {useEffect, useRef, useMemo} from 'react';
-import * as THREE                   from 'three';
+import * as React                          from 'react';
+import {useEffect, useRef, useMemo}        from 'react';
+import * as THREE                          from 'three';
 import {a}                                 from 'react-spring/three';
 import {useAnimationHook, useGenerateMaze} from './layouts';
 
@@ -56,32 +56,32 @@ const usePointColorsHook = ({board, selectedPoint}) => {
   ]);
   useEffect((prev) => {
     for (let i = 0; i < board.length; ++i) {
-      if (board[i].type === WALL_TYPE) {
+      if (board[i].type === WALL_TYPE.toString()) {
         tempCOLOR.set(
             selectedPoint === board[i] ? WALL_COLOR : FLOOR_COLOR,
         );
       }
-      else if (board[i].type === PATH_TYPE) {
+      else if (board[i].type === PATH_TYPE.toString()) {
         tempCOLOR.set(
             selectedPoint === board[i] ? PATH_COLOR : FLOOR_COLOR,
         );
       }
-      else if (board[i].type === GOAL_TYPE) {
+      else if (board[i].type === GOAL_TYPE.toString()) {
         tempCOLOR.set(
             selectedPoint === board[i] ? GOAL_COLOR : FLOOR_COLOR,
         );
       }
-      else if (board[i].type === START_TYPE) {
+      else if (board[i].type === START_TYPE.toString()) {
         tempCOLOR.set(
             selectedPoint === board[i] ? START_COLOR : FLOOR_COLOR,
         );
       }
-      else if (board[i].type === TEST_TYPE) {
+      else if (board[i].type === TEST_TYPE.toString()) {
         tempCOLOR.set(
             selectedPoint === board[i] ? TEST_COLOR : FLOOR_COLOR,
         );
       }
-      else if (board[i].type === FLOOR_TYPE) {
+      else if (board[i].type === FLOOR_TYPE.toString()) {
         tempCOLOR.set(
             selectedPoint === board[i] ? FLOOR_COLOR : FLOOR_COLOR,
         );
@@ -154,7 +154,10 @@ const _mouseClickHook = ({board, selectedPoint, onSelectPoint/* , useDrag  */}) 
   return {setDownPointerCoord, getClickTarget};
 };
 
-const Cells = ({board, layoutType, selectedPoint, onSelectPoint, groupingWallPoints, groupingPathPoints /*,  useDrag */}) => {
+
+
+
+const Cells = ({board, layoutType, mazeType, selectedPoint, onSelectPoint /*,  useDrag */}) => {
   const meshRef   = useRef();
   const numPoints = board.length;
 
@@ -162,25 +165,15 @@ const Cells = ({board, layoutType, selectedPoint, onSelectPoint, groupingWallPoi
   board[100].type = '_start_';
   board[1].type   = '_goal_';
 
+
   /*
    * Update the mesh matrixes based on the board state
    * with the goal of constructing a solvable maze.
    */
-  const generateMaze = (board, goal, start) => {
-    for (let i = 0; i < board.length; i++) {
-      if (board[i].type !== '_goal_' && board[i].type !== '_start_') {
-        switch (Math.random() % 2) {
-          case 0:
-            board[i].type = '_wall_';
-            break;
-          case 1:
-            board[i].type = '_path_';
-            break;
-        }
-      }
-    }
-    return board;
-  };
+    useEffect(() => {
+
+    })
+
 
   /*
    * Recursive backtracking algorithm to generate a solvable maze.
@@ -196,55 +189,6 @@ const Cells = ({board, layoutType, selectedPoint, onSelectPoint, groupingWallPoi
     return path;
   };
 
-
-  /*
-   * Quick selection test
-   */
-  const findCell = (x, y) => {
-    for (let i = 0; i < board.length; i++) {
-      if (board[i].x === x && board[i].y === y) {
-        board[i].type = '_test_';
-        return board[i];
-      }
-    }
-  };
-
-  // onMount(() => {
-  //   generateMaze(board, board[7769], board[3369]);
-  //   const path = backtrack(board, board[3369], board[7769]);
-  //   for (let i = 0; i < path.length; i++) {
-  //     path[i].type = '_path_';
-  //     initializeCellColor(path[i]);
-  //   }
-  // }, [board]);
-
-  const initializeCellColors = () => {
-    // const colorArray = new Float32Array(numPoints * 3);
-    for (let i = 0; i < board.length; ++i) {
-      switch (board[i].type) {
-        case WALL_TYPE:
-          tempCOLOR.set(WALL_COLOR);
-          break;
-        case PATH_TYPE:
-          tempCOLOR.set(PATH_COLOR);
-          break;
-        case GOAL_TYPE:
-          tempCOLOR.set(GOAL_COLOR);
-          break;
-        case START_TYPE:
-          tempCOLOR.set(START_COLOR);
-          break;
-        case TEST_TYPE:
-          tempCOLOR.set(TEST_COLOR);
-          break;
-
-        default:
-          tempCOLOR.set(FLOOR_COLOR);
-          break;
-      }
-      tempCOLOR.toArray(colorArray, i * 3);
-    }
-  };
 
   const {animationInProgress} = useAnimationHook({
     board,
@@ -265,17 +209,9 @@ const Cells = ({board, layoutType, selectedPoint, onSelectPoint, groupingWallPoi
     /* useDrag */
   });
 
-  // generateMaze(board);
-  // findCell(1, 1);
-  // initializeCellColors();
+
   const {colorAttrib, colorArray} = usePointColorsHook({board, selectedPoint});
 
-
-  // const { colorAttrib: groupingColorAttrib, colorArray: groupingColorArray } = useGroupColors({
-  //   board,
-  //   type: WALL_TYPE,
-  //   groupingWallPoints,
-  // });
 
   return (
       <>
@@ -286,13 +222,6 @@ const Cells = ({board, layoutType, selectedPoint, onSelectPoint, groupingWallPoi
             onClick = {getClickTarget}
             onPointerDown = {setDownPointerCoord}
         >
-          {/*<sphereBufferGeometry attach = "geometry" args = {[0.5, 0.5, 0.1, 32]}>*/}
-          {/*  <instancedBufferAttribute*/}
-          {/*      ref = {colorAttrib}*/}
-          {/*      attachObject = {['attributes', 'color']}*/}
-          {/*      args = {[colorArray, 3]}*/}
-          {/*  />*/}
-          {/*</sphereBufferGeometry>*/}
           <boxBufferGeometry attach = "geometry" args = {[1, 0.5, 1, 18]}>
             <instancedBufferAttribute
                 ref = {colorAttrib}
@@ -305,30 +234,6 @@ const Cells = ({board, layoutType, selectedPoint, onSelectPoint, groupingWallPoi
               vertexColors = {THREE.VertexColors}
           />
         </instancedMesh>
-        {/* {groupingWallPoints && (
-         <a.group
-         position = {animationInProgress.interpolate(() => [
-         groupingWallPoints.x,
-         groupingWallPoints.y,
-         groupingWallPoints.z,
-         ])}
-         >
-         <pointLight
-         distance = {10}
-         position = {[0, 0, 0.6]}
-         decay = {30}  // Fast defusion of light. Drop light intensity by half each second. (30 = 1/2^30). No directly select_color leaves the box.
-         intensity = {20}
-         color = {SELECTED_COLOR}
-         />
-         <pointLight
-         distance = {5}  // With decay: 1, distance = 5 boxes in each direction
-         position = {[0, 0.11, 0.151]}
-         decay = {1}   // Slow defusion of light
-         intensity = {20}
-         color = {BURN_COLOR}
-         />
-         </a.group>
-         )} */}
 
         {selectedPoint && (
             <a.group
@@ -357,5 +262,7 @@ const Cells = ({board, layoutType, selectedPoint, onSelectPoint, groupingWallPoi
       </>
   );
 };
+
+
 
 export default Cells;

@@ -1,10 +1,12 @@
 import {directions}                                         from './Directions';
 import {_FindCellVisitState, _FindCellTypeState, _FindCell} from './Tools';
+import {useEffect}                                          from 'react';
 
 
 
 
-export default function BinaryTreeCreation(board) {
+export function useBinaryTreeCreation({board, layoutType}) {
+  useEffect(() => {
   for (var i = 0; i < board.length; i++) {
     let direction = Math.floor(Math.random() * 4);
     // console.log(board[i]);
@@ -27,4 +29,14 @@ export default function BinaryTreeCreation(board) {
   }
   console.log('BinaryTreeCreation: ' + board.length);
   return board;
+  }, [board, layoutType === 'binaryTree' || layoutType === 'standard']);
+}
+
+
+function interpolateBinaryTree(board, progress) {
+  for (let i = 0; i < board.length; ++i) {
+    board[i].x = (1 - progress) * board[i].sourceX + progress * board[i].targetX;
+    board[i].y = (1 - progress) * board[i].sourceY + progress * board[i].targetY;
+    board[i].z = (1 - progress) * board[i].sourceZ + progress * board[i].targetZ;
+  }
 }

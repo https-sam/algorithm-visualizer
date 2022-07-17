@@ -29,22 +29,10 @@
 }
 
 .control-group-two {
-	bottom:         16px;
+	bottom:        16px;
 	padding-right: 10px;
 }
 
-/*.control-group-two {*/
-/*	position:      absolute;*/
-/*
-/*	z-index:       10;*/
-/*	background:    rgba(114, 108, 108, 0.9);*/
-/*	padding:       16px;*/
-/*	color:         #fff;*/
-/*	width:         fit-content;*/
-/*	block-size:    fit-content;*/
-/*	width:         -moz-fit-content;*/
-/*	border-radius: 16px;*/
-/*}*/
 
 .control-header {
 	text-align:     center;
@@ -89,6 +77,8 @@
 	text-transform: uppercase;
 	letter-spacing: 1px;
 	cursor:         pointer;
+	font-size:      10px;
+
 }
 
 .control-group-one > button.active {
@@ -114,10 +104,34 @@
 	text-transform: uppercase;
 	letter-spacing: 1px;
 	cursor:         pointer;
+	font-size:      10px;
 }
 
+.maze-toggle-group {
+	width:           100%;
+	display:         flex;
+	justify-content: center;
+}
+
+.maze-toggle {
+	width:      30%;
+	height:     fit-content;
+	text-align: center;
+	background: #222;
+	color:      #ccc;
+	cursor:     pointer;
+	border:     none;
+	padding:    1px;
+	margin:     2px;
+}
+
+.maze-toggle.active {
+	background-color: #ff003b;
+	color:            #222;
+}
+
+
 .control-group-two > button.active {
-	font-weight:      bold;
 	background-color: #333;
 	color:            #ff0;
 }

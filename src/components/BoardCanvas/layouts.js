@@ -1,7 +1,7 @@
 import * as React          from 'react';
 import {useEffect, useRef} from 'react';
-import {useSpring}         from 'react-spring/three';
-import BinaryTreeCreation  from '../Algorithms/Maze/Generation/BinaryTreeCreation';
+import {useSpring}                                    from 'react-spring/three';
+import {useBinaryTreeCreation} from '../Algorithms/Maze/Generation/BinaryTreeCreation';
 
 
 /*
@@ -61,12 +61,8 @@ function interpolateSourceTarget(board, progress) {
 }
 
 
-export const useGenerateMaze = ({board, layoutType}) => {
-  useEffect(() => {
-
-    BinaryTreeCreation(board);
-
-  }, [board]);
+export function useGenerateMaze ({board, layoutType, onFrame}, Strategy){
+    useBinaryTreeCreation(board);
 }
 
 export function useAnimationHook({board, layoutType, onFrame}) {
