@@ -29,7 +29,8 @@ class MainCanvas extends Component {
   componentDidMount() {
     const darkTheme = localStorage.getItem('theme') === "dark";
     const options = JSON.parse(localStorage.getItem('options'));
-
+    
+    // SG 07/16/2022 20:03  if option not provided and theme is dark, set default bar colro to white 
     if(darkTheme && !options?.defaultBarColor) { 
       this.setState({options: {...this.state.options, defaultBarColor: 'white'}})
     }

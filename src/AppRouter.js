@@ -16,7 +16,7 @@ function AppRouter() {
       <Router>
         <Routes>
           <Route exact path = "/"
-                 element = {<SplashScreen/>}/>
+                 element = {<MainSortingCanvas/>}/>
           <Route path = "/about"
                  element = {<AboutScreen/>}/>
           <Route path = "/contact"

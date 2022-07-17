@@ -23,7 +23,6 @@ class HeapSort {
     // SG 07/15/2022 14:06  making sure that the last bar - when n = 1, is not colored
     if(n > 2) {
       DOM[currentBar].style.backgroundColor = this.options.processingColor;
-
     }
 
     if(left < n && array[left] > array[max]) {

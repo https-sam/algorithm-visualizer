@@ -17,7 +17,7 @@ class InputField extends Component {
     this.name         = props.name;
     this.Strategy = new Strategy();
     this.state = {
-      algorithm:  localStorage.getItem("algorithm") || 'Radix',
+      algorithm:  localStorage.getItem("algorithm") || 'Heap', // SG 07/16/2022 20:00  defalt algorithm set to heap
     }
   }
 

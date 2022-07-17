@@ -22,7 +22,6 @@ class Animation {
     for (const timeout of Animation.threads) {
       await this.clearTimeout(timeout);
     }
-    Animation.myAudioContext = new AudioContext();
   }
 
 
@@ -36,18 +35,17 @@ class Animation {
 
   static swap(i, k) {
     let unSortedBars                       = document.querySelectorAll('.array-bars');
-    var oldHeight                              = unSortedBars[k].style.height;
+    var oldHeight                          = unSortedBars[k].style.height;
     unSortedBars[k].style.height = unSortedBars[i].style.height;
     unSortedBars[i].style.height           = oldHeight;
 
     var oldID                    = unSortedBars[k].id;
     unSortedBars[k].id = unSortedBars[i].id;
-    unSortedBars[i].id           = oldID; // SG 07/11/2022 09:27  temp1
+    unSortedBars[i].id           = oldID;
 
     var oldContent = unSortedBars[i].getAttribute("data");
     unSortedBars[i].setAttribute("data", unSortedBars[k].getAttribute("data"));
-    unSortedBars[k].setAttribute("data", oldContent); // SG 07/11/2022 09:27  temp1
-
+    unSortedBars[k].setAttribute("data", oldContent); 
   }
 
 
@@ -55,7 +53,7 @@ class Animation {
   static changeHeight(i, value, oldIndex) {
     let unSortedBars                       = document.querySelectorAll('.array-bars');    
     unSortedBars[i].style.height           = value+'px';
-    unSortedBars[i].id           = value; // SG 07/11/2022 09:27  temp1
+    unSortedBars[i].id           = value;
     unSortedBars[i].setAttribute("data", unSortedBars[oldIndex].getAttribute("data"));
   }
 
@@ -67,7 +65,6 @@ class Animation {
         resolve();
       }, delay)));
     }
-
   }
 
   static getTimeouts() {
@@ -85,7 +82,6 @@ class Animation {
     const delay = options.delay;
     const processingColor = options.processingColor;
     const defaultColor = options.sortedBarColor;
-
 
     for (let i = 0; i < animation.length; i++) {
       const arrayBars = document.querySelectorAll('.array-bars');
