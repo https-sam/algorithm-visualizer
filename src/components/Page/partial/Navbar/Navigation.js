@@ -76,7 +76,7 @@ function Navigation() {
               </Link>
               {dropdown && <Dropdown/>}
             </li>
-            <li className = {'nav-item'}>
+            {/* <li className = {'nav-item'}>
               <Link
                   to = "/about"
                   className = {'nav-links dark:text-white dark:hover:text-lightDark'}
@@ -84,8 +84,8 @@ function Navigation() {
               >
                 About
               </Link>
-            </li>
-            <li className = {'nav-item'}>
+            </li> */}
+            {/* <li className = {'nav-item'}>
               <Link
                   to = "/contact"
                   className = {'nav-links dark:text-white dark:hover:text-lightDark'}
@@ -93,7 +93,7 @@ function Navigation() {
               >
                 Contact Us
               </Link>
-            </li>
+            </li> */}
           </ul>
           <ThemeToggle/>
         </nav>

@@ -23,7 +23,7 @@ class InputField extends Component {
 
   displayErrorMessage() {
     if(this.props.InputHandler.state.inputArrayLength < 2) {
-      document.getElementById('sort-canvas-error-msg').innerHTML ="Array size shuold at least be 2" 
+      document.getElementById('sort-canvas-error-msg').innerHTML ="Array size should at least be 2" 
       return false;   
     }
 
@@ -82,7 +82,7 @@ class InputField extends Component {
               <AlgorithmSelection strategy={this.Strategy} options={this}/>
               <div onClick={async () => { 
                   if(generatedArray.length === 0){
-                    document.getElementById('sort-canvas-error-msg').innerHTML ="Please generate an array first." 
+                    document.getElementById('sort-canvas-error-msg').innerHTML ="Please generate an array first" 
                   } else {
                     this.scrollDown();
                     this.Strategy.setOptions = options;
