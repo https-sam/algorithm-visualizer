@@ -238,6 +238,16 @@ const Cells = ({board, layoutType, mazeType, selectedPoint, onSelectPoint /*,  u
                 args = {[colorArray, 3]}
             />
           </boxBufferGeometry>
+          <boxBufferGeometry
+              attach = "geometry"
+              args = {[.9, .4, 0.9, 18]}
+              color = "black"
+          >
+            <instancedBufferAttribute
+                attachObject = {['attributes', 'color']}
+                args = {[colorArray, 3]}
+            />
+          </boxBufferGeometry>
           {/* <meshStandardMaterial */}
           {/*     attach = "material" */}
           {/*     color = "black" */}
