@@ -6,7 +6,7 @@ import {_FindCellVisitState, _FindCellTypeState, _FindCell} from './Tools';
 
 export function BinaryTreeCreation(board) {
   for (var i = 0; i < board.length; i++) {
-    let direction = Math.floor(Math.random() * 4);
+    let direction = Math.random() * 4;
     // console.log(board[i]);
 
     // console.log(direction);

@@ -3,6 +3,7 @@ import {useEffect, useRef, useState} from 'react';
 import {useSpring}                   from 'react-spring/three';
 import {BinaryTreeCreation}          from '../Algorithms/Maze/Generation/BinaryTreeCreation';
 import board                         from './Board';
+import {directions}                  from '../Algorithms/Maze/Generation/Directions';
 
 
 
@@ -180,6 +181,10 @@ function BinaryTreeMaze(board) {
 
   for (let i = 0; i < numPoints; ++i) {
     const node = board[i];
+    let direction = Math.random() * 4;
+
+    let xcord  = board[i].x + directions[direction].x;
+    let ycord  = board[i].y + directions[direction].y;
     const col   = (i % numCols) - numCols / 2;
     const row   = Math.floor(i / numCols) - numCols / 2;
 

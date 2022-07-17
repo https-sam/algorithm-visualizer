@@ -248,14 +248,6 @@ const Cells = ({board, layoutType, mazeType, selectedPoint, onSelectPoint /*,  u
                 args = {[colorArray, 3]}
             />
           </boxBufferGeometry>
-          {/* <meshStandardMaterial */}
-          {/*     attach = "material" */}
-          {/*     color = "black" */}
-          {/*     wireframe */}
-          {/*     wireframeLinewidth={5} */}
-          {/*     wireframeLineheight={5} */}
-          {/*     // wireframeLinedepth={1} */}
-          {/* /> */}
           <meshStandardMaterial
               attach = "material"
               vertexColors = {THREE.VertexColors}
