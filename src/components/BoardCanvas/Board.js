@@ -5,7 +5,6 @@ import Cell                                      from './Cells';
 import {useImperativeHandle, useRef, forwardRef} from 'react';
 import {TrackballControls}                       from 'three/examples/jsm/controls/TrackballControls';
 import OrbitControls                             from './OrbitControls';
-import {useGenerateMaze}                         from './layouts';
 // import create                                    from 'zustand';
 
 
@@ -33,7 +32,7 @@ export const Board = ({board, layoutType, selectedPoint, onSelectPoint, mazeType
           {(layoutType === 'standard') ?
            <boxBufferGeometry attach = "geometry" args = {[110, 110, -10]}/>
                                        :
-           <boxBufferGeometry attach = "geometry" args = {[180, 180, -10]}/>
+           <boxBufferGeometry attach = "geometry" args = {[150, 150, -10]}/>
           }
           <meshBasicMaterial attach = "material" color = "black"/>
         </mesh>

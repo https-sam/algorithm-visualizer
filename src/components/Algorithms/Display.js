@@ -18,13 +18,13 @@ import {Strategy}                           from '../Strategy/Strategy';
  */
 export default function Display() {
   const [layoutType, setLayout]                     = useState('standard');
-  const [mazeType, setMazeType]                    = useState("_BinaryTree_");
+  const [mazeType, setMazeType]                    = useState("none");
   const [selectedPoint, setSelectedPoint]           = useState(null);
   const [selectedGoalPoint, setSelectedGoalPoint]   = useState(null);
   const [selectedStartPoint, setSelectedStartPoint] = useState(null);
   // const board                                       = new Array(10000).fill(0).map(
   const board                                       = new Array(3844).fill(0).map(
-      (i, id, type: string = '_wall_', visited: boolean = false) => ({id, type, visited}));
+      (i, id, type: string = "_wall_", visited: boolean = false) => ({id, type, visited}));
 
   const boardRef = useRef(); // Mutable(Persistant) board reference object.
 
@@ -66,14 +66,14 @@ export default function Display() {
                 onClick = {() => setLayout('standard')}
                 className = {layoutType === 'standard' ? 'active' : undefined}
             >
-              Grid
+              Standard Grid
             </button>
-            <button
-                onClick = {() => setLayout('circular')}
-                className = {layoutType === 'circular' ? 'active' : undefined}
-            >
-              Circular
-            </button>
+            {/* <button */}
+            {/*     onClick = {() => setLayout('circular')} */}
+            {/*     className = {layoutType === 'circular' ? 'active' : undefined} */}
+            {/* > */}
+            {/*   Circular */}
+            {/* </button> */}
 
             <button className = "reset-button" onClick = {handleResetCamera}>
               View Reset
@@ -89,7 +89,7 @@ export default function Display() {
                       setMazeType('_BinaryTree_');
                     }
                   }}
-                  className = {`maze-toggle + ${mazeType !== 'none' ? 'active' : undefined}`}
+                  className = {`maze-toggle ${mazeType !== 'none' ? 'active' : undefined}`}
               >
                 ON
               </button>
