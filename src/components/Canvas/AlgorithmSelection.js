@@ -72,18 +72,6 @@ function AlgorithmSelection({strategy, options}) {
         >
           <p className={`${currentAlgo === 'Heap' && 'text-black group-hover:text-white'}`}>Heap Sort</p>
         </div>
-        
-        <div className={`${currentAlgo === 'Merge' && 'bg-gray-200'} group cursor-pointer w-full hover:bg-gray-700 font-semibold text-white h-[2.8em] flex items-center justify-start pl-4`}
-          onClick={() => {
-            setCurrentAlgo('Merge');
-            options.setState({algorithm: "Merge"});
-            strategy.setStrategy = Merge;
-            localStorage.setItem("algorithm", "Merge");
-            setShowDropdown(!showDropdown)
-          }}
-        >
-          <p className={`${currentAlgo === 'Merge' && 'text-black group-hover:text-white'}`}>Merge Sort</p>
-        </div>
 
         <div className={`${currentAlgo === 'Quick' && 'bg-gray-200'} group cursor-pointer w-full hover:bg-gray-700 font-semibold text-white h-[2.8em] flex items-center justify-start pl-4`}
           onClick={() => {
@@ -96,6 +84,19 @@ function AlgorithmSelection({strategy, options}) {
         >
           <p className={`${currentAlgo === 'Quick' && 'text-black group-hover:text-white'}`}>Quick Sort</p>
         </div>
+        
+        <div className={`${currentAlgo === 'Merge' && 'bg-gray-200'} group cursor-pointer w-full hover:bg-gray-700 font-semibold text-white h-[2.8em] flex items-center justify-start pl-4`}
+          onClick={() => {
+            setCurrentAlgo('Merge');
+            options.setState({algorithm: "Merge"});
+            strategy.setStrategy = Merge;
+            localStorage.setItem("algorithm", "Merge");
+            setShowDropdown(!showDropdown)
+          }}
+        >
+          <p className={`${currentAlgo === 'Merge' && 'text-black group-hover:text-white'}`}>Merge Sort</p>
+        </div>
+ 
 
         <div className={`${currentAlgo === 'Shell' && 'bg-gray-200'} group cursor-pointer w-full hover:bg-gray-700 font-semibold text-white h-[2.8em] flex items-center justify-start pl-4`}
           onClick={() => {
