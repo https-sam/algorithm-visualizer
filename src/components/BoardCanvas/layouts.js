@@ -1,8 +1,13 @@
-import * as React          from 'react';
-import {useEffect, useRef} from 'react';
-import {useSpring}                              from 'react-spring/three';
-import {BinaryTreeCreation} from '../Algorithms/Maze/Generation/BinaryTreeCreation';
+import * as React                    from 'react';
+import {useEffect, useRef, useState} from 'react';
+import {useSpring}                   from 'react-spring/three';
+import {BinaryTreeCreation}          from '../Algorithms/Maze/Generation/BinaryTreeCreation';
+import board                         from './Board';
 
+
+
+// const [mazeState, setMazeState] = useState(null);
+// const [mazeChange, setMazeChange] = useState(null);
 
 /*
  * Board type selector hook.
@@ -100,7 +105,7 @@ function interpolateSourceTarget(board, progress) {
 
 function interpolateCellType(board, progress) {
   for (let i = 0; i < board.length; ++i) {
-    board[i].type = (1 - progress) * board[i].sourceType + progress * board[i].targetType;
+    board[i].type = board[i].targetType;
   }
 }
 

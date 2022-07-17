@@ -77,36 +77,32 @@ const usePointColorsHook = ({board, selectedPoint}) => {
   useEffect(() => {
     for (let i = 0; i < board.length; ++i) {
       switch (board[i].type) {
-        case WALL_TYPE:
+        case "_wall_":
           tempCOLOR.set(
               selectedPoint === board[i] ? WALL_COLOR : FLOOR_COLOR,
           );
           break;
-        case PATH_TYPE:
+        case "_path_":
           tempCOLOR.set(
               selectedPoint === board[i] ? PATH_COLOR : FLOOR_COLOR,
           );
           break;
-        case GOAL_TYPE:
+        case "_goal_":
           tempCOLOR.set(
-              selectedPoint === board[i] ? GOAL_COLOR : WALL_COLOR,
+              selectedPoint === board[i] ? GOAL_COLOR : FLOOR_COLOR,
           );
           break;
-        case START_TYPE:
+        case "_start_":
           tempCOLOR.set(
               selectedPoint === board[i] ? START_COLOR : FLOOR_COLOR,
           );
           break;
-        case TEST_TYPE:
+        case "_test_":
           tempCOLOR.set(
               selectedPoint === board[i] ? TEST_COLOR : FLOOR_COLOR,
           );
           break;
-        case FLOOR_TYPE:
-          tempCOLOR.set(
-              selectedPoint === board[i] ? FLOOR_COLOR : FLOOR_COLOR,
-          );
-          break;
+        case "_floor_":
         default:
           tempCOLOR.set(WALL_COLOR);
           break;
