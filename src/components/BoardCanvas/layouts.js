@@ -63,7 +63,7 @@ function useTargetLayoutHook({board, layoutType}) {
       board[i].sourceX    = board[i].x || 0;
       board[i].sourceY    = board[i].y || 0;
       board[i].sourceZ    = board[i].z || 0;
-      board[i].sourceType = board[i].type || "_wall_";
+      board[i].sourceType = board[i].type || "_floor_";
     }
   }, [board, layoutType]);
 
@@ -167,13 +167,28 @@ function standardLayout(board) {
     const col   = (i % numCols) - numCols / 2;
     const row   = Math.floor(i / numCols) - numCols / 2;
 
-    node.x = col * 1.05;
-    node.y = row * 1.05;
+    node.x = col;
+    node.y = row;
     node.z = 0;
-    node.type = board[i].type || '_wall_';
+    node.type = board[i].type || '_floor_';
   }
 }
 
+function BinaryTreeMaze(board) {
+  const numPoints = board.length;
+  const numCols   = Math.ceil(Math.sqrt(numPoints));
+
+  for (let i = 0; i < numPoints; ++i) {
+    const node = board[i];
+    const col   = (i % numCols) - numCols / 2;
+    const row   = Math.floor(i / numCols) - numCols / 2;
+
+    node.x = col;
+    node.y = row;
+    node.z = 0;
+    node.type = board[i].type;
+  }
+}
 
 function circularLayout(board) {
   let theta = 0;
@@ -185,6 +200,6 @@ function circularLayout(board) {
     node.x = radius * Math.cos(theta);
     node.y = radius * Math.sin(theta);
     node.z = 0;
-    node.type = board[i].type || '_wall_';
+    node.type = board[i].type;
   }
 }

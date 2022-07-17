@@ -17,9 +17,9 @@ export const Board = ({board, layoutType, selectedPoint, onSelectPoint, mazeType
       return controlsRef.current.resetCamera();
     },
 
-    generateMaze: (Strategy) => {
+    // generateMaze: (Strategy) => {
       // return useGenerateMaze({board, layoutType, selectedPoint, onSelectPoint}, Strategy);
-    },
+    // },
   }));
 
 

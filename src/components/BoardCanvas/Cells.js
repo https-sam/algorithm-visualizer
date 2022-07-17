@@ -1,9 +1,9 @@
 'use strict';
 
-import * as React                          from 'react';
-import {useEffect, useRef, useMemo}        from 'react';
-import * as THREE                          from 'three';
-import {a}                                                       from 'react-spring/three';
+import * as React                               from 'react';
+import {useEffect, useRef, useMemo}             from 'react';
+import * as THREE                               from 'three';
+import {a}                                      from 'react-spring/three';
 import {useAnimationHook, useGeneratedMazeHook} from './layouts';
 
 
@@ -77,34 +77,24 @@ const usePointColorsHook = ({board, selectedPoint}) => {
   useEffect(() => {
     for (let i = 0; i < board.length; ++i) {
       switch (board[i].type) {
-        case "_wall_":
-          tempCOLOR.set(
-              selectedPoint === board[i] ? WALL_COLOR : FLOOR_COLOR,
-          );
-          break;
-        case "_path_":
-          tempCOLOR.set(
-              selectedPoint === board[i] ? PATH_COLOR : FLOOR_COLOR,
-          );
-          break;
-        case "_goal_":
-          tempCOLOR.set(
-              selectedPoint === board[i] ? GOAL_COLOR : FLOOR_COLOR,
-          );
-          break;
-        case "_start_":
-          tempCOLOR.set(
-              selectedPoint === board[i] ? START_COLOR : FLOOR_COLOR,
-          );
-          break;
-        case "_test_":
-          tempCOLOR.set(
-              selectedPoint === board[i] ? TEST_COLOR : FLOOR_COLOR,
-          );
-          break;
-        case "_floor_":
-        default:
+        case '_wall_':
           tempCOLOR.set(WALL_COLOR);
+          break;
+        case '_path_':
+          tempCOLOR.set(PATH_COLOR);
+          break;
+        case '_goal_':
+          tempCOLOR.set(GOAL_COLOR);
+          break;
+        case '_start_':
+          tempCOLOR.set(START_COLOR);
+          break;
+        case '_test_':
+          tempCOLOR.set(TEST_COLOR);
+          break;
+        case '_floor_':
+        default:
+          tempCOLOR.set(FLOOR_COLOR);
           break;
       }
       tempCOLOR.toArray(colorArray, i * 3);
@@ -178,9 +168,9 @@ const Cells = ({board, layoutType, mazeType, selectedPoint, onSelectPoint /*,  u
    * Update the mesh matrixes based on the board state
    * with the goal of constructing a solvable maze.
    */
-    // useEffect(() => {
-    //
-    // })
+  // useEffect(() => {
+  //
+  // })
 
 
   /*
@@ -248,6 +238,14 @@ const Cells = ({board, layoutType, mazeType, selectedPoint, onSelectPoint /*,  u
                 args = {[colorArray, 3]}
             />
           </boxBufferGeometry>
+          {/* <meshStandardMaterial */}
+          {/*     attach = "material" */}
+          {/*     color = "black" */}
+          {/*     wireframe */}
+          {/*     wireframeLinewidth={5} */}
+          {/*     wireframeLineheight={5} */}
+          {/*     // wireframeLinedepth={1} */}
+          {/* /> */}
           <meshStandardMaterial
               attach = "material"
               vertexColors = {THREE.VertexColors}

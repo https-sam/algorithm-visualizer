@@ -24,7 +24,7 @@ export default function Display() {
   const [selectedStartPoint, setSelectedStartPoint] = useState(null);
   // const board                                       = new Array(10000).fill(0).map(
   const board                                       = new Array(3844).fill(0).map(
-      (i, id, type: string = "_wall_", visited: boolean = false) => ({id, type, visited}));
+      (i, id, type: String = '_floor_', visited: Boolean = false) => ({id, type, visited}));
 
   const boardRef = useRef(); // Mutable(Persistant) board reference object.
 
