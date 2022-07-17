@@ -80,7 +80,7 @@ class InputField extends Component {
                 className={`${this.state.animating && 'cursor-not-allowed'} outline-none placeholder:text-[.95em] h-[2.6em] w-[50%] text-[1em] bg-gray-200 px-2 dark:bg-gray-600 text-gray-700 dark:text-gray-100 rounded-md text-center font-semibold sm:w-100`}
                 maximum={InputHandler.getAllowedMaxInputSize()}
               />
-              {this.state.animating ? loadingComponent("10em", "ml-3") : <button onClick={() => { 
+              {this.state.animating ? loadingComponent("3.2em", "ml-3") : <button onClick={() => { 
                   if(this.scrollDown()) {
                     this.props.InputHandler.setState({generatedArray: InputHandler.handleInputRequest(inputArrayLength)});
                   }
