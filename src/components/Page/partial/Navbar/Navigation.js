@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
 import {Link}            from 'react-router-dom';
+import {Button}          from '../GenericButton/Button';
+import Dropdown          from '../../../../Utility/Dropdown/Dropdown';
+import ThemeToggle       from './ThemeToggle';
 import './navbar.css';
 
-import {Button} from '../GenericButton/Button';
-import Dropdown from '../../../../Utility/Dropdown/Dropdown';
-import ThemeToggle from './ThemeToggle';
 
 
 
@@ -44,12 +44,12 @@ function Navigation({themeToggle}) {
 
   return (
       <>
-        <nav id="navbar" className = {`navbar dark:bg-lightDark`}>
+        <nav id = "navbar" className = {`navbar dark:bg-lightDark`}>
           <Link to = "/"
                 className = {`navbar-logo dark:text-white`}
                 onClick = {closeMobileMenu}
-                id="navbar-title"
-                >
+                id = "navbar-title"
+          >
             Algo Visualizer
             <i className = {'fab fa-firstdraft'}/>
           </Link>
@@ -61,7 +61,7 @@ function Navigation({themeToggle}) {
               <Link to = "/"
                     className = {'nav-links dark:text-white dark:hover:text-lightDark'}
                     onClick = {closeMobileMenu}
-                    >
+              >
                 Home
               </Link>
             </li>
@@ -81,23 +81,23 @@ function Navigation({themeToggle}) {
               {dropdown && <Dropdown/>}
             </li>
             {/* <li className = {'nav-item'}>
-              <Link
-                  to = "/about"
-                  className = {'nav-links dark:text-white dark:hover:text-lightDark'}
-                  onClick = {closeMobileMenu}
-              >
-                About
-              </Link>
-            </li> */}
+             <Link
+             to = "/about"
+             className = {'nav-links dark:text-white dark:hover:text-lightDark'}
+             onClick = {closeMobileMenu}
+             >
+             About
+             </Link>
+             </li> */}
             {/* <li className = {'nav-item'}>
-              <Link
-                  to = "/contact"
-                  className = {'nav-links dark:text-white dark:hover:text-lightDark'}
-                  onClick = {closeMobileMenu}
-              >
-                Contact Us
-              </Link>
-            </li> */}
+             <Link
+             to = "/contact"
+             className = {'nav-links dark:text-white dark:hover:text-lightDark'}
+             onClick = {closeMobileMenu}
+             >
+             Contact Us
+             </Link>
+             </li> */}
           </ul>
           {themeToggle && <ThemeToggle/>}
         </nav>
