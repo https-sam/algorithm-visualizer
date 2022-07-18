@@ -65,7 +65,7 @@ class InputField extends Component {
     return (
       <div className="flex flex-col dark:bg-darkGray bg-gray-100 shadow-lg shadow-gray-200" id="input-field-sort">
 
-        <div className={`flex items-center justify-center py-4 md:py-1 w-sreen gap-4 flex-wrap ${this.name[0] + ' '}`}>   
+        <div className={`flex items-center justify-center py-4 md:py-1 w-sreen gap-4 flex-wrap`}>   
 
           <div className={`flex justify-center items-center h-full sm:mb-0`}>
               <input placeholder={`Array size (MAX ${InputHandler.getAllowedMaxInputSize()})`} value={inputArrayLength === 0 ? '' : inputArrayLength} onChange={(e) => {

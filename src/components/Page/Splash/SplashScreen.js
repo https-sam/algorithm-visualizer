@@ -38,7 +38,7 @@ const SplashScreen = () => {
 
 
           <div className="hover:shadow-custom-md-lightBlue cursor-pointer font-semibold  text-white font-spline bg-lightBlue2 p-[.9em] text-[1.1em] rounded-md"
-          onClick={() => navigate('/sorting-visualizer')}
+          onClick={() => navigate('/dashboard-two')}
           >Path Finding Algorithms</div>
           </div>
         </div>
