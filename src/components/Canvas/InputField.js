@@ -57,7 +57,7 @@ class InputField extends Component {
     const loadingComponent = (width, margin) => {
       return (
         <div className={`${margin} cursor-not-allowed relative w-[${width}] h-[2.6em] p-3 group rounded-lg flex dark:bg-lightBlue2 bg-lightGreen`}>
-          <Loading className="fill-white absolute scale-[.4] top-[50%] left-[50%] right-[50%] -translate-x-[50%] -translate-y-[50%]"/>
+          <Loading className="fill-white absolute scale-[.8] top-[50%] left-[50%] right-[50%] -translate-x-[50%] -translate-y-[50%]"/>
         </div>
       )
     }
