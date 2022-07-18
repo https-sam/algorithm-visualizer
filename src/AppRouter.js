@@ -7,8 +7,8 @@ import {
 import SplashScreen      from './components/Page/Splash/SplashScreen';
 import MainSortingCanvas from './components/Canvas/MainSortingCanvas';
 import AboutScreen       from './components/Page/About/AboutScreen';
-import ContactScreen     from './components/Page/Contact/ContactScreen';
-import Display           from './components/Algorithms/Display';
+import ContactScreen from './components/Page/Contact/ContactScreen';
+import Display       from './components/BoardCanvas/Display';
 
 
 
