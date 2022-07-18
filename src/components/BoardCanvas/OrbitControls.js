@@ -57,9 +57,9 @@ const OrbitControls = ({selectedPoint, onSelectedPoint}, ref) => {
      * Function to reset the camera to the default position.
      */
     resetCamera: () => {
-      camera.position.set(0, -10, 50);  // reset position
-      camera.lookAt(0, 0, 0);           // reset rotation
-      this.setTarget(null);     // reset target
+      camera.position.set(0, -10, 50);      // reset position
+      camera.lookAt(0, 0, 0);            // reset rotation
+      this.setTarget(null);                    // reset target
     },
 
 
@@ -112,108 +112,3 @@ const OrbitControls = ({selectedPoint, onSelectedPoint}, ref) => {
 export default forwardRef(OrbitControls);
 
 
-
-
-/*
- const usePointColorsHook = ({board, selectedPoint}) => {
- const numPoints   = board.length;
- const colorAttrib = useRef();
- const colorArray  = useMemo(() => new Float32Array(numPoints * 3), [
- numPoints,
- ]);
- useEffect((prev) => {
- for (let i = 0; i < board.length; ++i) {
- if (board[i].type === WALL_TYPE) {
- tempCOLOR.set(
- selectedPoint === board[i] ? WALL_COLOR : FLOOR_COLOR,
- );
- }
- else if (board[i].type === PATH_TYPE) {
- tempCOLOR.set(
- selectedPoint === board[i] ? PATH_COLOR : FLOOR_COLOR,
- );
- }
- else if (board[i].type === GOAL_TYPE) {
- tempCOLOR.set(
- selectedPoint === board[i] ? GOAL_COLOR : FLOOR_COLOR,
- );
- }
- else if (board[i].type === START_TYPE) {
- tempCOLOR.set(
- selectedPoint === board[i] ? START_COLOR : FLOOR_COLOR,
- );
- }
- else if (board[i].type === TEST_TYPE) {
- tempCOLOR.set(
- selectedPoint === board[i] ? TEST_COLOR : FLOOR_COLOR,
- );
- }
- else if (board[i].type === FLOOR_TYPE) {
- tempCOLOR.set(
- selectedPoint === board[i] ? FLOOR_COLOR : FLOOR_COLOR,
- );
- tempCOLOR.set(FLOOR_COLOR);
- }
- else if (board[i].type === null) {
- tempCOLOR.set(FLOOR_COLOR);
- }
- else {
- tempCOLOR.set(FLOOR_COLOR);
- }
- tempCOLOR.toArray(colorArray, i * 3);
- }
- colorAttrib.current.needsUpdate = true;
- }, [board, selectedPoint, colorArray]);
-
- return {colorAttrib, colorArray};
- };
-
- const _mouseClickHook = ({board, selectedPoint, onSelectPoint}) => {
-  const onMouseDownHandler = useRef([0, 0]);   // Record and maintain the handler for the mouse down event
-  const onMouseUpHandler   = useRef([0, 0]);   // Record and maintain the handler for the mouse up event
-  const onMouseMoveHandler = useRef([0, 0]);   // Record and maintain the handler for the mouse move event
-
-  //  Pointer Click Down Position
-  const setDownPointerCoord = event => {
-    onMouseDownHandler.current[0] = event.clientX;  // Mouseclick x coordinate
-    onMouseDownHandler.current[1] = event.clientY;  // Mouseclick y coordinate
-  };
-
-  //
-  //If the mouse has clicked on a point, if that point is occupied by an
-  //interactable object, gather its reference.
-  //
-  const getClickTarget = event => {
-    const {instanceId, clientX, clientY} = event;
-    const travelDistance                 = Math.sqrt(
-        Math.pow(onMouseDownHandler.current[0] - clientX, 2)
-        +
-        Math.pow(onMouseDownHandler.current[1] - clientY, 2),
-    );
-
-    // Prevents repeat calls to click handler unless drag selection is initiated.
-    if (travelDistance > 50) {
-      if (!useDrag) {
-     }
-    }
-
-    const point = board[instanceId];
-    console.log('Point clicked: ', point);
-    // toggle the point
-    if (point === selectedPoint) {
-      onSelectPoint(null);
-    }
-    else {
-      onSelectPoint(point);
-    }
-  };
-
-  // const onMouseMove = (e) => {
-  //   const dx = e.clientX - originalPosition.clientX
-  //   const dy = e.clientY - originalPosition.clientY
-  //   onMouseMoveHandler.current(e, { dx, dy })
-  // }
-
-  return {setDownPointerCoord, getClickTarget};
-};
-*/

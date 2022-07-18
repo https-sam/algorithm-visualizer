@@ -5,7 +5,6 @@ import Cell                                      from './Cells';
 import {useImperativeHandle, useRef, forwardRef} from 'react';
 import {TrackballControls}                       from 'three/examples/jsm/controls/TrackballControls';
 import OrbitControls                             from './OrbitControls';
-// import create                                    from 'zustand';
 
 
 export const Board = ({board, layoutType, selectedPoint, onSelectPoint, mazeType}, ref) => {

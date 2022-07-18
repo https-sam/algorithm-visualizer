@@ -4,7 +4,7 @@ import * as React                               from 'react';
 import {useEffect, useRef, useMemo}             from 'react';
 import * as THREE                               from 'three';
 import {a}                                      from 'react-spring/three';
-import {useAnimationHook, useGeneratedMazeHook} from './layouts';
+import {useAnimationHook, useGeneratedMazeHook} from './Layouts';
 
 
 
