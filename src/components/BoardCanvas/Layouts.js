@@ -18,18 +18,17 @@ import {_FindCell}                   from '../Algorithms/Maze/Generation/Tools';
  */
 export const useLayoutHook = ({board, layoutType, mazeType}) => {
   useEffect(() => {
-    if (mazeType === "none") {
-      switch (layoutType) {
-        case 'circular':
-          circularLayout(board);
-          break;
-        case 'standard':
-        default: {
-          standardLayout(board);
-        }
+    // if (mazeType === "none") {
+    switch (layoutType) {
+      case 'circular':
+        circularLayout(board);
+        break;
+      case 'standard':
+      default: {
+        standardLayout(board);
       }
+        // }
     }
-    // GridState.setGrid(layoutType);
   }, [board, layoutType]);
 
   useEffect(() => {

@@ -1,9 +1,9 @@
 import React, {Component, useState, useRef, useEffect} from 'react';
-import Board                                from '../BoardCanvas/Board';
-import Navigation                           from '../Page/partial/Navbar/Navigation';
+import Board                                           from './Board';
+import Navigation                                      from '../Page/partial/Navbar/Navigation';
 import './display.css';
-import {useBinaryTreeCreation}              from './Maze/Generation/BinaryTreeCreation';
-import {Strategy}                           from '../Strategy/Strategy';
+// import {useBinaryTreeCreation}                         from '../Algorithms/Maze/Generation/BinaryTreeCreation';
+import {Strategy}                                      from '../Strategy/Strategy';
 
 /*
 
