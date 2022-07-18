@@ -4,16 +4,16 @@ import {_FindCellVisitState, _FindCellTypeState, _FindCell} from './Tools';
 
 
 
-export function BinaryTreeCreation(board) {
-  for (var i = 0; i < board.length; i++) {
+export function BinaryTreeCreation({board}) {
+  for (var i = 0; i < board.i.length; i++) {
     let direction = Math.random() * 4;
     // console.log(board[i]);
 
     // console.log(direction);
     // console.log(directions[direction].x);
     // console.log(board[i].x + directions[direction].x);
-    let xcord  = board[i].x + directions[direction].x;
-    let ycord  = board[i].y + directions[direction].y;
+    let xcord  = board[i].i.x + directions[direction].x;
+    let ycord  = board[i].i.y + directions[direction].y;
     const cell = board.find(item => Math.floor(item.x) === Math.floor(xcord) && Math.floor(item.y) === Math.floor(ycord));
     // console.log(cell);
 

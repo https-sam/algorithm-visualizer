@@ -18,15 +18,15 @@ import {Strategy}                           from '../Strategy/Strategy';
  */
 export default function Display() {
   const [layoutType, setLayout]                     = useState('standard');
-  const [mazeType, setMazeType]                    = useState("none");
+  const [mazeType, setMazeType]                    = useState("_none_");
   const [selectedPoint, setSelectedPoint]           = useState(null);
   const [selectedGoalPoint, setSelectedGoalPoint]   = useState(null);
   const [selectedStartPoint, setSelectedStartPoint] = useState(null);
   // const board                                       = new Array(10000).fill(0).map(
   const board                                       = new Array(3844).fill(0).map(
-      // (i, id, type: String = '_floor_', visited: Boolean = false, x: Number, y: Number ) => ({id, type, visited}));
-      // (i, id, type: String = '_floor_', visited: Boolean = false, x: Number, y: Number ) => ({x, y} ({id, type, visited})));
-      (i, id, type: String = '_floor_', visited: Boolean = false, x: Number, y: Number ) => ({x, y}));
+      // (i, id, type: string = '_floor_', visited: Boolean = false, x: Number, y: Number ) => ({id, type, visited}));
+      // (i, id, type: string = '_floor_', visited: Boolean = false, x: Number, y: Number ) => ({x, y} ({id, type, visited})));
+      (i, id: number, type: String = '_wall_', sourceType: String = '_wall_', targetType: String = '_wall_', visited: Boolean = false, x: number, y: number ) => ({x, y, id, type, visited, sourceType, targetType}));
 
   const boardRef = useRef(); // Mutable(Persistant) board reference object.
 
@@ -87,18 +87,18 @@ export default function Display() {
             <div className = "maze-toggle-group" >
               <button
                   onClick = {() => {
-                    if (mazeType === 'none') {
+                    if (mazeType === '_none_') {
                       setMazeType('_BinaryTree_');
                     }
                   }}
-                  className = {`maze-toggle ${mazeType !== 'none' ? 'active' : undefined}`}
+                  className = {`maze-toggle ${mazeType !== '_none_' ? 'active' : undefined}`}
               >
                 ON
               </button>
 
             <button
-                onClick = {() => setMazeType('none')}
-                className = {`maze-toggle ${mazeType === 'none' ? 'active' : undefined}`}
+                onClick = {() => setMazeType('_none_')}
+                className = {`maze-toggle ${mazeType === '_none_' ? 'active' : undefined}`}
             >
               OFF
             </button>

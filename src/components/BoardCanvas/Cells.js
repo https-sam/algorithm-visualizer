@@ -52,14 +52,15 @@ function updateInstancedMeshMatrices({mesh, board}) {
     return;
 
   }
+
   // transform mesh to world space
   for (let i = 0; i < board.length; ++i) {
     const {x, y, z} = board[i];
     tempOBJ.position.set(x, y, z);
     tempOBJ.rotation.set(0.5 * Math.PI, 0, 0); // Look at the origin
+    tempCOLOR.set(getColor(board[i].type));
     tempOBJ.updateMatrix();
-    mesh.setMatrixAt(i, tempOBJ.matrix);
-
+    mesh.setMatrixAt(i, tempOBJ.matrix, tempCOLOR);
   }
   mesh.instanceMatrix.needsUpdate = true;
 
@@ -68,7 +69,7 @@ function updateInstancedMeshMatrices({mesh, board}) {
 
 const tempCOLOR = new THREE.Color();
 
-const usePointColorsHook = ({board, selectedPoint}) => {
+const usePointColorsHook = ({board}) => {
   const numPoints   = board.length;
   const colorAttrib = useRef();
   const colorArray  = useMemo(() => new Float32Array(numPoints * 3), [
@@ -100,7 +101,7 @@ const usePointColorsHook = ({board, selectedPoint}) => {
       tempCOLOR.toArray(colorArray, i * 3);
     }
     colorAttrib.current.needsUpdate = true;
-  }, [board, selectedPoint, colorArray]);
+  }, [board, colorArray]);
 
   return {colorAttrib, colorArray};
 };
@@ -139,6 +140,7 @@ const _mouseClickHook = ({board, selectedPoint, onSelectPoint/* , useDrag  */}) 
     }
 
     const point = board[instanceId];
+    console.log(board[instanceId]);
     console.log('Point clicked: ', point);
     // toggle the point
     if (point === selectedPoint) {
@@ -164,40 +166,6 @@ const Cells = ({board, layoutType, mazeType, selectedPoint, onSelectPoint /*,  u
   board[1].type   = '_goal_';
 
 
-  /*
-   * Update the mesh matrixes based on the board state
-   * with the goal of constructing a solvable maze.
-   */
-  // useEffect(() => {
-  //
-  // })
-
-
-  /*
-   * Recursive backtracking algorithm to generate a solvable maze.
-   */
-  const backtrack = (board, start, goal) => {
-    let current = start;
-    let path    = [];
-    while (current !== goal) {
-      path.push(current);
-      current = board[current.parent];
-    }
-    path.push(current);
-    return path;
-  };
-
-
-
-
-  const {generationInProgress} = useGeneratedMazeHook({
-    board,
-    mazeType,
-    onFrame: () => {
-      updateInstancedMeshMatrices({mesh: meshRef.current, board});
-    },
-  });
-
   const {animationInProgress} = useAnimationHook({
     board,
     layoutType,
@@ -209,7 +177,7 @@ const Cells = ({board, layoutType, mazeType, selectedPoint, onSelectPoint /*,  u
 
   useEffect(() => {
     updateInstancedMeshMatrices({mesh: meshRef.current, board});
-  }, [board, layoutType]);
+  }, [board, layoutType, mazeType]);
 
   const {getClickTarget, setDownPointerCoord} = _mouseClickHook({
     board,
@@ -219,7 +187,7 @@ const Cells = ({board, layoutType, mazeType, selectedPoint, onSelectPoint /*,  u
   });
 
 
-  const {colorAttrib, colorArray} = usePointColorsHook({board, selectedPoint});
+  const {colorAttrib, colorArray} = usePointColorsHook({board});
 
 
   return (
@@ -231,14 +199,14 @@ const Cells = ({board, layoutType, mazeType, selectedPoint, onSelectPoint /*,  u
             onClick = {getClickTarget}
             onPointerDown = {setDownPointerCoord}
         >
-          <boxBufferGeometry attach = "geometry" args = {[1, 0.5, 1, 18]}>
+          <boxBufferGeometry attach = "geometry" args = {[0.6, 0.3, 0.6, 18]}>
             <instancedBufferAttribute
                 ref = {colorAttrib}
                 attachObject = {['attributes', 'color']}
                 args = {[colorArray, 3]}
             />
           </boxBufferGeometry>
-          <boxBufferGeometry
+{/*           <boxBufferGeometry
               attach = "geometry"
               args = {[.9, .4, 0.9, 18]}
               color = "black"
@@ -247,13 +215,15 @@ const Cells = ({board, layoutType, mazeType, selectedPoint, onSelectPoint /*,  u
                 attachObject = {['attributes', 'color']}
                 args = {[colorArray, 3]}
             />
-          </boxBufferGeometry>
+          </boxBufferGeometry> */}
           <meshStandardMaterial
               attach = "material"
               vertexColors = {THREE.VertexColors}
           />
         </instancedMesh>
-
+        {/* {generationInProgress && <a.group */}
+        {/*     position = {generationInProgress.interpolate((x, y, z) => [x, y, z])} */}
+        {/* />} */}
         {selectedPoint && (
             <a.group
                 position = {animationInProgress.interpolate(() => [

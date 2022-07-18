@@ -21,9 +21,11 @@ export const _FindCellTypeState = (board, x, y) => {
 
 export function _FindCell(board, x, y) {
   for (let i = 0; i < board.length; i++) {
-    console.log(Math.floor(board[i].x), Math.floor(x));
+    // console.log(board[i].x, x, board[i].y, y);
 
-    if (Math.floor(board[i].x) === Math.floor(x) && Math.floor(board[i].y) === Math.floor(y)) {
+    if (board[i].x === x && board[i].y === y) {
+      console.log(board[i].x, x, board[i].y, y);
+
       return board[i];
     }
   }
