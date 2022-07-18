@@ -19,9 +19,11 @@ module.exports = {
         "dropdown": "#4f535a",
         "richBlue": "#0B1120",
         "textGray": "#94A3B7",
+        "homeGray": "#121824"
       },
       fontFamily: {
-        "themeFont": ["Open Sans", "Helvetica", "Arial", "sans-serif"]
+        "themeFont": ["Open Sans", "Helvetica", "Arial", "sans-serif"],
+        "spline": ['Spline Sans', "sans-serif"]
       }
 
 

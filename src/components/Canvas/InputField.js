@@ -65,9 +65,9 @@ class InputField extends Component {
     return (
       <div className="flex flex-col dark:bg-darkGray bg-gray-100 shadow-lg shadow-gray-200" id="input-field-sort">
 
-        <div className={`flex items-center justify-center py-4 md:py-1 w-sreen gap-4 flex-wrap ${this.name[0] + ' '}`}>  
-                       
-          <div className={`flex  justify-center items-center h-full sm:mb-0`} >
+        <div className={`flex items-center justify-center py-4 md:py-1 w-sreen gap-4 flex-wrap ${this.name[0] + ' '}`}>   
+
+          <div className={`flex justify-center items-center h-full sm:mb-0`}>
               <input placeholder={`Array size (MAX ${InputHandler.getAllowedMaxInputSize()})`} value={inputArrayLength === 0 ? '' : inputArrayLength} onChange={(e) => {
                 if(!this.state.animating) {
                 // SG 07/07/2022 21:03  Input validation, only accepts a number that is less than the allowed array size
@@ -91,7 +91,7 @@ class InputField extends Component {
           
           <div className="flex gap-5 md:gap-10 flex-wrap justify-center items-center">
 
-          <Options options={this.props.InputHandler} algorithm={algorithm} animating={this.state.animating}/> 
+            <Options options={this.props.InputHandler} algorithm={algorithm} animating={this.state.animating}/> 
 
             <div className="flex self-center gap-3 justify-center items-center">
               <AlgorithmSelection strategy={this.Strategy} options={this}/>

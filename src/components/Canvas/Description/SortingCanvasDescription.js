@@ -10,7 +10,7 @@ import NormalParagraph from './NormalParagraph'
 import { InputHandler } from '../../InputHandler/InputHandler'
 
 
-function SortingCanvasDescription() {
+const SortingCanvasDescription = () => {
   return (
     <div className="z-10 self-center font-sans max-w-[90vw] text-gray-700 dark:text-white mt-10 xl:mt-0 md:pt-0">
       <p className="text-[1.5em] md:text-[2.8em] font-bold mb-5">Welcome to Sorting Visualizer</p>
@@ -39,4 +39,4 @@ function SortingCanvasDescription() {
   )
 }
 
-export default SortingCanvasDescription
+export default SortingCanvasDescription;

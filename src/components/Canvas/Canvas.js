@@ -24,7 +24,7 @@ class Canvas extends Component {
 
 
     return (
-      <div className={`w-full flex justify-center dark:bg-gradient-to-b from-lightGray to-richBlue relative`} style={{minHeight:CANVAS_HEIGHT}}>
+      <div id="sorting-main-canvas" className={`w-full flex justify-center dark:bg-gradient-to-b from-lightGray to-richBlue relative`} style={{minHeight:CANVAS_HEIGHT}}>
         <p className="absolute top-3 z-40 font-semibold text-red-600 font-sans" id="sort-canvas-error-msg"></p>
         <div className="flex items-end z-1">
           {arrayLength > 1 ? generatedArray.map((element) => {

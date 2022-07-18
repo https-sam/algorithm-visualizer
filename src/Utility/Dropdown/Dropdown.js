@@ -29,6 +29,7 @@ function Dropdown() {
                       className = {`${item.class} text-gray-700 dark:text-gray-200 fontFamily-themeFont font-bold`}
                       to = {item.path}
                       onClick = {() => setClick(false)}
+
                   >
                     {item.title}
                   </Link>

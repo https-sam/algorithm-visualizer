@@ -42,7 +42,7 @@ class MainCanvas extends Component {
     
     return (
       <>
-        <Navigation/>
+        <Navigation themeToggle={true}/>
         <InputField name = {['generic-input', 'instructions']} InputHandler={this} generatedArray={generatedArray} inputArray={generatedArray}/>
         <Canvas defaultBarColor={this.state.options.defaultBarColor} showHeight={this.state.options.showHeight} generatedArray={this.state.generatedArray} barColor={options.defaultBarColor} InputHandler={this}/>
       </>

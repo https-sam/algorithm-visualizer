@@ -1,4 +1,3 @@
-import { LazyResult } from "postcss";
 import { Animation } from "../../Animation/Animation";
 
 
