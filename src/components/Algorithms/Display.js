@@ -1,4 +1,4 @@
-import React, {Component, useState, useRef} from 'react';
+import React, {Component, useState, useRef, useEffect} from 'react';
 import Board                                from '../BoardCanvas/Board';
 import Navigation                           from '../Page/partial/Navbar/Navigation';
 import './display.css';
@@ -40,10 +40,15 @@ export default function Display() {
     boardRef.current.generateMaze(Strategy);
   };
 
+  useEffect(() => {
+    // SG 07/17/2022 23:32  theme initially set to dark
+    document.documentElement.classList.add('dark');
+    localStorage.setItem('theme', 'dark');
+  })
 
   return (
       <>
-        <Navigation/>
+        <Navigation themeToggle={true}/>
         <div className = "display-container">
 
           <Board
