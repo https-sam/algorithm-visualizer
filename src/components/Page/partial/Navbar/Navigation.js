@@ -5,7 +5,6 @@ import './navbar.css';
 import {Button} from '../GenericButton/Button';
 import Dropdown from '../../../../Utility/Dropdown/Dropdown';
 import ThemeToggle from './ThemeToggle';
-import ToggleButton from 'rsuite/esm/Picker/ToggleButton';
 
 
 

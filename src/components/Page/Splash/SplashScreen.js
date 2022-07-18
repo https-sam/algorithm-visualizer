@@ -1,7 +1,6 @@
 import React, { Suspense, useEffect } from 'react';
 import './splash.css';
 import Navigation from '../partial/Navbar/Navigation';
-import Cell       from '../../Board/Cell';
 import { useNavigate } from 'react-router-dom'
 
 const Spline = React.lazy(() => import('@splinetool/react-spline'));

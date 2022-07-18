@@ -18,7 +18,7 @@ function Option({options, mainCanvasInputHandler, algorithm, animating}) {
         });
       }
     }
-  }, [open])
+  }, [open, options])
 
   if(!options.hasDropDown) {
     if(algorithm === "Merge") return null; // SG 07/13/2022 20:46  merge sort will not have the option to speed up
