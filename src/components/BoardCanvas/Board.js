@@ -16,23 +16,19 @@ export const Board = ({board, layoutType, selectedPoint, onSelectPoint, mazeType
     resetCamera: () => {
       return controlsRef.current.resetCamera();
     },
-
-    // generateMaze: (Strategy) => {
-      // return useGenerateMaze({board, layoutType, selectedPoint, onSelectPoint}, Strategy);
-    // },
   }));
 
 
   return (
       <Canvas className = "board" camera = {{position: [0, 0, 80], far: 1000}}>
-        {/*<PerspectiveCamera position={[2, 2, 2]} makeDefault />*/}
         <Controls ref = {controlsRef} selectedPoint = {selectedPoint}/>
-        {/* <instancedMesh> */}
         <mesh>  {/* BorderBox */}
           {(layoutType === 'standard') ?
-           <boxBufferGeometry attach = "geometry" args = {[110, 110, -10]}/>
+           <boxBufferGeometry attach = "geometry" args = {[80, 80, -10]}/>
                                        :
-           <boxBufferGeometry attach = "geometry" args = {[150, 150, -10]}/>
+           <boxBufferGeometry attach = "geometry" args = {[80, 80, -10]}/>
+
+            // <boxBufferGeometry attach = "geometry" args = {[150, 150, -10]}/>
           }
           <meshBasicMaterial attach = "material" color = "black"/>
         </mesh>
