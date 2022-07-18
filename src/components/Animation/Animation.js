@@ -3,9 +3,9 @@ import {Document} from 'postcss';
 
 
 class Animation {
+  static timeouts = [];
 
   constructor() {
-    Animation.timeouts = [];
     // SG 07/09/2022 15:11  Singleton pattern
     if (Animation._instance) {
       return Animation._instance;
@@ -19,10 +19,9 @@ class Animation {
 
   static async clearTimeout() {
     Animation.stop = true;
-    for (const timeout of Animation.threads) {
+    for (const timeout of Animation.timeouts) {
       await this.clearTimeout(timeout);
     }
-    Animation.myAudioContext = new AudioContext();
   }
 
 
@@ -36,18 +35,17 @@ class Animation {
 
   static swap(i, k) {
     let unSortedBars                       = document.querySelectorAll('.array-bars');
-    var oldHeight                              = unSortedBars[k].style.height;
+    var oldHeight                          = unSortedBars[k].style.height;
     unSortedBars[k].style.height = unSortedBars[i].style.height;
     unSortedBars[i].style.height           = oldHeight;
 
     var oldID                    = unSortedBars[k].id;
     unSortedBars[k].id = unSortedBars[i].id;
-    unSortedBars[i].id           = oldID; // SG 07/11/2022 09:27  temp1
+    unSortedBars[i].id           = oldID;
 
     var oldContent = unSortedBars[i].getAttribute("data");
     unSortedBars[i].setAttribute("data", unSortedBars[k].getAttribute("data"));
-    unSortedBars[k].setAttribute("data", oldContent); // SG 07/11/2022 09:27  temp1
-
+    unSortedBars[k].setAttribute("data", oldContent); 
   }
 
 
@@ -55,7 +53,7 @@ class Animation {
   static changeHeight(i, value, oldIndex) {
     let unSortedBars                       = document.querySelectorAll('.array-bars');    
     unSortedBars[i].style.height           = value+'px';
-    unSortedBars[i].id           = value; // SG 07/11/2022 09:27  temp1
+    unSortedBars[i].id           = value;
     unSortedBars[i].setAttribute("data", unSortedBars[oldIndex].getAttribute("data"));
   }
 
@@ -79,25 +77,25 @@ class Animation {
   static async makeBeep(vol, freq, duration){
       
   }
+
    
 
-  static animateMerge(options, animation) {
+  static async animateMerge(options, animation) {
     const delay = options.delay;
     const processingColor = options.processingColor;
     const defaultColor = options.sortedBarColor;
 
-
     for (let i = 0; i < animation.length; i++) {
+      await Animation.getAnimation(delay);
       const arrayBars = document.querySelectorAll('.array-bars');
       if (i % 3 !== 2) { // SG 07/10/2022 16:52  animate colors
         const [firstBar, secondBar] = animation[i];
         const color = i % 3 === 0 ? processingColor : defaultColor;
-        setTimeout(() => {
-          arrayBars[firstBar].style.backgroundColor = color;
-          arrayBars[secondBar].style.backgroundColor = color;
-        }, i * delay);
+
+        arrayBars[firstBar].style.backgroundColor = color;
+        arrayBars[secondBar].style.backgroundColor = color;
+
       } else { // SG 07/10/2022 16:52  animate height
-        setTimeout(() => {
           const [firstBarI, swapHeight] = animation[i];
           arrayBars[firstBarI].style.height = swapHeight + "px";
           let firstBarHeight = parseInt(arrayBars[firstBarI].style.height.replace('px', ''));
@@ -110,12 +108,9 @@ class Animation {
             arrayBars[firstBarI].setAttribute('data', '');
           }
           arrayBars[firstBarI].id = swapHeight;
-        }, i * delay);
-      }
+        }
     }
   }
-
-
 }
 
 

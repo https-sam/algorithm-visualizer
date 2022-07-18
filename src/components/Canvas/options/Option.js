@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { CONSTANTS } from '../../../Utility/config';
 import SlideBar from './SlideBar';
 
-function Option({options, mainCanvasInputHandler, algorithm}) {
+function Option({options, mainCanvasInputHandler, algorithm, animating}) {
   const [open, setOpen] = useState(false);
   const ref = useRef();
 
@@ -23,9 +23,11 @@ function Option({options, mainCanvasInputHandler, algorithm}) {
   if(!options.hasDropDown) {
     if(algorithm === "Merge") return null; // SG 07/13/2022 20:46  merge sort will not have the option to speed up
     return (
-      <div className={`flex flex-col items-center relative space-y-1 cursor-pointer`}>
+      <div className={`flex flex-col items-center relative space-y-1 cursor-pointer ${animating && "cursor-not-allowed"}`}>
         <div className={`p-2 hover:bg-gray-200 peer rounded-md ${mainCanvasInputHandler.state.options.skipJ && "bg-gray-200"}`} onClick={() => {
-          mainCanvasInputHandler.setState(prev => ({options: {...prev.options, skipJ: !mainCanvasInputHandler.state.options.skipJ}}));
+          if(!animating) {
+            mainCanvasInputHandler.setState(prev => ({options: {...prev.options, skipJ: !mainCanvasInputHandler.state.options.skipJ}}));
+          }
           }}>
           {<options.icon className="scale-[1.2] dark:stroke-textGray stroke-[#7B7B7c]"/>}
         </div> 
@@ -37,8 +39,12 @@ function Option({options, mainCanvasInputHandler, algorithm}) {
   
   if(options.name === "DELAY") {
    return (
-    <div className="flex flex-col items-center relative space-y-1 cursor-pointer">
-      <div id={`${options.name}-option`} className="p-2 hover:bg-gray-200 showDelay peer rounded-md" onClick={() => setOpen(!open)}>
+    <div className={`flex flex-col items-center relative space-y-1 cursor-pointer ${animating && "cursor-not-allowed"}`}>
+      <div id={`${options.name}-option`} className="p-2 hover:bg-gray-200 showDelay peer rounded-md" onClick={() => {
+        if(!animating) {
+          setOpen(!open)
+        }
+      }}>
         {<options.icon className="scale-[1.2] dark:stroke-textGray stroke-[#7B7B7c]"/>}
       </div> 
       <p className="font-semibold text-gray-500 text-[.9em]">{mainCanvasInputHandler.state.options?.delay}ms</p>
@@ -56,9 +62,11 @@ function Option({options, mainCanvasInputHandler, algorithm}) {
   // SG 07/13/2022 13:06  Making sure that only Selection sort will have the option to change the optimum key color
   if((algorithm === "Radix" || algorithm === "Merge" || algorithm === "Heap" || algorithm === "Shell") && (options.name === "CURRENT_MIN")) return null;
   return (
-    <div className="flex flex-col items-center relative space-y-1 cursor-pointer">
+    <div className={`flex flex-col items-center relative space-y-1 cursor-pointer ${animating && "cursor-not-allowed"}`}>
       <div id={`${options.name}-option`} className="p-2 mb-1 hover:bg-gray-200 showDefaultBarColor rounded-md peer" onClick={() => { 
-        setOpen(!open);
+        if(!animating) {
+          setOpen(!open);
+        }  
       }}>
         {<options.icon className="scale-[1.2] dark:stroke-textGray stroke-[#7B7B7c]" />}
       </div> 

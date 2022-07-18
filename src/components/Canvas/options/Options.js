@@ -27,7 +27,7 @@ class Options extends Component {
 
   render() {
 
-    const { algorithm } = this.props;
+    const { algorithm, animating } = this.props;
 
     const optionItems = [
       {
@@ -79,7 +79,7 @@ class Options extends Component {
       <div className="rounded-md z-20">
         <div className="w-fit flex space-x-5">
           {optionItems.map((option) => (
-            <Option options={option} mainCanvasInputHandler={this.props.options} key={option.name} algorithm={algorithm}/>
+            <Option animating={animating} options={option} mainCanvasInputHandler={this.props.options} key={option.name} algorithm={algorithm}/>
           ))}
         </div>        
       </div>

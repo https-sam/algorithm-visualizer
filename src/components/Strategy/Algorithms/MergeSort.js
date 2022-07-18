@@ -88,10 +88,11 @@ class MergeSort {
     return animation;
   }
 
-   perform(options, array) {
+  async perform(options, array) {
     const animation = this.mergeSort(array);
-    Animation.animateMerge(options, animation);
-   }
+    await Animation.animateMerge(options, animation);
+  }
+  
 }
 
 export { MergeSort }

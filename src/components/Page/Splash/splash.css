@@ -31,13 +31,26 @@
 	background-image:    url("../../../../public/background.jpg");
 	background-size:     cover;
 	background-position: center;
-	height:              100vh;
 }
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+
 
 
 .splash_overlay {
 	height:           inherit;
-	background-color: rgba(21, 21, 21, 0.91); /* Tint */
+	/* background-color: rgba(21, 21, 21, 0.91); Tint */
 	display:          flex;
 	flex-direction:   column;
 	align-items:      center;

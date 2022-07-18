@@ -61,9 +61,9 @@ class ShellSort {
     return array;
   } 
 
-  perform(options, array) {
+  async perform(options, array) {
     this.options = options;
-    this.shellSort(array);
+    await this.shellSort(array);
   }
 }
 

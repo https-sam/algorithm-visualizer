@@ -24,11 +24,12 @@ function Dropdown() {
         >
           {DescriptorItems.map((item, index) => {
             return (
-                <li key = {index}>
+                <li key = {index} className="bg-gray-300 hover:bg-gray-400 dark:bg-lightDark dark:hover:bg-darkGray">
                   <Link
-                      className = {`${item.class} `}
+                      className = {`${item.class} text-gray-700 dark:text-gray-200 fontFamily-themeFont font-bold`}
                       to = {item.path}
                       onClick = {() => setClick(false)}
+
                   >
                     {item.title}
                   </Link>

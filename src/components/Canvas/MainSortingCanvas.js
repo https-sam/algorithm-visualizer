@@ -29,7 +29,8 @@ class MainCanvas extends Component {
   componentDidMount() {
     const darkTheme = localStorage.getItem('theme') === "dark";
     const options = JSON.parse(localStorage.getItem('options'));
-
+    
+    // SG 07/16/2022 20:03  if option not provided and theme is dark, set default bar colro to white 
     if(darkTheme && !options?.defaultBarColor) { 
       this.setState({options: {...this.state.options, defaultBarColor: 'white'}})
     }
@@ -41,7 +42,7 @@ class MainCanvas extends Component {
     
     return (
       <>
-        <Navigation/>
+        <Navigation themeToggle={true}/>
         <InputField name = {['generic-input', 'instructions']} InputHandler={this} generatedArray={generatedArray} inputArray={generatedArray}/>
         <Canvas defaultBarColor={this.state.options.defaultBarColor} showHeight={this.state.options.showHeight} generatedArray={this.state.generatedArray} barColor={options.defaultBarColor} InputHandler={this}/>
       </>

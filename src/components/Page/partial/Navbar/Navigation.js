@@ -5,6 +5,7 @@ import './navbar.css';
 import {Button} from '../GenericButton/Button';
 import Dropdown from '../../../../Utility/Dropdown/Dropdown';
 import ThemeToggle from './ThemeToggle';
+import ToggleButton from 'rsuite/esm/Picker/ToggleButton';
 
 
 
@@ -15,7 +16,7 @@ import ThemeToggle from './ThemeToggle';
  * @returns {JSX.Element}
  * @constructor
  */
-function Navigation() {
+function Navigation({themeToggle}) {
   const [click, setClick]       = useState(false);
   const [dropdown, setDropdown] = useState(false);
 
@@ -43,11 +44,13 @@ function Navigation() {
   };
 
   return (
-      <div>
-        <nav className = {`navbar dark:bg-lightDark`}>
-          <Link to = "/sorting-visualizer"
-                className = {'navbar-logo dark:text-white'}
-                onClick = {closeMobileMenu}>
+      <>
+        <nav id="navbar" className = {`navbar dark:bg-lightDark`}>
+          <Link to = "/"
+                className = {`navbar-logo dark:text-white`}
+                onClick = {closeMobileMenu}
+                id="navbar-title"
+                >
             Algo Visualizer
             <i className = {'fab fa-firstdraft'}/>
           </Link>
@@ -58,7 +61,8 @@ function Navigation() {
             <li className = {'nav-item'}>
               <Link to = "/"
                     className = {'nav-links dark:text-white dark:hover:text-lightDark'}
-                    onClick = {closeMobileMenu}>
+                    onClick = {closeMobileMenu}
+                    >
                 Home
               </Link>
             </li>
@@ -69,14 +73,15 @@ function Navigation() {
             >
               <Link
                   to = "/documentation"
-                  className = {'nav-links dark:text-white dark:hover:text-lightDark'}
+                  className = {`nav-links dark:text-white dark:hover:text-lightDark`}
                   onClick = {closeMobileMenu}
+
               >
                 Documentation <i className = {'fas fa-caret-down'}/>
               </Link>
               {dropdown && <Dropdown/>}
             </li>
-            <li className = {'nav-item'}>
+            {/* <li className = {'nav-item'}>
               <Link
                   to = "/about"
                   className = {'nav-links dark:text-white dark:hover:text-lightDark'}
@@ -84,8 +89,8 @@ function Navigation() {
               >
                 About
               </Link>
-            </li>
-            <li className = {'nav-item'}>
+            </li> */}
+            {/* <li className = {'nav-item'}>
               <Link
                   to = "/contact"
                   className = {'nav-links dark:text-white dark:hover:text-lightDark'}
@@ -93,11 +98,11 @@ function Navigation() {
               >
                 Contact Us
               </Link>
-            </li>
+            </li> */}
           </ul>
-          <ThemeToggle/>
+          {themeToggle && <ThemeToggle/>}
         </nav>
-      </div>
+      </>
   );
 }
 

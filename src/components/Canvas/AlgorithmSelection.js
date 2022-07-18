@@ -48,7 +48,7 @@ function AlgorithmSelection({strategy, options}) {
       </div>
 
       {/* Dropdown menu */}
-      <div className={`transition-all duration-200 ease-in-out absolute h-[fit] w-[9.5em] text-[.95em] dark:bg-gray-600 bg-gray-500 top-[3.5em] rounded-md z-20 ${showDropdown ? "scale-100" : "scale-[0] -translate-y-[6em]"} `}>
+      <div className={`transition-all duration-200 ease-in-out absolute h-[fit] w-[9.5em] text-[.95em] dark:bg-gray-600 bg-gray-500 top-[3.9em] rounded-md z-20 ${showDropdown ? "scale-100" : "scale-[0] -translate-y-[8em]"} `}>
         <div className={`${currentAlgo === 'Radix' && 'bg-gray-200'} group cursor-pointer w-full dark:hover:bg-gray-700 hover:bg-gray-600 rounded-t-md font-semibold text-white h-[2.8em] flex items-center justify-start pl-4`}
           onClick={() => {
             setCurrentAlgo('Radix');
@@ -72,18 +72,6 @@ function AlgorithmSelection({strategy, options}) {
         >
           <p className={`${currentAlgo === 'Heap' && 'text-black group-hover:text-white'}`}>Heap Sort</p>
         </div>
-        
-        <div className={`${currentAlgo === 'Merge' && 'bg-gray-200'} group cursor-pointer w-full hover:bg-gray-700 font-semibold text-white h-[2.8em] flex items-center justify-start pl-4`}
-          onClick={() => {
-            setCurrentAlgo('Merge');
-            options.setState({algorithm: "Merge"});
-            strategy.setStrategy = Merge;
-            localStorage.setItem("algorithm", "Merge");
-            setShowDropdown(!showDropdown)
-          }}
-        >
-          <p className={`${currentAlgo === 'Merge' && 'text-black group-hover:text-white'}`}>Merge Sort</p>
-        </div>
 
         <div className={`${currentAlgo === 'Quick' && 'bg-gray-200'} group cursor-pointer w-full hover:bg-gray-700 font-semibold text-white h-[2.8em] flex items-center justify-start pl-4`}
           onClick={() => {
@@ -96,6 +84,19 @@ function AlgorithmSelection({strategy, options}) {
         >
           <p className={`${currentAlgo === 'Quick' && 'text-black group-hover:text-white'}`}>Quick Sort</p>
         </div>
+        
+        <div className={`${currentAlgo === 'Merge' && 'bg-gray-200'} group cursor-pointer w-full hover:bg-gray-700 font-semibold text-white h-[2.8em] flex items-center justify-start pl-4`}
+          onClick={() => {
+            setCurrentAlgo('Merge');
+            options.setState({algorithm: "Merge"});
+            strategy.setStrategy = Merge;
+            localStorage.setItem("algorithm", "Merge");
+            setShowDropdown(!showDropdown)
+          }}
+        >
+          <p className={`${currentAlgo === 'Merge' && 'text-black group-hover:text-white'}`}>Merge Sort</p>
+        </div>
+ 
 
         <div className={`${currentAlgo === 'Shell' && 'bg-gray-200'} group cursor-pointer w-full hover:bg-gray-700 font-semibold text-white h-[2.8em] flex items-center justify-start pl-4`}
           onClick={() => {

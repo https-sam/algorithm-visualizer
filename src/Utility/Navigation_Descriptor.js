@@ -14,9 +14,9 @@ export const DescriptorItems = [
     path: '/alorithms-source',
     class: 'dropdown-link'
   },
-  {
-    title: '',
-    path: '/',
-    class: 'dropdown-link'
-  }
+  // {
+  //   title: '',
+  //   path: '/',
+  //   class: 'dropdown-link'
+  // }
 ];
