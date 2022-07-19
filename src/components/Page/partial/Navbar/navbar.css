@@ -31,7 +31,7 @@
 	list-style: none;
 	text-align: center;
 	flex: 1;
-	justify-content: end;
+	justify-content: flex-end;
 	margin-right: 5em;
 }
 

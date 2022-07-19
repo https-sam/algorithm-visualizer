@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { CONSTANTS }        from '../../Utility/config.js';
 import ShowValue from './ShowValue.js';
-import SortingCanvasDescription from './Description//SortingCanvasDescription.js';
+import SortingCanvasDescription from './Description/SortingCanvasDescription.js';
 import './style.css'
 class Canvas extends Component {
 
