@@ -1,8 +1,8 @@
 import React, { Suspense, useEffect } from "react";
-import "./splash.css";
-import Navigation from "../partial/Navbar/Navigation";
 import { useNavigate } from "react-router-dom";
-import threeScene from "./scene.splinecode";
+import { ReactComponent as RightArrow } from "../../../img/rightArrow.svg";
+import Navigation from "../partial/Navbar/Navigation";
+import "./splash.css";
 
 const Spline = React.lazy(() => import("@splinetool/react-spline"));
 
@@ -22,6 +22,7 @@ const SplashScreen = () => {
     <>
       <Navigation themeToggle={false} />
       <div className="bg-homeGray relative flex justify-end min-h-screen min-w-screen">
+        <div className="main-canvas-grid z-0 dark:opacity-[0.03]" />
         <p className="font-lg text-white absolute text-[6vh] z-10 top-[15vh] left-[5vw] font-semibold font-spline">
           Algo Visualizer
         </p>
@@ -32,23 +33,25 @@ const SplashScreen = () => {
         </p>
         <div className="hidden md:block md:scale-[.7] z-1 md:translate-x-[150px] lg:translate-x-[17px] lg:scale-[.9] xl:scale[1] w-fit">
           <Suspense fallback={<></>}>
-            <Spline scene={threeScene} />
+            <Spline scene="https://prod.spline.design/qblRNAa3C-eNH6Bo/scene.splinecode" />
           </Suspense>
         </div>
 
         <div className="absolute top-[50vh] left-[5vw] flex flex-col gap-5">
           <div
-            className="hover:shadow-custom-md-lightBlue cursor-pointer font-semibold  text-white font-spline bg-lightBlue2 p-[.9em] text-[1.1em] rounded-md"
+            className="hover:-translate-y-[.2em] transition duration-200 ease-in-out relative hover:shadow-custom-md-lightBlue cursor-pointer font-semibold  text-white font-spline bg-lightBlue2 p-[1em] text-[1em] rounded-md"
             onClick={() => navigate("/sorting-visualizer")}
           >
             Sorting Algorithms
+            <RightArrow className="absolute top-[50%] -translate-y-[50%] right-[1em]" />
           </div>
 
           <div
-            className="hover:shadow-custom-md-lightBlue cursor-pointer font-semibold  text-white font-spline bg-lightBlue2 p-[.9em] text-[1.1em] rounded-md"
+            className="hover:-translate-y-[.2em] transition duration-200 ease-in-out relative hover:shadow-custom-md-lightBlue cursor-pointer font-semibold  text-white font-spline bg-lightBlue2 p-[1em] text-[1em] rounded-md w-[15em]"
             onClick={() => navigate("/dashboard-two")}
           >
             Path Finding Algorithms
+            <RightArrow className="absolute top-[50%] -translate-y-[50%] right-[1em]" />
           </div>
         </div>
       </div>
