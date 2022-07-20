@@ -36,6 +36,7 @@ export function BinaryTreeCreation(board) {
       }
     }
   }
+
   for (var x = 0; x < numPoints; x++) {
     let node = board[x];
 
@@ -48,6 +49,15 @@ export function BinaryTreeCreation(board) {
       node.type = '_wall_';
     }
   }
-  // console.log('BinaryTreeCreation: ' + board.length);
+
+  let [setG, setS] = [false, false];
+  // while (!setG || !setS) {
+  //   let node = board[w];
+  //
+  //   if (node.type === '_wall_') {
+  //     continue;
+  //   }
+  //
+  // }
 }
 

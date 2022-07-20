@@ -44,3 +44,9 @@ export function _BoardReset(board) {
     board[i].type = DEFAULT_TYPE;
   }
 }
+
+export function _VisitReset(board) {
+  for (let i = 0; i < board.length; i++) {
+    board[i].visited = false;
+  }
+}

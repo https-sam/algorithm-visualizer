@@ -86,16 +86,4 @@ export function standardLayout(board) {
 }
 
 
-  /*
-   * Recursive backtracking algorithm to generate a solvable maze.
-   */
-  const backtrack = (board, start, goal) => {
-    let current = start;
-    let path    = [];
-    while (current !== goal) {
-      path.push(current);
-      current = board[current.parent];
-    }
-    path.push(current);
-    return path;
-  };
+

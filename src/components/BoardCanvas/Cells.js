@@ -13,8 +13,24 @@ import {BinaryTreeCreation}                    from '../Algorithms/Maze/Generati
 
 
 
-export const TEST_COLOR = '#FF66CC', BURN_COLOR = '#fad6ee', PATH_COLOR = '#63caef', WALL_COLOR = '#1c1b1b', GOAL_COLOR = '#30fa04', START_COLOR = '#ff0000', SELECTED_COLOR = '#ffd300', FLOOR_COLOR = '#ffffff', DEFAULT_COLOR = '#8f8d8d', FLOOR_TYPE = '_floor_', DEFAULT_TYPE = '_default_', WALL_TYPE = '_wall_', PATH_TYPE = '_path_', GOAL_TYPE = '_goal_', START_TYPE = '_start_', TEST_TYPE = '_test_';
-const tempOBJ           = new THREE.Object3D();
+export const TEST_COLOR     = '#FF66CC';
+export const BURN_COLOR     = '#fad6ee';
+export const PATH_COLOR     = '#63caef';
+export const WALL_COLOR     = '#624646';
+export const GOAL_COLOR     = '#30fa04';
+export const START_COLOR    = '#ff0000';
+export const SELECTED_COLOR = '#ffd300';
+export const FLOOR_COLOR    = '#ffffff';
+export const DEFAULT_COLOR  = '#8f8d8d';
+export const FLOOR_TYPE     = '_floor_';
+export const DEFAULT_TYPE   = '_default_';
+export const WALL_TYPE      = '_wall_';
+export const PATH_TYPE      = '_path_';
+export const GOAL_TYPE      = '_goal_';
+export const START_TYPE     = '_start_';
+export const TEST_TYPE      = '_test_';
+
+export const tempOBJ = new THREE.Object3D();
 
 
 function getColor(type) {
@@ -40,32 +56,42 @@ function getColor(type) {
 
 
 
-function updateInstancedMeshMatrices({mesh, board}) {
+function updateInstancedMeshMatrices({mesh, board, colorAttrib, colorArray}) {
   if (!mesh) {
     return;
   }
+  const numPoints   = board.length;
+
   // transform mesh to world space
   for (let i = 0; i < board.length; ++i) {
     const {x, y, z} = board[i];
     tempOBJ.position.set(x, y, z);
     tempOBJ.rotation.set(0.5 * Math.PI, 0, 0); // Look at the origin
     tempCOLOR.set(getColor(board[i].type));
+    tempCOLOR.toArray(colorArray, i * 3);
     tempOBJ.updateMatrix();
-    mesh.setMatrixAt(i, tempOBJ.matrix, tempCOLOR);
+    mesh.setMatrixAt(i, tempOBJ.matrix);
   }
+  colorAttrib.current.needsUpdate = true;
   mesh.instanceMatrix.needsUpdate = true;
 }
 
 
-function updateInstancedMeshColors({mesh, board}) {
-
-}
+// function updateInstancedMeshColors({mesh, board}) {
+//   for (let i = 0; i < board.length; ++i) {
+//     tempCOLOR.set(getColor(board[i].type));
+//     mesh.setColorAt(i, tempCOLOR);
+//   }
+//
+//   return {colorAttrib, colorArray};
+//
+// }
 
 
 
 const tempCOLOR = new THREE.Color();
 
-const usePointColorsHook = ({board, mazeType}) => {
+const usePointColorsHook = ({board}) => {
   console.log('usePointColorsHook');
   const numPoints   = board.length;
   const colorAttrib = useRef();
@@ -78,7 +104,7 @@ const usePointColorsHook = ({board, mazeType}) => {
       tempCOLOR.toArray(colorArray, i * 3);
     }
     colorAttrib.current.needsUpdate = true;
-  }, [board, mazeType, colorArray]);
+  }, [board, colorArray]);
 
   return {colorAttrib, colorArray};
 };
@@ -162,10 +188,12 @@ const Cells = ({board, layoutType, mazeType, selectedPoint, onSelectPoint /*,  u
 
   const {colorAttrib, colorArray} = usePointColorsHook({board});
 
+
   useEffect(() => {
     console.log('Board updated');
-    updateInstancedMeshMatrices({mesh: meshRef.current, board});
-  }, [layoutType, mazeType]);
+    updateInstancedMeshMatrices({mesh: meshRef.current, board, colorAttrib, colorArray});
+  }, [board, layoutType, mazeType]);
+
 
 
   return (
