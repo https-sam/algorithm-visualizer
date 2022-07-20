@@ -21,7 +21,7 @@ export const Board = ({board, layoutType, selectedPoint, onSelectPoint, mazeType
 
 
   return (
-      <Canvas className = "board" camera = {{position: [0, 0, 80], far: 1000}}>
+      <Canvas className = "board">
         <Controls ref = {controlsRef} selectedPoint = {selectedPoint}/>
         <mesh>  {/* BorderBox */}
           {(layoutType === 'standard') ?

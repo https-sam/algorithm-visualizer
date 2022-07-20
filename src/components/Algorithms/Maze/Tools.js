@@ -2,6 +2,7 @@
  * Quick selection test
  */
 import {DEFAULT_TYPE} from '../../BoardCanvas/Cells';
+import {directions}   from './Directions';
 
 
 
@@ -29,13 +30,27 @@ export function _FindCell(board, x, y) {
     // console.log(board[i].x, x, board[i].y, y);
 
     if (board[i].x === x && board[i].y === y) {
-      // console.log(board[i].x, x, board[i].y, y);
+      console.log("Board x: " + board[i].x + "\nCelll x: " + x + "\nBoard y: "+ board[i].y + "\nCell y: " + y);
 
       return board[i];
     }
   }
   return null;
 };
+
+
+export function _GetNeighbors(board, x, y) {
+  let neighbors = [];
+  for (let i = 0; i < 4; i++) {
+    let xcoord = x + directions[i].x;
+    let ycoord = y + directions[i].y;
+    let neighbor = _FindCell(board, xcoord, ycoord);
+    if (neighbor) {
+      neighbors.push(neighbor);
+    }
+  }
+  return neighbors;
+}
 
 
 export function _BoardReset(board) {

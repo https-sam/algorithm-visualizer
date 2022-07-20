@@ -12,7 +12,6 @@ import {BinaryTreeCreation}                    from '../Algorithms/Maze/Generati
 
 
 
-
 export const TEST_COLOR     = '#FF66CC';
 export const BURN_COLOR     = '#fad6ee';
 export const PATH_COLOR     = '#63caef';
@@ -201,7 +200,7 @@ const Cells = ({board, layoutType, mazeType, selectedPoint, onSelectPoint /*,  u
         <instancedMesh
             ref = {meshRef}
             args = {[null, null, numPoints]}
-            frustumCulled = {true}
+            frustumCulled = {false}
             onClick = {getClickTarget}
             onPointerDown = {setDownPointerCoord}
         >
@@ -214,16 +213,6 @@ const Cells = ({board, layoutType, mazeType, selectedPoint, onSelectPoint /*,  u
                 count = {numPoints}
             />
           </boxBufferGeometry>
-          {/*           <boxBufferGeometry
-           attach = "geometry"
-           args = {[.9, .4, 0.9, 18]}
-           color = "black"
-           >
-           <instancedBufferAttribute
-           attachObject = {['attributes', 'color']}
-           args = {[colorArray, 3]}
-           />
-           </boxBufferGeometry> */}
           <meshStandardMaterial
               attach = "material"
               vertexColors = {THREE.VertexColors}

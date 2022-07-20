@@ -37,7 +37,7 @@ export const useLayoutHook = ({board, layoutType}) => {
 
 
 export function useAnimationHook({board, layoutType}) {
-  console.log('useAnimationHook used.');
+  console.log('useAnimatio/*  */nHook used.');
   useLayoutHook({board, layoutType});  // do the actual animation when layoutType changes
   console.log('useAnimationHook ended.');
 
@@ -76,11 +76,14 @@ export function standardLayout(board) {
 
   for (let i = 0; i < numPoints; ++i) {
     const node = board[i];
+
+    // const col  = Math.abs((i % numCols) - numCols / 2);
+    // const row  = Math.abs(Math.floor(i / numCols) - numCols / 2);
     const col  = (i % numCols) - numCols / 2;
     const row  = Math.floor(i / numCols) - numCols / 2;
 
-    node.x = col * 1.05;
-    node.y = row * 1.05;
+    node.x = col;/* .05; */
+    node.y = row;/* .05; */
     node.z = 0;
   }
 }

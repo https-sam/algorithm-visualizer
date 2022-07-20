@@ -17,7 +17,7 @@ const DOWN_KEY  = 40;
 const LEFT_KEY  = 37;
 const RIGHT_KEY = 39;
 
-const OrbitControls = ({selectedPoint, onSelectedPoint}, ref) => {
+const OrbitControls = ({board, selectedPoint, onSelectedPoint}, ref) => {
   const controls            = useRef();
   const [target, setTarget] = useState(null);
   const {camera, gl}        = useThree();
@@ -26,7 +26,7 @@ const OrbitControls = ({selectedPoint, onSelectedPoint}, ref) => {
   //  Set up the camera on mount.
   useEffect(() => {
     camera.position.set(0, -10, 50);  // Initial camera position
-    camera.lookAt(0, 0, 0);
+    camera.lookAt(0, -10, 50);
   }, [camera]);
 
   //  Set up the initial target.
@@ -42,7 +42,7 @@ const OrbitControls = ({selectedPoint, onSelectedPoint}, ref) => {
    * {useImperativeHandle} React requirement in order to use refs, and
    *                       to pass the ref to the component altering functionality.
    */
-  useImperativeHandle(ref, (state) => ({
+  useImperativeHandle(ref, () => ({
     setTarget: (target) => {
       setTarget(target);
       console.log('setTarget', target);
@@ -57,10 +57,22 @@ const OrbitControls = ({selectedPoint, onSelectedPoint}, ref) => {
      * Function to reset the camera to the default position.
      */
     resetCamera: () => {
-      camera.position.set(0, -10, 50);      // reset position
-      camera.lookAt(0, 0, 0);            // reset rotation
-      this.setTarget(null);                    // reset target
+      // reset look-at (target) and camera position
+      controls.current.target.set(0, 0, 0);
+      camera.position.set(0, 0, 80);
+
+      // needed for trackball controls, reset the up vector
+      camera.up.set(
+          controls.current.up0.x,
+          controls.current.up0.y,
+          controls.current.up0.z
+      );
     },
+    // resetCamera: () => {
+    //   camera.position.set(0, -10, 50);      // reset position
+    //   camera.lookAt(0, 0, 0);            // reset rotation
+    //   this.setTarget(null);                    // reset target
+    // },
 
 
     /*
