@@ -21,17 +21,17 @@ const SplashScreen = () => {
   return (
     <>
       <Navigation themeToggle={false} />
-      <div className="bg-homeGray relative flex justify-end min-h-screen min-w-screen">
+      <div className="bg-homeGray relative flex justify-end h-screen min-w-screen">
         <div className="main-canvas-grid z-0 dark:opacity-[0.03]" />
         <p className="font-lg text-white absolute text-[6vh] z-10 top-[15vh] left-[5vw] font-semibold font-spline">
           Algo Visualizer
         </p>
-        <p className="font-spline absolute top-[30vh] left-[5vw] text-[1.2em] z-10 text-gray-100">
+        <p className="font-spline absolute top-[30vh] left-[5vw] max-w-[60ch] text-[1.2em] z-10 text-gray-100">
           Improve your understanding of algorithms just by watching simple and
           completely customizable animations. <br />
           Welcome to the algo visualizer.
         </p>
-        <div className="hidden md:block md:scale-[.7] z-1 md:translate-x-[150px] lg:translate-x-[17px] lg:scale-[.9] xl:scale[1] w-fit">
+        <div className="hidden absolute right-[-4em] top-[-8em] xl:top-[0] xl:right-[5vw] md:block md:scale-[.7] z-1 md:translate-x-[150px] lg:translate-x-[17px] lg:scale-[.8] xl:scale-[.9]">
           <Suspense fallback={<></>}>
             <Spline scene="https://prod.spline.design/qblRNAa3C-eNH6Bo/scene.splinecode" />
           </Suspense>
