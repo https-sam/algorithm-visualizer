@@ -1,10 +1,14 @@
 'use strict';
 
-import * as React                               from 'react';
-import {useEffect, useRef, useMemo}             from 'react';
-import * as THREE                               from 'three';
-import {a}                                      from 'react-spring/three';
-import {useAnimationHook, useGeneratedMazeHook} from './Layouts';
+import * as React                              from 'react';
+import {useEffect, useRef, useMemo}            from 'react';
+import * as THREE                              from 'three';
+import {a}                                     from 'react-spring/three';
+import {useAnimationHook, useGenerateMazeHook} from './Layouts';
+import {directions}                            from '../Algorithms/Maze/Generation/Directions';
+import {_FindCell}                             from '../Algorithms/Maze/Generation/Tools';
+import board                                   from './Board';
+import {BinaryTreeCreation}                    from '../Algorithms/Maze/Generation/BinaryTreeCreation';
 
 
 
@@ -29,22 +33,23 @@ const tempOBJ = new THREE.Object3D();
 
 function getColor(type) {
   switch (type) {
-    case FLOOR_TYPE:
+    case '_floor_':
       return FLOOR_COLOR;
-    case WALL_TYPE:
+    case '_wall_':
       return WALL_COLOR;
-    case PATH_TYPE:
+    case '_path_':
       return PATH_COLOR;
-    case GOAL_TYPE:
+    case '_goal_':
       return GOAL_COLOR;
-    case START_TYPE:
+    case '_start_':
       return START_COLOR;
-    case TEST_TYPE:
+    case '_test_':
       return TEST_COLOR;
     default:
       return '#ffffff';
   }
 }
+
 
 
 function updateInstancedMeshMatrices({mesh, board}) {
@@ -60,7 +65,7 @@ function updateInstancedMeshMatrices({mesh, board}) {
     tempOBJ.rotation.set(0.5 * Math.PI, 0, 0); // Look at the origin
     tempCOLOR.set(getColor(board[i].type));
     tempOBJ.updateMatrix();
-    mesh.setMatrixAt(i, tempOBJ.matrix, tempCOLOR);
+    mesh.setMatrixAt(i, tempOBJ.matrix);
   }
   mesh.instanceMatrix.needsUpdate = true;
 
@@ -69,7 +74,7 @@ function updateInstancedMeshMatrices({mesh, board}) {
 
 const tempCOLOR = new THREE.Color();
 
-const usePointColorsHook = ({board}) => {
+const usePointColorsHook = ({board, mazeType}) => {
   const numPoints   = board.length;
   const colorAttrib = useRef();
   const colorArray  = useMemo(() => new Float32Array(numPoints * 3), [
@@ -101,7 +106,7 @@ const usePointColorsHook = ({board}) => {
       tempCOLOR.toArray(colorArray, i * 3);
     }
     colorAttrib.current.needsUpdate = true;
-  }, [board, colorArray]);
+  }, [board, mazeType, colorArray]);
 
   return {colorAttrib, colorArray};
 };
@@ -159,25 +164,25 @@ const _mouseClickHook = ({board, selectedPoint, onSelectPoint/* , useDrag  */}) 
 
 const Cells = ({board, layoutType, mazeType, selectedPoint, onSelectPoint /*,  useDrag */}) => {
   const meshRef   = useRef();
+  const mazeRef   = useRef(mazeType);
+  // const boardRef  = useRef(board);
   const numPoints = board.length;
+
+
 
   // @Test
   board[100].type = '_start_';
   board[1].type   = '_goal_';
 
 
-  const {animationInProgress} = useAnimationHook({
-    board,
-    layoutType,
-    mazeType,
-    onFrame: () => {
-      updateInstancedMeshMatrices({mesh: meshRef.current, board});
-    },
-  });
+  useAnimationHook({board, layoutType, mazeType});
+
+  useGenerateMazeHook({board, mazeType});
 
   useEffect(() => {
+    console.log('Board updated');
     updateInstancedMeshMatrices({mesh: meshRef.current, board});
-  }, [board, layoutType, mazeType]);
+  }, [layoutType]);
 
   const {getClickTarget, setDownPointerCoord} = _mouseClickHook({
     board,
@@ -186,8 +191,10 @@ const Cells = ({board, layoutType, mazeType, selectedPoint, onSelectPoint /*,  u
     /* useDrag */
   });
 
+  const {colorAttrib, colorArray} = usePointColorsHook({board, mazeType});
 
-  const {colorAttrib, colorArray} = usePointColorsHook({board});
+
+
 
 
   return (
@@ -195,7 +202,7 @@ const Cells = ({board, layoutType, mazeType, selectedPoint, onSelectPoint /*,  u
         <instancedMesh
             ref = {meshRef}
             args = {[null, null, numPoints]}
-            frustumCulled = {false}
+            frustumCulled = {true}
             onClick = {getClickTarget}
             onPointerDown = {setDownPointerCoord}
         >
@@ -206,16 +213,16 @@ const Cells = ({board, layoutType, mazeType, selectedPoint, onSelectPoint /*,  u
                 args = {[colorArray, 3]}
             />
           </boxBufferGeometry>
-{/*           <boxBufferGeometry
-              attach = "geometry"
-              args = {[.9, .4, 0.9, 18]}
-              color = "black"
-          >
-            <instancedBufferAttribute
-                attachObject = {['attributes', 'color']}
-                args = {[colorArray, 3]}
-            />
-          </boxBufferGeometry> */}
+          {/*           <boxBufferGeometry
+           attach = "geometry"
+           args = {[.9, .4, 0.9, 18]}
+           color = "black"
+           >
+           <instancedBufferAttribute
+           attachObject = {['attributes', 'color']}
+           args = {[colorArray, 3]}
+           />
+           </boxBufferGeometry> */}
           <meshStandardMaterial
               attach = "material"
               vertexColors = {THREE.VertexColors}
@@ -226,11 +233,11 @@ const Cells = ({board, layoutType, mazeType, selectedPoint, onSelectPoint /*,  u
         {/* />} */}
         {selectedPoint && (
             <a.group
-                position = {animationInProgress.interpolate(() => [
+                position = {[
                   selectedPoint.x,
                   selectedPoint.y,
                   selectedPoint.z,
-                ])}
+                ]}
             >
               <pointLight
                   distance = {6}
@@ -251,7 +258,6 @@ const Cells = ({board, layoutType, mazeType, selectedPoint, onSelectPoint /*,  u
       </>
   );
 };
-
 
 
 export default Cells;

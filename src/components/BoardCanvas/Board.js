@@ -7,6 +7,8 @@ import {TrackballControls}                       from 'three/examples/jsm/contro
 import OrbitControls                             from './OrbitControls';
 
 
+
+
 export const Board = ({board, layoutType, selectedPoint, onSelectPoint, mazeType}, ref) => {
   const controlsRef = useRef(OrbitControls);
 

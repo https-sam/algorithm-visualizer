@@ -24,10 +24,11 @@ export function _FindCell(board, x, y) {
     // console.log(board[i].x, x, board[i].y, y);
 
     if (board[i].x === x && board[i].y === y) {
-      console.log(board[i].x, x, board[i].y, y);
+      // console.log(board[i].x, x, board[i].y, y);
 
       return board[i];
     }
   }
+  return null;
 };
 

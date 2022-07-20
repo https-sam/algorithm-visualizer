@@ -1,38 +1,49 @@
 import {directions}                                         from './Directions';
 import {_FindCellVisitState, _FindCellTypeState, _FindCell} from './Tools';
+import exit                                                 from 'exit';
 
 
 
 
-export function BinaryTreeCreation({board}) {
-  for (var i = 0; i < board.i.length; i++) {
-    let direction = Math.random() * 4;
-    // console.log(board[i]);
+export function BinaryTreeCreation(board) {
+  const numPoints = board.length;
+  const numCols   = Math.ceil(Math.sqrt(numPoints));
 
+  for (var i = 0; i < numPoints; i++) {
+    let node      = board[i];
+    // Needed to be percise to avoid floating point errors....
+    let direction = Math.floor(Math.random() * 4);
+    // console.log(node);
     // console.log(direction);
     // console.log(directions[direction].x);
     // console.log(board[i].x + directions[direction].x);
-    let xcord  = board[i].i.x + directions[direction].x;
-    let ycord  = board[i].i.y + directions[direction].y;
-    const cell = board.find(item => Math.floor(item.x) === Math.floor(xcord) && Math.floor(item.y) === Math.floor(ycord));
-    // console.log(cell);
+    let xcord = node.x += directions[direction].x;
+    let ycord = node.y += directions[direction].y;
+    // console.log(xcord, ycord);
+    // console.log(node.x + directions[direction].x, node.y + directions[direction].y);
 
+    const cell = _FindCell(board, xcord, ycord);
+    // console.log(cell);
+    // exit();
     if (cell) {
+      // exit();
+
       if (!cell.visited) {
         // console.log(cell);
-        board[cell.id].visited = true;
-        board[cell.id].type    = "_wall_";
+        cell.visited = true;
+        cell.type    = '_floor_';
       }
     }
   }
-  console.log('BinaryTreeCreation: ' + board.length);
-}
+  for (var x = 0; x < numPoints; x++) {
+    let node = board[x];
 
 
-function interpolateBinaryTree(board, progress) {
-  for (let i = 0; i < board.length; ++i) {
-    board[i].x = (1 - progress) * board[i].sourceX + progress * board[i].targetX;
-    board[i].y = (1 - progress) * board[i].sourceY + progress * board[i].targetY;
-    board[i].z = (1 - progress) * board[i].sourceZ + progress * board[i].targetZ;
+    if (!node.visited) {
+      node.type = '_wall_';
+    }
   }
+  // console.log('BinaryTreeCreation: ' + board.length);
+  return board;
 }
+

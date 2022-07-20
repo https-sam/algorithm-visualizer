@@ -18,15 +18,15 @@ import {Strategy}                                      from '../Strategy/Strateg
  */
 export default function Display() {
   const [layoutType, setLayout]                     = useState('standard');
-  const [mazeType, setMazeType]                    = useState("_none_");
+  const [mazeType, setMazeType]                    = useState("none");
   const [selectedPoint, setSelectedPoint]           = useState(null);
   const [selectedGoalPoint, setSelectedGoalPoint]   = useState(null);
   const [selectedStartPoint, setSelectedStartPoint] = useState(null);
-  // const board                                       = new Array(10000).fill(0).map(
-  const board                                       = new Array(3844).fill(0).map(
+  // const board                                       = new Array(3844).fill(0).map(
+  const board                                       = new Array(1000).fill(0).map(
       // (i, id, type: string = '_floor_', visited: Boolean = false, x: Number, y: Number ) => ({id, type, visited}));
       // (i, id, type: string = '_floor_', visited: Boolean = false, x: Number, y: Number ) => ({x, y} ({id, type, visited})));
-      (i, id: number, type: String = '_wall_', sourceType: String = '_wall_', targetType: String = '_wall_', visited: Boolean = false, x: number, y: number ) => ({x, y, id, type, visited, sourceType, targetType}));
+      (i, id: number, type: string = '_wall_', sourceType: string = '_wall_', targetType: string = '_wall_', visited: boolean = false, x: number, y: number ) => ({x, y, id, type, visited, sourceType, targetType}));
 
   const boardRef = useRef(); // Mutable(Persistant) board reference object.
 
@@ -92,38 +92,38 @@ export default function Display() {
             <div className = "maze-toggle-group" >
               <button
                   onClick = {() => {
-                    if (mazeType === '_none_') {
-                      setMazeType('_BinaryTree_');
+                    if (mazeType === 'none') {
+                      setMazeType('binaryTree');
                     }
                   }}
-                  className = {`maze-toggle ${mazeType !== '_none_' ? 'active' : undefined}`}
+                  className = {`maze-toggle ${mazeType !== 'none' ? 'active' : undefined}`}
               >
                 ON
               </button>
 
             <button
-                onClick = {() => setMazeType('_none_')}
-                className = {`maze-toggle ${mazeType === '_none_' ? 'active' : undefined}`}
+                onClick = {() => setMazeType('none')}
+                className = {`maze-toggle ${mazeType === 'none' ? 'active' : undefined}`}
             >
               OFF
             </button>
 
             </div>
             <button
-                onClick = {() => setMazeType('_BinaryTree_')}
-                className = {mazeType === '_BinaryTree_' ? 'active' : undefined}
+                onClick = {() => setMazeType('binaryTree')}
+                className = {mazeType === 'binaryTree' ? 'active' : undefined}
             >
               Binary Tree
             </button>
             <button
-                onClick = {() => setMazeType('_GrowingTree_')}
-                className = {mazeType === '_GrowingTree_' ? 'active' : undefined}
+                onClick = {() => setMazeType('growingTree')}
+                className = {mazeType === 'growingTree' ? 'active' : undefined}
             >
               Growing Tree
             </button>
             <button
-                onClick = {() => setMazeType('_BFS_')}
-                className = {mazeType === '_BFS_' ? 'active' : undefined}
+                onClick = {() => setMazeType('bfs')}
+                className = {mazeType === 'bfs' ? 'active' : undefined}
             >
               Breath First Search
             </button>
