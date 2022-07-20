@@ -1,7 +1,7 @@
 # Algorithm Visualizer
 
 By:
-[Sam Gotto](https://github.com/https-sam),
+[Sam Goto](https://github.com/https-sam),
 [Michael Metz](https://github.com/MicMetz)
 <br>
 <br>
