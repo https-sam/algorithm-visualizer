@@ -63,7 +63,7 @@ function updateInstancedMeshMatrices({mesh, board}) {
     tempOBJ.rotation.set(0.5 * Math.PI, 0, 0); // Look at the origin
     tempCOLOR.set(getColor(board[i].type));
     tempOBJ.updateMatrix();
-    mesh.setMatrixAt(i, tempOBJ.matrix);
+    mesh.setMatrixAt(i, tempOBJ.matrix, tempCOLOR);
   }
   mesh.instanceMatrix.needsUpdate = true;
 }
@@ -175,7 +175,7 @@ const Cells = ({board, layoutType, mazeType, selectedPoint, onSelectPoint /*,  u
   useEffect(() => {
     console.log('Board updated');
     updateInstancedMeshMatrices({mesh: meshRef.current, board});
-  });
+  }, [layoutType, mazeType]);
 
 
 

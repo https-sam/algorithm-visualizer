@@ -37,24 +37,6 @@ export const useLayoutHook = ({board, layoutType}) => {
 };
 
 
-// export const useMazeTypeHook = ({board}) => {
-//   useEffect(() => {
-//     switch {
-//       case 'binaryTree':
-//         BinaryTreeCreation(board);
-//         break;
-//       case '_RecursiveBacktracker_':
-//
-//         break;
-//       case '_RecursiveDivision_':
-//
-//         break;
-//       case 'none':
-//       default: {
-//         return;
-//       }
-//     }
-
 export function useAnimationHook({board, layoutType}) {
   console.log('useAnimationHook used.');
   useLayoutHook({board, layoutType});  // do the actual animation when layoutType changes
@@ -82,9 +64,10 @@ export function useGenerateMazeHook({board, mazeType}) {
         return;
       }
     }
-    console.log('generatedMaze ended.');
 
   }, [board, mazeType]);
+  console.log('generatedMaze ended.');
+
 }
 
 
@@ -121,28 +104,6 @@ export function useGenerateMazeHook({board, mazeType}) {
     path.push(current);
     return path;
   };
-
-
-  /* function BinaryTreeMaze(board) {
-   const numPoints = board.length;
-   const numCols   = Math.ceil(Math.sqrt(numPoints));
-
-   for (let i = 0; i < numPoints; ++i) {
-   const node = board[i];
-   let direction = Math.random() * 4;
-
-   let xcord  = board[i].x + directions[direction].x;
-   let ycord  = board[i].y + directions[direction].y;
-   const col   = (i % numCols) - numCols / 2;
-   const row   = Math.floor(i / numCols) - numCols / 2;
-
-   node.x = col;
-   node.y = row;
-   node.z = 0;
-   node.type = board[i].type;
-   }
-   } */
-
 
 
 

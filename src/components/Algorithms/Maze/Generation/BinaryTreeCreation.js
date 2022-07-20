@@ -37,7 +37,11 @@ export function BinaryTreeCreation(board) {
   }
   for (var x = 0; x < numPoints; x++) {
     let node = board[x];
+    // const col  = (i % numCols) - numCols / 2;
+    // const row  = Math.floor(i / numCols) - numCols / 2;
 
+    // node.x = col * 1.05;
+    // node.y = row * 1.05;
     node.x = board[x].x = Math.floor(node.x);
     node.y = board[x].y = Math.floor(node.y);
     node.z = 0;
