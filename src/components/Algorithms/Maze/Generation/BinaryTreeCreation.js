@@ -1,11 +1,12 @@
-import {directions}                                         from './Directions';
-import {_FindCellVisitState, _FindCellTypeState, _FindCell} from './Tools';
-import exit                                                 from 'exit';
+import {directions}                                                      from '../Directions';
+import {_FindCellVisitState, _FindCellTypeState, _FindCell, _BoardReset} from '../Tools';
+import exit                                                              from 'exit';
 
 
 
 
 export function BinaryTreeCreation(board) {
+  _BoardReset(board);
   const numPoints = board.length;
   const numCols   = Math.ceil(Math.sqrt(numPoints));
 
@@ -37,11 +38,8 @@ export function BinaryTreeCreation(board) {
   }
   for (var x = 0; x < numPoints; x++) {
     let node = board[x];
-    // const col  = (i % numCols) - numCols / 2;
-    // const row  = Math.floor(i / numCols) - numCols / 2;
 
-    // node.x = col * 1.05;
-    // node.y = row * 1.05;
+    // Tightly packed rows of cells.
     node.x = board[x].x = Math.floor(node.x);
     node.y = board[x].y = Math.floor(node.y);
     node.z = 0;
@@ -51,6 +49,5 @@ export function BinaryTreeCreation(board) {
     }
   }
   // console.log('BinaryTreeCreation: ' + board.length);
-  return board;
 }
 

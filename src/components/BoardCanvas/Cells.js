@@ -1,50 +1,38 @@
 'use strict';
 
 import * as React                              from 'react';
-import {useEffect, useRef, useMemo}            from 'react';
+import {useEffect, useRef, useMemo, useState}  from 'react';
 import * as THREE                              from 'three';
 import {a}                                     from 'react-spring/three';
 import {useAnimationHook, useGenerateMazeHook} from './Layouts';
-import {directions}                            from '../Algorithms/Maze/Generation/Directions';
-import {_FindCell}                             from '../Algorithms/Maze/Generation/Tools';
+import {directions}                            from '../Algorithms/Maze/Directions';
+import {_FindCell}                             from '../Algorithms/Maze/Tools';
 import board                                   from './Board';
 import {BinaryTreeCreation}                    from '../Algorithms/Maze/Generation/BinaryTreeCreation';
 
 
 
 
-const TEST_COLOR     = '#FF66CC';
-const BURN_COLOR     = '#fad6ee';
-const PATH_COLOR     = '#63caef';
-const WALL_COLOR     = '#1c1b1b';
-const GOAL_COLOR     = '#30fa04';
-const START_COLOR    = '#ff0000';
-const SELECTED_COLOR = '#ffd300';
-const FLOOR_COLOR    = '#8f8d8d';
-const FLOOR_TYPE     = '_floor_';
-const WALL_TYPE      = '_wall_';
-const PATH_TYPE      = '_path_';
-const GOAL_TYPE      = '_goal_';
-const START_TYPE     = '_start_';
-const TEST_TYPE      = '_test_';
-
-const tempOBJ = new THREE.Object3D();
+export const TEST_COLOR = '#FF66CC', BURN_COLOR = '#fad6ee', PATH_COLOR = '#63caef', WALL_COLOR = '#1c1b1b', GOAL_COLOR = '#30fa04', START_COLOR = '#ff0000', SELECTED_COLOR = '#ffd300', FLOOR_COLOR = '#ffffff', DEFAULT_COLOR = '#8f8d8d', FLOOR_TYPE = '_floor_', DEFAULT_TYPE = '_default_', WALL_TYPE = '_wall_', PATH_TYPE = '_path_', GOAL_TYPE = '_goal_', START_TYPE = '_start_', TEST_TYPE = '_test_';
+const tempOBJ           = new THREE.Object3D();
 
 
 function getColor(type) {
   switch (type) {
-    case '_floor_':
+    case FLOOR_TYPE:
       return FLOOR_COLOR;
-    case '_wall_':
+    case WALL_TYPE:
       return WALL_COLOR;
-    case '_path_':
+    case PATH_TYPE:
       return PATH_COLOR;
-    case '_goal_':
+    case GOAL_TYPE:
       return GOAL_COLOR;
-    case '_start_':
+    case START_TYPE:
       return START_COLOR;
-    case '_test_':
+    case TEST_TYPE:
       return TEST_COLOR;
+    case DEFAULT_TYPE:
+      return DEFAULT_COLOR;
     default:
       return '#ffffff';
   }
@@ -67,6 +55,7 @@ function updateInstancedMeshMatrices({mesh, board}) {
   }
   mesh.instanceMatrix.needsUpdate = true;
 }
+
 
 function updateInstancedMeshColors({mesh, board}) {
 
@@ -120,7 +109,7 @@ const _mouseClickHook = ({board, selectedPoint, onSelectPoint/* , useDrag  */}) 
     );
 
     // Prevents repeat calls to click handler unless drag selection is initiated.
-    if (travelDistance > 50) {
+    if (travelDistance > 5) {
       /* if (!useDrag) { */
       event.stopPropagation();
       return;
@@ -146,22 +135,23 @@ const _mouseClickHook = ({board, selectedPoint, onSelectPoint/* , useDrag  */}) 
 
 
 const Cells = ({board, layoutType, mazeType, selectedPoint, onSelectPoint /*,  useDrag */}) => {
-  const meshRef   = useRef();
-
-  const mazeRef   = useRef(mazeType);
-  // const boardRef  = useRef(board);
-  const numPoints = board.length;
+  const meshRef                = useRef();
+  const [activeRef, setActive] = useState('');
+  const pathRef                = useRef(Array.from(board).filter(point => point.type === PATH_TYPE));
+  const numPoints              = board.length;
 
 
 
   // @Test
-  board[100].type = '_start_';
-  board[1].type   = '_goal_';
+  board[100].type = GOAL_TYPE;
+  board[1].type   = START_TYPE;
 
 
   useAnimationHook({board, layoutType});
 
   useGenerateMazeHook({board, mazeType});
+
+  // console.log('typeref: ', activeRef);
 
   const {getClickTarget, setDownPointerCoord} = _mouseClickHook({
     board,
@@ -178,12 +168,6 @@ const Cells = ({board, layoutType, mazeType, selectedPoint, onSelectPoint /*,  u
   }, [layoutType, mazeType]);
 
 
-
-
-
-
-
-
   return (
       <>
         <instancedMesh
@@ -197,7 +181,9 @@ const Cells = ({board, layoutType, mazeType, selectedPoint, onSelectPoint /*,  u
             <instancedBufferAttribute
                 ref = {colorAttrib}
                 attachObject = {['attributes', 'color']}
-                args = {[colorArray, 3]}
+                array = {colorArray}
+                itemSize = {3}
+                count = {numPoints}
             />
           </boxBufferGeometry>
           {/*           <boxBufferGeometry

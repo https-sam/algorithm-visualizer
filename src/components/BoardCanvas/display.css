@@ -114,14 +114,15 @@
 }
 
 .maze-toggle {
-	width:      30%;
-	height:     fit-content;
+	min-width:  30%;
+	width:      auto;
+	/*height:     fit-content;*/
 	text-align: center;
 	background: #222;
 	color:      #ccc;
 	cursor:     pointer;
 	border:     none;
-	padding:    1px;
+	padding:    2px;
 	margin:     2px;
 }
 
@@ -144,3 +145,43 @@
 .reset-button {
 	padding-bottom: 5px;
 }
+
+
+.solving-group {
+	width:           100%;
+	display:         flex;
+	justify-content: center;
+}
+
+.solve-toggle-group {
+	width:            30%;
+	left:             50%;
+	transform:        translateX(-50%);
+	height:           fit-content;
+	text-align:       center;
+	background-color: rgba(51, 51, 51, 0.65);
+	color:            #ccc;
+	cursor:           pointer;
+	border:           none;
+	padding:          2px;
+	margin:           2px;
+	position:         absolute;
+}
+
+
+.solve-toggle:hover {
+	background-color: #d9c14b;
+	color:            black;
+}
+
+.solve-toggle.active {
+	background-color: #23ff00;
+	color:            #222;
+}
+
+.building-group {
+	width:           100%;
+	display:         flex;
+	justify-content: center;
+}
+

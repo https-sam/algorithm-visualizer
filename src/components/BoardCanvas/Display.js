@@ -18,15 +18,16 @@ import {Strategy}                                      from '../Strategy/Strateg
  */
 export default function Display() {
   const [layoutType, setLayout]                     = useState('standard');
-  const [mazeType, setMazeType]                    = useState("none");
+  const [mazeType, setMazeType]                     = useState('none');
+  const [solving, setSolving]                       = useState(false);
   const [selectedPoint, setSelectedPoint]           = useState(null);
   const [selectedGoalPoint, setSelectedGoalPoint]   = useState(null);
   const [selectedStartPoint, setSelectedStartPoint] = useState(null);
-  // const board                                       = new Array(3844).fill(0).map(
-  const board                                       = new Array(1000).fill(0).map(
+  const board                                       = new Array(3844).fill(0).map(
+      // const board                                       = new Array(1000).fill(0).map(
       // (i, id, type: string = '_floor_', visited: Boolean = false, x: Number, y: Number ) => ({id, type, visited}));
       // (i, id, type: string = '_floor_', visited: Boolean = false, x: Number, y: Number ) => ({x, y} ({id, type, visited})));
-      (i, id: number, type: string = '_wall_', sourceType: string = '_wall_', targetType: string = '_wall_', visited: boolean = false, x: number, y: number ) => ({x, y, id, type, visited, sourceType, targetType}));
+      (i, id: number, type: string = '_wall_', sourceType: string = '_wall_', targetType: string = '_wall_', visited: boolean = false, x: number, y: number) => ({x, y, id, type, visited, sourceType, targetType}));
 
   const boardRef = useRef(); // Mutable(Persistant) board reference object.
 
@@ -41,14 +42,13 @@ export default function Display() {
   };
 
   useEffect(() => {
-    // SG 07/17/2022 23:32  theme initially set to dark
     document.documentElement.classList.add('dark');
     localStorage.setItem('theme', 'dark');
-  })
+  });
 
   return (
       <>
-        <Navigation themeToggle={true}/>
+        <Navigation themeToggle = {true}/>
         <div className = "display-container">
 
           <Board
@@ -75,13 +75,6 @@ export default function Display() {
             >
               Standard Grid
             </button>
-            {/* <button */}
-            {/*     onClick = {() => setLayout('circular')} */}
-            {/*     className = {layoutType === 'circular' ? 'active' : undefined} */}
-            {/* > */}
-            {/*   Circular */}
-            {/* </button> */}
-
             <button className = "reset-button" onClick = {handleResetCamera}>
               View Reset
             </button>
@@ -89,7 +82,7 @@ export default function Display() {
 
           <div className = "control-group-two">
             <h2 className = "control-header">Generate Maze</h2>
-            <div className = "maze-toggle-group" >
+            <div className = "maze-toggle-group">
               <button
                   onClick = {() => {
                     if (mazeType === 'none') {
@@ -101,13 +94,15 @@ export default function Display() {
                 ON
               </button>
 
-            <button
-                onClick = {() => setMazeType('none')}
-                className = {`maze-toggle ${mazeType === 'none' ? 'active' : undefined}`}
-            >
-              OFF
-            </button>
-
+              <button
+                  onClick = {() => setMazeType('none')}
+                  className = {`maze-toggle ${mazeType === 'none' ? 'active' : undefined}`}
+              >
+                OFF
+              </button>
+              <button className = "maze-toggle" onClick = {handleResetBoard}>
+                Reset
+              </button>
             </div>
             <button
                 onClick = {() => setMazeType('binaryTree')}
@@ -127,11 +122,22 @@ export default function Display() {
             >
               Breath First Search
             </button>
-            <button className = "reset-button" onClick = {handleResetBoard}>
-              Board Reset
-            </button>
           </div>
         </div>
+        <div className = "solve-toggle-group">
+          <h2 className = "control-header">Solving Pattern</h2>
+          <button
+              onClick = {() => {
+                if (solving === false) {
+                  setSolving(true);
+                }
+              }}
+              className = {`solve-toggle ${solving === true ? 'active' : undefined}`}
+          >
+            SOLVE
+          </button>
+        </div>
+
       </>
   );
 }

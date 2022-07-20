@@ -1,6 +1,11 @@
 /*
  * Quick selection test
  */
+import {DEFAULT_TYPE} from '../../BoardCanvas/Cells';
+
+
+
+
 export const _FindCellVisitState = (board, x, y) => {
   for (let i = 0; i < board.length; i++) {
     if (Math.floor(board[i].x) === Math.floor(x) && Math.floor(board[i].y) === Math.floor(y)) {
@@ -32,3 +37,10 @@ export function _FindCell(board, x, y) {
   return null;
 };
 
+
+export function _BoardReset(board) {
+  for (let i = 0; i < board.length; i++) {
+    board[i].visited = false;
+    board[i].type = DEFAULT_TYPE;
+  }
+}
