@@ -38,6 +38,9 @@ export function BinaryTreeCreation(board) {
   for (var x = 0; x < numPoints; x++) {
     let node = board[x];
 
+    node.x = board[x].x = Math.floor(node.x);
+    node.y = board[x].y = Math.floor(node.y);
+    node.z = 0;
 
     if (!node.visited) {
       node.type = '_wall_';

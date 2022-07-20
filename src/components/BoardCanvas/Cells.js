@@ -55,9 +55,7 @@ function getColor(type) {
 function updateInstancedMeshMatrices({mesh, board}) {
   if (!mesh) {
     return;
-
   }
-
   // transform mesh to world space
   for (let i = 0; i < board.length; ++i) {
     const {x, y, z} = board[i];
@@ -68,13 +66,18 @@ function updateInstancedMeshMatrices({mesh, board}) {
     mesh.setMatrixAt(i, tempOBJ.matrix);
   }
   mesh.instanceMatrix.needsUpdate = true;
+}
+
+function updateInstancedMeshColors({mesh, board}) {
 
 }
+
 
 
 const tempCOLOR = new THREE.Color();
 
 const usePointColorsHook = ({board, mazeType}) => {
+  console.log('usePointColorsHook');
   const numPoints   = board.length;
   const colorAttrib = useRef();
   const colorArray  = useMemo(() => new Float32Array(numPoints * 3), [
@@ -82,27 +85,7 @@ const usePointColorsHook = ({board, mazeType}) => {
   ]);
   useEffect(() => {
     for (let i = 0; i < board.length; ++i) {
-      switch (board[i].type) {
-        case '_wall_':
-          tempCOLOR.set(WALL_COLOR);
-          break;
-        case '_path_':
-          tempCOLOR.set(PATH_COLOR);
-          break;
-        case '_goal_':
-          tempCOLOR.set(GOAL_COLOR);
-          break;
-        case '_start_':
-          tempCOLOR.set(START_COLOR);
-          break;
-        case '_test_':
-          tempCOLOR.set(TEST_COLOR);
-          break;
-        case '_floor_':
-        default:
-          tempCOLOR.set(FLOOR_COLOR);
-          break;
-      }
+      tempCOLOR.set(getColor(board[i].type));
       tempCOLOR.toArray(colorArray, i * 3);
     }
     colorAttrib.current.needsUpdate = true;
@@ -164,6 +147,7 @@ const _mouseClickHook = ({board, selectedPoint, onSelectPoint/* , useDrag  */}) 
 
 const Cells = ({board, layoutType, mazeType, selectedPoint, onSelectPoint /*,  useDrag */}) => {
   const meshRef   = useRef();
+
   const mazeRef   = useRef(mazeType);
   // const boardRef  = useRef(board);
   const numPoints = board.length;
@@ -175,14 +159,9 @@ const Cells = ({board, layoutType, mazeType, selectedPoint, onSelectPoint /*,  u
   board[1].type   = '_goal_';
 
 
-  useAnimationHook({board, layoutType, mazeType});
+  useAnimationHook({board, layoutType});
 
   useGenerateMazeHook({board, mazeType});
-
-  useEffect(() => {
-    console.log('Board updated');
-    updateInstancedMeshMatrices({mesh: meshRef.current, board});
-  }, [layoutType]);
 
   const {getClickTarget, setDownPointerCoord} = _mouseClickHook({
     board,
@@ -191,7 +170,15 @@ const Cells = ({board, layoutType, mazeType, selectedPoint, onSelectPoint /*,  u
     /* useDrag */
   });
 
-  const {colorAttrib, colorArray} = usePointColorsHook({board, mazeType});
+  const {colorAttrib, colorArray} = usePointColorsHook({board});
+
+  useEffect(() => {
+    console.log('Board updated');
+    updateInstancedMeshMatrices({mesh: meshRef.current, board});
+  });
+
+
+
 
 
 

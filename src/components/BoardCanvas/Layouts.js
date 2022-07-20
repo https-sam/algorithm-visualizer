@@ -17,11 +17,11 @@ import {BinaryTreeCreation}                   from '../Algorithms/Maze/Generatio
  * Board type selector hook.
  *
  */
-export const useLayoutHook = ({board, layoutType = 'standard'}) => {
+export const useLayoutHook = ({board, layoutType}) => {
   console.log('useLayoutHook used.');
 
   useEffect(() => {
-    console.log('useLayoutHook MEMO E1 used.');
+    console.log('useLayoutHook used.');
 
     // if === "none") {
     switch (layoutType) {
@@ -54,90 +54,19 @@ export const useLayoutHook = ({board, layoutType = 'standard'}) => {
 //         return;
 //       }
 //     }
-//   }, [board]);
-// };
-
-
-/*
- This function component is used to animate the grid layout by
- altering the points(Cells)' position on the board.
-
- "Deep Linking" is used to animate the grid layout.
- */
-// function useTargetLayoutHook({board, layoutType}) {
-//
-//   useEffect(() => {
-//     for (let i = 0; i < board.length; ++i) {
-//       board[i].sourceX    = board[i].x || 0;
-//       board[i].sourceY    = board[i].y || 0;
-//       board[i].sourceZ    = board[i].z || 0;
-//       board[i].sourceType = board[i].type;
-//     }
-//   }, [board, layoutType]);
-//
-//   useLayoutHook({board, layoutType});
-
-// useEffect(() => {
-//   for (let i = 0; i < board.length; ++i) {
-//     board[i].targetX    = board[i].x;
-//     board[i].targetY    = board[i].y;
-//     board[i].targetZ    = board[i].z;
-//     board[i].targetType = board[i].type;
-//   }
-// }, [board, layoutType]);
-//
-
-//   interpolateSourceTarget({board});
-// }
-
-
-/*
- function useMazeTargetHook({board}) {
- useEffect(() => {
- for (let i = 0; i < board.length; ++i) {
- board[i].sourceX    = board[i].x || 0;
- board[i].sourceY    = board[i].y || 0;
- board[i].sourceZ    = board[i].z || 0;
- board[i].sourceType = board[i].type || '_floor_';
- }
- }, [board]);
-
- useMazeTypeHook({board});
-
- useEffect(() => {
- for (let i = 0; i < board.length; ++i) {
- board[i].targetX    = board[i].x;
- board[i].targetY    = board[i].y;
- board[i].targetZ    = board[i].z;
- board[i].targetType = board[i].type;
- }
- }, [board]);
- }
- */
-
-
-// function interpolateSourceTarget(board) {
-//   for (let i = 0; i < board.length; ++i) {
-//     board[i].x = board[i].targetX;
-//     board[i].y = board[i].targetY;
-//     board[i].z = board[i].targetZ;
-//     board[i].type = board[i].targetType;
-//   }
-// }
-
-
-
-
 
 export function useAnimationHook({board, layoutType}) {
-
+  console.log('useAnimationHook used.');
   useLayoutHook({board, layoutType});  // do the actual animation when layoutType changes
+  console.log('useAnimationHook ended.');
+
 }
 
 
 export function useGenerateMazeHook({board, mazeType}) {
+  console.log('generatedMaze used.');
+
   useEffect(() => {
-    console.log('generatedMaze used.');
     switch (mazeType) {
       case 'binaryTree':
         BinaryTreeCreation(board);
@@ -153,6 +82,8 @@ export function useGenerateMazeHook({board, mazeType}) {
         return;
       }
     }
+    console.log('generatedMaze ended.');
+
   }, [board, mazeType]);
 }
 
@@ -171,7 +102,7 @@ export function useGenerateMazeHook({board, mazeType}) {
       node.x = col * 1.05;
       node.y = row * 1.05;
       node.z = 0;
-      node.type = board[i].type || '_wall_';
+      // node.type = board[i].type || '_wall_';
 
     }
   }
