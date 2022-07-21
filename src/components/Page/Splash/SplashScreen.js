@@ -31,7 +31,7 @@ const SplashScreen = () => {
           completely customizable animations. <br />
           Welcome to the algo visualizer.
         </p>
-        <div className="hidden md:block md:scale-[.7] z-1 -translate-y-[8em] md:translate-x-[150px] lg:translate-x-[17px] lg:scale-[.8] xl:scale-[.9] w-fit">
+        <div className="hidden md:block md:scale-[.7] z-1 -translate-y-[4em] md:translate-x-[150px] lg:translate-x-[17px] lg:scale-[.8] xl:scale-[.9] w-fit">
           <Suspense fallback={<></>}>
             <Spline scene="https://prod.spline.design/qblRNAa3C-eNH6Bo/scene.splinecode" />
           </Suspense>
