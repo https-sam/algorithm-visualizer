@@ -5,7 +5,7 @@ By:
 [Michael Metz](https://github.com/MicMetz)
 <br>
 <br>
-<u>Languages</u> : [ReactJS](https://reactjs.org/)
+<u>Languages</u> : [React v-18](https://reactjs.org/)
 <br>
 <br>
 <u>Description</u> : The algorithm visualizer. This is a ReactJS web
