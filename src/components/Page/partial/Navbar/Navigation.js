@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Dropdown from "../../../../Utility/Dropdown/Dropdown";
 import "./navbar.css";
 import ThemeToggle from "./ThemeToggle";
-
+import { ReactComponent as Github } from "../../../../img/github.svg";
 /**
  * @Description: Navbar component for the application.
  *               @briandesignz/react-dropdown-menu
@@ -56,10 +56,20 @@ function Navigation({ themeToggle }) {
               className={"nav-links dark:text-white dark:hover:text-lightDark"}
               onClick={closeMobileMenu}
             >
+              <Github className="inline mr-3 scale-[.9]" />
+              Github
+            </Link>
+          </li>
+          <li className={"nav-item"}>
+            <Link
+              to="/"
+              className={"nav-links dark:text-white dark:hover:text-lightDark"}
+              onClick={closeMobileMenu}
+            >
               Home
             </Link>
           </li>
-          <li
+          {/* <li
             className={"nav-item"}
             onMouseEnter={onMouseEnter}
             onMouseLeave={onMouseLeave}
@@ -72,7 +82,7 @@ function Navigation({ themeToggle }) {
               Documentation <i className={"fas fa-caret-down"} />
             </Link>
             {dropdown && <Dropdown />}
-          </li>
+          </li> */}
           {/* <li className = {'nav-item'}>
              <Link
              to = "/about"
