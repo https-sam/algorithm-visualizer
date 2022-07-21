@@ -58,7 +58,7 @@ const SplashScreen = () => {
             </div>
           </div>
 
-          <div className="hidden lg:block translate-x-[9em] xl:translate-x-[0] md:scale-[.7] z-1 -translate-y-[4em] lg:scale-[.7] xl:scale-[.9]">
+          <div className="hidden lg:block translate-x-[9em] xl:translate-x-[0] md:scale-[.7] z-20 -translate-y-[4em] lg:scale-[.7] xl:scale-[.9]">
             <Suspense fallback={<></>}>
               <Spline scene="https://prod.spline.design/qblRNAa3C-eNH6Bo/scene.splinecode" />
             </Suspense>
