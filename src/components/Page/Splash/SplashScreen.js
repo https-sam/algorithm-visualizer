@@ -26,12 +26,12 @@ const SplashScreen = () => {
         <p className="font-lg text-white absolute text-[6vh] z-10 top-[15vh] left-[5vw] font-semibold font-spline">
           Algo Visualizer
         </p>
-        <p className="font-spline absolute top-[30vh] left-[5vw] max-w-[45ch] text-[1.2em] z-10 text-gray-100">
+        <p className="font-spline absolute top-[30vh] max-w-[47ch] left-[5vw] text-[1.2em] z-10 text-gray-100">
           Improve your understanding of algorithms just by watching simple and
           completely customizable animations. <br />
           Welcome to the algo visualizer.
         </p>
-        <div className="hidden absolute right-[-4em] top-[-8em] xl:top-[0] xl:right-[5vw] md:block md:scale-[.7] z-1 md:translate-x-[150px] lg:translate-x-[17px] lg:scale-[.8] xl:scale-[.9]">
+        <div className="hidden md:block md:scale-[.7] z-1 -translate-y-[8em] md:translate-x-[150px] lg:translate-x-[17px] lg:scale-[.8] xl:scale-[.9] w-fit">
           <Suspense fallback={<></>}>
             <Spline scene="https://prod.spline.design/qblRNAa3C-eNH6Bo/scene.splinecode" />
           </Suspense>
