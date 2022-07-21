@@ -26,7 +26,7 @@ const SplashScreen = () => {
         <div className="main-canvas-grid z-0 dark:opacity-[0.03]" />
 
         <div className="w-full flex items-center max-w-[2000px]">
-          <div className="flex flex-1 p-0 md:p-20">
+          <div className="flex z-30 flex-1 p-0 md:p-20">
             <div className="absolute top-0 flex flex-col w-full h-full px-[1em] items-center md:items-start pt-[6em] gap-[5em] z-20">
               <p className="font-lg text-white text-[6vh] z-10 font-semibold font-spline">
                 Algo Visualizer
