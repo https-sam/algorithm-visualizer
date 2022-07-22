@@ -1,7 +1,10 @@
 /*
  * Quick selection test
  */
-import {DEFAULT_TYPE} from '../../BoardCanvas/Cells';
+import {FLOOR_TYPE, FLOOR_COLOR, WALL_TYPE, WALL_COLOR,
+  getColor, GOAL_TYPE, START_TYPE, SELECTED_COLOR,
+  BURN_COLOR, PATH_TYPE, PATH_COLOR, DEFAULT_COLOR,
+  DEFAULT_TYPE} from '../../../Utility/Colors';
 import {directions}   from './Directions';
 
 
@@ -30,7 +33,7 @@ export function _FindCell(board, x, y) {
     // console.log(board[i].x, x, board[i].y, y);
 
     if (board[i].x === x && board[i].y === y) {
-      console.log("Board x: " + board[i].x + "\nCelll x: " + x + "\nBoard y: "+ board[i].y + "\nCell y: " + y);
+      // console.log("Board x: " + board[i].x + "\nCelll x: " + x + "\nBoard y: "+ board[i].y + "\nCell y: " + y);
 
       return board[i];
     }

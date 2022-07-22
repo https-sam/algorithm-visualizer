@@ -1,4 +1,4 @@
-import React, {Component, useState, useRef, useEffect} from 'react';
+import React, {useState, useRef, useEffect} from 'react';
 import Board                                           from './Board';
 import Navigation                                      from '../Page/partial/Navbar/Navigation';
 import './display.css';
@@ -17,12 +17,13 @@ import {Strategy}                                      from '../Strategy/Strateg
 
  */
 export default function Display() {
-  const [layoutType, setLayout]                     = useState('standard');
+  const [layoutType, setLayout]                     = useState('none');
   const [mazeType, setMazeType]                     = useState('none');
   const [solving, setSolving]                       = useState(false);
   const [selectedPoint, setSelectedPoint]           = useState(null);
   const [selectedGoalPoint, setSelectedGoalPoint]   = useState(null);
   const [selectedStartPoint, setSelectedStartPoint] = useState(null);
+
   const board                                       = new Array(3844).fill(0).map(
       // const board                                       = new Array(1000).fill(0).map(
       // (i, id, type: string = '_floor_', visited: Boolean = false, x: Number, y: Number ) => ({id, type, visited}));

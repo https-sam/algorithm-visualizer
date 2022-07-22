@@ -1,7 +1,7 @@
 import {directions}                                                                     from '../Directions';
 import {_FindCellVisitState, _FindCellTypeState, _FindCell, _BoardReset, _GetNeighbors} from '../Tools';
 import exit                                                                             from 'exit';
-import {PATH_TYPE}                                                                      from '../../../BoardCanvas/Cells';
+import {PATH_TYPE, DEFAULT_TYPE, FLOOR_TYPE, WALL_TYPE, START_TYPE, GOAL_TYPE}          from '../../../../Utility/Colors';
 
 
 
@@ -10,7 +10,7 @@ export function BinaryTreeCreation(board) {
   _BoardReset(board);
   const numPoints = board.length;
   const numCols   = Math.ceil(Math.sqrt(numPoints));
-                           const prev = null;
+  const prev      = null;
   for (var i = 0; i < numPoints; i++) {
     let node      = board[i];
     // Needed to be percise to avoid floating point errors....
@@ -64,5 +64,6 @@ export function BinaryTreeCreation(board) {
   //   }
   //
   // }
+  return board;
 }
 

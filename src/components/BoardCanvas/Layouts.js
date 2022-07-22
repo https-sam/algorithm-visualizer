@@ -1,12 +1,13 @@
 import * as React                             from 'react';
 import {useEffect, useRef, useState, useMemo} from 'react';
-import {useSpring}                            from 'react-spring/three';
+import {useSpring}                            from 'react-spring';
 // import {BinaryTreeCreation}          from '../Algorithms/Maze/Generation/BinaryTreeCreation';
-import board        from './Board';
-import {directions} from '../Algorithms/Maze/Directions';
+import board                                  from './Board';
+import {directions}                           from '../Algorithms/Maze/Directions';
 // import exit                 from 'exit';
-import {_FindCell}          from '../Algorithms/Maze/Tools';
-import {BinaryTreeCreation} from '../Algorithms/Maze/Generation/BinaryTreeCreation';
+import {_FindCell}                            from '../Algorithms/Maze/Tools';
+import {BinaryTreeCreation}                   from '../Algorithms/Maze/Generation/BinaryTreeCreation';
+import {PATH_TYPE, DEFAULT_TYPE, FLOOR_TYPE, WALL_TYPE, START_TYPE, GOAL_TYPE}          from '../../Utility/Colors';
 
 
 
@@ -17,29 +18,25 @@ import {BinaryTreeCreation} from '../Algorithms/Maze/Generation/BinaryTreeCreati
  * Board type selector hook.
  *
  */
-export const useLayoutHook = ({board, layoutType}) => {
-  console.log('useLayoutHook used.');
-
+export function useAnimationHook({board, layoutType = 'standard'}) {
+  console.log('useAnimationHook used.');
+  // if (activeRef) {
+  //   return;
+  // }
   useEffect(() => {
-    console.log('useLayoutHook used.');
-
-    // if === "none") {
-    switch (layoutType) {
-      case 'circular':
-        break;
-      case 'standard':
-      default: {
-        standardLayout(board);
+      switch (layoutType) {
+        case 'circular':
+          break;
+        case 'standard':
+          standardLayout(board);
+          break;
+        default: {
+          break;
+        }
       }
-    }
-  }, [board, layoutType]);
-};
-
-
-export function useAnimationHook({board, layoutType}) {
-  console.log('useAnimatio/*  */nHook used.');
-  useLayoutHook({board, layoutType});  // do the actual animation when layoutType changes
+  }, [layoutType, board]);
   console.log('useAnimationHook ended.');
+  // return () => {board.reset()};
 
 }
 
@@ -48,25 +45,36 @@ export function useGenerateMazeHook({board, mazeType}) {
   console.log('generatedMaze used.');
 
   useEffect(() => {
-    switch (mazeType) {
-      case 'binaryTree':
-        BinaryTreeCreation(board);
-        break;
-      case '_RecursiveBacktracker_':
+    // if (mazeType !== mazeRef.current) {
+      switch (mazeType) {
+        case 'binaryTree':
+          // board = useMemo(() => BinaryTreeCreation(board), [mazeType]);
+          BinaryTreeCreation(board);
+          break;
+        case '_RecursiveBacktracker_':
 
-        break;
-      case '_RecursiveDivision_':
+          break;
+        case '_RecursiveDivision_':
 
-        break;
-      case 'none':
-      default: {
-        break;
+          break;
+        case 'none':
+        default: {
+
+          break;
+        }
       }
-    }
 
-  }, [board, mazeType]);
+  }, [mazeType, board]);
   console.log('generatedMaze ended.');
-  return mazeType;
+  // return board;
+}
+
+
+export function useSolver({board, solverType, onFrame}) {
+  console.log('Solver used.');
+  const boardRef = useRef(board);
+
+
 }
 
 
@@ -79,12 +87,13 @@ export function standardLayout(board) {
 
     // const col  = Math.abs((i % numCols) - numCols / 2);
     // const row  = Math.abs(Math.floor(i / numCols) - numCols / 2);
-    const col  = (i % numCols) - numCols / 2;
-    const row  = Math.floor(i / numCols) - numCols / 2;
+    const col = (i % numCols) - numCols / 2;
+    const row = Math.floor(i / numCols) - numCols / 2;
 
     node.x = col;/* .05; */
     node.y = row;/* .05; */
     node.z = 0;
+    node.type = PATH_TYPE;
   }
 }
 
