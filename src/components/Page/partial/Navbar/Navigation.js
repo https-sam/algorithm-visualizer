@@ -53,7 +53,7 @@ function Navigation({ themeToggle }) {
           <li className={"nav-item"}>
             <a
               className={"nav-links dark:text-white dark:hover:text-lightDark"}
-              href="https://github.com/https-sam/sorting-visualizer"
+              href="https://github.com/https-sam/algo-visualizer"
               target="_blank"
             >
               <Github className="inline mr-3 scale-[.9]" />

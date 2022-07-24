@@ -68,8 +68,6 @@ class Animation {
     return Animation.timeouts;
   }
 
-  static async makeBeep(vol, freq, duration) {}
-
   static async animateMerge(options, animation) {
     const delay = options.delay;
     const processingColor = options.processingColor;
