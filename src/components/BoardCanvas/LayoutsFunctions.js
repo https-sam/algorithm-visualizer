@@ -18,7 +18,7 @@ import {PATH_TYPE, DEFAULT_TYPE, FLOOR_TYPE, WALL_TYPE, START_TYPE, GOAL_TYPE}  
  * Board type selector hook.
  *
  */
-export function useAnimationHook({board, layoutType = 'standard'}) {
+export function useAnimationHook({board, layoutType}) {
   console.log('useAnimationHook used.');
   // if (activeRef) {
   //   return;
@@ -34,7 +34,7 @@ export function useAnimationHook({board, layoutType = 'standard'}) {
           break;
         }
       }
-  }, [layoutType, board]);
+  }, [layoutType]);
   console.log('useAnimationHook ended.');
   // return () => {board.reset()};
 
@@ -64,8 +64,9 @@ export function useGenerateMazeHook({board, mazeType}) {
         }
       }
 
-  }, [mazeType, board]);
+  }, [mazeType]);
   console.log('generatedMaze ended.');
+
   // return board;
 }
 

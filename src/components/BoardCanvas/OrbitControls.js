@@ -1,7 +1,7 @@
 import * as React                                                     from 'react';
 // import {extend, useThree, useFrame}                                   from '@react-three/fiber';
-import {extend, useThree, useFrame}                                   from 'react-three-fiber';
-import {TrackballControls}                                            from 'three/examples/jsm/controls/TrackballControls';
+import {extend, useThree, useFrame}                                   from '@react-three/fiber';
+import { TrackballControls } from '@react-three/drei'
 import * as Three                                                     from 'three';
 import {forwardRef, useRef, useImperativeHandle, useEffect, useState} from 'react';
 
@@ -90,7 +90,7 @@ const OrbitControls = ({board, selectedPoint, onSelectedPoint}, ref) => {
 
 
   return (
-      <trackballControls
+      <TrackballControls
           ref = {controls}
           args = {[camera, gl.domElement]}
           dynamicDampingFactor = {0.1}

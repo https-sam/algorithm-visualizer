@@ -1,10 +1,11 @@
 import * as React                                from 'react';
 // import {useFrame /*useFrame*/}                   from '@react-three/fiber';
-import {Canvas}                                  from 'react-three-fiber';
+import {Canvas}                                  from '@react-three/fiber';
 import Controls                                  from './OrbitControls';
 import {useImperativeHandle, useRef, forwardRef} from 'react';
-import {TrackballControls}                       from 'three/examples/jsm/controls/TrackballControls';
+import {TrackballControls}                       from '@react-three/fiber';
 import OrbitControls                             from './OrbitControls';
+
 import Cells                                     from './Cells';
 
 
@@ -24,10 +25,10 @@ export const Board = ({board, layoutType, selectedPoint, onSelectPoint, mazeType
   return (
       <Canvas>
         <Controls ref = {controlsRef} selectedPoint = {selectedPoint}/>
-        <mesh>  {/* BorderBox */}
-          <boxBufferGeometry attach = "geometry" args = {[80, 80, -10]}/>
-          <meshBasicMaterial attach = "material" color = "black"/>
-        </mesh>
+        {/* <mesh>  /!* BorderBox *!/ */}
+        {/*   <boxBufferGeometry attach = "geometry" args = {[80, 80, -10]}/> */}
+        {/*   <meshBasicMaterial attach = "material" color = "black"/> */}
+        {/* </mesh> */}
 
 
         <ambientLight color = "white" intensity = {0.1}/>
@@ -38,6 +39,7 @@ export const Board = ({board, layoutType, selectedPoint, onSelectPoint, mazeType
             intensity = {1.0}
         />
         <Cells
+
             board = {board}
             layoutType = {layoutType}
             mazeType = {mazeType}
