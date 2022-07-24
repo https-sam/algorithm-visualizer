@@ -76,7 +76,7 @@ class Animation {
     const defaultColor = options.sortedBarColor;
 
     for (let i = 0; i < animation.length; i++) {
-      await Animation.getAnimation(delay);
+      await Animation.getAnimation(delay / 10);
       const arrayBars = document.querySelectorAll(".array-bars");
       if (i % 3 !== 2) {
         // SG 07/10/2022 16:52  animate colors

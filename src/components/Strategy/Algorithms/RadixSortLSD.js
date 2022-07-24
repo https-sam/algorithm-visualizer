@@ -41,20 +41,9 @@ class RadixSortLSD {
       // SG 07/11/2022 09:37  animating iterator
       counts[Math.floor(array[i] / exp) % 100]++;
       if (!options.skipJ) {
-        if (DOM.length > 1000) {
-          // for more than 1000 bars, only animate in every 3 bars
-          if (i % 3 === 0) {
-            await Animation.getAnimation(DELAY + 2);
-            DOM[i].style.backgroundColor = PROCESSING_COLOR;
-            await Animation.getAnimation(DELAY + 2);
-            DOM[i].style.backgroundColor = DEAULT_COLOR;
-          }
-        } else {
-          await Animation.getAnimation(DELAY);
-          DOM[i].style.backgroundColor = PROCESSING_COLOR;
-          await Animation.getAnimation(DELAY);
-          DOM[i].style.backgroundColor = DEAULT_COLOR;
-        }
+        DOM[i].style.backgroundColor = PROCESSING_COLOR;
+        await Animation.getAnimation(DELAY / 100);
+        DOM[i].style.backgroundColor = DEAULT_COLOR;
       }
     }
 
