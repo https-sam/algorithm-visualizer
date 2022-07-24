@@ -1,13 +1,7 @@
 # Algorithm Visualizer
 
-By:
-[Sam Goto](https://github.com/https-sam),
-[Michael Metz](https://github.com/MicMetz)
-<br>
-<br>
-<u>Languages</u> : [React v-18](https://reactjs.org/)
-<br>
-<br>
+
+
 <u>Demo [Link](https://algovisualizers.netlify.app)</u><br/><br/>
 <u>Description</u> : The algorithm visualizer. This is a ReactJS web
 application that allows the user to visualize the implementation of
