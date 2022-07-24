@@ -30,6 +30,9 @@ class InputHandler {
     const SCREEN_WIDTH = window.innerWidth;
     const potentialNum = Math.floor(SCREEN_WIDTH / (BAR_MIN_WIDTH + MARGIN));
 
+    // SG 07/23/2022 23:46  fixing bug where it returns a negative value for the max input size
+    if (MAX_BAR_HEIGHT < 0) return 0;
+
     return potentialNum <= MAX_BAR_HEIGHT ? potentialNum : MAX_BAR_HEIGHT;
   }
 
