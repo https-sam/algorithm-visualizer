@@ -51,23 +51,23 @@ function Navigation({ themeToggle }) {
         </div>
         <ul className={click ? "nav-menu active" : "nav-menu"}>
           <li className={"nav-item"}>
-            <Link
-              to="/"
+            <a
               className={"nav-links dark:text-white dark:hover:text-lightDark"}
-              onClick={closeMobileMenu}
+              href="https://github.com/https-sam/sorting-visualizer"
+              target="_blank"
             >
               <Github className="inline mr-3 scale-[.9]" />
               Github
-            </Link>
+            </a>
           </li>
           <li className={"nav-item"}>
-            <Link
-              to="/"
+            <a
+              href="/"
               className={"nav-links dark:text-white dark:hover:text-lightDark"}
               onClick={closeMobileMenu}
             >
               Home
-            </Link>
+            </a>
           </li>
           {/* <li
             className={"nav-item"}
