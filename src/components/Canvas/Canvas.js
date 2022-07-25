@@ -33,7 +33,7 @@ class Canvas extends Component {
         style={{ minHeight: CANVAS_HEIGHT }}
       >
         <p
-          className="absolute top-3 z-40 font-semibold text-red-600 font-sans"
+          className="absolute top-3 z-10 font-semibold text-red-600 font-sans"
           id="sort-canvas-error-msg"
         ></p>
         <div className="flex items-end z-1">

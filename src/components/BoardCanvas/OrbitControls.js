@@ -6,8 +6,6 @@ import * as Three                                                     from 'thre
 import {forwardRef, useRef, useImperativeHandle, useEffect, useState} from 'react';
 
 
-
-
 extend({TrackballControls});
 
 const CMD_KEY   = 91;

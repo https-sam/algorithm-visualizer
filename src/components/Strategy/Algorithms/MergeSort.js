@@ -1,7 +1,7 @@
-import { Animation } from '../../Animation/Animation';
+import { Animation } from "../../Animation/Animation";
 
+// idea taken from https://github.com/clementmihailescu/Sorting-Visualizer/blob/master/client/app/algorithms/mergeSort.js
 class MergeSort {
-
   // static async merge(left, right, unSortedArray) {
   //   console.log(left);
   //   console.log(right);
@@ -15,8 +15,8 @@ class MergeSort {
   //       arr.push(left.shift());
   //     } else {
   //       document.getElementById(right[0].id).style.backgroundColor = 'red';
-  //       arr.push(right.shift()) 
-  //     }     
+  //       arr.push(right.shift())
+  //     }
   //   }
 
   //   return [ ...arr, ...left, ...right ]
@@ -27,24 +27,33 @@ class MergeSort {
   //     return array;
   //   }
 
-  //   const middle = Math.floor(array.length / 2); 
+  //   const middle = Math.floor(array.length / 2);
   //   const left = array.slice(0, middle)
   //   const right = array.slice(middle);
 
   //   return await MergeSort.merge( // ([int] [int])
-  //     await MergeSort.mergeSort(left), 
+  //     await MergeSort.mergeSort(left),
   //     await MergeSort.mergeSort(right),
-  //     array  
+  //     array
   //   );
   // }
-   completeMerge(originalArray, startIdx, middleIdx, endIdx, pointerArray, animation) {
-    let k = startIdx, i = startIdx, j = middleIdx + 1;
+  completeMerge(
+    originalArray,
+    startIdx,
+    middleIdx,
+    endIdx,
+    pointerArray,
+    animation
+  ) {
+    let k = startIdx,
+      i = startIdx,
+      j = middleIdx + 1;
 
-    while(i <= middleIdx && j <= endIdx) {
+    while (i <= middleIdx && j <= endIdx) {
       animation.push([i, j]);
       animation.push([i, j]);
 
-      if(pointerArray[i] <= pointerArray[j]) {
+      if (pointerArray[i] <= pointerArray[j]) {
         animation.push([k, pointerArray[i]]);
         originalArray[k++] = pointerArray[i++];
       } else {
@@ -65,21 +74,38 @@ class MergeSort {
       animation.push([k, pointerArray[j]]);
       originalArray[k++] = pointerArray[j++];
     }
-  }  
+  }
 
-
-   mergeHelper(originalArray, startIdx, endIdx, pointerArray, animation) {
-    if(startIdx === endIdx) {
+  mergeHelper(originalArray, startIdx, endIdx, pointerArray, animation) {
+    if (startIdx === endIdx) {
       return;
     }
     const middleIdx = Math.floor((startIdx + endIdx) / 2);
-    this.mergeHelper(pointerArray, startIdx, middleIdx, originalArray, animation);
-    this.mergeHelper(pointerArray, middleIdx + 1, endIdx, originalArray, animation);
-    this.completeMerge(originalArray, startIdx, middleIdx, endIdx, pointerArray, animation);
+    this.mergeHelper(
+      pointerArray,
+      startIdx,
+      middleIdx,
+      originalArray,
+      animation
+    );
+    this.mergeHelper(
+      pointerArray,
+      middleIdx + 1,
+      endIdx,
+      originalArray,
+      animation
+    );
+    this.completeMerge(
+      originalArray,
+      startIdx,
+      middleIdx,
+      endIdx,
+      pointerArray,
+      animation
+    );
   }
 
-
-   mergeSort(array) {
+  mergeSort(array) {
     const animation = [];
     if (array.length <= 1) return array;
     const pointerArray = array.slice();
@@ -92,7 +118,6 @@ class MergeSort {
     const animation = this.mergeSort(array);
     await Animation.animateMerge(options, animation);
   }
-  
 }
 
-export { MergeSort }
+export { MergeSort };
