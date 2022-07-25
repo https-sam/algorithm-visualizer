@@ -3,23 +3,28 @@ import {_GetNeighbors} from '../Tools';
 
 
 
-export default function BfsSolution(grid) {
-  const visited = new Set();
-  const queue = [];
-  const result = [];
-  const start = grid[0][0];
-  queue.push(start);
-  visited.add(start);
-  while (queue.length) {
-    const current = queue.shift();
-    result.push(current);
-    const neighbors = _GetNeighbors(grid, current);
+export function BfsSolution(board, start, end) {
+  let visitedTiles = [];
+  let queuedTiles = [];
+  let pathTiles = [];
+  const currentTile = start;
+  const endTile = end;
+
+  queuedTiles.push(currentTile);
+  visitedTiles.push(currentTile);
+
+  while (queuedTiles.length > 0) {
+    const currentTile = queuedTiles.shift();
+    const neighbors = _GetNeighbors(currentTile, board);
     neighbors.forEach(neighbor => {
-      if (!visited.has(neighbor)) {
-        queue.push(neighbor);
-        visited.add(neighbor);
+      if (visitedTiles.indexOf(neighbor) === -1) {
+        visitedTiles.push(neighbor);
+        queuedTiles.push(neighbor);
+        pathTiles.push(neighbor);
+      }
+      if (neighbor === endTile) {
+        return pathTiles;
       }
     });
   }
-  return result;
 }

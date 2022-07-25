@@ -8,15 +8,9 @@ import {forwardRef, useRef, useImperativeHandle, useEffect, useState} from 'reac
 
 extend({TrackballControls});
 
-const CMD_KEY   = 91;
-const CTRL_KEY  = 17;
-const ESC_KEY   = 27;
-const UP_KEY    = 38;
-const DOWN_KEY  = 40;
-const LEFT_KEY  = 37;
-const RIGHT_KEY = 39;
 
 const OrbitControls = ({board, selectedPoint, onSelectedPoint}, ref) => {
+  // Based on Peter Beshai's grid example:
   const controls            = useRef();
   const [target, setTarget] = useState(null);
   const {camera, gl}        = useThree();
@@ -92,20 +86,11 @@ const OrbitControls = ({board, selectedPoint, onSelectedPoint}, ref) => {
           ref = {controls}
           args = {[camera, gl.domElement]}
           dynamicDampingFactor = {0.1}
-          keys = {[
-            CMD_KEY,
-            CTRL_KEY,
-            ESC_KEY,
-            UP_KEY,
-            DOWN_KEY,
-            LEFT_KEY,
-            RIGHT_KEY,
+          rotationLock = {[
+            true, // orbit
+            true, // zoom
+            true, // pan
           ]}
-          // rotationLock = {[
-          //   true, // orbit
-          //   true, // zoom
-          //   true, // pan
-          // ]}
           mouseButtons = {{
             LEFT  : Three.MOUSE.PAN,
             RIGHT : Three.MOUSE.ROTATE,

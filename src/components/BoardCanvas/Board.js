@@ -11,6 +11,7 @@ import Cells                                     from './Cells';
 
 
 export const Board = ({board, solving, algorithm, layoutType, selectedPoint, onSelectPoint, mazeType}, ref) => {
+  // Based on Peter Beshai's grid example:
   const controlsRef = useRef(OrbitControls);
 
 

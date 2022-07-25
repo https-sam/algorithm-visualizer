@@ -17,13 +17,13 @@ import {Strategy}                           from '../Strategy/Strategy';
 
  */
 const board = new Array(3844).fill(0).map(
-    (i, id: number, type: string = '_path_', currentType: string = '_path_', targetType: string = '_path_', visited: boolean = false, x: number, y: number) => ({x, y, id, type, visited, currentType, targetType}));
+    (i, id: number, type: string = '_default_', currentType: string = '_default_', targetType: string = '_default_', visited: boolean = false, x: number, y: number) => ({x, y, id, type, visited, currentType, targetType}));
 
 export default function Display() {
   const [layoutType, setLayout]                     = useState('standard');
   const [mazeType, setMazeType]                     = useState('none');
-  const [solving, setSolving]                       = useState(false);
   const [algorithm, setAlgorithm]                   = useState('none');
+  const [solving, setSolving]                       = useState(false);
   const [selectedPoint, setSelectedPoint]           = useState(null);
   const [selectedGoalPoint, setSelectedGoalPoint]   = useState(null);
   const [selectedStartPoint, setSelectedStartPoint] = useState(null);
@@ -107,6 +107,7 @@ export default function Display() {
                 Reset
               </button>
             </div>
+
             <button
                 onClick = {() => setMazeType('binaryTree')}
                 className = {mazeType === 'binaryTree' ? 'active' : undefined}

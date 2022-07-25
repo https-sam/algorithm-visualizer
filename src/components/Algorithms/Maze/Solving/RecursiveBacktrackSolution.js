@@ -8,7 +8,7 @@ import {useState, useEffect}                                                    
 /*
  * Recursive backtracking algorithm to solve a solvable maze.
  */
-export default function RecursiveBacktrackSolution(board, start, end) {
+export function RecursiveBacktrackSolution(board, start, end) {
   const [visited, setVisited] = useState([]);
   const [path, setPath] = useState([]);
   const [current, setCurrent] = useState(start);

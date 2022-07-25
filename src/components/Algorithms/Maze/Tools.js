@@ -81,3 +81,15 @@ export function _VisitReset(board) {
     board[i].visited = false;
   }
 }
+
+
+export function _SetWalls(board) {
+  for (var x = 0; x < board.length; x++) {
+    let node = board[x];
+
+    if (!node.visited && node.type !== GOAL_TYPE && node.type !== START_TYPE) {
+      node.type = WALL_TYPE;
+    }
+
+  }
+}

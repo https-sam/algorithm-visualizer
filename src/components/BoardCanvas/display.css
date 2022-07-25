@@ -13,9 +13,9 @@
 }
 
 .display-bottom-panel {
-position:         absolute;
-	width: 100%;
-	bottom:0px;
+	position: absolute;
+	width:    fit-content;
+	bottom:   0px;
 }
 
 .control-group-one, .control-group-two, .control-group-three {
@@ -30,17 +30,17 @@ position:         absolute;
 }
 
 .control-group-one {
-	position: absolute;
+	position:     absolute;
 	top:          50px;
 	padding-left: 10px;
 }
 
 .control-group-two, .control-group-three {
-	float: left;
-	height: 210px;
+	float:          left;
+	height:         210px;
 	background:     #222;
-	display: inline-block;
-	padding: 1rem 1rem;
+	display:        inline-block;
+	padding:        1rem 1rem;
 	vertical-align: middle;
 
 }
@@ -142,7 +142,6 @@ position:         absolute;
 	cursor:         pointer;
 	font-size:      10px;
 }
-
 
 
 .maze-toggle-group {

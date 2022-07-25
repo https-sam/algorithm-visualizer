@@ -1,36 +1,31 @@
 // User defined class
 // to store element and its priority
 class CellPQPair {
-  constructor(element, priority) {
+  constructor(element) {
     this.cell     = element;
-    this.priority = priority;
+    this.priority = element.priority;
   }
 }
 
 
 
 // Cell PriorityQueue class
-class PriorityQueue {
+export class PriorityQueue {
   constructor() {
     this.cellContainer = [];
   }
 
 
-  enqueue(pElement, priority) {
-    const element = new CellPQPair(pElement, priority);
-    var contain  = false;
+  enqueue(pElement) {
+    let cellPair = new CellPQPair(pElement);
+    this.cellContainer.push(cellPair);
+    this.sort();
+  }
 
-    for (var i = 0; i < this.cellContainer.length; i++) {
-      if (this.cellContainer[i].priority > element.priority) {
-        this.cellContainer.splice(i, 0, element);
-        contain = true;
-        break;
-      }
-    }
-
-    if (!contain) {
-      this.cellContainer.push(qElement);
-    }
+  sort() {
+    this.cellContainer.sort((a, b) => {
+      return a.cell.priority - b.cell.priority;
+    });
   }
 
 
@@ -39,7 +34,8 @@ class PriorityQueue {
       console.log('Queue Underflow');
       return null;
     }
-    return this.cellContainer.shift();
+
+    return this.cellContainer.shift().cell;
   }
 
 
@@ -48,7 +44,7 @@ class PriorityQueue {
       console.log('Queue Underflow');
       return null;
     }
-    return this.cellContainer[0].id;
+    return this.cellContainer[0].cell.id;
   }
 
 
@@ -57,9 +53,17 @@ class PriorityQueue {
       console.log('Empty Queue');
       return null;
     }
-    return this.cellContainer[0];
+    return this.cellContainer[0].cell;
   }
 
+  has(cell) {
+    return !!this.cellContainer.find(cell => cell.cell.id === cell.id);
+
+  }
+
+  equals(other) {
+    return this.cellContainer.every(cell => other.has(cell.cell));
+  }
 
   isEmpty() {
     return (this.cellContainer === undefined || this.cellContainer.length === 0);
@@ -70,5 +74,13 @@ class PriorityQueue {
     this.cellContainer.forEach(function(element) {
       console.log(element.cell + ' ' + element.priority);
     }.bind(this));
+  }
+
+  length() {
+    return this.cellContainer.length;
+  }
+
+  clear() {
+    this.cellContainer = [];
   }
 }
