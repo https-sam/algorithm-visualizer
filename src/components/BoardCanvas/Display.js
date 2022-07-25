@@ -1,9 +1,9 @@
 import React, {useState, useRef, useEffect} from 'react';
-import Board                                           from './Board';
-import Navigation                                      from '../Page/partial/Navbar/Navigation';
+import Board                                from './Board';
+import Navigation                           from '../Page/partial/Navbar/Navigation';
 import './display.css';
 // import {useBinaryTreeCreation}                         from '../Algorithms/Maze/Generation/BinaryTreeCreation';
-import {Strategy}                                      from '../Strategy/Strategy';
+import {Strategy}                           from '../Strategy/Strategy';
 
 /*
 
@@ -16,19 +16,18 @@ import {Strategy}                                      from '../Strategy/Strateg
  "Layers Pattern"
 
  */
+const board = new Array(3844).fill(0).map(
+    (i, id: number, type: string = '_path_', currentType: string = '_path_', targetType: string = '_path_', visited: boolean = false, x: number, y: number) => ({x, y, id, type, visited, currentType, targetType}));
+
 export default function Display() {
-  const [layoutType, setLayout]                     = useState('none');
+  const [layoutType, setLayout]                     = useState('standard');
   const [mazeType, setMazeType]                     = useState('none');
   const [solving, setSolving]                       = useState(false);
+  const [algorithm, setAlgorithm]                   = useState('none');
   const [selectedPoint, setSelectedPoint]           = useState(null);
   const [selectedGoalPoint, setSelectedGoalPoint]   = useState(null);
   const [selectedStartPoint, setSelectedStartPoint] = useState(null);
 
-  const board                                       = new Array(3844).fill(0).map(
-      // const board                                       = new Array(1000).fill(0).map(
-      // (i, id, type: string = '_floor_', visited: Boolean = false, x: Number, y: Number ) => ({id, type, visited}));
-      // (i, id, type: string = '_floor_', visited: Boolean = false, x: Number, y: Number ) => ({x, y} ({id, type, visited})));
-      (i, id: number, type: string = '_wall_', sourceType: string = '_wall_', targetType: string = '_wall_', visited: boolean = false, x: number, y: number) => ({x, y, id, type, visited, sourceType, targetType}));
 
   const boardRef = useRef(); // Mutable(Persistant) board reference object.
 
@@ -57,6 +56,7 @@ export default function Display() {
               board = {board}
               layoutType = {layoutType}
               mazeType = {mazeType}
+              solving = {solving}
               selectedPoint = {selectedPoint}
               onSelectPoint = {setSelectedPoint}
           />
@@ -80,6 +80,8 @@ export default function Display() {
               View Reset
             </button>
           </div>
+
+          <div className="display-bottom-panel" >
 
           <div className = "control-group-two">
             <h2 className = "control-header">Generate Maze</h2>
@@ -112,6 +114,12 @@ export default function Display() {
               Binary Tree
             </button>
             <button
+                onClick = {() => setMazeType('recursiveBacktracking')}
+                className = {mazeType === 'recursiveBacktracking' ? 'active' : undefined}
+            >
+              Recursive Backtracking
+            </button>
+            <button
                 onClick = {() => setMazeType('growingTree')}
                 className = {mazeType === 'growingTree' ? 'active' : undefined}
             >
@@ -124,9 +132,59 @@ export default function Display() {
               Breath First Search
             </button>
           </div>
+
+          <div className = "control-group-three">
+            <h2 className = "control-header">Solve Maze</h2>
+            {/* <button */}
+            {/*     onClick = {() => setSolving(true)} */}
+            {/*     className = {solving ? 'active' : undefined} */}
+            {/* > */}
+            {/*   Solving */}
+            {/* </button> */}
+            {/* <button */}
+            {/*     onClick = {() => setSolving(false)} */}
+            {/*     className = {!solving ? 'active' : undefined} */}
+            {/* > */}
+            {/*   Not Solving */}
+            {/* </button> */}
+            <button
+                onClick = {() => setAlgorithm('none')}
+                className = {algorithm === 'none' ? 'active' : undefined}
+            >
+              None
+            </button>
+            <button
+                onClick = {() => setAlgorithm('bfs')}
+                className = {algorithm === 'bfs' ? 'active' : undefined}
+            >
+              BFS
+            </button>
+            <button
+                onClick = {() => setAlgorithm('dfs')}
+                className = {algorithm === 'dfs' ? 'active' : undefined}
+            >
+              DFS
+            </button>
+            <button
+                onClick = {() => setAlgorithm('dijkstra')}
+                className = {algorithm === 'dijkstra' ? 'active' : undefined}
+            >
+              Dijkstra
+            </button>
+            <button
+                onClick = {() => setAlgorithm('aStar')}
+                className = {algorithm === 'aStar' ? 'active' : undefined}
+            >
+              A*
+            </button>
+          </div>
+
+          </div>
         </div>
+
+
+
         <div className = "solve-toggle-group">
-          <h2 className = "control-header">Solving Pattern</h2>
           <button
               onClick = {() => {
                 if (solving === false) {

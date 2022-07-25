@@ -41,6 +41,17 @@ export function _FindCell(board, x, y) {
   return null;
 };
 
+export function _GetNeighborsUnvisited(board, cell) {
+  let neighbors = [];
+  for (let i = 0; i < directions.length; i++) {
+    let neighbor = _FindCell(board, cell.x + directions[i].x, cell.y + directions[i].y);
+    if (neighbor !== null && neighbor.visited === false && neighbor.type !== WALL_TYPE) {
+      neighbors.push(neighbor);
+    }
+  }
+  return neighbors;
+}
+
 
 export function _GetNeighbors(board, x, y) {
   let neighbors = [];
@@ -49,7 +60,9 @@ export function _GetNeighbors(board, x, y) {
     let ycoord = y + directions[i].y;
     let neighbor = _FindCell(board, xcoord, ycoord);
     if (neighbor) {
-      neighbors.push(neighbor);
+      if (neighbor.type !== WALL_TYPE) {
+        neighbors.push(neighbor);
+      }
     }
   }
   return neighbors;

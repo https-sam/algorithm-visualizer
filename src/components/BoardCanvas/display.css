@@ -4,6 +4,7 @@
 	background-color: #afa8a8;
 	/*// Test*/
 	/*background-color: white;*/
+	/*display: inline-block;*/
 	z-index:          -50;
 	top:              60px;
 	left:             0;
@@ -11,8 +12,13 @@
 	bottom:           0;
 }
 
-.control-group-one, .control-group-two {
-	position:   absolute;
+.display-bottom-panel {
+position:         absolute;
+	width: 100%;
+	bottom:0px;
+}
+
+.control-group-one, .control-group-two, .control-group-three {
 	z-index:    10;
 	margin:     auto;
 	background: rgba(114, 108, 108, 0.9);
@@ -24,13 +30,23 @@
 }
 
 .control-group-one {
+	position: absolute;
 	top:          50px;
 	padding-left: 10px;
 }
 
+.control-group-two, .control-group-three {
+	float: left;
+	height: 210px;
+	background:     #222;
+	display: inline-block;
+	padding: 1rem 1rem;
+	vertical-align: middle;
+
+}
+
 .control-group-two {
-	bottom:        16px;
-	padding-right: 10px;
+	border-right: black 1px solid;
 }
 
 
@@ -88,8 +104,13 @@
 }
 
 .control-group-two > button:hover {
-	background-color: #111;
-	color:            #fff;
+	background-color: #fff;
+	color:            #111;
+}
+
+.control-group-three > button:hover {
+	background-color: #fff;
+	color:            #111;
 }
 
 .control-group-two > button {
@@ -97,7 +118,7 @@
 	height:         fit-content;
 	display:        block;
 	padding:        5px;
-	background:     #222;
+	background:     #000000;
 	color:          #ccc;
 	border:         none;
 	margin:         2px;
@@ -106,6 +127,23 @@
 	cursor:         pointer;
 	font-size:      10px;
 }
+
+.control-group-three > button {
+	width:          100%;
+	height:         fit-content;
+	display:        block;
+	padding:        5px;
+	background:     #000000;
+	color:          #ccc;
+	border:         none;
+	margin:         2px;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	cursor:         pointer;
+	font-size:      10px;
+}
+
+
 
 .maze-toggle-group {
 	width:           100%;

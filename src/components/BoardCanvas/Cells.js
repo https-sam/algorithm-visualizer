@@ -1,32 +1,34 @@
-import * as React                                            from 'react';
-import {useEffect, useRef, useMemo, useState, createContext} from 'react';
-import {a}                                                   from '@react-spring/three';
-import {useAnimationHook, useGenerateMazeHook, useSolver}    from './LayoutsFunctions';
-import {directions}                                          from '../Algorithms/Maze/Directions';
-import {_FindCell}                                           from '../Algorithms/Maze/Tools';
-import {BinaryTreeCreation}                                  from '../Algorithms/Maze/Generation/BinaryTreeCreation';
+import * as React                                                           from 'react';
+import {useEffect, useRef, useMemo, useState, createContext}                from 'react';
+import {a}                                                                  from '@react-spring/three';
+import {useAnimationHook, useGenerateMazeHook, useSolver, GenerateMazeHook} from './LayoutsFunctions';
+import {directions}                                                         from '../Algorithms/Maze/Directions';
+import {_FindCell}                                                          from '../Algorithms/Maze/Tools';
+import board                                                                from './Board';
+import {BinaryTreeCreation}                                                 from '../Algorithms/Maze/Generation/BinaryTreeCreation';
 import {
   FLOOR_TYPE, FLOOR_COLOR, WALL_TYPE, WALL_COLOR,
   getColor, GOAL_TYPE, START_TYPE, SELECTED_COLOR,
   BURN_COLOR, PATH_TYPE, PATH_COLOR,
-}                                                            from '../../Utility/Colors';
-import * as THREE                                            from 'three';
-import {PointMaterial, Points, Point}                        from '@react-three/drei';
+}                                                                           from '../../Utility/Colors';
+// import {BufferPoints}                                                                                                                       from './Point';
+import * as THREE                                                           from 'three';
+// import {PointEvent}      from './Point';
 
 
 
 
+const tempOBJ   = new THREE.Object3D();
+const tempCOLOR = new THREE.Color();
 
-const tempOBJ = new THREE.Object3D();
 
 
-
-function updateInstancedMeshMatrices({mesh, board, colorArray, colorAttrib}) {
+function updateInstancedMeshMatrices({mesh, board, colorAttrib, colorArray}) {
   if (!mesh) {
     return;
   }
-  const numPoints = board.length;
-  const tempCOLOR = new THREE.Color();
+  // const numPoints = board.length;
+
   // transform mesh to world space
   for (let i = 0; i < board.length; ++i) {
     const {x, y, z} = board[i];
@@ -43,28 +45,29 @@ function updateInstancedMeshMatrices({mesh, board, colorArray, colorAttrib}) {
 
 
 
-let tempCOLOR = new THREE.Color();
 
-const usePointColorsHook = ({board, selectedPoint}) => {
-  console.log('usePointColorsHook');
+const usePointColorsHook = ({board}, selectedPoint) => {
   const numPoints   = board.length;
-  const colorAttrib = useRef();
-  const colorArray  = useMemo(() => new Float32Array(numPoints * 3), [
+  const colorAttrib = React.useRef();
+  const colorArray  = React.useMemo(() => new Float32Array(numPoints * 3), [
     numPoints,
   ]);
+
   useEffect(() => {
     for (let i = 0; i < board.length; ++i) {
-      tempCOLOR.set(getColor(board[i].type));
+      tempCOLOR.set(
+          board[i] === selectedPoint ? SELECTED_COLOR : getColor(board[i].type),
+      );
       tempCOLOR.toArray(colorArray, i * 3);
     }
     colorAttrib.current.needsUpdate = true;
-  }, [board, colorArray]);
+  }, [board, selectedPoint, colorArray]);
 
   return {colorAttrib, colorArray};
 };
 
 
-const _mouseClickHook = ({board, selectedPoint, onSelectPoint/* , useDrag  */}) => {
+const useMouseClickHook = ({board, selectedPoint, onSelectPoint}) => {
   const onMouseDownHandler = useRef([0, 0]);   // Record and maintain the handler for the mouse down event
   const onMouseUpHandler   = useRef([0, 0]);   // Record and maintain the handler for the mouse up event
   const onMouseMoveHandler = useRef([0, 0]);   // Record and maintain the handler for the mouse move event
@@ -115,11 +118,11 @@ const _mouseClickHook = ({board, selectedPoint, onSelectPoint/* , useDrag  */}) 
 
 
 
-const Cells = ({board, layoutType, mazeType, solverType, selectedPoint, onSelectPoint /*,  useDrag */}) => {
+const Cells = ({board, layoutType, solving, algorithm, mazeType, selectedPoint, onSelectPoint /*,  useDrag */}) => {
   const meshRef                = useRef();
-  // const boardRef               = useRef(board);
   const [activeRef, setActive] = useState(false);
   const numPoints              = board.length;
+
 
 
 
@@ -127,31 +130,40 @@ const Cells = ({board, layoutType, mazeType, solverType, selectedPoint, onSelect
   board[100].type = GOAL_TYPE;
   board[1].type   = START_TYPE;
 
-  useAnimationHook({board, layoutType});
 
 
   useGenerateMazeHook({board, mazeType});
 
+  useAnimationHook({board, layoutType});
 
-  const {getClickTarget, setDownPointerCoord} = _mouseClickHook({
+  const {solvingProgress} = useSolver({
     board,
-    selectedPoint,
-    onSelectPoint,
-    /* useDrag */
+    algorithm,
+    solving,
+    onFrame: () => {
+      updateInstancedMeshMatrices({mesh: meshRef.current, board});
+    },
   });
-
-  const {colorAttrib, colorArray} = usePointColorsHook({board});
-
 
   useEffect(() => {
     console.log('Board updated');
-    updateInstancedMeshMatrices({mesh: meshRef.current, board, colorArray, colorAttrib});
-  }, [board, mazeType, colorAttrib, layoutType]);
+    updateInstancedMeshMatrices({mesh: meshRef.current, board, colorAttrib, colorArray});
+  }, [board, layoutType, mazeType]);
+
+  const {getClickTarget, setDownPointerCoord} = useMouseClickHook({
+    board,
+    selectedPoint,
+    onSelectPoint,
+  });
+
+  const {colorAttrib, colorArray} = usePointColorsHook({board}, selectedPoint);
+
+
 
 
 
   return (
-      <>
+      <group>
         <instancedMesh
             ref = {meshRef}
             args = {[null, null, numPoints]}
@@ -169,41 +181,41 @@ const Cells = ({board, layoutType, mazeType, solverType, selectedPoint, onSelect
           </boxBufferGeometry>
           <meshStandardMaterial
               attach = "material"
-              vertexColors = {true}
-
+              vertexColors = {THREE.VertexColors}
           />
-        </instancedMesh>
-        {/* {generationInProgress && <a.group */}
-        {/*     position = {generationInProgress.interpolate((x, y, z) => [x, y, z])} */}
-        {/* />} */}
-        {/* <BufferPoints numPoints={numPoints} /> */}
-        {/* <BufferPoints numPoints = {numPoints}/> */}
-        {selectedPoint && (
-            <a.group
-                position = {[
-                  selectedPoint.x,
-                  selectedPoint.y,
-                  selectedPoint.z,
-                ]}
 
-            >
-              <pointLight
-                  distance = {6}
-                  position = {[0, 0, 0.6]}
-                  decay = {30}  // Fast defusion of light. Drop light intensity by half each second. (30 = 1/2^30). No directly select_color leaves the box.
-                  intensity = {155}
-                  color = {SELECTED_COLOR}
-              />
-              <pointLight
-                  distance = {12}  // With decay: 1, distance = 5 boxes in each direction
-                  position = {[0, 0.11, 0.051]}
-                  decay = {10}   // Slow defusion of light
-                  intensity = {20}
-                  color = {BURN_COLOR}
-              />
-            </a.group>
-        )}
-      </>
+          {/* {generationInProgress && <a.group */}
+          {/*     position = {generationInProgress.interpolate((x, y, z) => [x, y, z])} */}
+          {/* />} */}
+          {/* <BufferPoints numPoints={numPoints} /> */}
+          {/* <BufferPoints numPoints = {numPoints}/> */}
+          {selectedPoint && (
+              <a.group
+                  position = {[
+                    selectedPoint.x,
+                    selectedPoint.y,
+                    selectedPoint.z,
+                  ]}
+
+              >
+                <pointLight
+                    distance = {6}
+                    position = {[0, 0, 0.6]}
+                    decay = {30}  // Fast defusion of light. Drop light intensity by half each second. (30 = 1/2^30). No directly select_color leaves the box.
+                    intensity = {155}
+                    color = {SELECTED_COLOR}
+                />
+                <pointLight
+                    distance = {12}  // With decay: 1, distance = 5 boxes in each direction
+                    position = {[0, 0.11, 0.051]}
+                    decay = {10}   // Slow defusion of light
+                    intensity = {20}
+                    color = {BURN_COLOR}
+                />
+              </a.group>
+          )}
+        </instancedMesh>
+      </group>
 
   );
 };

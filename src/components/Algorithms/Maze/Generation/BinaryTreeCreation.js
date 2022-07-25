@@ -32,7 +32,7 @@ export function BinaryTreeCreation(board) {
       // const testNeighbor = _GetNeighbors(board, -6, -6);
       // if (testNeighbor) {
       //   testNeighbor.forEach(neighbor => {
-      //     console.log('Neighbor: ', neighbor);
+      //     // console.log('Neighbor: ', neighbor);
       //     neighbor.type = PATH_TYPE;
       //   });
       // }
@@ -55,15 +55,5 @@ export function BinaryTreeCreation(board) {
     }
   }
 
-  let [setG, setS] = [false, false];
-  // while (!setG || !setS) {
-  //   let node = board[w];
-  //
-  //   if (node.type === '_wall_') {
-  //     continue;
-  //   }
-  //
-  // }
-  return board;
 }
 

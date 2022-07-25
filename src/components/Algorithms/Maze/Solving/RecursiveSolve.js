@@ -1,6 +1,6 @@
-import {directions}                                         from '../Directions';
-import {_FindCellVisitState, _FindCellTypeState, _FindCell} from '../Tools';
-import {useState, useEffect} from 'react';
+import {directions}                                                                                from '../Directions';
+import {_FindCellVisitState, _FindCellTypeState, _FindCell, _GetNeighbors, _GetNeighborsUnvisited} from '../Tools';
+import {useState, useEffect}                                                                       from 'react';
 // import exit                                                 from 'exit';
 
 
@@ -8,41 +8,34 @@ import {useState, useEffect} from 'react';
 /*
  * Recursive backtracking algorithm to solve a solvable maze.
  */
-export default function RecursiveSolver({board, start, end, current}) {
-  const [maze, setMaze] = useState(board);
-  const [mazeSize, setMazeSize] = useState(null);
-  const [mazeSolved, setMazeSolved] = useState(false);
-  const [mazeSolving, setMazeSolving] = useState(false);
-  const [mazeSolvingError, setMazeSolvingError] = useState(false);
+export default function RecursiveBacktrackSolution(board, start, end) {
+  const [visited, setVisited] = useState([]);
+  const [path, setPath] = useState([]);
+  const [current, setCurrent] = useState(start);
+  const [endFound, setEndFound] = useState(false);
 
+  useEffect(() => {
+    if (endFound) {
+      return;
+    }
 
-  export function solve() {
-    
-  }
-
-
-  function useTargetLayoutHook({board, layoutType}) {
-
-    useEffect(() => {
-      for (let i = 0; i < board.length; ++i) {
-        board[i].sourceX    = board[i].x || 0;
-        board[i].sourceY    = board[i].y || 0;
-        board[i].sourceZ    = board[i].z || 0;
-        board[i].sourceType = board[i].type;
+    const next = _GetNeighborsUnvisited(board, current);
+    if (next) {
+      setVisited([...visited, next]);
+      setCurrent(next);
+    } else {
+      setPath([...path, current]);
+      setCurrent(path[path.length - 1]);
+      if (current === end) {
+        setEndFound(true);
       }
-    }, [board, layoutType]);
+    }
+  }, [endFound, board, current, end, path, visited]);
 
-    useLayoutHook({board, layoutType});
-
-    useEffect(() => {
-      for (let i = 0; i < board.length; ++i) {
-        board[i].targetX    = board[i].x;
-        board[i].targetY    = board[i].y;
-        board[i].targetZ    = board[i].z;
-        board[i].targetType = board[i].type;
-      }
-    }, [board, layoutType]);
-
-
-  }
+  return {
+    visited,
+    path,
+    current,
+    endFound,
+  };
 }
