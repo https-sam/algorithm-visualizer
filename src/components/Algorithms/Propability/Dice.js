@@ -8,6 +8,7 @@ import {
 }                                                            from '../../../Utility/Colors';
 import {useAnimationHook}                                    from './DiceFunctions';
 import * as THREE                                            from 'three';
+// import {Tetrahedron}                                         from '@react-three/drei';
 
 
 
@@ -79,59 +80,64 @@ const useMouseClickHook = ({board, selectedDie, onSelectDie}) => {
 
 
 
-const Dice = ({board, count, layoutType, algorithm, onSelectDie, selectedDie}) => {
+const Dice = ({die, count, layoutType, algorithm, onSelectDie, selectedDie}) => {
   const meshRef             = useRef();
   const [active, setActive] = useState(false);
-  const numPoints           = board.length;
+  const numDice             = useMemo(() => die.length, [die]);
 
-  useAnimationHook({
-    board,
-    algorithm,
-    active,
-    onFrame: () => {
-      update({mesh: meshRef.current, board});
-    },
-  });
+  // useAnimationHook({
+  //   board,
+  //   algorithm,
+  //   active,
+  //   onFrame: () => {
+  //     update({mesh: meshRef.current, board});
+  //   },
+  // });
+  //
+  //
+  // useEffect(() => {
+  //   if (!active) {
+  //     update({mesh: meshRef.current, board});
+  //   }
+  // }, [board]);
 
 
-  useEffect(() => {
-    if (!active) {
-      update({mesh: meshRef.current, board});
-    }
-  }, [board]);
-
-
-  const {getClickTarget, setDownPointerCoord} = useMouseClickHook({board, selectedDie, onSelectDie});
+  // const {getClickTarget, setDownPointerCoord} = useMouseClickHook({board, selectedDie, onSelectDie});
 
 
   return (
-      <group>
-        <mesh
-            ref = {meshRef}
-            frustumCulled = {false}
-            onClick = {getClickTarget}
-            onPointerDown = {setDownPointerCoord}
-        >
+      <D4Die
+          ref = {meshRef}
+          count = {count}
+          layoutType = {layoutType}
+          algorithm = {algorithm}
+          onSelectDie = {onSelectDie}
+          selectedDie = {selectedDie}
+      />
+  );
+};
 
-          <meshStandardMaterial attach = "material" color = "white" vertexColors = "vertex"/>
-          {selectedDie && (
-              <a.group
-                  position = {[
-                    selectedDie.x,
-                    selectedDie.y,
-                    selectedDie.z,
-                  ]}
-              >
-                <pointLight
-                    position = {selectedDie.position}
-                    decay = {10}
-                    intensity = {20}
-                    color = {BURN_COLOR}
-                />
-              </a.group>
-          )}
-        </mesh>
-      </group>
+
+
+const D4Die = (props) => {
+  const dieRef   = props.ref;
+  const tetraGeo = new THREE.TetrahedronGeometry(5, 0);
+  const tetraMat = new THREE.MeshStandardMaterial({color: 'indigo'});
+
+  useEffect(() => {
+    if (dieRef) {
+      for (let i = 0; i < 4; i++) {
+        dieRef.geometry.addGroup(i * 3, 3, i);
+      }
+    }
+  });
+
+  return (
+      <mesh
+          ref = {dieRef}
+          geometry = {tetraGeo}
+          material = {tetraMat}
+      />
   );
 };
 

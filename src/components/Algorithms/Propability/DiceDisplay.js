@@ -94,10 +94,10 @@ export default function DiceDisplay() {
           <div className = "control-group-one">
             <h2 className = "control-header">Display <br/> Strategy</h2>
             <button
-                onClick = {() => setLayout('standard')}
-                className = {layoutType === 'standard' ? 'active' : undefined}
+                onClick = {() => setLayout('Probability')}
+                className = {layoutType === 'Probability' ? 'active' : undefined}
             >
-              Chest
+              Probability
             </button>
 
             <button className = "reset-button" onClick = {handleResetCamera}>
