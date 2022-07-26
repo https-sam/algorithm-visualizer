@@ -14,24 +14,20 @@ export function RecursiveBacktrackCreation(board, start, end) {
   if (start === undefined || start === null) {startCell = board[Math.floor(Math.random() * board.length)];}
   if (end === undefined || end === null) {endCell = board[Math.floor(Math.random() * board.length)];}
   startCell.type = START_TYPE;
-  startCell.visited = true;
   endCell.type   = GOAL_TYPE;
   console.log('Start: ' + startCell.id + ' (' + startCell.x + ' | ' + startCell.y + ')');
   console.log('End: ' + endCell.id + ' (' + endCell.x + ' | ' + endCell.y + ')');
 
-
+  startCell.visited = true;
   carvePath(board, startCell, false);
 
-  _SetWalls(board);
+  // _SetWalls(board);
 
 
 }
 
 
 function carvePath(board, cell, found) {
-  if (found) {
-    return;
-  }
   const neighbors = _GetNeighborsCell(board, cell);
   if (neighbors.length === 0) {
     console.log('No neighbors found for cell: ' + cell.id + ' (' + cell.x + ' | ' + cell.y + ')');
@@ -41,12 +37,16 @@ function carvePath(board, cell, found) {
     const neighbor = neighbors[Math.floor(Math.random() * neighbors.length)];
     if (!neighbor.visited) {
       if (neighbor.type === GOAL_TYPE || found) {
+        console.log('Found goal');
         found = true;
-        return;
+        return found;
       }
       neighbor.visited = true;
       neighbor.type    = FLOOR_TYPE;
-      return carvePath(board, neighbor, found);
+      found = carvePath(board, neighbor, found);
+      if (found) {
+        return found;
+      }
     }
   }
 }
