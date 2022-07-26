@@ -19,7 +19,8 @@ export function RecursiveBacktrackCreation(board, start, end) {
   console.log('End: ' + endCell.id + ' (' + endCell.x + ' | ' + endCell.y + ')');
 
   startCell.visited = true;
-  carvePath(board, startCell);
+  var found = false;
+  carvePath(board, startCell, found);
 
   // _SetWalls(board);
 
@@ -27,15 +28,15 @@ export function RecursiveBacktrackCreation(board, start, end) {
 }
 
 
-function carvePath(board, cell) {
-  let found       = false;
+function carvePath(board, cell, found) {
   const neighbors = _GetNeighborsCell(board, cell);
   if (neighbors.length === 0) {
     console.log('No neighbors found for cell: ' + cell.id + ' (' + cell.x + ' | ' + cell.y + ')');
     return;
   }
+ shuffle( neighbors);
   for (let i = 0; i < neighbors.length; i++) {
-    const neighbor = neighbors[Math.floor(Math.random() * neighbors.length)];
+    const neighbor = neighbors[i];
     if (!neighbor.visited) {
       if (neighbor.type === GOAL_TYPE || found) {
         console.log('Found goal');
@@ -44,10 +45,15 @@ function carvePath(board, cell) {
       }
       neighbor.visited = true;
       neighbor.type    = FLOOR_TYPE;
-      found            = carvePath(board, neighbor);
+      found            = carvePath(board, neighbor, found);
       if (found) {
         return found;
       }
     }
   }
+}
+
+
+function shuffle(array) {
+  array.sort(() => Math.random() - 0.5);
 }
