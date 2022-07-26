@@ -1,17 +1,17 @@
 import * as React                                            from 'react';
 import {useEffect, useRef, useMemo, useState, createContext} from 'react';
-import {a}                                                   from '@react-spring/three';
-import {useGenerateMazeHook, useSolver, useLayoutHook}       from './LayoutsFunctions';
-import {directions}                                          from '../Algorithms/Maze/Directions';
-import {_FindCell}                                           from '../Algorithms/Maze/Tools';
-import board                                                 from './Board';
-import {BinaryTreeCreation}                                  from '../Algorithms/Maze/Generation/BinaryTreeCreation';
+import {a}                                             from '@react-spring/three';
+import {useGenerateMazeHook, useSolver, useLayoutHook} from './CellFunctions';
+import {directions}                                    from './Directions';
+import {_FindCell}                                     from './Tools';
+import board                                           from './Board';
+import {BinaryTreeCreation}                            from './Generation/BinaryTreeCreation';
 import {
   FLOOR_TYPE, FLOOR_COLOR, WALL_TYPE, WALL_COLOR,
   getColor, GOAL_TYPE, START_TYPE, SELECTED_COLOR,
   BURN_COLOR, PATH_TYPE, PATH_COLOR,
-}                                                            from '../../Utility/Colors';
-import * as THREE                                            from 'three';
+}                                                      from '../../../Utility/Colors';
+import * as THREE                                      from 'three';
 
 
 
@@ -154,6 +154,7 @@ const Cells = ({board, layoutType, solving, algorithm, mazeType, selectedPoint, 
     onSelectPoint,
   });
 
+
   /*
    * useColorsHook() is a hook that calls the useColorsHook() function.
    * Generating a color array according to the listed type of each cell.
@@ -166,7 +167,6 @@ const Cells = ({board, layoutType, solving, algorithm, mazeType, selectedPoint, 
     console.log('Board updated');
     update({mesh: meshRef.current, board, colorAttrib, colorArray});
   }, [board, layoutType, mazeType]);
-
 
 
 

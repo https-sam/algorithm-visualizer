@@ -1,10 +1,10 @@
 import * as React                                from 'react';
 // import {useFrame /*useFrame*/}                   from '@react-three/fiber';
 import {Canvas}                                  from 'react-three-fiber';
-import Controls                                  from './OrbitControls';
+import Controls                                  from '../OrbitControls';
 import {useImperativeHandle, useRef, forwardRef} from 'react';
 import {TrackballControls}                       from 'three/examples/jsm/controls/TrackballControls';
-import OrbitControls                             from './OrbitControls';
+import OrbitControls                             from '../OrbitControls';
 import Cells                                     from './Cells';
 
 

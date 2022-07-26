@@ -2,14 +2,14 @@ import * as React                                                              f
 import {useEffect, useRef, useState, useMemo}                                  from 'react';
 import {useSpring}                                                             from 'react-spring';
 import board                                                                   from './Board';
-import {_BoardReset}                                                from '../Algorithms/Maze/Tools';
-import {PATH_TYPE, DEFAULT_TYPE, FLOOR_TYPE, WALL_TYPE, START_TYPE, GOAL_TYPE} from '../../Utility/Colors';
-import {BinaryTreeCreation}                                                    from '../Algorithms/Maze/Generation/BinaryTreeCreation';
-import {RecursiveBacktrackCreation}                                            from '../Algorithms/Maze/Generation/RecursiveBacktrackCreation';
-import {GrowingTreeCreation}                                                   from '../Algorithms/Maze/Generation/GrowingTreeCreation';
-import {BfsCreation}                                                           from '../Algorithms/Maze/Generation/BfsCreation';
-import {RecursiveBacktrackSolution}                                            from '../Algorithms/Maze/Solving/RecursiveBacktrackSolution';
-import {BfsSolution}                                                           from '../Algorithms/Maze/Solving/BfsSolution';
+import {_BoardReset}                                                           from './Tools';
+import {PATH_TYPE, DEFAULT_TYPE, FLOOR_TYPE, WALL_TYPE, START_TYPE, GOAL_TYPE} from '../../../Utility/Colors';
+import {BinaryTreeCreation}                                                    from './Generation/BinaryTreeCreation';
+import {RecursiveBacktrackCreation}                                            from './Generation/RecursiveBacktrackCreation';
+import {GrowingTreeCreation}                                                   from './Generation/GrowingTreeCreation';
+import {BfsCreation}                                                           from './Generation/BfsCreation';
+import {RecursiveBacktrackSolution}                                            from './Solving/RecursiveBacktrackSolution';
+import {BfsSolution}                                                           from './Solving/BfsSolution';
 
 
 
@@ -76,16 +76,14 @@ export function useSolver({board, solving, algorithm, onFrame}) {
   const [solved, setSolved] = useState(false);
   const prevSelection       = useRef(algorithm);
   const animation           = useSpring({
-    solvingProgress: 1,
-    from           : {solvingProgress: 0},
-    reset          : algorithm !== prevSelection.current,
-    onFrame        : ({animationProgress}) => {
-      // interpolate based on progress
-      // drawPathing(board, solvingProgress);
-      // callback to indicate data has updated
-      // onFrame({ solvingProgress });
-    },
-  });
+        solvingProgress: 1,
+        from           : {solvingProgress: 0},
+        reset          : algorithm !== prevSelection.current,
+        onFrame        : ({solvingProgress}) => {
+          onFrame(solvingProgress);
+        },
+      },
+  );
   prevSelection.current     = algorithm;
 
   return animation;
@@ -151,7 +149,7 @@ export function standardLayout(board) {
 
     node.x = col;/* .05; */
     node.y = row;/* .05; */
-    node.z    = 0;
+    node.z = 0;
   }
 }
 

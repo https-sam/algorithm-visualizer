@@ -1,7 +1,7 @@
 import './App.css';
-import React     from 'react';
-import Display   from './components/BoardCanvas/Display';
-import AppRouter from './AppRouter';
+import React       from 'react';
+import MazeDisplay from './components/Algorithms/Maze/MazeDisplay';
+import AppRouter   from './AppRouter';
 import Navigation from './components/Page/partial/Navbar/Navigation';
 
 

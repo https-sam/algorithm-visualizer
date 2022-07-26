@@ -63,23 +63,29 @@ const OrbitControls = ({board, selectedPoint, onSelectedPoint}, ref) => {
           controls.current.up0.z
       );
     },
-    // resetCamera: () => {
-    //   camera.position.set(0, -10, 50);      // reset position
-    //   camera.lookAt(0, 0, 0);            // reset rotation
-    //   this.setTarget(null);                    // reset target
-    // },
+
+
+    /*
+    *
+     */
+    withTargetZoomOut: () => {
+      camera.position.set(this.target.position.x, this.target.position.y, this.target.position.z);
+      camera.lookAt(target.current.position);
+      camera.position.set(this.target.position.x, this.target.position.y, this.target.position.z);
+      camera.lookAt(target.current.position);
+    },
+
 
 
     /*
      * Function to zoom in the camera to the selected point.
      */
-    setTargetZoomIn: (target) => {
-      if (target) {
-        camera.position.set(target.position.x, target.position.y, target.position.z);
-        camera.lookAt(target.position);
-        console.log(target.position);
-      }
-    },
+    withTargetZoomIn: () => {
+      camera.position.set(this.target.position.x, this.target.position.y, this.target.position.z);
+      camera.lookAt(target.current.position);
+      camera.position.set(this.target.position.x, this.target.position.y, this.target.position.z);
+      camera.lookAt(target.current.position);
+    }
   }));
 
 

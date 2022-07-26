@@ -1,9 +1,9 @@
 import React, {useState, useRef, useEffect} from 'react';
 import Board                                from './Board';
-import Navigation                           from '../Page/partial/Navbar/Navigation';
-import './display.css';
+import Navigation                           from '../../Page/partial/Navbar/Navigation';
+import './mazeDisplay.css';
 // import {useBinaryTreeCreation}                         from '../Algorithms/Maze/Generation/BinaryTreeCreation';
-import {Strategy}                           from '../Strategy/Strategy';
+import {Strategy}                           from '../../Strategy/Strategy';
 
 /*
 
@@ -19,7 +19,7 @@ import {Strategy}                           from '../Strategy/Strategy';
 const board = new Array(3844).fill(0).map(
     (i, id: number, type: string = '_default_', currentType: string = '_default_', targetType: string = '_default_', visited: boolean = false, x: number, y: number) => ({x, y, id, type, visited, currentType, targetType}));
 
-export default function Display() {
+export default function MazeDisplay() {
   const [layoutType, setLayout]                     = useState('standard');
   const [mazeType, setMazeType]                     = useState('none');
   const [algorithm, setAlgorithm]                   = useState('none');
