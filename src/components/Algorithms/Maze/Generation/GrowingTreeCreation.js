@@ -42,7 +42,6 @@ export function GrowingTreeCreation(board, start, end) {
     for (let i = 0; i < neighbors.length; i++) {
       const neighbor = neighbors[i];
       if (visited.has(neighbor) === false) {
-        // neighbor.type = FLOOR_TYPE;
         queue.enqueue(neighbor);
       }
     }

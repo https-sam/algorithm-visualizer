@@ -1,6 +1,6 @@
-import {directions}                                                                                from '../Directions';
-import {_FindCellVisitState, _FindCellTypeState, _FindCell, _BoardReset, _GetNeighbors, _SetWalls} from '../Tools';
-import exit                                                                                        from 'exit';
+import {directions}                                                                                             from '../Directions';
+import {_FindCellVisitState, _FindCellTypeState, _FindCell, _BoardReset, _GetNeighbors, _SetWalls, _VisitReset} from '../Tools';
+import exit                                                                                                     from 'exit';
 import {PATH_TYPE, DEFAULT_TYPE, FLOOR_TYPE, WALL_TYPE, START_TYPE, GOAL_TYPE}          from '../../../../Utility/Colors';
 
 
@@ -32,21 +32,8 @@ export function BinaryTreeCreation(board, start, end) {
     let xcord = node.x + directions[direction].x;
     let ycord = node.y + directions[direction].y;
     const cell = _FindCell(board, xcord, ycord);
-    // console.log(cell);
-    // exit();
+
     if (cell) {
-      // exit();
-
-      // const testNeighbor = _GetNeighbors(board, -6, -6);
-      // if (testNeighbor) {
-      //   testNeighbor.forEach(neighbor => {
-      //     // console.log('Neighbor: ', neighbor);
-      //     neighbor.type = PATH_TYPE;
-      //   });
-      // }
-      // return;
-
-
       if (!cell.visited && cell.type !== START_TYPE && cell.type !== GOAL_TYPE) {
         // console.log(cell);
         cell.visited = true;
@@ -56,7 +43,6 @@ export function BinaryTreeCreation(board, start, end) {
   }
 
   _SetWalls(board);
-
-
+  _VisitReset(board);
 }
 
