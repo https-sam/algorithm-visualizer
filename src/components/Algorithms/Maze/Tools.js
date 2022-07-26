@@ -1,11 +1,13 @@
 /*
  * Quick selection test
  */
-import {FLOOR_TYPE, FLOOR_COLOR, WALL_TYPE, WALL_COLOR,
+import {
+  FLOOR_TYPE, FLOOR_COLOR, WALL_TYPE, WALL_COLOR,
   getColor, GOAL_TYPE, START_TYPE, SELECTED_COLOR,
   BURN_COLOR, PATH_TYPE, PATH_COLOR, DEFAULT_COLOR,
-  DEFAULT_TYPE} from '../../../Utility/Colors';
-import {directions}   from './Directions';
+  DEFAULT_TYPE,
+}                   from '../../../Utility/Colors';
+import {directions} from './Directions';
 
 
 
@@ -41,6 +43,7 @@ export function _FindCell(board, x, y) {
   return null;
 };
 
+
 export function _GetNeighborsUnvisited(board, cell) {
   let neighbors = [];
   for (let i = 0; i < directions.length; i++) {
@@ -56,8 +59,8 @@ export function _GetNeighborsUnvisited(board, cell) {
 export function _GetNeighbors(board, x, y) {
   let neighbors = [];
   for (let i = 0; i < 4; i++) {
-    let xcoord = x + directions[i].x;
-    let ycoord = y + directions[i].y;
+    let xcoord   = x + directions[i].x;
+    let ycoord   = y + directions[i].y;
     let neighbor = _FindCell(board, xcoord, ycoord);
     if (neighbor) {
       if (neighbor.type !== WALL_TYPE) {
@@ -68,14 +71,15 @@ export function _GetNeighbors(board, x, y) {
   return neighbors;
 }
 
+
 export function _GetNeighborsCell(board, cell) {
   let neighbors = [];
   for (let i = 0; i < 4; i++) {
-    let xcoord = cell.x + directions[i].x;
-    let ycoord = cell.y + directions[i].y;
+    let xcoord   = cell.x + directions[i].x;
+    let ycoord   = cell.y + directions[i].y;
     let neighbor = _FindCell(board, xcoord, ycoord);
     if (neighbor) {
-        neighbors.push(neighbor);
+      neighbors.push(neighbor);
 
     }
   }
@@ -83,12 +87,18 @@ export function _GetNeighborsCell(board, cell) {
 }
 
 
+export function shuffle(array) {
+  array.sort(() => Math.random() - 0.5);
+}
+
+
 export function _BoardReset(board) {
   for (let i = 0; i < board.length; i++) {
     board[i].visited = false;
-    board[i].type = DEFAULT_TYPE;
+    board[i].type    = DEFAULT_TYPE;
   }
 }
+
 
 /*
  * Walled board reset with the intent of creating a maze
@@ -97,9 +107,10 @@ export function _BoardReset(board) {
 export function _BoardResetWalled(board) {
   for (let i = 0; i < board.length; i++) {
     board[i].visited = false;
-    board[i].type = WALL_TYPE;
+    board[i].type    = WALL_TYPE;
   }
 }
+
 
 export function _VisitReset(board) {
   for (let i = 0; i < board.length; i++) {

@@ -1,8 +1,8 @@
-import {directions}                                                                                                                      from '../Directions';
-import {_FindCellVisitState, _FindCellTypeState, _FindCell, _BoardReset, _GetNeighbors, _SetWalls, _GetNeighborsCell, _BoardResetWalled} from '../Tools';
-import exit                                                                                                                              from 'exit';
-import {PATH_TYPE, DEFAULT_TYPE, FLOOR_TYPE, WALL_TYPE, START_TYPE, GOAL_TYPE}                                                           from '../../../../Utility/Colors';
-import {PriorityQueue}                                                                                                                   from '../../../../Utility/PriorityQueue.js';
+import {directions}                                                                                                                                            from '../Directions';
+import {_FindCellVisitState, _FindCellTypeState, _FindCell, _BoardReset, _GetNeighbors, _SetWalls, _GetNeighborsCell, _BoardResetWalled, shuffle, _VisitReset} from '../Tools';
+import exit                                                                                                                                                    from 'exit';
+import {PATH_TYPE, DEFAULT_TYPE, FLOOR_TYPE, WALL_TYPE, START_TYPE, GOAL_TYPE}                                                                                 from '../../../../Utility/Colors';
+import {PriorityQueue}                                                                                                                                         from '../../../../Utility/PriorityQueue.js';
 
 
 
@@ -19,11 +19,11 @@ export function RecursiveBacktrackCreation(board, start, end) {
   console.log('End: ' + endCell.id + ' (' + endCell.x + ' | ' + endCell.y + ')');
 
   startCell.visited = true;
-  var found = false;
+  var found         = false;
   carvePath(board, startCell, found);
 
-  // _SetWalls(board);
-
+  _SetWalls(board);
+  _VisitReset(board);
 
 }
 
@@ -34,7 +34,8 @@ function carvePath(board, cell, found) {
     console.log('No neighbors found for cell: ' + cell.id + ' (' + cell.x + ' | ' + cell.y + ')');
     return;
   }
- shuffle( neighbors);
+
+  shuffle(neighbors);
   for (let i = 0; i < neighbors.length; i++) {
     const neighbor = neighbors[i];
     if (!neighbor.visited) {
@@ -51,9 +52,8 @@ function carvePath(board, cell, found) {
       }
     }
   }
+  return false;
 }
 
 
-function shuffle(array) {
-  array.sort(() => Math.random() - 0.5);
-}
+
