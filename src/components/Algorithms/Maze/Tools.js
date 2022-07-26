@@ -68,11 +68,36 @@ export function _GetNeighbors(board, x, y) {
   return neighbors;
 }
 
+export function _GetNeighborsCell(board, cell) {
+  let neighbors = [];
+  for (let i = 0; i < 4; i++) {
+    let xcoord = cell.x + directions[i].x;
+    let ycoord = cell.y + directions[i].y;
+    let neighbor = _FindCell(board, xcoord, ycoord);
+    if (neighbor) {
+        neighbors.push(neighbor);
+
+    }
+  }
+  return neighbors;
+}
+
 
 export function _BoardReset(board) {
   for (let i = 0; i < board.length; i++) {
     board[i].visited = false;
     board[i].type = DEFAULT_TYPE;
+  }
+}
+
+/*
+ * Walled board reset with the intent of creating a maze
+ * through the use of the recursive backtracking algorithm.
+ */
+export function _BoardResetWalled(board) {
+  for (let i = 0; i < board.length; i++) {
+    board[i].visited = false;
+    board[i].type = WALL_TYPE;
   }
 }
 

@@ -59,7 +59,7 @@ export function useGenerateMazeHook({board, mazeType}) {
         break;
       case 'none':
       default:
-        _BoardReset(board);
+        // _BoardReset(board);
         break;
     }
   }, [mazeType]);
@@ -152,7 +152,6 @@ export function standardLayout(board) {
     node.x = col;/* .05; */
     node.y = row;/* .05; */
     node.z    = 0;
-    node.type = board[i].type || DEFAULT_TYPE;
   }
 }
 

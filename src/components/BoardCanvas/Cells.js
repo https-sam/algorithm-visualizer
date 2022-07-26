@@ -148,12 +148,6 @@ const Cells = ({board, layoutType, solving, algorithm, mazeType, selectedPoint, 
   }, [solving === true]);
 
 
-  useEffect(() => {
-    console.log('Board updated');
-    update({mesh: meshRef.current, board, colorAttrib, colorArray});
-  }, [board, layoutType, mazeType]);
-
-
   const {getClickTarget, setDownPointerCoord} = useMouseClickHook({
     board,
     selectedPoint,
@@ -161,12 +155,17 @@ const Cells = ({board, layoutType, solving, algorithm, mazeType, selectedPoint, 
   });
 
   /*
-    * useColorsHook() is a hook that calls the useColorsHook() function.
-    * Generating a color array according to the listed type of each cell.
-    *
+   * useColorsHook() is a hook that calls the useColorsHook() function.
+   * Generating a color array according to the listed type of each cell.
+   *
    */
   const {colorAttrib, colorArray} = useColorsHook({board});
 
+
+  useEffect(() => {
+    console.log('Board updated');
+    update({mesh: meshRef.current, board, colorAttrib, colorArray});
+  }, [board, layoutType, mazeType]);
 
 
 
