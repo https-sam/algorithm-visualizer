@@ -1,38 +1,48 @@
-import {directions}                                         from './Directions';
-import {_FindCellVisitState, _FindCellTypeState, _FindCell} from './Tools';
+import {directions}                                                                                             from '../Directions';
+import {_FindCellVisitState, _FindCellTypeState, _FindCell, _BoardReset, _GetNeighbors, _SetWalls, _VisitReset} from '../Tools';
+import exit                                                                                                     from 'exit';
+import {PATH_TYPE, DEFAULT_TYPE, FLOOR_TYPE, WALL_TYPE, START_TYPE, GOAL_TYPE}          from '../../../../Utility/Colors';
 
 
 
 
-export function BinaryTreeCreation({board}) {
-  for (var i = 0; i < board.i.length; i++) {
-    let direction = Math.random() * 4;
-    // console.log(board[i]);
+export function BinaryTreeCreation(board, start, end) {
+  _BoardReset(board);
+  let startCell = null;
+  let endCell   = null;
+  if (start === undefined || start === null) {
+    startCell = board[Math.floor(Math.random() * board.length)];
+  }
+  if (end === undefined || end === null) {
+    endCell = board[Math.floor(Math.random() * board.length)];
+  }
+  startCell.type = START_TYPE;
+  endCell.type   = GOAL_TYPE;
+  console.log('Start: ' + startCell.id + " (" + startCell.x + ' | ' + startCell.y + ')');
+  console.log('End: ' + endCell.id + " (" + endCell.x + ' | ' + endCell.y + ')');
 
-    // console.log(direction);
-    // console.log(directions[direction].x);
-    // console.log(board[i].x + directions[direction].x);
-    let xcord  = board[i].i.x + directions[direction].x;
-    let ycord  = board[i].i.y + directions[direction].y;
-    const cell = board.find(item => Math.floor(item.x) === Math.floor(xcord) && Math.floor(item.y) === Math.floor(ycord));
-    // console.log(cell);
+  const numPoints = board.length;
+  for (var i = 0; i < numPoints; i++) {
+    if (board[i] === startCell || board[i] === endCell) {
+      continue;
+    }
+    let node      = board[i];
+    // Needed to be percise to avoid floating point errors....
+    let direction = Math.floor(Math.random() * 4);
+    let xcord = node.x + directions[direction].x;
+    let ycord = node.y + directions[direction].y;
+    const cell = _FindCell(board, xcord, ycord);
 
     if (cell) {
-      if (!cell.visited) {
+      if (!cell.visited && cell.type !== START_TYPE && cell.type !== GOAL_TYPE) {
         // console.log(cell);
-        board[cell.id].visited = true;
-        board[cell.id].type    = "_wall_";
+        cell.visited = true;
+        cell.type    = FLOOR_TYPE;
       }
     }
   }
-  console.log('BinaryTreeCreation: ' + board.length);
+
+  _SetWalls(board);
+  _VisitReset(board);
 }
 
-
-function interpolateBinaryTree(board, progress) {
-  for (let i = 0; i < board.length; ++i) {
-    board[i].x = (1 - progress) * board[i].sourceX + progress * board[i].targetX;
-    board[i].y = (1 - progress) * board[i].sourceY + progress * board[i].targetY;
-    board[i].z = (1 - progress) * board[i].sourceZ + progress * board[i].targetZ;
-  }
-}

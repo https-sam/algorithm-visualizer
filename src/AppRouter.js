@@ -7,8 +7,9 @@ import {
 import SplashScreen      from './components/Page/Splash/SplashScreen';
 import MainSortingCanvas from './components/Canvas/MainSortingCanvas';
 import AboutScreen       from './components/Page/About/AboutScreen';
-import ContactScreen from './components/Page/Contact/ContactScreen';
-import Display       from './components/BoardCanvas/Display';
+import ContactScreen     from './components/Page/Contact/ContactScreen';
+import MazeDisplay       from './components/Algorithms/Maze/MazeDisplay';
+import DiceDisplay       from './components/Algorithms/Propability/DiceDisplay';
 
 
 
@@ -23,7 +24,9 @@ function AppRouter() {
           <Route exact path = "/dashboard"
                  element = {<MainSortingCanvas/>}/>
           <Route exact path = "/dashboard-two"
-                 element = {<Display/>}/>
+                 element = {<MazeDisplay/>}/><
+          Route exact path = "/dashboard-three"
+                 element = {<DiceDisplay/>}/>
           <Route path = "/about"
                  element = {<AboutScreen/>}/>
           <Route path = "/contact"
