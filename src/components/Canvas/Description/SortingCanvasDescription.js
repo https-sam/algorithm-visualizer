@@ -74,7 +74,7 @@ const SortingCanvasDescription = ({ maxBarsToShowHeight }) => {
             <BoldParagraph text="Faster" />
             <NormalParagraph text="animation (skips some animations)" />{" "}
           </ul>
-          <ul className="space-x-2">
+          <ul className="space-x-2 flex items-center">
             <span className="mx-1 mr-[.3em] font-semibold text-[1.7em] dark:stroke-textGray text-textGray">
               H
             </span>
