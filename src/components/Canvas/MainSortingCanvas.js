@@ -47,6 +47,9 @@ class MainCanvas extends Component {
         options: { ...this.state.options, defaultBarColor: "white" },
       });
     }
+    window.addEventListener("resize", () => {
+      this.forceUpdate();
+    });
   }
 
   render() {

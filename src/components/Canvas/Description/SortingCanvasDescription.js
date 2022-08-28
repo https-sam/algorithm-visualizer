@@ -10,7 +10,6 @@ import NormalParagraph from "./NormalParagraph";
 import { InputHandler } from "../../InputHandler/InputHandler";
 
 const SortingCanvasDescription = ({ maxBarsToShowHeight }) => {
-  console.log(maxBarsToShowHeight);
   return (
     <div className="z-10 self-center font-sans max-w-[90vw] text-gray-700 dark:text-white mt-10 xl:mt-0 md:pt-0">
       <p className="text-[1.3em] md:text-[2.2em] font-bold mb-5">
