@@ -25,6 +25,9 @@ class Canvas extends Component {
     const FONT_SIZE = Math.floor(BAR_WIDTH * 0.4);
     const PINK = "#ff595e";
     const PURPLE = "#6a4c93";
+    const SHOW_HEIGHT_MAX_BARS = Math.floor((window.innerWidth - MARGIN) / 28);
+
+    // Math.floor((SCREEN_WIDTH - MARGIN * inputArrayLength) / inputArrayLength);
 
     return (
       <div
@@ -67,7 +70,9 @@ class Canvas extends Component {
               );
             })
           ) : (
-            <SortingCanvasDescription />
+            <SortingCanvasDescription
+              maxBarsToShowHeight={SHOW_HEIGHT_MAX_BARS}
+            />
           )}
         </div>
         <div className="main-canvas-grid z-0 dark:opacity-[0.03]" />

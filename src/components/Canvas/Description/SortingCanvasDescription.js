@@ -9,7 +9,8 @@ import BoldParagraph from "./BoldParagraph";
 import NormalParagraph from "./NormalParagraph";
 import { InputHandler } from "../../InputHandler/InputHandler";
 
-const SortingCanvasDescription = () => {
+const SortingCanvasDescription = ({ maxBarsToShowHeight }) => {
+  console.log(maxBarsToShowHeight);
   return (
     <div className="z-10 self-center font-sans max-w-[90vw] text-gray-700 dark:text-white mt-10 xl:mt-0 md:pt-0">
       <p className="text-[1.3em] md:text-[2.2em] font-bold mb-5">
@@ -72,6 +73,16 @@ const SortingCanvasDescription = () => {
             <Runner className="mr-2 dark:stroke-textGray stroke-[#7B7B7c] scale-[1.2] inline " />
             <BoldParagraph text="Faster" />
             <NormalParagraph text="animation (skips some animations)" />{" "}
+          </ul>
+          <ul className="space-x-2">
+            <span className="mx-1 mr-[.3em] font-semibold text-[1.7em] dark:stroke-textGray text-textGray">
+              H
+            </span>
+            <NormalParagraph text="Show bar" />
+            <BoldParagraph text="Height" />
+            <NormalParagraph text="(Input must be less than" />
+            <BoldParagraph text={maxBarsToShowHeight} />
+            <NormalParagraph text="bars)" />
           </ul>
         </li>
       </div>
