@@ -31,8 +31,8 @@ const SortingCanvasDescription = ({ maxBarsToShowHeight }) => {
         <span className="font-medium text-[1em] text-gray-700 dark:text-textGray">
           The maximum input is currently limited to{" "}
           <BoldParagraph text={InputHandler.getAllowedMaxInputSize()} />. To
-          play with a larger number, increase the window size and refresh the
-          page <br />
+          play with a larger number, increase the window size
+          <br />
           (or press "⌘" + "-" on Mac, "ctrl" + "-" on windows).
         </span>
       </div>
