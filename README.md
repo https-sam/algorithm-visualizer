@@ -12,11 +12,10 @@ This project features visualization of sorting algorithms with completely custom
 - Dark / Light Theme
 - Local Storage for option config
 
-# Algorithms 
-- Sorting Algorithms
-    - Radix Sort
-    - Heap Sort
-    - Quick Sort
-    - Merge Sort
-    - Shell Sort
-    - Selection Sort
+# Sorting Algorithms 
+- Radix Sort
+- Heap Sort
+- Quick Sort
+- Merge Sort
+- Shell Sort
+- Selection Sort
