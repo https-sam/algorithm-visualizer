@@ -23,7 +23,6 @@ module.exports = {
         themeFont: ["Open Sans", "Helvetica", "Arial", "sans-serif"],
         spline: ["Spline Sans", "sans-serif"],
       },
-
       screens: {
         tablet: "1200px",
       },
