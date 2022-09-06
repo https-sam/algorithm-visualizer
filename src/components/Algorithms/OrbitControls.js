@@ -1,20 +1,24 @@
-import * as React                                                     from 'react';
+import * as React from "react";
 // import {extend, useThree, useFrame}                                   from '@react-three/fiber';
-import {extend, useThree, useFrame}                                   from 'react-three-fiber';
-import {TrackballControls}                                            from 'three/examples/jsm/controls/TrackballControls';
-import * as Three                                                     from 'three';
-import {forwardRef, useRef, useImperativeHandle, useEffect, useState} from 'react';
+import { extend, useThree, useFrame } from "react-three-fiber";
+import { TrackballControls } from "three/examples/jsm/controls/TrackballControls";
+import * as Three from "three";
+import {
+  forwardRef,
+  useRef,
+  useImperativeHandle,
+  useEffect,
+  useState,
+} from "react";
 
+extend({ TrackballControls });
 
-extend({TrackballControls});
-
-
-const OrbitControls = ({board, selectedPoint, onSelectedPoint}, ref) => {
+const OrbitControls = ({ board, selectedPoint, onSelectedPoint }, ref) => {
   // Based on Peter Beshai's grid example:
-  const controls            = useRef();
+  const controls = useRef();
   const [target, setTarget] = useState(null);
-  const {camera, gl}        = useThree();
-  const {setDefaultCamera}  = useThree();
+  const { camera, gl } = useThree();
+  const { setDefaultCamera } = useThree();
 
   //  Set up the camera on mount.
   useEffect(() => {
@@ -24,9 +28,12 @@ const OrbitControls = ({board, selectedPoint, onSelectedPoint}, ref) => {
   }, [camera]);
 
   //  Set up the initial target.
-  useEffect((selectedPoint) => {
-    setTarget(selectedPoint);
-  }, [target]);
+  useEffect(
+    (selectedPoint) => {
+      setTarget(selectedPoint);
+    },
+    [target]
+  );
 
   useFrame(() => {
     controls.current.update();
@@ -39,11 +46,15 @@ const OrbitControls = ({board, selectedPoint, onSelectedPoint}, ref) => {
   useImperativeHandle(ref, () => ({
     setTarget: (target) => {
       setTarget(target);
-      console.log('setTarget', target);
+      console.log("setTarget", target);
     },
 
     ZoomToTarget: () => {
-      camera.position.set(this.target.position.x, this.target.position.y, this.target.position.z);
+      camera.position.set(
+        this.target.position.x,
+        this.target.position.y,
+        this.target.position.z
+      );
       camera.lookAt(target.current.position);
     },
 
@@ -58,61 +69,71 @@ const OrbitControls = ({board, selectedPoint, onSelectedPoint}, ref) => {
       camera.lookAt(0, -10, 50);
       // needed for trackball controls, reset the up vector
       camera.up.set(
-          controls.current.up0.x,
-          controls.current.up0.y,
-          controls.current.up0.z
+        controls.current.up0.x,
+        controls.current.up0.y,
+        controls.current.up0.z
       );
     },
 
-
     /*
-    *
+     *
      */
     withTargetZoomOut: () => {
-      camera.position.set(this.target.position.x, this.target.position.y, this.target.position.z);
+      camera.position.set(
+        this.target.position.x,
+        this.target.position.y,
+        this.target.position.z
+      );
       camera.lookAt(target.current.position);
-      camera.position.set(this.target.position.x, this.target.position.y, this.target.position.z);
+      camera.position.set(
+        this.target.position.x,
+        this.target.position.y,
+        this.target.position.z
+      );
       camera.lookAt(target.current.position);
     },
-
-
 
     /*
      * Function to zoom in the camera to the selected point.
      */
     withTargetZoomIn: () => {
-      camera.position.set(this.target.position.x, this.target.position.y, this.target.position.z);
+      camera.position.set(
+        this.target.position.x,
+        this.target.position.y,
+        this.target.position.z
+      );
       camera.lookAt(target.current.position);
-      camera.position.set(this.target.position.x, this.target.position.y, this.target.position.z);
+      camera.position.set(
+        this.target.position.x,
+        this.target.position.y,
+        this.target.position.z
+      );
       camera.lookAt(target.current.position);
-    }
+    },
   }));
 
-
   return (
-      <trackballControls
-          ref = {controls}
-          args = {[camera, gl.domElement]}
-          dynamicDampingFactor = {0.1}
-          rotationLock = {[
-            true, // orbit
-            true, // zoom
-            true, // pan
-          ]}
-          mouseButtons = {{
-            LEFT  : Three.MOUSE.PAN,
-            RIGHT : Three.MOUSE.ROTATE,
-            MIDDLE: Three.MOUSE.ZOOM,
-          }}
-          enabled = {true}
-          zoomSpeed = {0.5}
-          zoomFactor = {0.1}
-          panSpeed = {0.1}
-          rotateSpeed = {0.15}
-      />
+    <trackballControls
+      ref={controls}
+      args={[camera, gl.domElement]}
+      dynamicDampingFactor={0.1}
+      rotationLock={[
+        true, // orbit
+        true, // zoom
+        true, // pan
+      ]}
+      mouseButtons={{
+        LEFT: Three.MOUSE.PAN,
+        RIGHT: Three.MOUSE.ROTATE,
+        MIDDLE: Three.MOUSE.ZOOM,
+      }}
+      enabled={true}
+      zoomSpeed={0.5}
+      zoomFactor={0.1}
+      panSpeed={0.1}
+      rotateSpeed={0.15}
+    />
   );
 };
 
 export default forwardRef(OrbitControls);
-
-

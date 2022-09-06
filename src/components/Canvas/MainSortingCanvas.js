@@ -1,11 +1,10 @@
-import "./main-canvas.css";
 import React, { Component } from "react";
+import { CONSTANTS } from "../../Utility/config";
 import { InputHandler } from "../InputHandler/InputHandler";
+import Navigation from "../Page/partial/Navbar/Navigation";
 import { Canvas } from "./Canvas";
 import { InputField } from "./InputField";
-import { CONSTANTS } from "../../Utility/config";
-import Navigation from "../Page/partial/Navbar/Navigation";
-import { Animation } from "../Animation/Animation";
+import "./main-canvas.css";
 
 class MainCanvas extends Component {
   constructor(props) {
