@@ -10,7 +10,7 @@ This project features visualization of sorting algorithms with completely custom
 - Strategy Pattern
 - Singleton Pattern
 - Dark / Light Theme
-- Local Storage for option config
+- Local Storage for option configurations
 - Animations
 
 
