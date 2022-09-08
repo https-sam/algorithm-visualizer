@@ -41,19 +41,19 @@ const SplashScreen = () => {
               <div className="flex flex-col gap-5">
                 <div
                   className="hover:-translate-y-[.2em] transition duration-200 ease-in-out relative hover:shadow-custom-md-lightBlue cursor-pointer font-semibold  text-white font-spline bg-lightBlue2 p-[1em] text-[1em] rounded-md w-[15em]"
-                  onClick={() => navigate("/sorting-visualizer")}
+                  onClick={() => navigate("/sorting-visualizer/app")}
                 >
                   Sorting Algorithms
                   <RightArrow className="absolute top-[50%] -translate-y-[50%] right-[1em]" />
                 </div>
 
-                <div
+                {/* <div
                   className="hover:-translate-y-[.2em] transition duration-200 ease-in-out relative hover:shadow-custom-md-lightBlue cursor-pointer font-semibold  text-white font-spline bg-lightBlue2 p-[1em] text-[1em] rounded-md w-[15em]"
                   onClick={() => navigate("/dashboard-two")}
                 >
                   Path Finding Algorithms
                   <RightArrow className="absolute top-[50%] -translate-y-[50%] right-[1em]" />
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
