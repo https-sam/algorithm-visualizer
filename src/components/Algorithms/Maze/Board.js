@@ -37,7 +37,7 @@ export const Board = (
         <mesh>
            {" "}
            {/* BorderBox */}
-           <boxBufferGeometry attach="geometry" args={[80, 80, -10]}/>
+           <boxBufferGeometry attach="geometry" args={[80, 80, -10]} />
            <meshBasicMaterial attach="material" color="black"/>
         </mesh>
 

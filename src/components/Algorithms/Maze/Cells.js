@@ -162,25 +162,19 @@ const Cells = ({board, layoutType, solving, algorithm, mazeType, selectedPoint, 
 
    return (
      <group>
+        <pointLight position={[0, 0, 50]} intensity={5}/>
         <instancedMesh ref={meshRef} args={[null, null, numPoints]} frustumCulled={false} onClick={getClickTarget} onPointerDown={setDownPointerCoord}>
            <boxBufferGeometry attach="geometry" args={[0.6, 0.3, 0.6, 18]}>
               <instancedBufferAttribute ref={colorAttrib} attachObject={['attributes', 'color']} array={colorArray} itemSize={3}/>
            </boxBufferGeometry>
            <meshStandardMaterial attach="material" vertexColors={InstancedBufferAttribute}/>
 
-           {/* {generationInProgress && <a.group */}
-           {/*     position = {generationInProgress.interpolate((x, y, z) => [x, y, z])} */}
-           {/* />} */}
-           {/* <BufferPoints numPoints={numPoints} /> */}
-           {/* <BufferPoints numPoints = {numPoints}/> */}
            {selectedPoint && (
              <a.group position={[
                 selectedPoint.x,
                 selectedPoint.y,
                 selectedPoint.z,
-             ]}
-
-             >
+             ]}>
                 <pointLight distance={6} position={[0, 0, 0.6]} decay={30} intensity={155} color={SELECTED_COLOR}/>
                 <pointLight distance={12} position={[0, 0.11, 0.051]} decay={10} intensity={20} color={BURN_COLOR}/>
              </a.group>
