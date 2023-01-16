@@ -1,0 +1,224 @@
+
+.display-container {
+	position:         absolute;
+	background-color: #afa8a8;
+	/*// Test*/
+	/*background-color: white;*/
+	/*display: inline-block;*/
+	z-index:          -50;
+	top:              60px;
+	left:             0;
+	right:            0;
+	bottom:           0;
+}
+
+.display-bottom-panel {
+	position: absolute;
+	width:    fit-content;
+	bottom:   0px;
+}
+
+.control-group-one, .control-group-two, .control-group-three {
+	z-index:    10;
+	margin:     auto;
+	background: rgba(114, 108, 108, 0.9);
+	padding:    0 10px 10px 10px;
+	color:      #fff;
+	width:      fit-content;
+	block-size: fit-content;
+	width:      -moz-fit-content;
+}
+
+.control-group-one {
+	position:     absolute;
+	top:          50px;
+	padding-left: 10px;
+}
+
+.control-group-two, .control-group-three {
+	float:          left;
+	height:         210px;
+	background:     #222;
+	display:        inline-block;
+	padding:        1rem 1rem;
+	vertical-align: middle;
+
+}
+
+.control-group-two {
+	border-right: black 1px solid;
+}
+
+
+.control-header {
+	text-align:     center;
+	font-size:      16px;
+	font-weight:    bold;
+	padding-top:    5px;
+	padding-bottom: 10px;
+	margin-top:     0;
+}
+
+.point-select {
+	color:       #2dcf05;
+	font-weight: bold;
+}
+
+.point-desc {
+	align-content: center;
+	z-index:       1;
+	font-size:     16px;
+	position:      absolute;
+	text-align:    center;
+	margin-top:    5px;
+	color:         white;
+	bottom:        0;
+	width:         100%;
+}
+
+.control-group-one > button:hover {
+	background-color: #111;
+	color:            #fff;
+}
+
+.control-group-one > button {
+	width:          100%;
+	height:         fit-content;
+	display:        block;
+	padding:        5px;
+	background:     #222;
+	color:          #ccc;
+	border:         none;
+	margin:         2px;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	cursor:         pointer;
+	font-size:      10px;
+
+}
+
+.control-group-one > button.active {
+	font-weight:      bold;
+	background-color: #333;
+	color:            #ff0;
+}
+
+.control-group-two > button:hover {
+	background-color: #fff;
+	color:            #111;
+}
+
+.control-group-three > button:hover {
+	background-color: #fff;
+	color:            #111;
+}
+
+.control-group-two > button {
+	width:          100%;
+	height:         fit-content;
+	display:        block;
+	padding:        5px;
+	background:     #000000;
+	color:          #ccc;
+	border:         none;
+	margin:         2px;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	cursor:         pointer;
+	font-size:      10px;
+}
+
+.control-group-three > button {
+	width:          100%;
+	height:         fit-content;
+	display:        block;
+	padding:        5px;
+	background:     #000000;
+	color:          #ccc;
+	border:         none;
+	margin:         2px;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	cursor:         pointer;
+	font-size:      10px;
+}
+
+
+.maze-toggle-group {
+	width:           100%;
+	display:         flex;
+	justify-content: center;
+}
+
+.maze-toggle {
+	min-width:  30%;
+	width:      auto;
+	/*height:     fit-content;*/
+	text-align: center;
+	background: #222;
+	color:      #ccc;
+	cursor:     pointer;
+	border:     none;
+	padding:    2px;
+	margin:     2px;
+}
+
+.maze-toggle.active {
+	background-color: #ff003b;
+	color:            #222;
+}
+
+
+.control-group-two > button.active {
+	background-color: #333;
+	color:            #ff0;
+}
+
+.selected-point {
+	font-size:  0.85em;
+	margin-top: 16px;
+}
+
+.reset-button {
+	padding-bottom: 5px;
+}
+
+
+.solving-group {
+	width:           100%;
+	display:         flex;
+	justify-content: center;
+}
+
+.solve-toggle-group {
+	width:            30%;
+	left:             50%;
+	transform:        translateX(-50%);
+	height:           fit-content;
+	text-align:       center;
+	background-color: rgba(51, 51, 51, 0.65);
+	color:            #ccc;
+	cursor:           pointer;
+	border:           none;
+	padding:          2px;
+	margin:           2px;
+	position:         absolute;
+}
+
+
+.solve-toggle:hover {
+	background-color: #d9c14b;
+	color:            black;
+}
+
+.solve-toggle.active {
+	background-color: #23ff00;
+	color:            #222;
+}
+
+.building-group {
+	width:           100%;
+	display:         flex;
+	justify-content: center;
+}
+

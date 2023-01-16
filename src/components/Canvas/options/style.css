@@ -1,0 +1,26 @@
+.tool-tip-options::after {
+  content: "";
+  position: absolute;
+  top: -16px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: 10px;
+  height: 10px;
+  border-style: solid;
+  border-width: 10px;
+  border-color: transparent transparent white transparent;
+}
+
+
+.tool-tip-options-theme::after {
+  content: "";
+  position: absolute;
+  top: -16px;
+  left: 72%;
+  transform: translate(-50%, 0);
+  width: 10px;
+  height: 10px;
+  border-style: solid;
+  border-width: 10px;
+  border-color: transparent transparent white transparent;
+}

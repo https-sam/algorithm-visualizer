@@ -1,0 +1,58 @@
+{
+  "name": "algorithms-visualizer",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@react-spring/three": "^9.5.1",
+    "@react-three/drei": "9.14.3",
+    "@react-three/fiber": "^8.10.0",
+    "@splinetool/react-spline": "^2.2.1",
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^13.3.0",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^28.1.6",
+    "@types/node": "^18.0.6",
+    "@types/react": "^18.0.15",
+    "@types/react-dom": "^18.0.6",
+    "@types/three": "0.141.0",
+    "csstype": "^3.1.0",
+    "postcss-cli": "^10.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router": "^6.3.0",
+    "react-router-dom": "^6.3.0",
+    "react-spring": "8.0.27",
+    "three": "^0.148.0",
+    "zustand": "^4.0.0-rc.1"
+  },
+  "devDependencies": {
+    "autoprefixer": "^9.8.8",
+    "postcss": "^8.4.14",
+    "react-scripts": "^5.0.1",
+    "tailwindcss": "^3.1.6"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
