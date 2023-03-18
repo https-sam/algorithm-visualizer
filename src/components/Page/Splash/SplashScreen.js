@@ -32,8 +32,8 @@ const SplashScreen = () => {
                 Algo Visualizer
               </p>
               <span className="font-spline max-w-[47ch] text-[1.2em] z-10 text-gray-100">
-                Improve your understanding of algorithms just by watching simple
-                and completely <BoldParagraph text="customizable animations" />.{" "}
+                Improve your understanding of algorithms by watching simple
+                and <BoldParagraph text="interactive animations" />.{" "}
                 <br />
                 Welcome to the algo visualizer.
               </span>
