@@ -2,6 +2,7 @@
   "name": "algorithms-visualizer",
   "version": "0.1.0",
   "private": true,
+  "homepage": ".",
   "dependencies": {
     "@react-spring/three": "^9.5.1",
     "@react-three/drei": "9.14.3",
