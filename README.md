@@ -1,6 +1,6 @@
 # Welcome to Algo visualizer!
 
-This project features visualization of sorting algorithms with completely customizable and easy animations. 
+This is a website that visualizes sorting algorithms with interactive components. 
 
 [Demo](https://algovisualizers.netlify.app/sorting-visualizer)
 
